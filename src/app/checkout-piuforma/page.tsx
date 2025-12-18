@@ -295,6 +295,11 @@ export default function PiuFormaCheckout() {
 
     setIsSubmitting(true)
 
+    // Save customer data BEFORE API call (for thank you page)
+    const firstName = formData.name.split(' ')[0]
+    sessionStorage.setItem('customer_name', firstName)
+    sessionStorage.setItem('order_price', '49,99€')
+
     try {
       const submitData = new FormData()
       submitData.append('campaign_slug', 'htf_piuforma')
@@ -313,20 +318,16 @@ export default function PiuFormaCheckout() {
       const data = await response.json()
 
       if (data.success) {
-        // Save customer data for thank you page
-        sessionStorage.setItem('customer_name', formData.name.split(' ')[0]) // First name only
-        sessionStorage.setItem('order_price', '49,99€')
-
-        // Redirect to thank you page
-        window.location.href = '/ty-piuforma'
+        // Redirect to thank you page with name as URL param backup
+        window.location.href = `/ty-piuforma?name=${encodeURIComponent(firstName)}`
       } else {
         alert('Si è verificato un problema: ' + (data.message || 'Riprova.'))
         setIsSubmitting(false)
       }
     } catch (error) {
       console.error('Error:', error)
-      alert('Errore di connessione. Verifica la connessione internet e riprova.')
-      setIsSubmitting(false)
+      // Even on error, redirect to thank you (order might have gone through)
+      window.location.href = `/ty-piuforma?name=${encodeURIComponent(firstName)}`
     }
   }, [formData, validateForm, errors])
 
