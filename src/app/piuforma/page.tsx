@@ -722,7 +722,7 @@ export default function PiuFormaLanding() {
               <div className="text-sm md:text-base text-gray-600 mt-1">Clienti soddisfatti</div>
             </div>
             <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-md">
-              <div className="text-3xl md:text-4xl font-black text-brand-primary">-4kg</div>
+              <div className="text-3xl md:text-4xl font-black text-brand-primary">-12KG</div>
               <div className="text-sm md:text-base text-gray-600 mt-1">Media in 30 giorni</div>
             </div>
             <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-md">
