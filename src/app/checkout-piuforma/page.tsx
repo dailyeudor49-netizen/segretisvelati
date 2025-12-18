@@ -313,8 +313,12 @@ export default function PiuFormaCheckout() {
       const data = await response.json()
 
       if (data.success) {
+        // Save customer data for thank you page
+        sessionStorage.setItem('customer_name', formData.name.split(' ')[0]) // First name only
+        sessionStorage.setItem('order_price', '49,99€')
+
         // Redirect to thank you page
-        window.location.href = 'https://farmaita.eu/ty-nutrac/'
+        window.location.href = '/ty-piuforma'
       } else {
         alert('Si è verificato un problema: ' + (data.message || 'Riprova.'))
         setIsSubmitting(false)
