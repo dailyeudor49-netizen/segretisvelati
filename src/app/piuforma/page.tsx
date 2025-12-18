@@ -218,10 +218,10 @@ export default function PiuFormaLanding() {
 
   const reviews = [
     {
-      text: "In menopausa il mio peso non scendeva mai. Ero disperata. Con +Forma ho finalmente visto dei cambiamenti: meno gonfiore e più energia. Lo consiglio a tutte le donne over 50!",
+      text: "Dopo la gravidanza non riuscivo più a perdere quei chili di troppo. Palestra e diete non bastavano. Con +Forma ho ritrovato la forma che avevo prima, mi sento finalmente me stessa! Lo consiglio a tutte le mamme!",
       name: "Elena M.",
       location: "Bologna",
-      age: 52,
+      age: 34,
       image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo5.jpg",
       highlight: "Ho perso 2 taglie in 2 mesi"
     },
