@@ -464,10 +464,13 @@ export default function PiuFormaCheckout() {
                         Compila tutti i campi
                       </>
                     ) : (
-                      <>
-                        <CheckCircle className="w-7 h-7" />
-                        CONFERMA ORDINE → pagando alla consegna
-                      </>
+                      <span className="flex flex-col items-center">
+                        <span className="flex items-center gap-2">
+                          <CheckCircle className="w-6 h-6 md:w-7 md:h-7" />
+                          CONFERMA ORDINE
+                        </span>
+                        <span className="text-sm md:text-base font-normal opacity-90">→ pagando alla consegna</span>
+                      </span>
                     )}
                   </button>
 
