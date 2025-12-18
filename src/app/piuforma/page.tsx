@@ -202,7 +202,6 @@ CTAButton.displayName = 'CTAButton'
 export default function PiuFormaLanding() {
   const [activeThumb, setActiveThumb] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [quantity, setQuantity] = useState(2)
 
   const thumbnails = [
     'https://farmaita.eu/wp-content/uploads/2024/10/Progetto-senza-titolo-2.png',
@@ -361,37 +360,23 @@ export default function PiuFormaLanding() {
         </div>
       </div>
 
-      {/* HERO / PRODUCT SECTION */}
-      <section className="py-6 md:py-12 bg-gradient-to-br from-orange-50 via-white to-blue-50">
+      {/* HERO / PRODUCT SECTION - Ecommerce Style */}
+      <section className="py-6 md:py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
 
-            {/* GALLERY */}
-            <div className="space-y-4">
-              <div className="relative aspect-square bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-red-600 text-white text-sm md:text-base font-black px-4 py-2 rounded-xl">-50% OGGI</span>
-                </div>
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="bg-green-600 text-white text-xs md:text-sm font-bold px-3 py-1.5 rounded-lg">BEST SELLER</span>
-                </div>
-                <div className="p-6 md:p-8 flex items-center justify-center h-full bg-gradient-to-br from-slate-50 to-white">
-                  <img
-                    src={thumbnails[activeThumb]}
-                    alt="+Forma - Integratore Metabolismo"
-                    className="w-full max-w-sm h-auto object-contain drop-shadow-2xl animate-float"
-                  />
-                </div>
-              </div>
-
-              {/* Thumbnails - Larger touch targets */}
-              <div className="flex gap-3 justify-center">
+            {/* GALLERY - Ecommerce style with side thumbnails */}
+            <div className="flex flex-col-reverse md:flex-row gap-4">
+              {/* Thumbnails - Vertical on desktop */}
+              <div className="flex md:flex-col gap-2 md:gap-3 justify-center md:justify-start">
                 {thumbnails.map((thumb, index) => (
                   <button
                     key={index}
                     onClick={() => handleThumbClick(index)}
-                    className={`w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden bg-white p-2 transition-all touch-manipulation ${
-                      activeThumb === index ? 'border-3 border-brand-primary shadow-lg' : 'border-2 border-gray-200 hover:border-brand-primary'
+                    className={`w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden bg-white p-1.5 transition-all touch-manipulation border-2 ${
+                      activeThumb === index
+                        ? 'border-brand-primary shadow-md ring-2 ring-brand-primary/20'
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                     aria-label={`Vedi immagine ${index + 1}`}
                   >
@@ -399,140 +384,201 @@ export default function PiuFormaLanding() {
                   </button>
                 ))}
               </div>
+
+              {/* Main image */}
+              <div className="flex-1 relative">
+                <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 overflow-hidden group">
+                  {/* Badges */}
+                  <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
+                    <span className="bg-red-600 text-white text-xs font-black px-3 py-1.5 rounded-md shadow-sm">
+                      -50%
+                    </span>
+                    <span className="bg-brand-primary text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-sm">
+                      OFFERTA 2x1
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3 z-10">
+                    <span className="bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1">
+                      <Check className="w-3 h-3" /> IN STOCK
+                    </span>
+                  </div>
+
+                  {/* Image container with hover zoom effect */}
+                  <div className="p-8 md:p-12 flex items-center justify-center h-full cursor-zoom-in">
+                    <img
+                      src={thumbnails[activeThumb]}
+                      alt="+Forma - Integratore Metabolismo"
+                      className="w-full max-w-xs md:max-w-sm h-auto object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+
+                  {/* Zoom hint */}
+                  <div className="absolute bottom-3 right-3 bg-black/50 text-white text-xs px-2 py-1 rounded flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                    Zoom
+                  </div>
+                </div>
+
+                {/* Image counter */}
+                <div className="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded">
+                  {activeThumb + 1} / {thumbnails.length}
+                </div>
+              </div>
             </div>
 
             {/* PRODUCT INFO */}
             <div className="flex flex-col">
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-blue-100 text-blue-700 text-sm font-bold px-3 py-1.5 rounded-lg">100% NATURALE</span>
-                <span className="bg-green-100 text-green-700 text-sm font-bold px-3 py-1.5 rounded-lg">MADE IN EU</span>
-                <span className="bg-purple-100 text-purple-700 text-sm font-bold px-3 py-1.5 rounded-lg">BEST SELLER 2024</span>
+              {/* Seller info */}
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                <span>Venduto da</span>
+                <span className="font-bold text-brand-dark">+Forma Italia</span>
+                <span className="text-blue-500">✓ Venditore verificato</span>
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-brand-dark leading-tight mb-4">
-                +Forma <span className="text-brand-primary">Metabolismo Attivo</span>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-dark leading-tight mb-2">
+                +Forma Metabolismo Attivo
               </h1>
+              <p className="text-gray-500 text-sm mb-3">Integratore alimentare naturale per il controllo del peso</p>
 
-              {/* Subtitle */}
-              <p className="text-lg md:text-xl text-gray-600 mb-4 leading-relaxed">
-                La formula che <strong>riattiva il consumo calorico a riposo</strong> dopo i 40 anni.
-                Sentiti più leggero, sgonfio e pieno di energia.
-              </p>
-
-              {/* Rating */}
-              <div className="flex items-center gap-3 mb-4 flex-wrap">
-                <StarRating rating={5} />
-                <span className="text-gray-700 font-bold text-lg">4.8/5</span>
-                <Link href="#recensioni" className="text-brand-primary hover:underline">(1.247 recensioni)</Link>
+              {/* Rating row */}
+              <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-100">
+                <div className="flex items-center gap-1">
+                  <StarRating rating={5} size="sm" />
+                  <span className="text-brand-primary font-bold">4.8</span>
+                </div>
+                <Link href="#recensioni" className="text-sm text-blue-600 hover:underline">1.247 recensioni</Link>
+                <span className="text-gray-300">|</span>
+                <span className="text-sm text-green-600 font-medium">2.500+ venduti</span>
               </div>
 
-              {/* Stock indicator */}
-              <div className="flex flex-wrap items-center gap-4 mb-6">
-                <span className="flex items-center gap-2 text-green-600 font-bold text-sm bg-green-50 px-3 py-1.5 rounded-full">
+              {/* Price card - Amazon style */}
+              <div className="bg-gray-50 rounded-xl p-5 mb-5 border border-gray-200">
+                {/* Price row */}
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs text-gray-500 line-through">Prezzo listino: 99,00€</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl md:text-5xl font-bold text-brand-dark">49,99€</span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">-50%</span>
+                      <span className="text-sm text-green-600 font-medium">Risparmi 49,01€</span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs text-gray-500">Prezzo per unità</span>
+                    <p className="text-lg font-bold text-gray-700">24,99€</p>
+                  </div>
+                </div>
+
+                {/* What's included */}
+                <div className="bg-white rounded-lg p-3 border border-gray-200 mb-4">
+                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">La tua offerta include:</p>
+                  <div className="flex items-center gap-3">
+                    <img src="https://farmaita.eu/wp-content/uploads/2024/10/Progetto-senza-titolo-2.png" alt="" className="w-12 h-12 object-contain" />
+                    <div>
+                      <p className="font-bold text-brand-dark">2x +Forma Metabolismo</p>
+                      <p className="text-xs text-gray-500">Trattamento completo 2 mesi (120 compresse)</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Shipping info */}
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2 text-green-600">
+                    <Truck className="w-4 h-4" />
+                    <span className="font-medium">Spedizione GRATUITA</span>
+                    <span className="text-gray-500">· Consegna in 24-48h</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Banknote className="w-4 h-4 text-green-600" />
+                    <span>Pagamento alla consegna (contrassegno)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Package className="w-4 h-4 text-blue-500" />
+                    <span>Pacco anonimo e discreto</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quantity selector - Locked at 2 */}
+              <div className="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-200 mb-5">
+                <div className="flex items-center gap-4">
+                  <span className="text-gray-700 font-medium">Quantità:</span>
+                  <div className="flex items-center border-2 border-gray-300 rounded-lg bg-gray-100">
+                    <button
+                      disabled
+                      className="p-2.5 text-gray-300 cursor-not-allowed rounded-l-lg"
+                      aria-label="Diminuisci quantità"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="px-5 py-2 font-bold text-lg text-brand-dark bg-white min-w-[50px] text-center">2</span>
+                    <button
+                      disabled
+                      className="p-2.5 text-gray-300 cursor-not-allowed rounded-r-lg"
+                      aria-label="Aumenta quantità"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 text-orange-700 text-sm font-medium">
+                  <Lock className="w-4 h-4" />
+                  Offerta valida solo per 2 conf.
+                </div>
+              </div>
+
+              {/* Stock warning */}
+              <div className="flex items-center gap-2 mb-5 text-sm">
+                <span className="flex items-center gap-1.5 text-green-600 font-medium">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                   Disponibile
                 </span>
-                <span className="flex items-center gap-1.5 text-orange-600 font-medium text-sm">
+                <span className="text-gray-400">—</span>
+                <span className="text-orange-600 font-medium flex items-center gap-1">
                   <AlertCircle className="w-4 h-4" />
-                  Solo 12 pezzi rimasti!
+                  Solo 12 pezzi rimasti a questo prezzo!
                 </span>
-                <span className="flex items-center gap-1.5 text-gray-500 text-sm">
-                  <Clock className="w-4 h-4" />
-                  Ordina entro 2h per spedizione oggi
-                </span>
-              </div>
-
-              {/* Price Box */}
-              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-brand-primary/30 rounded-2xl p-5 md:p-6 mb-6">
-                <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="text-gray-400 line-through text-xl md:text-2xl">99,00€</span>
-                  <span className="bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-lg">RISPARMI 49€</span>
-                </div>
-                <div className="flex items-baseline gap-2 mb-3 flex-wrap">
-                  <span className="text-5xl md:text-6xl font-black text-brand-primary">49,99€</span>
-                  <span className="text-gray-500 font-medium text-lg">/ 2 confezioni</span>
-                </div>
-                <p className="text-brand-dark font-bold flex items-center gap-2 text-base md:text-lg">
-                  <Package className="w-6 h-6 text-brand-primary" />
-                  Trattamento completo 2 mesi · Spedizione GRATIS
-                </p>
-              </div>
-
-              {/* Quantity selector */}
-              <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 rounded-xl">
-                <span className="text-gray-700 font-bold">Quantità:</span>
-                <div className="flex items-center border-2 border-gray-200 rounded-xl bg-white">
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="p-3 hover:bg-gray-100 transition-colors touch-manipulation rounded-l-xl"
-                    aria-label="Diminuisci quantità"
-                  >
-                    <Minus className="w-5 h-5 text-gray-600" />
-                  </button>
-                  <span className="px-6 py-3 font-bold text-xl text-brand-dark min-w-[60px] text-center">{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(Math.min(5, quantity + 1))}
-                    className="p-3 hover:bg-gray-100 transition-colors touch-manipulation rounded-r-xl"
-                    aria-label="Aumenta quantità"
-                  >
-                    <Plus className="w-5 h-5 text-gray-600" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-500">(Offerta 2x1 attiva)</span>
-              </div>
-
-              {/* Benefits */}
-              <div className="space-y-3 mb-6">
-                {['Brucia calorie anche a riposo', 'Riduce il senso di fame nervosa', 'Sgonfia la pancia in pochi giorni', 'Più energia durante tutta la giornata'].map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-5 h-5 text-green-600" />
-                    </div>
-                    <span className="text-gray-700 font-medium text-base md:text-lg">{benefit}</span>
-                  </div>
-                ))}
               </div>
 
               {/* CTA Button */}
               <CTAButton />
 
-              {/* Payment/Shipping info */}
-              <div className="mt-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
-                <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-600">
-                  <span className="flex items-center gap-1.5">
-                    <Truck className="w-4 h-4 text-blue-600" /> Spedizione 24h
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Banknote className="w-4 h-4 text-green-600" /> Paga alla consegna
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Lock className="w-4 h-4 text-gray-600" /> Acquisto sicuro
-                  </span>
-                </div>
+              {/* Trust row under CTA */}
+              <div className="flex items-center justify-center gap-6 mt-4 py-3 border-t border-b border-gray-100">
+                <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                  <Lock className="w-3.5 h-3.5 text-green-600" /> Checkout sicuro
+                </span>
+                <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                  <ShieldCheck className="w-3.5 h-3.5 text-blue-600" /> Garanzia qualità
+                </span>
+                <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                  <Truck className="w-3.5 h-3.5 text-brand-primary" /> Spedizione express
+                </span>
               </div>
 
-              {/* Trust Badges */}
-              <div className="grid grid-cols-2 gap-3 mt-6">
-                <TrustBadge icon={Truck} text="Spedizione Gratuita 24h" />
-                <TrustBadge icon={Banknote} text="Paghi alla Consegna" />
-                <TrustBadge icon={ShieldCheck} text="Ingredienti Naturali" />
-                <TrustBadge icon={Phone} text="Assistenza Dedicata" />
-              </div>
-
-              {/* Payment methods */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <p className="text-xs text-gray-400 text-center mb-3">Metodo di pagamento accettato</p>
-                <div className="flex items-center justify-center gap-4">
-                  <div className="bg-white border border-gray-200 rounded-lg px-4 py-2 flex items-center gap-2">
-                    <Banknote className="w-6 h-6 text-green-600" />
-                    <span className="text-sm font-bold text-gray-700">Contrassegno</span>
+              {/* Benefits list */}
+              <div className="mt-5 space-y-2">
+                <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">Perché scegliere +Forma:</p>
+                {['Brucia calorie anche a riposo', 'Riduce il senso di fame nervosa', 'Sgonfia la pancia in pochi giorni', 'Più energia durante tutta la giornata'].map((benefit, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700 text-sm">{benefit}</span>
                   </div>
+                ))}
+              </div>
+
+              {/* Payment badge */}
+              <div className="mt-6 flex items-center justify-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <span className="text-xs text-gray-400">Pagamento accettato:</span>
+                <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded px-3 py-1.5">
+                  <Banknote className="w-5 h-5 text-green-600" />
+                  <span className="text-xs font-bold text-gray-700">Contrassegno</span>
                 </div>
-                <p className="text-xs text-gray-400 text-center mt-3 flex items-center justify-center gap-1">
-                  <Lock className="w-3 h-3" /> Pagamento sicuro alla consegna
-                </p>
               </div>
             </div>
           </div>
