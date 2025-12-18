@@ -310,7 +310,7 @@ export default function ThankYouPage() {
             </p>
             <p className="flex items-center justify-center gap-2">
               <Mail className="w-5 h-5 text-blue-600" />
-              <strong>Email:</strong> <a href="mailto:assistenza@piuforma.it" className="text-blue-600 hover:underline">assistenza@piuforma.it</a>
+              <strong>Email:</strong> <a href="mailto:assistenza@segretisvelati.com" className="text-blue-600 hover:underline">assistenza@segretisvelati.com</a>
             </p>
           </div>
         </div>
@@ -335,9 +335,21 @@ export default function ThankYouPage() {
       <footer className="bg-brand-dark text-gray-400 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-white font-bold text-xl mb-2">+Forma</p>
-          <p className="text-sm mb-4">Il tuo alleato naturale per ritrovare energia e forma fisica</p>
-          <p className="text-xs opacity-60">
-            © 2025 +Forma Italia. Tutti i diritti riservati.
+          <p className="text-sm mb-3">Il tuo alleato naturale per ritrovare energia e forma fisica</p>
+          <p className="text-xs text-gray-500 mb-3">
+            <strong className="text-gray-400">Segreti Svelati S.r.l.</strong> · P.IVA IT12345678901 · Via Roma 123, 20121 Milano (MI)
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500 mb-4">
+            <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a>
+            <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-white">Termini e Condizioni</a>
+            <a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">Cookie Policy</a>
+          </div>
+          <p className="text-[10px] text-gray-600 max-w-2xl mx-auto">
+            Integratore alimentare. I risultati possono variare. Non è un medicinale.
+            Questo sito non è parte di Facebook o Facebook Inc. FACEBOOK è un marchio registrato di FACEBOOK, Inc.
+          </p>
+          <p className="text-xs text-gray-600 mt-3">
+            © 2025 Segreti Svelati S.r.l. - Tutti i diritti riservati.
           </p>
         </div>
       </footer>

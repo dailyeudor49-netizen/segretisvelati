@@ -282,7 +282,7 @@ export default function PiuFormaLanding() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
               <span className="text-2xl md:text-3xl font-black text-brand-primary">+Forma</span>
-              <span className="hidden md:inline text-xs text-gray-400 border-l border-gray-300 pl-2">Shop Ufficiale</span>
+              <span className="hidden md:inline text-xs text-gray-400 border-l border-gray-300 pl-2">Metabolismo Attivo</span>
             </Link>
 
             {/* Desktop Nav */}
@@ -886,15 +886,17 @@ export default function PiuFormaLanding() {
         {/* Main footer */}
         <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {/* Column 1 - Brand */}
+            {/* Column 1 - Brand & Company */}
             <div className="col-span-2 md:col-span-1">
               <p className="text-white font-black text-2xl mb-4">+Forma</p>
               <p className="text-sm leading-relaxed mb-4">
                 Il tuo alleato naturale per ritrovare energia e forma fisica dopo i 40 anni.
               </p>
-              <div className="flex items-center gap-2 text-sm">
-                <Award className="w-5 h-5 text-brand-primary" />
-                <span>Shop Ufficiale Italiano</span>
+              <div className="text-xs text-gray-500 space-y-1">
+                <p><strong className="text-gray-400">Segreti Svelati S.r.l.</strong></p>
+                <p>P.IVA: IT12345678901</p>
+                <p>Via Roma 123, 20121 Milano (MI)</p>
+                <p>Italia</p>
               </div>
             </div>
 
@@ -909,14 +911,14 @@ export default function PiuFormaLanding() {
               </ul>
             </div>
 
-            {/* Column 3 - Assistenza */}
+            {/* Column 3 - Informazioni Legali */}
             <div>
-              <h4 className="text-white font-bold mb-4">Assistenza</h4>
+              <h4 className="text-white font-bold mb-4">Informazioni Legali</h4>
               <ul className="space-y-3 text-sm">
-                <li><Link href="#faq" className="hover:text-white transition-colors">FAQ</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Spedizioni</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Resi e Rimborsi</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Traccia Ordine</a></li>
+                <li><a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                <li><a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Termini e Condizioni</a></li>
+                <li><a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Cookie Policy</a></li>
+                <li><a href="https://segretisvelati.com/diritto-recesso" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Diritto di Recesso</a></li>
               </ul>
             </div>
 
@@ -925,20 +927,16 @@ export default function PiuFormaLanding() {
               <h4 className="text-white font-bold mb-4">Contatti</h4>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-brand-primary" />
-                  <span>Lun-Ven 9-18</span>
-                </li>
-                <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-brand-primary" />
-                  <a href="mailto:info@piuforma.it" className="hover:text-white transition-colors">info@piuforma.it</a>
+                  <a href="mailto:assistenza@segretisvelati.com" className="hover:text-white transition-colors">assistenza@segretisvelati.com</a>
                 </li>
                 <li className="flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4 text-brand-primary" />
-                  <span>WhatsApp</span>
+                  <Phone className="w-4 h-4 text-brand-primary" />
+                  <span>Lun-Ven 9:00-18:00</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-brand-primary" />
-                  <span>Italia</span>
+                  <span>Milano, Italia</span>
                 </li>
               </ul>
             </div>
@@ -969,17 +967,18 @@ export default function PiuFormaLanding() {
         <div className="border-t border-gray-700 py-6">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-              <p>© 2025 +Forma Italia. Tutti i diritti riservati.</p>
+              <p>© 2025 Segreti Svelati S.r.l. - P.IVA IT12345678901 - Tutti i diritti riservati.</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition-colors">Termini e Condizioni</a>
-                <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+                <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy</a>
+                <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Termini</a>
+                <a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Cookie</a>
               </div>
             </div>
-            <p className="text-[10px] text-gray-600 text-center mt-4 max-w-3xl mx-auto">
-              Integratore alimentare. I risultati possono variare da persona a persona.
-              Non è un medicinale. Da utilizzare nell&apos;ambito di una dieta equilibrata e uno stile di vita sano.
-              Non usare in gravidanza/allattamento. Per patologie, consultare il medico.
+            <p className="text-[10px] text-gray-600 text-center mt-4 max-w-4xl mx-auto">
+              Integratore alimentare. I risultati possono variare da persona a persona. Non è un medicinale.
+              Da utilizzare nell&apos;ambito di una dieta equilibrata e uno stile di vita sano. Non usare in gravidanza/allattamento.
+              Per patologie, consultare il medico. Questo sito non è parte di Facebook o Facebook Inc.
+              Inoltre, questo sito NON è approvato da Facebook in alcun modo. FACEBOOK è un marchio registrato di FACEBOOK, Inc.
             </p>
           </div>
         </div>

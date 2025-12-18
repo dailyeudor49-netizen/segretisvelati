@@ -482,8 +482,8 @@ export default function PiuFormaCheckout() {
                   {/* Microcopy */}
                   <p className="text-sm md:text-base text-gray-500 text-center leading-relaxed">
                     Cliccando &quot;Conferma Ordine&quot; accetti di essere ricontattato telefonicamente e dichiari di aver letto{' '}
-                    <a href="#" className="underline hover:text-gray-700">Privacy Policy</a> e{' '}
-                    <a href="#" className="underline hover:text-gray-700">Termini</a>.
+                    <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">Privacy Policy</a> e{' '}
+                    <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">Termini</a>.
                   </p>
                 </form>
               </div>
@@ -516,12 +516,21 @@ export default function PiuFormaCheckout() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-white border-t border-gray-200 py-6 mt-8">
-        <div className="max-w-4xl mx-auto px-4 text-center text-base text-gray-500">
-          <p>+Forma Italia · Integratore alimentare</p>
-          <p className="mt-2 text-sm">
-            I risultati possono variare. Non è un medicinale. Da usare con dieta equilibrata e stile di vita sano.
+      <footer className="bg-gray-50 border-t border-gray-200 py-8 mt-8">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-sm text-gray-600 mb-3">
+            <strong>Segreti Svelati S.r.l.</strong> · P.IVA IT12345678901 · Via Roma 123, 20121 Milano (MI)
           </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500 mb-4">
+            <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 underline">Privacy Policy</a>
+            <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 underline">Termini e Condizioni</a>
+            <a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 underline">Cookie Policy</a>
+          </div>
+          <p className="text-xs text-gray-400 max-w-2xl mx-auto">
+            Integratore alimentare. I risultati possono variare. Non è un medicinale. Da usare con dieta equilibrata e stile di vita sano.
+            Questo sito non è parte di Facebook o Facebook Inc. FACEBOOK è un marchio registrato di FACEBOOK, Inc.
+          </p>
+          <p className="text-xs text-gray-400 mt-2">© 2025 Segreti Svelati S.r.l. - Tutti i diritti riservati.</p>
         </div>
       </footer>
 
