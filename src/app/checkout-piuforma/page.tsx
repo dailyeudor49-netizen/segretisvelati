@@ -466,7 +466,7 @@ export default function PiuFormaCheckout() {
                     ) : (
                       <>
                         <CheckCircle className="w-7 h-7" />
-                        CONFERMA ORDINE
+                        CONFERMA ORDINE → pagando alla consegna
                       </>
                     )}
                   </button>
