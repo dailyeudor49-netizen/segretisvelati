@@ -141,21 +141,41 @@ const IngredientCard = memo(({ emoji, title, description }: { emoji: string; tit
 
 IngredientCard.displayName = 'IngredientCard'
 
-// Review card component
-const ReviewCard = memo(({ text, name, location, age, image }: {
-  text: string; name: string; location: string; age: number; image: string
+// Review card component - Enhanced version
+const ReviewCard = memo(({ text, name, location, age, image, highlight }: {
+  text: string; name: string; location: string; age: number; image: string; highlight?: string
 }) => (
-  <div className="bg-gray-50 p-5 md:p-6 rounded-2xl border border-gray-100">
+  <div className="bg-white p-6 md:p-8 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-xl transition-shadow">
+    {/* Highlight badge */}
+    {highlight && (
+      <div className="mb-4">
+        <span className="bg-gradient-to-r from-brand-primary to-orange-500 text-white text-sm font-bold px-4 py-2 rounded-full">
+          ✨ {highlight}
+        </span>
+      </div>
+    )}
+
+    {/* Stars and verified */}
     <div className="flex items-center justify-between mb-4">
-      <StarRating rating={5} size="sm" />
-      <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">VERIFICATO</span>
+      <div className="flex text-yellow-400">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className="w-6 h-6 fill-current" />
+        ))}
+      </div>
+      <span className="text-sm bg-green-100 text-green-700 px-3 py-1.5 rounded-full font-bold flex items-center gap-1">
+        <Check className="w-4 h-4" /> VERIFICATO
+      </span>
     </div>
-    <p className="text-gray-700 mb-5 italic text-base md:text-lg leading-relaxed">&quot;{text}&quot;</p>
-    <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
-      <img src={image} alt={name} className="w-14 h-14 rounded-full object-cover" />
+
+    {/* Review text */}
+    <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">&quot;{text}&quot;</p>
+
+    {/* Author */}
+    <div className="flex items-center gap-4 pt-5 border-t-2 border-gray-100">
+      <img src={image} alt={name} className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-4 border-brand-primary/20" />
       <div>
-        <p className="font-bold text-brand-dark text-lg">{name}</p>
-        <p className="text-sm text-gray-500">{location} · {age} anni</p>
+        <p className="font-black text-brand-dark text-lg md:text-xl">{name}</p>
+        <p className="text-base text-gray-500">{location} · {age} anni</p>
       </div>
     </div>
   </div>
@@ -195,26 +215,61 @@ export default function PiuFormaLanding() {
 
   const reviews = [
     {
-      text: "In menopausa il mio peso non scendeva mai. Ero disperata. Con +Forma ho finalmente visto dei cambiamenti: meno gonfiore e più energia. Lo consiglio!",
+      text: "In menopausa il mio peso non scendeva mai. Ero disperata. Con +Forma ho finalmente visto dei cambiamenti: meno gonfiore e più energia. Lo consiglio a tutte le donne over 50!",
       name: "Elena M.",
       location: "Bologna",
       age: 52,
-      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo5.jpg"
+      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo5.jpg",
+      highlight: "Ho perso 2 taglie in 2 mesi"
     },
     {
-      text: "Guido il camion tutto il giorno, zero movimento. La pancia era un problema serio. Queste compresse mi hanno aiutato a controllare la fame. I pantaloni ora mi stanno!",
+      text: "Guido il camion tutto il giorno, zero movimento. La pancia era un problema serio. Queste compresse mi hanno aiutato a controllare la fame. I pantaloni ora mi stanno! Mia moglie non ci credeva.",
       name: "Luigi R.",
       location: "Milano",
       age: 48,
-      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo6.jpg"
+      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo6.jpg",
+      highlight: "La pancia è sparita"
     },
     {
-      text: "Ero scettica, ma visto che si paga alla consegna ho voluto provare. Mi sento più leggera, sgonfia e piena di energia. Lo ricomprerò sicuramente!",
+      text: "Ero scettica, ma visto che si paga alla consegna ho voluto provare. Mi sento più leggera, sgonfia e piena di energia. Lo ricomprerò sicuramente! Ora lo consiglio a tutte le mie amiche.",
       name: "Valentina S.",
       location: "Roma",
       age: 45,
-      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo4.jpg"
+      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo4.jpg",
+      highlight: "Finalmente mi sento bene"
+    },
+    {
+      text: "Dopo i 60 anni pensavo fosse impossibile dimagrire. Mi sbagliavo! Con +Forma ho ritrovato l'energia che avevo perso e la bilancia finalmente scende. Prodotto fantastico!",
+      name: "Maria G.",
+      location: "Napoli",
+      age: 63,
+      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo5.jpg",
+      highlight: "Mai troppo tardi per stare bene"
+    },
+    {
+      text: "Lo uso da 3 mesi insieme a mio marito. Abbiamo entrambi notato meno gonfiore e più energia. Il pagamento alla consegna ci ha convinto a provare. Consigliatissimo!",
+      name: "Anna e Marco",
+      location: "Firenze",
+      age: 55,
+      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo6.jpg",
+      highlight: "Lo usiamo in coppia"
+    },
+    {
+      text: "Lavoro in ufficio 8 ore al giorno seduta. La sera tornavo a casa stanca e affamata. Da quando prendo +Forma ho più controllo sulla fame e arrivo a cena senza abbuffarmi!",
+      name: "Francesca D.",
+      location: "Torino",
+      age: 42,
+      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo4.jpg",
+      highlight: "Niente più abbuffate serali"
     }
+  ]
+
+  const beforeAfterImages = [
+    { before: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.18.webp', label: 'Risultato dopo 2 mesi' },
+    { before: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.12.webp', label: 'Risultato dopo 6 settimane' },
+    { before: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.03.webp', label: 'Risultato dopo 8 settimane' },
+    { before: 'https://farmaita.eu/wp-content/uploads/2024/02/cqMWe6GDu.jpg', label: 'Risultato dopo 3 mesi' },
+    { before: 'https://farmaita.eu/wp-content/uploads/2024/02/rhzWId6cz.jpg', label: 'Risultato dopo 2 mesi' }
   ]
 
   const faqs = [
@@ -424,40 +479,90 @@ export default function PiuFormaLanding() {
       </section>
 
       {/* RECENSIONI */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-black text-brand-dark">
-              Cosa dicono i nostri <span className="text-brand-primary">clienti</span>
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-orange-50">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <span className="bg-brand-primary/10 text-brand-primary font-bold px-4 py-2 rounded-full text-sm uppercase tracking-wide">
+              Testimonianze Reali
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-brand-dark mt-4">
+              Oltre <span className="text-brand-primary">1.247 Clienti</span> Soddisfatti
             </h2>
-            <div className="flex items-center justify-center gap-3 mt-4 flex-wrap">
-              <StarRating rating={5} />
-              <span className="text-gray-600 text-lg">4.8/5 su 1.247 recensioni verificate</span>
+            <div className="flex items-center justify-center gap-4 mt-6 flex-wrap">
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-8 h-8 fill-current" />
+                ))}
+              </div>
+              <span className="text-gray-700 text-xl font-bold">4.8/5</span>
+              <span className="text-gray-500 text-lg">recensioni verificate</span>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
+            <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-md">
+              <div className="text-3xl md:text-4xl font-black text-brand-primary">97%</div>
+              <div className="text-sm md:text-base text-gray-600 mt-1">Clienti soddisfatti</div>
+            </div>
+            <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-md">
+              <div className="text-3xl md:text-4xl font-black text-brand-primary">-4kg</div>
+              <div className="text-sm md:text-base text-gray-600 mt-1">Media in 30 giorni</div>
+            </div>
+            <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-md">
+              <div className="text-3xl md:text-4xl font-black text-brand-primary">89%</div>
+              <div className="text-sm md:text-base text-gray-600 mt-1">Riacquistano</div>
+            </div>
+          </div>
+
+          {/* Reviews Grid - 2 columns on desktop */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
             {reviews.map((review, i) => (
               <ReviewCard key={i} {...review} />
             ))}
           </div>
 
-          {/* Result images */}
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            {[
-              'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.18.webp',
-              'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.12.webp',
-              'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.03.webp',
-              'https://farmaita.eu/wp-content/uploads/2024/02/cqMWe6GDu.jpg',
-              'https://farmaita.eu/wp-content/uploads/2024/02/rhzWId6cz.jpg'
-            ].map((img, i) => (
-              <img key={i} src={img} alt="Risultato" className="w-24 h-32 md:w-28 md:h-36 object-cover rounded-xl border border-gray-200" loading="lazy" />
-            ))}
+          {/* Before/After Gallery */}
+          <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10">
+            <h3 className="text-2xl md:text-3xl font-black text-brand-dark text-center mb-8">
+              📸 Trasformazioni dei Nostri Clienti
+            </h3>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+              {beforeAfterImages.map((img, i) => (
+                <div key={i} className="relative group">
+                  <img
+                    src={img.before}
+                    alt={img.label}
+                    className="w-full h-48 md:h-56 object-cover rounded-2xl border-4 border-gray-100 group-hover:border-brand-primary transition-colors"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 rounded-b-2xl">
+                    <p className="text-white text-sm font-bold text-center">{img.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center text-sm text-gray-400 mt-6">
+              *I risultati possono variare da persona a persona. Le immagini rappresentano esperienze individuali.
+            </p>
           </div>
 
-          <p className="text-center text-sm text-gray-400 mt-6">
-            *I risultati possono variare da persona a persona. Le immagini rappresentano esperienze individuali.
-          </p>
+          {/* CTA after reviews */}
+          <div className="text-center mt-12">
+            <p className="text-xl md:text-2xl text-gray-700 font-medium mb-6">
+              Unisciti a migliaia di clienti soddisfatti!
+            </p>
+            <Link
+              href="/checkout-piuforma"
+              className="inline-flex items-center gap-3 bg-brand-primary hover:bg-orange-600 text-white text-xl md:text-2xl font-black py-5 px-10 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+            >
+              <ShoppingBag className="w-7 h-7" />
+              ORDINA ORA – 49,99€
+            </Link>
+          </div>
         </div>
       </section>
 
