@@ -237,30 +237,6 @@ export default function PiuFormaLanding() {
       age: 45,
       image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo4.jpg",
       highlight: "Finalmente mi sento bene"
-    },
-    {
-      text: "Dopo i 60 anni pensavo fosse impossibile dimagrire. Mi sbagliavo! Con +Forma ho ritrovato l'energia che avevo perso e la bilancia finalmente scende. Prodotto fantastico!",
-      name: "Maria G.",
-      location: "Napoli",
-      age: 63,
-      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo5.jpg",
-      highlight: "Mai troppo tardi per stare bene"
-    },
-    {
-      text: "Lo uso da 3 mesi insieme a mio marito. Abbiamo entrambi notato meno gonfiore e più energia. Il pagamento alla consegna ci ha convinto a provare. Consigliatissimo!",
-      name: "Anna e Marco",
-      location: "Firenze",
-      age: 55,
-      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo6.jpg",
-      highlight: "Lo usiamo in coppia"
-    },
-    {
-      text: "Lavoro in ufficio 8 ore al giorno seduta. La sera tornavo a casa stanca e affamata. Da quando prendo +Forma ho più controllo sulla fame e arrivo a cena senza abbuffarmi!",
-      name: "Francesca D.",
-      location: "Torino",
-      age: 42,
-      image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo4.jpg",
-      highlight: "Niente più abbuffate serali"
     }
   ]
 
@@ -519,8 +495,8 @@ export default function PiuFormaLanding() {
             </div>
           </div>
 
-          {/* Reviews Grid - 2 columns on desktop */}
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
+          {/* Reviews Grid - 3 columns on desktop */}
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
             {reviews.map((review, i) => (
               <ReviewCard key={i} {...review} />
             ))}
