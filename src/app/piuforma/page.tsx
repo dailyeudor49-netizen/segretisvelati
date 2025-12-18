@@ -399,7 +399,7 @@ export default function PiuFormaLanding() {
                   </div>
                   <div className="absolute top-3 right-3 z-10">
                     <span className="bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1">
-                      <Check className="w-3 h-3" /> IN STOCK
+                      <Star className="w-3 h-3" /> BEST SELLER
                     </span>
                   </div>
 
