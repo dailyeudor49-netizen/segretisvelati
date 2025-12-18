@@ -264,12 +264,15 @@ export default function PiuFormaLanding() {
     }
   ]
 
-  const beforeAfterImages = [
-    { before: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.18.webp', label: 'Risultato dopo 2 mesi' },
-    { before: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.12.webp', label: 'Risultato dopo 6 settimane' },
-    { before: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.03.webp', label: 'Risultato dopo 8 settimane' },
-    { before: 'https://farmaita.eu/wp-content/uploads/2024/02/cqMWe6GDu.jpg', label: 'Risultato dopo 3 mesi' },
-    { before: 'https://farmaita.eu/wp-content/uploads/2024/02/rhzWId6cz.jpg', label: 'Risultato dopo 2 mesi' }
+  const resultsCarousel = [
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.18.webp', kg: '-17 KG' },
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.12.webp', kg: '-35 KG' },
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/05/Schermata-2022-12-14-alle-16.20.03.webp', kg: '-12 KG' },
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/02/cqMWe6GDu.jpg', kg: '-30 KG' },
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/02/rhzWId6cz.jpg', kg: '-18 KG' },
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/02/3LobcIGGO.jpg', kg: '-14 KG' },
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/02/Uzqv3iZXc.jpg', kg: '-7 KG' },
+    { image: 'https://farmaita.eu/wp-content/uploads/2024/02/Xp9zJIWvX.jpg', kg: '-16 KG' }
   ]
 
   const faqs = [
@@ -523,46 +526,60 @@ export default function PiuFormaLanding() {
             ))}
           </div>
 
-          {/* Before/After Gallery */}
-          <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10">
-            <h3 className="text-2xl md:text-3xl font-black text-brand-dark text-center mb-8">
-              📸 Trasformazioni dei Nostri Clienti
-            </h3>
+          <p className="text-center text-sm text-gray-400 mt-8">
+            *I risultati possono variare da persona a persona.
+          </p>
+        </div>
+      </section>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
-              {beforeAfterImages.map((img, i) => (
-                <div key={i} className="relative group">
+      {/* RESULTS CAROUSEL */}
+      <section className="py-16 bg-white overflow-hidden border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 mb-10 text-center">
+          <h2 className="text-2xl md:text-4xl font-black text-brand-dark uppercase">
+            Risultati Reali, Persone Reali
+          </h2>
+          <p className="text-gray-500 mt-3 text-lg">Nessun fotoritocco. Solo costanza e +Forma.</p>
+        </div>
+
+        {/* Scrolling carousel */}
+        <div className="relative w-full mb-10">
+          {/* Fade gradients */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          {/* Carousel track */}
+          <div className="flex w-max animate-scroll-right hover:[animation-play-state:paused]">
+            {/* Duplicate images for infinite scroll */}
+            {[...resultsCarousel, ...resultsCarousel].map((item, i) => (
+              <div key={i} className="w-[180px] md:w-[260px] px-3 flex-shrink-0">
+                <div className="relative rounded-xl overflow-hidden shadow-lg border-2 border-gray-100 aspect-[3/4] group">
                   <img
-                    src={img.before}
-                    alt={img.label}
-                    className="w-full h-48 md:h-56 object-cover rounded-2xl border-4 border-gray-100 group-hover:border-brand-primary transition-colors"
+                    src={item.image}
+                    alt="Risultato Cliente"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 rounded-b-2xl">
-                    <p className="text-white text-sm font-bold text-center">{img.label}</p>
+                  <div className="absolute bottom-2 left-2 right-2 bg-white/90 backdrop-blur text-brand-dark text-xs font-bold px-3 py-2 rounded flex items-center justify-between shadow-sm">
+                    <span className="flex items-center gap-1">
+                      <ShieldCheck className="w-4 h-4 text-blue-500" /> Verificato
+                    </span>
+                    <span className="text-brand-primary font-black">{item.kg}</span>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <p className="text-center text-sm text-gray-400 mt-6">
-              *I risultati possono variare da persona a persona. Le immagini rappresentano esperienze individuali.
-            </p>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* CTA after reviews */}
-          <div className="text-center mt-12">
-            <p className="text-xl md:text-2xl text-gray-700 font-medium mb-6">
-              Unisciti a migliaia di clienti soddisfatti!
-            </p>
-            <Link
-              href="/checkout-piuforma"
-              className="inline-flex items-center gap-3 bg-brand-primary hover:bg-orange-600 text-white text-xl md:text-2xl font-black py-5 px-10 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-            >
-              <ShoppingBag className="w-7 h-7" />
-              ORDINA ORA – 49,99€
-            </Link>
-          </div>
+        {/* CTA */}
+        <div className="text-center px-4">
+          <Link
+            href="/checkout-piuforma"
+            className="bg-brand-primary hover:bg-orange-600 text-white text-lg md:text-xl font-black py-4 px-10 md:px-12 rounded-full shadow-lg hover:shadow-xl transition-all uppercase inline-flex items-center gap-2 justify-center"
+          >
+            VOGLIO OTTENERE GLI STESSI RISULTATI
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
 
