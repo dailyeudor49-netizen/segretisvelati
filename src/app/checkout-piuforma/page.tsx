@@ -235,6 +235,13 @@ export default function PiuFormaCheckout() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
 
+  // Anti-spam: button only enabled when all fields are properly filled
+  const isFormComplete =
+    formData.name.trim().length >= 3 &&
+    formData.phone.length === 10 &&
+    formData.phone.startsWith('3') &&
+    formData.address.trim().length >= 10
+
   const updateField = useCallback((field: keyof typeof formData) => (value: string) => {
     // For phone, only allow numbers
     if (field === 'phone') {
@@ -440,15 +447,21 @@ export default function PiuFormaCheckout() {
                   />
 
                   {/* Submit Button - Extra large for older users */}
+                  {/* Anti-spam: disabled until all 3 fields are properly filled */}
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !isFormComplete}
                     className="w-full bg-brand-primary hover:bg-orange-600 active:bg-orange-700 disabled:bg-gray-400 text-white font-black text-xl md:text-2xl py-5 md:py-6 rounded-2xl shadow-lg transition-all disabled:cursor-not-allowed flex items-center justify-center gap-3 touch-manipulation min-h-[72px]"
                   >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-7 h-7 animate-spin" />
                         Invio in corso...
+                      </>
+                    ) : !isFormComplete ? (
+                      <>
+                        <Lock className="w-7 h-7" />
+                        Compila tutti i campi
                       </>
                     ) : (
                       <>
