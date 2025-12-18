@@ -301,23 +301,27 @@ export default function PiuFormaCheckout() {
     sessionStorage.setItem('order_price', '49,99€')
 
     try {
+      // Get tracking params from URL if present
+      const urlParams = new URLSearchParams(window.location.search)
+      const affSub1 = urlParams.get('aff_sub1') || urlParams.get('sub1') || ''
+      const affSub2 = urlParams.get('aff_sub2') || urlParams.get('sub2') || ''
+
       const submitData = new FormData()
-      submitData.append('campaign_slug', 'htf_piuforma')
       submitData.append('source_id', '9b16759a6289')
-      submitData.append('quantity', '2')
-      submitData.append('payment_method', 'C')
+      submitData.append('aff_sub1', affSub1)
+      submitData.append('aff_sub2', affSub2)
       submitData.append('name', formData.name)
       submitData.append('phone', '+39' + formData.phone)
       submitData.append('address', formData.address)
 
-      const response = await fetch('https://farmaita.eu/wfapi.php', {
+      const response = await fetch('https://network.worldfilia.net/manager/inventory/buy/htf_piuforma.json?api_key=xgM6LBE0CA4EwJ4NTNhPBQ', {
         method: 'POST',
         body: submitData
       })
 
       const data = await response.json()
 
-      if (data.success) {
+      if (data.success || data.status === 'ok') {
         // Redirect to thank you page with name as URL param backup
         window.location.href = `/ty-piuforma?name=${encodeURIComponent(firstName)}`
       } else {
