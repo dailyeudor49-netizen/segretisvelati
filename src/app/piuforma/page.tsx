@@ -438,21 +438,137 @@ export default function PiuFormaLanding() {
         </div>
       </section>
 
-      {/* INGREDIENTI */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-10 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-black text-brand-dark">
-              Ingredienti <span className="text-brand-primary">100% Naturali</span>
+      {/* INGREDIENTI - Enhanced Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-green-50 via-white to-gray-50 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <span className="inline-flex items-center gap-2 bg-green-100 text-green-700 font-bold px-4 py-2 rounded-full text-sm uppercase tracking-wide mb-4">
+              <ShieldCheck className="w-4 h-4" /> Formula Certificata
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-brand-dark">
+              Ingredienti <span className="text-green-600">100% Naturali</span>
             </h2>
-            <p className="text-gray-600 mt-3 text-lg">Formula premium con estratti vegetali ad alta concentrazione</p>
+            <p className="text-gray-600 mt-4 text-lg md:text-xl max-w-2xl mx-auto">
+              Ogni compressa contiene estratti vegetali premium ad alta concentrazione, senza additivi chimici
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-5">
-            <IngredientCard emoji="🍓" title="Chetone di Lampone" description="Stimola la termogenesi e il consumo dei grassi" />
-            <IngredientCard emoji="🍋" title="Garcinia Cambogia" description="Controlla il senso di fame e blocca i grassi" />
-            <IngredientCard emoji="🍵" title="Tè Verde Matcha" description="Accelera il metabolismo basale naturalmente" />
-            <IngredientCard emoji="💎" title="Cromo Picolinato" description="Stabilizza la glicemia e riduce la voglia di dolci" />
+          {/* Trust badges row */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12">
+            <span className="bg-white border-2 border-green-200 text-green-700 font-bold px-4 py-2 rounded-full text-sm flex items-center gap-2 shadow-sm">
+              <Check className="w-4 h-4" /> Senza OGM
+            </span>
+            <span className="bg-white border-2 border-green-200 text-green-700 font-bold px-4 py-2 rounded-full text-sm flex items-center gap-2 shadow-sm">
+              <Check className="w-4 h-4" /> Vegano
+            </span>
+            <span className="bg-white border-2 border-green-200 text-green-700 font-bold px-4 py-2 rounded-full text-sm flex items-center gap-2 shadow-sm">
+              <Check className="w-4 h-4" /> Senza Glutine
+            </span>
+            <span className="bg-white border-2 border-green-200 text-green-700 font-bold px-4 py-2 rounded-full text-sm flex items-center gap-2 shadow-sm">
+              <Check className="w-4 h-4" /> Made in EU
+            </span>
+          </div>
+
+          {/* Main ingredients grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {/* Ingredient 1 */}
+            <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6 md:p-8 hover:shadow-xl transition-shadow group">
+              <div className="flex items-start gap-5">
+                <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-red-100 to-pink-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <span className="text-5xl md:text-6xl">🍓</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-black text-brand-dark text-xl md:text-2xl mb-2">Chetone di Lampone</h3>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-3">
+                    Attiva la termogenesi naturale, aiutando il corpo a bruciare i grassi anche a riposo.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm font-bold text-red-600">
+                    <Flame className="w-4 h-4" /> Brucia grassi naturale
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Ingredient 2 */}
+            <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6 md:p-8 hover:shadow-xl transition-shadow group">
+              <div className="flex items-start gap-5">
+                <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <span className="text-5xl md:text-6xl">🍋</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-black text-brand-dark text-xl md:text-2xl mb-2">Garcinia Cambogia</h3>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-3">
+                    Riduce l'appetito e blocca la formazione di nuovi grassi grazie all'acido idrossicitrico (HCA).
+                  </p>
+                  <div className="flex items-center gap-2 text-sm font-bold text-orange-600">
+                    <ShieldOff className="w-4 h-4" /> Blocca la fame nervosa
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Ingredient 3 */}
+            <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6 md:p-8 hover:shadow-xl transition-shadow group">
+              <div className="flex items-start gap-5">
+                <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <span className="text-5xl md:text-6xl">🍵</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-black text-brand-dark text-xl md:text-2xl mb-2">Tè Verde Matcha</h3>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-3">
+                    Ricco di catechine e antiossidanti, accelera il metabolismo basale fino al 17%.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm font-bold text-green-600">
+                    <Zap className="w-4 h-4" /> +17% metabolismo
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Ingredient 4 */}
+            <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6 md:p-8 hover:shadow-xl transition-shadow group">
+              <div className="flex items-start gap-5">
+                <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <span className="text-5xl md:text-6xl">💎</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-black text-brand-dark text-xl md:text-2xl mb-2">Cromo Picolinato</h3>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-3">
+                    Stabilizza i livelli di zucchero nel sangue, eliminando le voglie di dolci e carboidrati.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm font-bold text-blue-600">
+                    <Check className="w-4 h-4" /> Stop voglie di dolci
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom CTA box */}
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl p-6 md:p-10 text-white text-center shadow-xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="text-left">
+                <h3 className="text-2xl md:text-3xl font-black mb-2">Formula Clinicamente Testata</h3>
+                <p className="text-green-100 text-base md:text-lg">
+                  Ogni ingrediente è selezionato per la massima efficacia e sicurezza
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3">
+                <div className="bg-white/20 backdrop-blur px-4 py-3 rounded-xl text-center">
+                  <div className="text-2xl md:text-3xl font-black">4</div>
+                  <div className="text-xs md:text-sm text-green-100">Ingredienti attivi</div>
+                </div>
+                <div className="bg-white/20 backdrop-blur px-4 py-3 rounded-xl text-center">
+                  <div className="text-2xl md:text-3xl font-black">0</div>
+                  <div className="text-xs md:text-sm text-green-100">Additivi chimici</div>
+                </div>
+                <div className="bg-white/20 backdrop-blur px-4 py-3 rounded-xl text-center">
+                  <div className="text-2xl md:text-3xl font-black">100%</div>
+                  <div className="text-xs md:text-sm text-green-100">Naturale</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
