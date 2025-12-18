@@ -27,6 +27,18 @@ export default function ThankYouPage() {
 
     if (urlName) setCustomerName(urlName)
     if (urlPrice) setOrderPrice(urlPrice)
+
+    // Facebook Pixel - Purchase Event
+    if (typeof window !== 'undefined' && (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq) {
+      (window as typeof window & { fbq: (...args: unknown[]) => void }).fbq('track', 'Purchase', {
+        value: 49.99,
+        currency: 'EUR',
+        content_name: '+Forma Metabolismo Attivo',
+        content_type: 'product',
+        content_ids: ['piuforma'],
+        num_items: 2
+      })
+    }
   }, [])
 
   return (
