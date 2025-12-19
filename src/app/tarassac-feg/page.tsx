@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { 
   ArrowDown, 
   CheckCircle, 
@@ -456,34 +457,30 @@ const Hero: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const scrollToOffer = () => {
-    document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="relative overflow-hidden bg-white">
       {/* Alert Banner - More urgency about the 'Discovery' */}
       <div className="bg-red-600 text-white text-center py-2 px-4 text-xs md:text-sm font-bold uppercase tracking-wider animate-pulse flex items-center justify-center gap-2">
         <AlertTriangle size={16} className="text-yellow-300" />
-        Report Medico 2024: La verità sul blocco metabolico
+        Report Medico 2024: La verita sul blocco metabolico
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left Column: Copy - Problem focused */}
           <div className="space-y-6">
             <div className="inline-block bg-gray-100 text-gray-800 px-4 py-1 rounded-full text-sm font-bold border border-gray-200 shadow-sm">
-              PERCHÉ LE DIETE FALLISCONO?
+              PERCHE LE DIETE FALLISCONO?
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
               Mangi poco ma la pancia <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">non scende?</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-              Ascolta attentamente: <strong>Non è colpa tua.</strong> E non è colpa della tua forza di volontà.<br/><br/>
-              Una recente scoperta biologica ha confermato che il 93% delle donne non riesce a dimagrire a causa di un <strong className="text-red-600">"blocco silenzioso" nel fegato</strong>. Finché non rimuovi questo blocco, <strong>il tuo corpo rifiuterà di bruciare grassi</strong>, anche se bevi solo acqua.
+              Ascolta attentamente: <strong>Non e colpa tua.</strong> E non e colpa della tua forza di volonta.<br/><br/>
+              Una recente scoperta biologica ha confermato che il 93% delle donne non riesce a dimagrire a causa di un <strong className="text-red-600">&quot;blocco silenzioso&quot; nel fegato</strong>. Finche non rimuovi questo blocco, <strong>il tuo corpo rifiutera di bruciare grassi</strong>, anche se bevi solo acqua.
             </p>
 
             <div className="space-y-3 bg-red-50 p-4 rounded-xl border border-red-100">
@@ -503,14 +500,14 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="pt-6">
-              <button 
-                onClick={scrollToOffer}
-                className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
+              <Link
+                href="/checkout-tarassac"
+                className="block w-full md:w-auto md:inline-block bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 text-center"
               >
-                SCOPRI LA SOLUZIONE "SBLOCCA-GRASSO" &rarr;
-              </button>
+                SCOPRI LA SOLUZIONE &quot;SBLOCCA-GRASSO&quot; &rarr;
+              </Link>
               <p className="mt-3 text-sm text-gray-500 italic text-center md:text-left">
-                Disponibilità limitata per il batch di produzione attuale.
+                Disponibilita limitata per il batch di produzione attuale.
               </p>
             </div>
           </div>
@@ -689,48 +686,58 @@ const Offer: React.FC = () => {
             </div>
           </div>
 
-          {/* Form Side */}
-          <div className="p-8 md:p-12 bg-white">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Modulo d'Ordine Rapido</h3>
-            <p className="text-gray-500 text-sm mb-6">Compila ora per bloccare il prezzo promozionale.</p>
-            
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1">Nome e Cognome</label>
-                <input type="text" className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition font-medium" placeholder="Es. Mario Rossi" required />
-              </div>
-              
-              <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1">Numero di Telefono (per il corriere)</label>
-                <input type="tel" className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition font-medium" placeholder="Es. 333 1234567" required />
-              </div>
+          {/* CTA Side */}
+          <div className="p-8 md:p-12 bg-white flex flex-col justify-center">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Ordina Ora in 3 Semplici Passi</h3>
+            <p className="text-gray-500 text-sm mb-6">Blocca il prezzo promozionale prima che scada.</p>
 
-              <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1">Indirizzo Completo</label>
-                <input type="text" className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition font-medium" placeholder="Via, Civico, Città, CAP" required />
-              </div>
-
-              <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mt-4 cursor-pointer hover:bg-emerald-100 transition-colors">
-                <div className="flex items-center gap-3 mb-1">
-                   <div className="w-5 h-5 rounded-full border-2 border-emerald-600 flex items-center justify-center bg-white">
-                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
-                   </div>
-                   <label className="font-bold text-gray-900 cursor-pointer">Pagamento alla Consegna</label>
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-3">
+                <span className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                <div>
+                  <p className="font-bold text-gray-900">Compila i tuoi dati</p>
+                  <p className="text-sm text-gray-500">Nome, telefono e indirizzo di spedizione</p>
                 </div>
-                <p className="text-xs text-gray-600 ml-8">Nessuna carta di credito richiesta. Paghi in contanti al corriere.</p>
               </div>
+              <div className="flex items-start gap-3">
+                <span className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                <div>
+                  <p className="font-bold text-gray-900">Ricevi la chiamata di conferma</p>
+                  <p className="text-sm text-gray-500">Ti contattiamo per confermare la spedizione</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                <div>
+                  <p className="font-bold text-gray-900">Paghi alla consegna</p>
+                  <p className="text-sm text-gray-500">59,99 in contanti al corriere. Nessuna carta richiesta.</p>
+                </div>
+              </div>
+            </div>
 
-              <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white text-xl font-black py-4 rounded-xl shadow-lg transform active:scale-95 transition-all mt-6 uppercase tracking-wide">
-                Spedite il mio ordine
-              </button>
-              
-              <div className="flex items-center justify-center gap-2 mt-4 opacity-60">
-                <ShieldCheck size={14} />
-                <p className="text-[10px] text-gray-500">
-                  Dati protetti con crittografia SSL 256-bit. Privacy garantita al 100%.
-                </p>
+            <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mb-6">
+              <div className="flex items-center gap-3 mb-1">
+                 <div className="w-5 h-5 rounded-full border-2 border-emerald-600 flex items-center justify-center bg-white">
+                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+                 </div>
+                 <span className="font-bold text-gray-900">Pagamento alla Consegna</span>
               </div>
-            </form>
+              <p className="text-xs text-gray-600 ml-8">Nessuna carta di credito richiesta. Paghi in contanti al corriere.</p>
+            </div>
+
+            <Link
+              href="/checkout-tarassac"
+              className="w-full bg-red-600 hover:bg-red-700 text-white text-xl font-black py-4 rounded-xl shadow-lg transform active:scale-95 transition-all uppercase tracking-wide text-center block"
+            >
+              ORDINA ORA
+            </Link>
+
+            <div className="flex items-center justify-center gap-2 mt-4 opacity-60">
+              <ShieldCheck size={14} />
+              <p className="text-[10px] text-gray-500">
+                Dati protetti con crittografia SSL 256-bit. Privacy garantita al 100%.
+              </p>
+            </div>
           </div>
 
         </div>
@@ -828,10 +835,6 @@ const FacebookReviews: React.FC = () => {
 };
 
 const StickyCTA: React.FC = () => {
-  const scrollToOffer = () => {
-    document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-50 md:hidden pb-safe">
       <div className="flex items-center gap-3">
@@ -840,40 +843,36 @@ const StickyCTA: React.FC = () => {
              <div className="absolute -top-2 -left-1 bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full z-10">
                -50%
              </div>
-            <img 
-              src="/images/TARASSIC/Tarassic1.png" 
-              alt="Tarassac" 
+            <img
+              src="/images/TARASSIC/Tarassic1.png"
+              alt="Tarassac"
               className="w-full h-full object-cover rounded-md border border-gray-200"
             />
         </div>
 
         <div className="flex flex-col flex-1">
-           <span className="text-xs text-gray-500 line-through leading-none">€119,98</span>
+           <span className="text-xs text-gray-500 line-through leading-none">119,98</span>
            <div className="flex items-baseline gap-1">
-              <span className="text-xl font-black text-gray-900">2x59,99€</span>
+              <span className="text-xl font-black text-gray-900">2x59,99</span>
               <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1 rounded">OFFERTA</span>
            </div>
         </div>
-        
-        <button 
-          onClick={scrollToOffer}
-          className="flex-1 bg-red-600 text-white font-bold py-3 px-2 rounded-xl shadow-lg animate-pulse text-sm whitespace-nowrap"
+
+        <Link
+          href="/checkout-tarassac"
+          className="flex-1 bg-red-600 text-white font-bold py-3 px-2 rounded-xl shadow-lg animate-pulse text-sm whitespace-nowrap text-center"
         >
           ORDINA ORA
-        </button>
+        </Link>
       </div>
     </div>
   );
 };
 
 const StickyProduct: React.FC = () => {
-  const scrollToOffer = () => {
-    document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <div 
-      onClick={scrollToOffer}
+    <Link
+      href="/checkout-tarassac"
       className="hidden md:flex fixed bottom-6 left-6 bg-white/95 backdrop-blur rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 p-4 z-40 items-center gap-4 max-w-[280px] cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
     >
       {/* Product Mockup Container */}
@@ -881,9 +880,9 @@ const StickyProduct: React.FC = () => {
         <div className="absolute -top-3 -right-3 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10 animate-pulse">
           2x1
         </div>
-        <img 
-          src="/images/TARASSIC/Tarassic1.png" 
-          alt="Tarassac Slim Bottle" 
+        <img
+          src="/images/TARASSIC/Tarassic1.png"
+          alt="Tarassac Slim Bottle"
           className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 group-hover:scale-105 transition-transform"
         />
       </div>
@@ -892,17 +891,17 @@ const StickyProduct: React.FC = () => {
       <div className="flex-1">
         <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wide mb-0.5">Integratore Detox</p>
         <h4 className="font-bold text-gray-900 text-sm leading-tight mb-1">Tarassac Slim</h4>
-        
+
         <div className="flex items-baseline gap-2 mb-2">
-           <span className="text-red-600 font-black text-lg leading-none">59,99€</span>
-           <span className="text-gray-400 text-xs line-through">119€</span>
+           <span className="text-red-600 font-black text-lg leading-none">59,99</span>
+           <span className="text-gray-400 text-xs line-through">119</span>
         </div>
-        
-        <button className="bg-emerald-600 group-hover:bg-emerald-700 text-white text-xs font-bold py-2 px-3 rounded-lg shadow-sm w-full transition-colors flex items-center justify-center gap-1">
+
+        <span className="bg-emerald-600 group-hover:bg-emerald-700 text-white text-xs font-bold py-2 px-3 rounded-lg shadow-sm w-full transition-colors flex items-center justify-center gap-1">
           ORDINA ORA
-        </button>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -1030,12 +1029,12 @@ export default function TarassacFegPage() {
             <span className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white text-lg">T</span>
             Tarassac Slim
           </div>
-          <button
-            onClick={() => document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' })}
+          <Link
+            href="/checkout-tarassac"
             className="hidden md:block bg-emerald-600 text-white px-6 py-2 rounded-full font-bold hover:bg-emerald-700 transition shadow-lg transform hover:scale-105"
           >
             Ordina Subito
-          </button>
+          </Link>
         </div>
       </nav>
 
