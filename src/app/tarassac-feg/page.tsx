@@ -639,107 +639,63 @@ const Science: React.FC = () => {
 
 const Offer: React.FC = () => {
   return (
-    <section id="offer" className="py-20 bg-gradient-to-br from-emerald-50 to-white">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="text-red-600 font-bold tracking-wider uppercase text-sm">Ultima chiamata</span>
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 mt-2">
-            Il Tuo Nuovo Corpo Inizia Qui
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Abbiamo rimosso ogni rischio. O funziona e ti cambia la vita, o ti rimborsiamo. Non hai più scuse per rimandare.
-          </p>
-        </div>
-
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-emerald-500 grid md:grid-cols-2">
-          
-          {/* Product Info Side */}
-          <div className="p-8 md:p-12 bg-gray-50 flex flex-col justify-center relative">
-            <div className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
-              BEST SELLER
+    <section id="offer" className="py-16 md:py-20 bg-gradient-to-br from-red-600 to-red-700">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div className="p-6 md:p-10 text-center">
+            {/* Badge */}
+            <div className="inline-block bg-red-100 text-red-600 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wide mb-6">
+              Offerta Limitata
             </div>
-            <div className="text-center mb-8">
-              <img src="/images/TARASSIC/Tarassic1.png" alt="Tarassac Slim" className="w-64 mx-auto mb-6 hover:scale-105 transition-transform duration-300" />
-              <h3 className="text-2xl font-bold text-gray-900">Protocollo "Reset Epatico"</h3>
-              <p className="text-emerald-600 font-semibold mt-2">Trattamento Intensivo 60 Giorni</p>
+
+            {/* Product Image */}
+            <img
+              src="/images/TARASSIC/Tarassic1.png"
+              alt="Tarassac Slim"
+              className="w-48 md:w-56 mx-auto mb-6"
+            />
+
+            {/* Title */}
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 mb-2">
+              Tarassac Slim
+            </h2>
+            <p className="text-emerald-600 font-semibold mb-6">Trattamento Completo 60 Giorni</p>
+
+            {/* Price */}
+            <div className="mb-6">
+              <span className="text-gray-400 line-through text-xl">€99,98</span>
+              <div className="text-5xl md:text-6xl font-black text-red-600 my-2">2x49,99€</div>
+              <p className="text-gray-500 text-sm">Spedizione GRATIS + Pagamento alla consegna</p>
             </div>
-            
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-center gap-3">
-                <ShieldCheck className="text-emerald-500" />
-                <span className="font-medium">Soddisfatti o Rimborsati (30gg)</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Truck className="text-emerald-500" />
-                <span className="font-medium">Spedizione Gratis & Anonima</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <ShoppingBag className="text-emerald-500" />
-                <span className="font-medium">Paghi SOLO alla consegna</span>
-              </li>
-            </ul>
 
-            <div className="text-center bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-              <span className="text-gray-400 line-through text-lg">Prezzo listino: €99,98</span>
-              <div className="text-5xl font-black text-red-600 my-2 tracking-tight">2x49,99€</div>
-              <span className="text-emerald-700 text-sm font-bold">Meno di 1€ al giorno per la tua salute</span>
-            </div>
-          </div>
-
-          {/* CTA Side */}
-          <div className="p-8 md:p-12 bg-white flex flex-col justify-center">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Ordina Ora in 3 Semplici Passi</h3>
-            <p className="text-gray-500 text-sm mb-6">Blocca il prezzo promozionale prima che scada.</p>
-
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start gap-3">
-                <span className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
-                <div>
-                  <p className="font-bold text-gray-900">Compila i tuoi dati</p>
-                  <p className="text-sm text-gray-500">Nome, telefono e indirizzo di spedizione</p>
-                </div>
+            {/* Benefits */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm">
+              <div className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+                <ShieldCheck className="text-emerald-500" size={18} />
+                <span>Garanzia 30gg</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
-                <div>
-                  <p className="font-bold text-gray-900">Ricevi la chiamata di conferma</p>
-                  <p className="text-sm text-gray-500">Ti contattiamo per confermare la spedizione</p>
-                </div>
+              <div className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+                <Truck className="text-emerald-500" size={18} />
+                <span>Consegna 24-48h</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
-                <div>
-                  <p className="font-bold text-gray-900">Paghi alla consegna</p>
-                  <p className="text-sm text-gray-500">49,99 in contanti al corriere. Nessuna carta richiesta.</p>
-                </div>
+              <div className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full">
+                <ShoppingBag className="text-emerald-500" size={18} />
+                <span>Pacco Anonimo</span>
               </div>
             </div>
 
-            <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mb-6">
-              <div className="flex items-center gap-3 mb-1">
-                 <div className="w-5 h-5 rounded-full border-2 border-emerald-600 flex items-center justify-center bg-white">
-                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
-                 </div>
-                 <span className="font-bold text-gray-900">Pagamento alla Consegna</span>
-              </div>
-              <p className="text-xs text-gray-600 ml-8">Nessuna carta di credito richiesta. Paghi in contanti al corriere.</p>
-            </div>
-
+            {/* CTA Button */}
             <Link
               href="/checkout-tarassac"
-              className="w-full bg-red-600 hover:bg-red-700 text-white text-xl font-black py-4 rounded-xl shadow-lg transform active:scale-95 transition-all uppercase tracking-wide text-center block"
+              className="inline-block w-full md:w-auto bg-red-600 hover:bg-red-700 text-white text-xl md:text-2xl font-black py-5 px-12 rounded-2xl shadow-xl transform hover:scale-105 active:scale-95 transition-all uppercase tracking-wide"
             >
               ORDINA ORA
             </Link>
 
-            <div className="flex items-center justify-center gap-2 mt-4 opacity-60">
-              <ShieldCheck size={14} />
-              <p className="text-[10px] text-gray-500">
-                Dati protetti con crittografia SSL 256-bit. Privacy garantita al 100%.
-              </p>
-            </div>
+            <p className="mt-4 text-gray-400 text-xs">
+              Clicca per completare l&apos;ordine in modo sicuro
+            </p>
           </div>
-
         </div>
       </div>
     </section>
@@ -1040,8 +996,8 @@ export default function TarassacFegPage() {
 
       <Hero />
       <Science />
-      <Offer />
       <FacebookReviews />
+      <Offer />
 
       <footer className="bg-gray-900 text-gray-400 py-12 text-center text-sm">
         <div className="max-w-4xl mx-auto px-4">
