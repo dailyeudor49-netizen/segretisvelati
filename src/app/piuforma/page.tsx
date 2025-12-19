@@ -640,7 +640,7 @@ export default function PiuFormaLanding() {
                     Ricco di catechine e antiossidanti, accelera il metabolismo basale fino al 17%.
                   </p>
                   <div className="flex items-center gap-2 text-sm font-bold text-green-600">
-                    <Zap className="w-4 h-4" /> +17% metabolismo
+                    <Zap className="w-4 h-4" /> +170% metabolismo
                   </div>
                 </div>
               </div>
