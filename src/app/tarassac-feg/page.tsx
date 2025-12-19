@@ -483,7 +483,7 @@ const Hero: React.FC = () => {
             
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
               Ascolta attentamente: <strong>Non è colpa tua.</strong> E non è colpa della tua forza di volontà.<br/><br/>
-              Una recente scoperta biologica ha confermato che il 93% delle donne non riesce a dimagrire a causa di un <em>"blocco silenzioso"</em> nel fegato. Finché non rimuovi questo blocco, il tuo corpo rifiuterà di bruciare grassi, anche se bevi solo acqua.
+              Una recente scoperta biologica ha confermato che il 93% delle donne non riesce a dimagrire a causa di un <strong className="text-red-600">"blocco silenzioso" nel fegato</strong>. Finché non rimuovi questo blocco, <strong>il tuo corpo rifiuterà di bruciare grassi</strong>, anche se bevi solo acqua.
             </p>
 
             <div className="space-y-3 bg-red-50 p-4 rounded-xl border border-red-100">
@@ -555,7 +555,7 @@ const Science: React.FC = () => {
         </h2>
         <p className="text-xl text-gray-600 mb-12 leading-relaxed">
           Immagina il tuo metabolismo come un fiume. Quando scorre veloce, l'acqua è pulita e niente si accumula. 
-          Ma se il fegato è sovraccarico, quel fiume diventa una <strong>palude stagnante</strong>. <br/><br/>
+          Ma se <strong className="text-red-600">il fegato è sovraccarico</strong>, quel fiume diventa una <strong>palude stagnante</strong>. <br/><br/>
           Puoi smettere di mangiare quanto vuoi, ma una palude non si prosciuga da sola. <br/>
           Ecco perché hai bisogno di un <em>drenante meccanico</em>.
         </p>
@@ -566,7 +566,7 @@ const Science: React.FC = () => {
               <Ban /> Senza Tarassac Slim
             </h3>
             <p className="text-gray-600">
-              Il fegato intrappola le tossine nelle cellule adipose per proteggere gli organi. Il grasso diventa "viscerale", duro e impossibile da bruciare con la sola dieta. Il corpo è in modalità "emergenza".
+              <strong>Il fegato intrappola le tossine</strong> nelle cellule adipose per proteggere gli organi. Il grasso diventa <strong>"viscerale"</strong>, duro e <strong>impossibile da bruciare</strong> con la sola dieta. Il corpo è in modalità "emergenza".
             </p>
             <div className="mt-4 flex items-center justify-between text-xs font-bold text-gray-400">
                <span>Metabolismo Basale</span>
@@ -585,7 +585,7 @@ const Science: React.FC = () => {
               <Flame /> Con Tarassac Slim
             </h3>
             <p className="text-gray-800">
-              Utilizziamo una varietà rara di <strong>Tarassaco Officinale</strong> raccolta all'alba, quando i principi attivi sono al picco. Questa molecola entra nel fegato e <em>forza</em> l'espulsione delle tossine accumulate in anni.
+              Utilizziamo una varietà rara di <strong>Tarassaco Officinale</strong> raccolta all'alba, quando i principi attivi sono al picco. Questa molecola <strong className="text-emerald-700">entra nel fegato</strong> e <strong>forza l'espulsione delle tossine</strong> accumulate in anni.
             </p>
              <div className="mt-4 flex items-center justify-between text-xs font-bold text-emerald-600">
                <span>Metabolismo Basale</span>
