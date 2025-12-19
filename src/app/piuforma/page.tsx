@@ -428,81 +428,78 @@ export default function PiuFormaLanding() {
 
             {/* PRODUCT INFO */}
             <div className="flex flex-col">
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">100% NATURALE</span>
+                <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">MADE IN EU</span>
+              </div>
+
               {/* Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-brand-dark leading-tight mb-3">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-brand-dark leading-tight mb-4">
                 +Forma <span className="text-brand-primary">Metabolismo Attivo</span>
               </h1>
 
-              {/* Marketing subtitle */}
-              <p className="text-lg md:text-xl text-gray-600 mb-5 leading-relaxed">
+              {/* Subtitle */}
+              <p className="text-lg md:text-xl text-gray-600 mb-4 leading-relaxed">
                 La formula che <strong>riattiva il consumo calorico a riposo</strong> dopo i 40 anni.
                 Sentiti più leggero, sgonfio e pieno di energia.
               </p>
 
-              {/* Rating + Stock row */}
-              <div className="flex items-center gap-4 mb-6 pb-5 border-b border-gray-200 flex-wrap">
-                <div className="flex items-center gap-2">
-                  <StarRating rating={5} />
-                  <span className="text-gray-700 font-bold">4.8</span>
-                  <Link href="#recensioni" className="text-gray-500 hover:text-brand-primary text-sm">(1.247 recensioni)</Link>
-                </div>
-                <span className="flex items-center gap-1.5 text-green-600 text-sm font-medium">
-                  <span className="w-2 h-2 bg-green-500 rounded-full" />
-                  Disponibile
-                </span>
+              {/* Rating */}
+              <div className="flex items-center gap-3 mb-6">
+                <StarRating rating={5} />
+                <span className="text-gray-600 font-medium">4.8/5</span>
+                <Link href="#recensioni" className="text-gray-400 hover:text-brand-primary">(1.247 recensioni)</Link>
               </div>
 
-              {/* PRICE SECTION */}
-              <div className="mb-6">
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-4xl md:text-5xl font-black text-brand-dark">49,99€</span>
-                  <span className="text-xl text-gray-400 line-through">99,00€</span>
-                  <span className="bg-brand-primary text-white text-sm font-bold px-2 py-1 rounded">-50%</span>
+              {/* Price Box */}
+              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-brand-primary/20 rounded-2xl p-6 mb-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-gray-400 line-through text-xl">99,00€</span>
+                  <span className="bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded">RISPARMI 49€</span>
                 </div>
-                <p className="text-gray-500">2 confezioni · Trattamento 2 mesi</p>
+                <div className="flex items-baseline gap-2 mb-3">
+                  <span className="text-5xl font-black text-brand-primary">49,99€</span>
+                  <span className="text-gray-500 font-medium">/ 2 confezioni</span>
+                </div>
+                <p className="text-brand-dark font-bold flex items-center gap-2">
+                  <Package className="w-5 h-5 text-brand-primary" />
+                  Trattamento completo 2 mesi · Spedizione GRATIS
+                </p>
               </div>
 
               {/* Benefits */}
-              <div className="space-y-2.5 mb-6 pb-6 border-b border-gray-200">
+              <div className="space-y-3 mb-6">
                 {['Brucia calorie anche a riposo', 'Riduce il senso di fame nervosa', 'Sgonfia la pancia in pochi giorni', 'Più energia durante tutta la giornata'].map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-2.5">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">{benefit}</span>
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-5 h-5 text-green-600" />
+                    </div>
+                    <span className="text-gray-700 font-medium">{benefit}</span>
                   </div>
                 ))}
-              </div>
-
-              {/* Quantity selector */}
-              <div className="flex items-center gap-4 mb-5">
-                <span className="text-gray-600">Quantità:</span>
-                <div className="flex items-center border border-gray-300 rounded-lg">
-                  <button disabled className="p-2.5 text-gray-300 cursor-not-allowed">
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="px-5 py-2 font-bold text-lg text-brand-dark border-x border-gray-300">2</span>
-                  <button disabled className="p-2.5 text-gray-300 cursor-not-allowed">
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-400">(Offerta 2x1)</span>
               </div>
 
               {/* CTA Button */}
               <CTAButton />
 
-              {/* Shipping & Payment info */}
-              <div className="mt-5 pt-5 border-t border-gray-200 space-y-3">
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <Truck className="w-5 h-5 text-gray-400" />
-                  <span><strong className="text-gray-700">Spedizione gratuita</strong> · Consegna in 24-48h</span>
+              {/* Trust Badges */}
+              <div className="grid grid-cols-2 gap-3 mt-6">
+                <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
+                  <Truck className="w-5 h-5 text-blue-500" />
+                  <span>Spedizione Gratuita 24h</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <Banknote className="w-5 h-5 text-gray-400" />
-                  <span><strong className="text-gray-700">Pagamento alla consegna</strong> · In contanti al corriere</span>
+                <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
+                  <Banknote className="w-5 h-5 text-green-500" />
+                  <span>Paghi alla Consegna</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <ShieldCheck className="w-5 h-5 text-gray-400" />
-                  <span><strong className="text-gray-700">100% Naturale</strong> · Made in EU</span>
+                <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
+                  <ShieldCheck className="w-5 h-5 text-brand-primary" />
+                  <span>Ingredienti Naturali</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
+                  <Phone className="w-5 h-5 text-brand-primary" />
+                  <span>Assistenza Dedicata</span>
                 </div>
               </div>
             </div>
