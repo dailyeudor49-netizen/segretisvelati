@@ -223,7 +223,7 @@ export default function PiuFormaLanding() {
       location: "Bologna",
       age: 34,
       image: "https://farmaita.eu/wp-content/uploads/2024/05/Progettosenzatitolo5.jpg",
-      highlight: "Ho perso 2 taglie in 2 mesi"
+      highlight: "Ho perso 2 taglie in un mese"
     },
     {
       text: "Guido il camion tutto il giorno, zero movimento. La pancia era un problema serio. Queste compresse mi hanno aiutato a controllare la fame. I pantaloni ora mi stanno! Mia moglie non ci credeva.",
