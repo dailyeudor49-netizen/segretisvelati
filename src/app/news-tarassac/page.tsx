@@ -119,7 +119,7 @@ const Sidebar: React.FC = () => {
 
       {/* Native Ad */}
       <div className="bg-gray-900 text-white p-4 md:p-6 text-center shadow-lg relative overflow-hidden group cursor-pointer">
-        <Link href="/piuforma">
+        <Link href="/tarassac-feg">
           <div className="absolute top-0 right-0 bg-yellow-500 text-black text-[9px] font-bold px-1.5 py-0.5 uppercase">Sponsorizzato</div>
           <p className="text-xl md:text-2xl font-bold mb-2 uppercase text-yellow-400">Pancia Gonfia?</p>
           <p className="text-xs md:text-sm text-gray-300 mb-3">Non è aria. È una "colla tossica" nel tuo intestino.</p>
@@ -229,12 +229,12 @@ const StickyCTA: React.FC<{isVisible: boolean; minutes: number; seconds: number}
 
                 <div className="flex-1 flex items-center justify-between sm:justify-end gap-2 md:gap-6">
                      <div className="text-left sm:text-right">
-                        <div className="text-[9px] md:text-[10px] text-gray-400 line-through">€99.00</div>
-                        <div className="text-base md:text-2xl font-black text-red-600 leading-none">2x €49</div>
+                        <div className="text-[9px] md:text-[10px] text-gray-400 line-through">€119,98</div>
+                        <div className="text-base md:text-2xl font-black text-red-600 leading-none">2x59,99€</div>
                         <div className="text-[9px] text-red-500 font-bold sm:hidden">{minutes}:{seconds < 10 ? `0${seconds}` : seconds}</div>
                      </div>
                      <Link
-                        href="/piuforma"
+                        href="/tarassac-feg"
                         className="bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 md:py-3 px-4 md:px-8 rounded shadow-lg uppercase tracking-wide text-xs md:text-sm flex items-center gap-1.5 transition-transform transform active:scale-95"
                      >
                         Ordina Ora <ArrowRight size={16} />
@@ -340,8 +340,12 @@ export default function Advertorial1Page() {
                 </p>
 
                 <figure className="my-6 md:my-8">
-                    <div className="w-full h-40 md:h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded shadow-md border border-gray-200 flex items-center justify-center">
-                        <span className="text-4xl md:text-6xl">🔬</span>
+                    <div className="w-full rounded shadow-md border border-gray-200 overflow-hidden">
+                        <img
+                            src="/images/TARASSIC/cellui.jpg"
+                            alt="Ricerca cellulare in laboratorio"
+                            className="w-full h-auto"
+                        />
                     </div>
                     <figcaption className="text-[10px] md:text-xs text-gray-500 mt-2 italic text-center">Cellule adipose "bloccate" dalle tossine. Finché non vengono liberate, nessun esercizio le brucerà.</figcaption>
                 </figure>
@@ -421,8 +425,8 @@ export default function Advertorial1Page() {
 
                                 <div className="text-center space-y-2 md:space-y-4">
                                     <div className="flex items-end justify-center gap-2 md:gap-3">
-                                        <span className="text-gray-400 line-through text-lg md:text-2xl">€99.00</span>
-                                        <span className="text-3xl md:text-5xl font-black text-red-600">2x €49</span>
+                                        <span className="text-gray-400 line-through text-lg md:text-2xl">€119,98</span>
+                                        <span className="text-3xl md:text-5xl font-black text-red-600">2x59,99€</span>
                                     </div>
                                     <div className="text-green-600 font-bold text-xs md:text-sm bg-green-50 px-3 py-1 rounded-full inline-flex items-center gap-1">
                                         <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></span>
@@ -436,7 +440,7 @@ export default function Advertorial1Page() {
 
                             <div className="space-y-3 md:space-y-4 max-w-lg mx-auto">
                                 <Link
-                                    href="/piuforma"
+                                    href="/tarassac-feg"
                                     className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 md:py-5 px-6 rounded-lg text-lg md:text-2xl shadow-xl flex items-center justify-center group active:scale-[0.98] transition-transform"
                                 >
                                     ORDINA ORA
