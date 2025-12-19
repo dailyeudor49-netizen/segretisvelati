@@ -527,7 +527,7 @@ const Hero: React.FC = () => {
                </div>
                
                <img 
-                 src="https://picsum.photos/600/600?random=product" 
+                 src="/images/TARASSIC/Tarassic1.png" 
                  alt="Tarassac Slim Bottiglia" 
                  className="w-full h-auto rounded-xl shadow-inner mb-6 filter contrast-125"
                />
@@ -638,7 +638,7 @@ const Offer: React.FC = () => {
               BEST SELLER
             </div>
             <div className="text-center mb-8">
-              <img src="https://picsum.photos/400/400?random=pack" alt="Pacchetto Doppio" className="w-64 mx-auto mb-6 rounded-lg mix-blend-multiply hover:scale-105 transition-transform duration-300" />
+              <img src="/images/TARASSIC/Tarassic1.png" alt="Tarassac Slim" className="w-64 mx-auto mb-6 hover:scale-105 transition-transform duration-300" />
               <h3 className="text-2xl font-bold text-gray-900">Protocollo "Reset Epatico"</h3>
               <p className="text-emerald-600 font-semibold mt-2">Trattamento Intensivo 60 Giorni</p>
             </div>
@@ -817,7 +817,7 @@ const StickyCTA: React.FC = () => {
                -50%
              </div>
             <img 
-              src="https://picsum.photos/100/100?random=mobile_thumb" 
+              src="/images/TARASSIC/Tarassic1.png" 
               alt="Tarassac" 
               className="w-full h-full object-cover rounded-md border border-gray-200"
             />
@@ -858,7 +858,7 @@ const StickyProduct: React.FC = () => {
           2x1
         </div>
         <img 
-          src="https://picsum.photos/150/200?random=bottle_mockup" 
+          src="/images/TARASSIC/Tarassic1.png" 
           alt="Tarassac Slim Bottle" 
           className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 group-hover:scale-105 transition-transform"
         />
