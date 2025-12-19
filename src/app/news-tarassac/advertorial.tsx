@@ -120,7 +120,7 @@ const Sidebar: React.FC = () => {
         <p className="text-sm text-gray-300 mb-4">Non è aria. È una "colla tossica" nel tuo intestino.</p>
         <img src="https://picsum.photos/seed/belly_fat/300/200" className="w-full h-32 object-cover mb-4 rounded opacity-80 group-hover:opacity-100 transition-opacity" alt="Ad" />
         <button className="w-full bg-brand-red text-white font-bold py-2 uppercase text-sm hover:bg-red-700 transition-colors">
-            Vedi il rimedio >
+            Vedi il rimedio &gt;
         </button>
       </div>
     </aside>
