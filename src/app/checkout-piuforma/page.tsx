@@ -486,8 +486,8 @@ export default function PiuFormaCheckout() {
                   {/* Microcopy */}
                   <p className="text-sm md:text-base text-gray-500 text-center leading-relaxed">
                     Cliccando &quot;Conferma Ordine&quot; accetti di essere ricontattato telefonicamente e dichiari di aver letto{' '}
-                    <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">Privacy Policy</a> e{' '}
-                    <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">Termini</a>.
+                    <Link href="/privacy-policy" className="underline hover:text-gray-700">Privacy Policy</Link> e{' '}
+                    <Link href="/termini-condizioni" className="underline hover:text-gray-700">Termini</Link>.
                   </p>
                 </form>
               </div>
@@ -526,9 +526,9 @@ export default function PiuFormaCheckout() {
             <strong>Segreti Svelati S.r.l.</strong> · P.IVA IT12345678901 · Via Roma 123, 20121 Milano (MI)
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500 mb-4">
-            <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 underline">Privacy Policy</a>
-            <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 underline">Termini e Condizioni</a>
-            <a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 underline">Cookie Policy</a>
+            <Link href="/privacy-policy" className="hover:text-gray-700 underline">Privacy Policy</Link>
+            <Link href="/termini-condizioni" className="hover:text-gray-700 underline">Termini e Condizioni</Link>
+            <Link href="/cookie-policy" className="hover:text-gray-700 underline">Cookie Policy</Link>
           </div>
           <p className="text-xs text-gray-400 max-w-2xl mx-auto">
             Integratore alimentare. I risultati possono variare. Non è un medicinale. Da usare con dieta equilibrata e stile di vita sano.

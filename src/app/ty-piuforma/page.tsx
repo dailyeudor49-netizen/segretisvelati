@@ -352,9 +352,9 @@ export default function ThankYouPage() {
             <strong className="text-gray-400">Segreti Svelati S.r.l.</strong> · P.IVA IT12345678901 · Via Roma 123, 20121 Milano (MI)
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500 mb-4">
-            <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a>
-            <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-white">Termini e Condizioni</a>
-            <a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">Cookie Policy</a>
+            <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+            <Link href="/termini-condizioni" className="hover:text-white">Termini e Condizioni</Link>
+            <Link href="/cookie-policy" className="hover:text-white">Cookie Policy</Link>
           </div>
           <p className="text-[10px] text-gray-600 max-w-2xl mx-auto">
             Integratore alimentare. I risultati possono variare. Non è un medicinale.

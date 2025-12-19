@@ -912,10 +912,9 @@ export default function PiuFormaLanding() {
             <div>
               <h4 className="text-white font-bold mb-4">Informazioni Legali</h4>
               <ul className="space-y-3 text-sm">
-                <li><a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Termini e Condizioni</a></li>
-                <li><a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Cookie Policy</a></li>
-                <li><a href="https://segretisvelati.com/diritto-recesso" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Diritto di Recesso</a></li>
+                <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/termini-condizioni" className="hover:text-white transition-colors">Termini e Condizioni</Link></li>
+                <li><Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link></li>
               </ul>
             </div>
 
@@ -966,9 +965,9 @@ export default function PiuFormaLanding() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
               <p>© 2025 Segreti Svelati S.r.l. - P.IVA IT12345678901 - Tutti i diritti riservati.</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="https://segretisvelati.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy</a>
-                <a href="https://segretisvelati.com/termini-condizioni" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Termini</a>
-                <a href="https://segretisvelati.com/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Cookie</a>
+                <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
+                <Link href="/termini-condizioni" className="hover:text-white transition-colors">Termini</Link>
+                <Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie</Link>
               </div>
             </div>
             <p className="text-[10px] text-gray-600 text-center mt-4 max-w-4xl mx-auto">
