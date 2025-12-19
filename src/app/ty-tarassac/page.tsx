@@ -10,7 +10,7 @@ import {
 
 export default function ThankYouPage() {
   const [customerName, setCustomerName] = useState('')
-  const [orderPrice, setOrderPrice] = useState('59,99')
+  const [orderPrice, setOrderPrice] = useState('49,99')
 
   useEffect(() => {
     // Get customer data from sessionStorage (set during checkout)
@@ -31,7 +31,7 @@ export default function ThankYouPage() {
     // Facebook Pixel - Purchase Event
     if (typeof window !== 'undefined' && (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq) {
       (window as typeof window & { fbq: (...args: unknown[]) => void }).fbq('track', 'Purchase', {
-        value: 59.99,
+        value: 49.99,
         currency: 'EUR',
         content_name: 'Tarassac Slim',
         content_type: 'product',
@@ -128,7 +128,7 @@ export default function ThankYouPage() {
               <h3 className="font-bold text-gray-900 text-lg md:text-xl">Tarassac Slim - Formula Avanzata</h3>
               <p className="text-gray-500">2 Confezioni - Trattamento 2 mesi</p>
               <div className="flex items-center gap-3 mt-2 justify-center sm:justify-start">
-                <span className="text-gray-400 line-through">119,98</span>
+                <span className="text-gray-400 line-through">99,98</span>
                 <span className="text-3xl font-black text-green-600">{orderPrice}</span>
               </div>
               <p className="text-green-600 font-medium text-sm mt-1 flex items-center gap-1 justify-center sm:justify-start">

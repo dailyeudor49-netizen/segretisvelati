@@ -229,8 +229,8 @@ const StickyCTA: React.FC<{isVisible: boolean; minutes: number; seconds: number}
 
                 <div className="flex-1 flex items-center justify-between sm:justify-end gap-2 md:gap-6">
                      <div className="text-left sm:text-right">
-                        <div className="text-[9px] md:text-[10px] text-gray-400 line-through">€119,98</div>
-                        <div className="text-base md:text-2xl font-black text-red-600 leading-none">2x59,99€</div>
+                        <div className="text-[9px] md:text-[10px] text-gray-400 line-through">€99,98</div>
+                        <div className="text-base md:text-2xl font-black text-red-600 leading-none">2x49,99€</div>
                         <div className="text-[9px] text-red-500 font-bold sm:hidden">{minutes}:{seconds < 10 ? `0${seconds}` : seconds}</div>
                      </div>
                      <Link
@@ -425,8 +425,8 @@ export default function Advertorial1Page() {
 
                                 <div className="text-center space-y-2 md:space-y-4">
                                     <div className="flex items-end justify-center gap-2 md:gap-3">
-                                        <span className="text-gray-400 line-through text-lg md:text-2xl">€119,98</span>
-                                        <span className="text-3xl md:text-5xl font-black text-red-600">2x59,99€</span>
+                                        <span className="text-gray-400 line-through text-lg md:text-2xl">€99,98</span>
+                                        <span className="text-3xl md:text-5xl font-black text-red-600">2x49,99€</span>
                                     </div>
                                     <div className="text-green-600 font-bold text-xs md:text-sm bg-green-50 px-3 py-1 rounded-full inline-flex items-center gap-1">
                                         <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></span>

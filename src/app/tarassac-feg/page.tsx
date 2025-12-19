@@ -103,7 +103,7 @@ const REVIEWS: Review[] = [
     name: "Anna Esposito",
     avatar: DONNA_IMAGES[4],
     timeAgo: "15 min fa",
-    content: "Preso l'offerta 2x59,99€. Ne vale la pena. Il tarassaco concentrato è tutta un'altra storia rispetto alle tisane del supermercato che sono acqua sporca.",
+    content: "Preso l'offerta 2x49,99€. Ne vale la pena. Il tarassaco concentrato è tutta un'altra storia rispetto alle tisane del supermercato che sono acqua sporca.",
     likes: 45,
     hasImage: false
   },
@@ -680,8 +680,8 @@ const Offer: React.FC = () => {
             </ul>
 
             <div className="text-center bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-              <span className="text-gray-400 line-through text-lg">Prezzo listino: €119,98</span>
-              <div className="text-5xl font-black text-red-600 my-2 tracking-tight">2x59,99€</div>
+              <span className="text-gray-400 line-through text-lg">Prezzo listino: €99,98</span>
+              <div className="text-5xl font-black text-red-600 my-2 tracking-tight">2x49,99€</div>
               <span className="text-emerald-700 text-sm font-bold">Meno di 1€ al giorno per la tua salute</span>
             </div>
           </div>
@@ -710,7 +710,7 @@ const Offer: React.FC = () => {
                 <span className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
                 <div>
                   <p className="font-bold text-gray-900">Paghi alla consegna</p>
-                  <p className="text-sm text-gray-500">59,99 in contanti al corriere. Nessuna carta richiesta.</p>
+                  <p className="text-sm text-gray-500">49,99 in contanti al corriere. Nessuna carta richiesta.</p>
                 </div>
               </div>
             </div>
@@ -851,9 +851,9 @@ const StickyCTA: React.FC = () => {
         </div>
 
         <div className="flex flex-col flex-1">
-           <span className="text-xs text-gray-500 line-through leading-none">119,98</span>
+           <span className="text-xs text-gray-500 line-through leading-none">99,98</span>
            <div className="flex items-baseline gap-1">
-              <span className="text-xl font-black text-gray-900">2x59,99</span>
+              <span className="text-xl font-black text-gray-900">2x49,99</span>
               <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1 rounded">OFFERTA</span>
            </div>
         </div>
@@ -893,8 +893,8 @@ const StickyProduct: React.FC = () => {
         <h4 className="font-bold text-gray-900 text-sm leading-tight mb-1">Tarassac Slim</h4>
 
         <div className="flex items-baseline gap-2 mb-2">
-           <span className="text-red-600 font-black text-lg leading-none">59,99</span>
-           <span className="text-gray-400 text-xs line-through">119</span>
+           <span className="text-red-600 font-black text-lg leading-none">49,99</span>
+           <span className="text-gray-400 text-xs line-through">99</span>
         </div>
 
         <span className="bg-emerald-600 group-hover:bg-emerald-700 text-white text-xs font-bold py-2 px-3 rounded-lg shadow-sm w-full transition-colors flex items-center justify-center gap-1">

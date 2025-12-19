@@ -140,7 +140,7 @@ const OrderSummary = memo(() => (
       <div className="py-5 space-y-3 border-b border-gray-100 text-base md:text-lg">
         <div className="flex justify-between">
           <span className="text-gray-500">Subtotale (2 conf.)</span>
-          <span className="text-gray-400 line-through">119,98</span>
+          <span className="text-gray-400 line-through">99,98</span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-500">Sconto Esclusivo</span>
@@ -156,7 +156,7 @@ const OrderSummary = memo(() => (
       <div className="pt-5">
         <div className="flex justify-between items-center">
           <span className="font-bold text-gray-900 text-xl">Totale</span>
-          <span className="text-4xl md:text-5xl font-black text-red-600">59,99</span>
+          <span className="text-4xl md:text-5xl font-black text-red-600">49,99</span>
         </div>
         <p className="text-base text-gray-500 mt-3 flex items-center gap-2">
           <Banknote className="w-5 h-5" />
@@ -266,7 +266,7 @@ export default function TarassacCheckout() {
     // Save customer data BEFORE API call (for thank you page)
     const firstName = formData.name.split(' ')[0]
     sessionStorage.setItem('customer_name', firstName)
-    sessionStorage.setItem('order_price', '59,99')
+    sessionStorage.setItem('order_price', '49,99')
 
     try {
       // Get tracking params from URL if present
@@ -376,7 +376,7 @@ export default function TarassacCheckout() {
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
-                        <span>Ricevi il pacco e paghi <strong>59,99 in contanti</strong> al corriere</span>
+                        <span>Ricevi il pacco e paghi <strong>49,99 in contanti</strong> al corriere</span>
                       </li>
                     </ol>
                   </div>
