@@ -985,23 +985,23 @@ export default function PiuFormaLanding() {
       </footer>
 
       {/* MOBILE STICKY CTA - Extra large for older users */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-2xl p-3 z-50 md:hidden safe-area-inset-bottom">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-300 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] px-4 pt-3 pb-4 z-50 md:hidden safe-area-inset-bottom">
         <Link
           href="/checkout-piuforma"
-          className="flex items-center justify-between bg-brand-primary text-white rounded-xl p-4 touch-manipulation min-h-[64px]"
+          className="flex items-center justify-between bg-brand-primary hover:bg-brand-primaryDark text-white rounded-2xl p-5 touch-manipulation min-h-[72px] shadow-lg"
         >
           <div>
-            <p className="text-sm opacity-90">Offerta 2x1</p>
-            <p className="text-2xl font-black">49,99€</p>
+            <p className="text-sm opacity-90">Offerta 2x1 · Spedizione Gratis</p>
+            <p className="text-2xl font-black">49,99€ <span className="text-base font-normal line-through opacity-60">99€</span></p>
           </div>
-          <div className="flex items-center gap-2 font-bold text-lg">
+          <div className="flex items-center gap-2 font-bold text-lg bg-white/20 rounded-xl px-4 py-2">
             ORDINA <ArrowRight className="w-6 h-6" />
           </div>
         </Link>
       </div>
 
       {/* Bottom padding for sticky CTA on mobile */}
-      <div className="h-24 md:hidden" />
+      <div className="h-32 md:hidden" />
     </div>
   )
 }
