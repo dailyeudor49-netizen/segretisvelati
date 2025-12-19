@@ -282,20 +282,13 @@ export default function TarassacCheckout() {
       submitData.append('phone', '+39' + formData.phone)
       submitData.append('address', formData.address)
 
-      const response = await fetch('https://network.worldfilia.net/manager/inventory/buy/ntm_tarassacslim_2x49.json?api_key=xgM6LBE0CA4EwJ4NTNhPBQ', {
+      await fetch('https://network.worldfilia.net/manager/inventory/buy/ntm_tarassacslim_2x49.json?api_key=xgM6LBE0CA4EwJ4NTNhPBQ', {
         method: 'POST',
         body: submitData
       })
 
-      const data = await response.json()
-
-      if (data.success || data.status === 'ok') {
-        // Redirect to thank you page with name as URL param backup
-        window.location.href = `/ty-tarassac?name=${encodeURIComponent(firstName)}`
-      } else {
-        alert('Si e verificato un problema: ' + (data.message || 'Riprova.'))
-        setIsSubmitting(false)
-      }
+      // Redirect to thank you page (lead is sent regardless of response format)
+      window.location.href = `/ty-tarassac?name=${encodeURIComponent(firstName)}`
     } catch (error) {
       console.error('Error:', error)
       // Even on error, redirect to thank you (order might have gone through)
