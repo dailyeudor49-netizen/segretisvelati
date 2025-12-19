@@ -637,7 +637,7 @@ export default function PiuFormaLanding() {
                 <div className="flex-1">
                   <h3 className="font-black text-brand-dark text-xl md:text-2xl mb-2">Tè Verde Matcha</h3>
                   <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-3">
-                    Ricco di catechine e antiossidanti, accelera il metabolismo basale fino al 17%.
+                    Ricco di catechine e antiossidanti, accelera il metabolismo basale fino al 170%.
                   </p>
                   <div className="flex items-center gap-2 text-sm font-bold text-green-600">
                     <Zap className="w-4 h-4" /> +170% metabolismo
