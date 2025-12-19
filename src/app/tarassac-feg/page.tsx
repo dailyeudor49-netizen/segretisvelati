@@ -950,14 +950,17 @@ const PurchaseNotifications: React.FC = () => {
       }`}
     >
       <div className="bg-white rounded-xl shadow-2xl border border-gray-100 p-3 md:p-4 flex items-center gap-3 max-w-[280px] md:max-w-xs">
-        {/* Icona animata */}
+        {/* Immagine prodotto */}
         <div className="relative">
-          <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
-            <ShoppingBag className="text-white" size={20} />
+          <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden shadow-lg border border-gray-200 bg-white">
+            <img
+              src="/images/TARASSIC/Tarassic1.png"
+              alt="Tarassac Slim"
+              className="w-full h-full object-contain"
+            />
           </div>
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center animate-ping" />
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
-            <CheckCircle className="text-white" size={10} />
+          <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center shadow-md">
+            <CheckCircle className="text-white" size={12} />
           </div>
         </div>
 
