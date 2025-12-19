@@ -515,27 +515,51 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Visuals */}
+          {/* Right Column: Visuals - Il Problema */}
           <div className="relative">
              {/* Background Blob */}
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-red-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-            <div className="absolute -bottom-8 left-20 w-80 h-80 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-            
-            <div className="relative bg-white rounded-3xl shadow-2xl border-4 border-white p-6 md:p-10 text-center transform rotate-2 hover:rotate-0 transition-transform duration-500">
-               <div className="absolute -top-6 -right-6 bg-red-600 text-white font-black text-sm w-24 h-24 rounded-full flex items-center justify-center shadow-lg transform rotate-12 z-10 border-4 border-white text-center leading-tight">
-                 FORMULA<br/>ORIGINALE
-               </div>
-               
-               <img 
-                 src="/images/TARASSIC/Tarassic1.png" 
-                 alt="Tarassac Slim Bottiglia" 
-                 className="w-full h-auto rounded-xl shadow-inner mb-6 filter contrast-125"
-               />
-               
-               <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                 <p className="text-gray-900 font-bold text-lg mb-1">L'unica soluzione 100% Naturale</p>
-                 <p className="text-sm text-gray-500">Che agisce alla radice biologica del problema.</p>
-               </div>
+            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse"></div>
+
+            {/* Immagine Problema Fegato */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              {/* Immagine principale con overlay */}
+              <div className="relative">
+                <img
+                  src="/images/TARASSIC/liver.jpg"
+                  alt="Problema del fegato bloccato"
+                  className="w-full h-auto"
+                />
+                {/* Gradient overlay per sfumatura */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 to-transparent"></div>
+
+                {/* Badge problema */}
+                <div className="absolute top-4 left-4 bg-red-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+                  <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                  Il Problema
+                </div>
+
+                {/* Testo sul fondo */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white/90 text-sm md:text-base font-medium mb-3">
+                    Il <strong className="text-red-400">fegato sovraccarico</strong> blocca il metabolismo e accumula grasso viscerale
+                  </p>
+
+                  {/* Mini card soluzione */}
+                  <div className="bg-white/95 backdrop-blur-sm rounded-xl p-3 flex items-center gap-3 shadow-xl">
+                    <img
+                      src="/images/TARASSIC/Tarassic1.png"
+                      alt="Tarassac Slim"
+                      className="w-14 h-14 object-contain"
+                    />
+                    <div className="flex-1">
+                      <p className="text-xs text-gray-500 uppercase font-bold">La Soluzione</p>
+                      <p className="text-sm font-bold text-gray-900">Tarassac Slim™</p>
+                      <p className="text-xs text-emerald-600 font-semibold">Sblocca il fegato in modo naturale</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
