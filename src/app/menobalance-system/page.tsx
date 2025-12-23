@@ -534,7 +534,7 @@ const App = () => {
       </div>
 
       {/* ===== FAKE FACEBOOK COMMENTS SECTION ===== */}
-      <div className="bg-white border-t border-slate-200 p-4 md:p-8 max-w-4xl mx-auto">
+      <div id="recensioni" className="bg-white border-t border-slate-200 p-4 md:p-8 max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-bold text-slate-800">Commenti ({FB_COMMENTS.length + 1200})</h3>
           <div className="flex items-center gap-1 text-xs text-slate-500">
@@ -638,23 +638,52 @@ const App = () => {
       </div>
 
       {/* ===== STICKY MOBILE CTA ===== */}
-      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-3 md:hidden z-50 shadow-[0_-5px_30px_rgba(0,0,0,0.15)] flex justify-between items-center">
-        <div className="flex flex-col pl-1">
-          <span className="text-[10px] font-bold text-red-600 uppercase animate-pulse">
-            <Timer className="w-3 h-3 inline mr-1" />
-            Scade: {formatTime(timeLeft)}
-          </span>
-          <div className="flex items-baseline gap-1">
-            <span className="font-black text-slate-900 text-2xl">{PRICE_OFFER}</span>
-            <span className="text-xs text-slate-400 line-through">99€</span>
+      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-2 md:hidden z-50 shadow-[0_-5px_30px_rgba(0,0,0,0.15)]">
+        <div className="flex items-center gap-2">
+          {/* Immagine prodotto */}
+          <div className="relative shrink-0">
+            <img
+              src="/images/menobalance-system/prodotto.png"
+              alt="MenoBalance"
+              className="w-14 h-14 object-contain"
+            />
+            <div className="absolute -top-1 -right-1 bg-red-600 text-white text-[8px] font-bold px-1 py-0.5 rounded">
+              -50%
+            </div>
           </div>
+
+          {/* Info centrale */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-baseline gap-1">
+              <span className="font-black text-slate-900 text-xl">{PRICE_OFFER}</span>
+              <span className="text-xs text-slate-400 line-through">{PRICE_ORIGINAL}</span>
+            </div>
+            <div className="flex items-center gap-1 text-[10px] text-red-600 font-bold">
+              <Timer className="w-3 h-3" />
+              <span>Scade: {formatTime(timeLeft)}</span>
+            </div>
+            {/* Stelle e recensioni */}
+            <button
+              onClick={() => document.getElementById('recensioni')?.scrollIntoView({ behavior: 'smooth' })}
+              className="flex items-center gap-1 mt-0.5"
+            >
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <span className="text-[10px] text-slate-600 underline">3.094 recensioni</span>
+            </button>
+          </div>
+
+          {/* Bottone CTA */}
+          <button
+            onClick={scrollToOffer}
+            className="bg-[#00C853] text-white font-black py-3 px-4 rounded shadow-lg active:scale-95 text-sm uppercase tracking-wide animate-pulse shrink-0"
+          >
+            ORDINA
+          </button>
         </div>
-        <button
-          onClick={scrollToOffer}
-          className="bg-[#00C853] text-white font-black py-3 px-6 rounded shadow-lg active:scale-95 text-sm uppercase tracking-wide animate-pulse"
-        >
-          ORDINA ORA
-        </button>
       </div>
 
       {/* ===== SALES POPUP (SOCIAL PROOF) - Con immagine prodotto ===== */}
