@@ -13,7 +13,10 @@ import {
   CheckCircle,
   AlertCircle,
   Heart,
-  Send
+  Send,
+  Mail,
+  Phone,
+  MapPin
 } from 'lucide-react';
 
 // Forum Comments Data
@@ -924,6 +927,139 @@ export default function MenobalanceArticlePage() {
               Mostra tutti i {FORUM_COMMENTS.length} commenti
             </button>
           )}
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="max-w-4xl mx-auto px-4 pb-16">
+        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-sm border border-purple-100 p-6 md:p-10">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              Hai domande? Contattaci
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              Il nostro team di esperti è a tua disposizione per rispondere a qualsiasi domanda sulla menopausa e il benessere femminile.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+                  <Mail className="w-6 h-6 text-purple-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1">Email</h3>
+                  <p className="text-gray-600">redazione@saluteebenessere.it</p>
+                  <p className="text-sm text-gray-500 mt-1">Rispondiamo entro 24 ore</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+                  <Phone className="w-6 h-6 text-purple-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1">Telefono</h3>
+                  <p className="text-gray-600">+39 02 1234567</p>
+                  <p className="text-sm text-gray-500 mt-1">Lun-Ven 9:00-18:00</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+                  <MapPin className="w-6 h-6 text-purple-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1">Redazione</h3>
+                  <p className="text-gray-600">Via della Salute 42</p>
+                  <p className="text-sm text-gray-500 mt-1">20121 Milano (MI)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <form className="space-y-4">
+                <div>
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Nome e Cognome
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    placeholder="Il tuo nome"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-200 focus:border-purple-400 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    placeholder="La tua email"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-200 focus:border-purple-400 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="contact-subject" className="block text-sm font-medium text-gray-700 mb-1">
+                    Oggetto
+                  </label>
+                  <select
+                    id="contact-subject"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-200 focus:border-purple-400 transition-all bg-white"
+                  >
+                    <option value="">Seleziona un argomento</option>
+                    <option value="info">Informazioni generali</option>
+                    <option value="menopausa">Domande sulla menopausa</option>
+                    <option value="articolo">Suggerimento articolo</option>
+                    <option value="collaborazione">Proposta di collaborazione</option>
+                    <option value="altro">Altro</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Messaggio
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    rows={4}
+                    placeholder="Scrivi il tuo messaggio..."
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-200 focus:border-purple-400 transition-all resize-none"
+                  />
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <input
+                    type="checkbox"
+                    id="contact-privacy"
+                    className="mt-1 w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                  />
+                  <label htmlFor="contact-privacy" className="text-sm text-gray-600">
+                    Ho letto e accetto la <a href="#" className="text-purple-600 hover:underline">Privacy Policy</a> e acconsento al trattamento dei miei dati personali.
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+                >
+                  <Send className="w-5 h-5" />
+                  Invia Messaggio
+                </button>
+              </form>
+
+              <p className="text-xs text-gray-500 text-center mt-4">
+                I tuoi dati sono al sicuro. Non condividiamo le tue informazioni con terze parti.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
