@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   Check,
   Star,
@@ -522,9 +523,9 @@ const App = () => {
              </div>
           </div>
 
-          <button className="w-full bg-[#00C853] hover:bg-green-600 text-white text-2xl md:text-3xl font-black py-6 px-4 rounded shadow-[0_5px_0_rgb(21,128,61)] active:shadow-none active:translate-y-1 transition-all uppercase animate-pulse mb-4">
+          <Link href="/checkout-menobalance" className="block w-full bg-[#00C853] hover:bg-green-600 text-white text-2xl md:text-3xl font-black py-6 px-4 rounded shadow-[0_5px_0_rgb(21,128,61)] active:shadow-none active:translate-y-1 transition-all uppercase animate-pulse mb-4 text-center">
              VOGLIO DIMAGRIRE ORA »
-          </button>
+          </Link>
 
           <p className="text-xs text-slate-500">
              <Lock className="w-3 h-3 inline mr-1" />
@@ -677,12 +678,12 @@ const App = () => {
           </div>
 
           {/* Bottone CTA */}
-          <button
-            onClick={scrollToOffer}
+          <Link
+            href="/checkout-menobalance"
             className="bg-[#00C853] text-white font-black py-3 px-4 rounded shadow-lg active:scale-95 text-sm uppercase tracking-wide animate-pulse shrink-0"
           >
             ORDINA
-          </button>
+          </Link>
         </div>
       </div>
 
