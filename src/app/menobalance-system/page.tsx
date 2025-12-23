@@ -59,10 +59,10 @@ const RECENT_SALES = [
 ];
 
 const FB_COMMENTS = [
-  { name: "Sabrina F.", time: "2 min", text: "Ragazze non ci credevo ma funziona!! Ho perso 3kg solo di liquidi nella prima settimana. Mi sento un'altra.", likes: 142, img: ALL_WOMEN_PHOTOS[0] },
+  { name: "Sabrina F.", time: "2 min", text: "Ragazze non ci credevo ma funziona!! Ho perso 3kg solo di liquidi nella prima settimana. Mi sento un'altra.", likes: 142, img: ALL_WOMEN_PHOTOS[0], postImage: "/images/menobalance-system/donna35784.png" },
   { name: "Elena G.", time: "14 min", text: "È arrivato ieri. Ho preso la pillola 'Notte' e ho dormito 8 ore di fila. Non succedeva dal 2018. Miracoloso.", likes: 89, img: ALL_WOMEN_PHOTOS[1] },
   { name: "Marta V.", time: "32 min", text: "Ma si trova in farmacia? Il mio medico non me ne ha mai parlato...", likes: 45, img: ALL_WOMEN_PHOTOS[2], reply: "No Marta, le farmacie non lo vogliono vendere perché costa troppo poco rispetto alle loro medicine inutili! Prendilo qui finché c'è." },
-  { name: "Francesca D.", time: "1 ora", text: "Io sono al giorno 15. La pancia è piatta. PIATTA. Mio marito mi guarda in modo diverso... 😉", likes: 210, img: ALL_WOMEN_PHOTOS[3] },
+  { name: "Francesca D.", time: "1 ora", text: "Io sono al giorno 15. La pancia è piatta. PIATTA. Mio marito mi guarda in modo diverso... 😉", likes: 210, img: ALL_WOMEN_PHOTOS[3], postImage: "/images/menobalance-system/donna534.png" },
   { name: "Giulia R.", time: "2 ore", text: "Ordinato ora. Speriamo arrivi presto, non ne posso più delle vampate.", likes: 12, img: ALL_WOMEN_PHOTOS[4], reply: "Ciao Giulia, vedrai che la spedizione è velocissima, a me è arrivato in 24h esatte!" },
   { name: "Paola B.", time: "3 ore", text: "Qualcuno sa se posso pagare al corriere? Non mi fido a mettere la carta online.", likes: 56, img: ALL_WOMEN_PHOTOS[5], reply: "Sì Paola! Io ho pagato in contanti al corriere stamattina. Comodissimo." },
   { name: "Cristina L.", time: "4 ore", text: "Ho provato di tutto... tisane, beveroni, dieta chetogenica. Niente. Dite che questo funziona davvero o è la solita fregatura?", likes: 112, img: ALL_WOMEN_PHOTOS[6], reply: "Cristina guarda, ero scettica come te. Ho speso centinaia di euro in farmacia. Questo è l'unico che mi ha sbloccato il peso. Provalo, al massimo chiedi il rimborso (ma non lo chiederai)." },
@@ -71,15 +71,15 @@ const FB_COMMENTS = [
   { name: "Anna Maria T.", time: "7 ore", text: "Ma il prezzo è per una confezione o per il kit completo?", likes: 2, img: ALL_WOMEN_PHOTOS[9], reply: "Per tutto il kit Anna! È in offerta al 50%." },
   { name: "Roberta P.", time: "8 ore", text: "Mio marito dice che sono più calma e sorridente. Io dico solo che finalmente non mi sveglio in un bagno di sudore.", likes: 78, img: ALL_WOMEN_PHOTOS[10] },
   { name: "Lucia F.", time: "9 ore", text: "Spedizione velocissima, grazie!", likes: 11, img: ALL_WOMEN_PHOTOS[11] },
-  { name: "Giorgia M.", time: "10 ore", text: "Le mie amiche in palestra mi hanno chiesto se ho fatto la liposuzione... non ho detto niente, è il mio segreto! 😂", likes: 231, img: ALL_WOMEN_PHOTOS[12] },
+  { name: "Giorgia M.", time: "10 ore", text: "Le mie amiche in palestra mi hanno chiesto se ho fatto la liposuzione... non ho detto niente, è il mio segreto! 😂", likes: 231, img: ALL_WOMEN_PHOTOS[12], postImage: "/images/menobalance-system/donna5432.jpg" },
   { name: "Simona V.", time: "11 ore", text: "Scusate ma quante capsule ci sono?", likes: 5, img: ALL_WOMEN_PHOTOS[13], reply: "Sono 60 capsule totali, 30 giorno e 30 notte. Ti copre tutto il mese." },
   { name: "Carla D.", time: "12 ore", text: "Ho 58 anni, funziona anche per me?", likes: 19, img: ALL_WOMEN_PHOTOS[14], reply: "Assolutamente sì Carla, io ne ho 61 e mi ha cambiato la vita." },
   { name: "Tiziana R.", time: "13 ore", text: "Appena ordinato le ultime 3 confezioni per me e mia sorella.", likes: 44, img: ALL_WOMEN_PHOTOS[15] },
   { name: "Alessandra C.", time: "14 ore", text: "Finalmente qualcosa di naturale senza ormoni sintetici.", likes: 67, img: ALL_WOMEN_PHOTOS[16] },
-  { name: "Manuela G.", time: "15 ore", text: "Dopo 3 giorni mi sento già meno gonfia.", likes: 23, img: ALL_WOMEN_PHOTOS[17] },
+  { name: "Manuela G.", time: "15 ore", text: "Dopo 3 giorni mi sento già meno gonfia.", likes: 23, img: ALL_WOMEN_PHOTOS[17], postImage: "/images/menobalance-system/donna54938.jpg" },
   { name: "Federica B.", time: "16 ore", text: "Consigliatissimo +++++", likes: 8, img: ALL_WOMEN_PHOTOS[18] },
   { name: "Elisa N.", time: "17 ore", text: "Grazie al cielo ho trovato questa pagina. Stavo impazzendo con le vampate.", likes: 92, img: ALL_WOMEN_PHOTOS[19] },
-  { name: "Monica A.", time: "18 ore", text: "Funziona davvero! Non ci credevo ma i risultati parlano chiaro.", likes: 38, img: ALL_WOMEN_PHOTOS[20] },
+  { name: "Monica A.", time: "18 ore", text: "Funziona davvero! Non ci credevo ma i risultati parlano chiaro.", likes: 38, img: ALL_WOMEN_PHOTOS[20], postImage: "/images/menobalance-system/donna5843.jpg" },
   { name: "Barbara B.", time: "19 ore", text: "Arrivato in 24h, perfetto. Già iniziato il trattamento.", likes: 27, img: ALL_WOMEN_PHOTOS[21] },
 ];
 
