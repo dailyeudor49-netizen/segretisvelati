@@ -49,20 +49,20 @@ const getMetabolicAnalysis = (age: string, weight: string, height: string, hunge
 
   if (bmi >= 18.5 && bmi < 25) {
     if (hungerNum >= 6) {
-      text = `Analisi completata: Con un BMI di ${bmiRounded} (${bmiCategory}) sei già in una fascia di peso salutare. Tuttavia, il tuo livello di fame nervosa ${hungerLevel}/10 indica che i segnali di sazietà non sono ottimali. Senza intervento, il rischio di accumulo adiposo aumenta con l'età. ZEMPBIO™ Complex Avanzato nel PROTOCOLLO MANTENIMENTO aiuta a stabilizzare i recettori della leptina e prevenire futuri squilibri metabolici. Sei un candidato ideale per il protocollo preventivo.`;
+      text = `Analisi completata: Con un BMI di ${bmiRounded} (${bmiCategory}) sei già in una fascia di peso salutare. Tuttavia, il tuo livello di fame nervosa ${hungerLevel}/10 indica che i segnali di sazietà non sono ottimali. Senza intervento, il rischio di accumulo adiposo aumenta con l'età. ZEMPBIO™ Complex 400mg nel PROTOCOLLO MANTENIMENTO aiuta a stabilizzare i recettori della leptina e prevenire futuri squilibri metabolici. Sei un candidato ideale per il protocollo preventivo.`;
     } else {
-      text = `Analisi completata: Ottimo! Con un BMI di ${bmiRounded} (${bmiCategory}) e un livello di fame controllato (${hungerLevel}/10), il tuo profilo metabolico è nella norma. Per MANTENERE questi risultati nel tempo e prevenire il naturale rallentamento metabolico legato all'età, ZEMPBIO™ Complex Avanzato nel PROTOCOLLO MANTENIMENTO supporta l'equilibrio ormonale della sazietà. Ideale per chi vuole restare in forma senza sforzo.`;
+      text = `Analisi completata: Ottimo! Con un BMI di ${bmiRounded} (${bmiCategory}) e un livello di fame controllato (${hungerLevel}/10), il tuo profilo metabolico è nella norma. Per MANTENERE questi risultati nel tempo e prevenire il naturale rallentamento metabolico legato all'età, ZEMPBIO™ Complex 400mg nel PROTOCOLLO MANTENIMENTO supporta l'equilibrio ormonale della sazietà. Ideale per chi vuole restare in forma senza sforzo.`;
     }
   } else if (bmi >= 25 && bmi < 30) {
-    text = `Analisi completata: A ${age} anni con un BMI di ${bmiRounded} (${bmiCategory}), il tuo profilo indica accumulo di grasso viscerale che sta bloccando i segnali della leptina. Con ${weight}kg e fame nervosa a ${hungerLevel}/10, i recettori ipotalamici risultano desensibilizzati. ZEMPBIO™ Complex Avanzato agisce sul reset dei peptidi della sazietà, permettendo al corpo di riconoscere quando è davvero sazio. Sei un candidato ideale per il protocollo standard.`;
+    text = `Analisi completata: A ${age} anni con un BMI di ${bmiRounded} (${bmiCategory}), il tuo profilo indica accumulo di grasso viscerale che sta bloccando i segnali della leptina. Con ${weight}kg e fame nervosa a ${hungerLevel}/10, i recettori ipotalamici risultano desensibilizzati. ZEMPBIO™ Complex 400mg agisce sul reset dei peptidi della sazietà, permettendo al corpo di riconoscere quando è davvero sazio. Sei un candidato ideale per il protocollo standard.`;
   } else if (bmi >= 30) {
-    text = `Analisi completata: ATTENZIONE - Con un BMI di ${bmiRounded} (${bmiCategory}) a ${age} anni, il tuo metabolismo è in stato di emergenza. Il grasso viscerale ha completamente disattivato l'interruttore della sazietà. A ${weight}kg, la resistenza alla leptina è severa e la forza di volontà NON può vincere contro questa biochimica alterata. Si raccomanda l'intervento IMMEDIATO con ZEMPBIO™ Complex Avanzato nel PROTOCOLLO INTENSIVO per resettare i segnali neuro-chimici. Sei un candidato prioritario.`;
+    text = `Analisi completata: ATTENZIONE - Con un BMI di ${bmiRounded} (${bmiCategory}) a ${age} anni, il tuo metabolismo è in stato di emergenza. Il grasso viscerale ha completamente disattivato l'interruttore della sazietà. A ${weight}kg, la resistenza alla leptina è severa e la forza di volontà NON può vincere contro questa biochimica alterata. Si raccomanda l'intervento IMMEDIATO con ZEMPBIO™ Complex 400mg nel PROTOCOLLO INTENSIVO per resettare i segnali neuro-chimici. Sei un candidato prioritario.`;
   } else {
     text = `Analisi completata: Con un BMI di ${bmiRounded} (${bmiCategory}), il tuo peso è sotto la norma. ZEMPBIO™ è formulato per chi desidera controllare la fame e perdere peso. Ti consigliamo di consultare un nutrizionista per un piano personalizzato di aumento massa.`;
   }
 
   if (hungerNum >= 8 && bmi >= 18.5) {
-    text = `Analisi completata: ALLARME FAME NERVOSA - Con un livello ${hungerLevel}/10, i tuoi recettori della grelina sono in stato di iperattivazione cronica. A ${age} anni e ${weight}kg (BMI: ${bmiRounded} - ${bmiCategory}), questo squilibrio ormonale rende impossibile qualsiasi dieta tradizionale. Il cervello è convinto che stai morendo di fame anche dopo i pasti. ZEMPBIO™ Complex Avanzato spegne chimicamente questo falso allarme entro 20 minuti dalla prima assunzione. Sei un candidato URGENTE per il protocollo intensivo.`;
+    text = `Analisi completata: ALLARME FAME NERVOSA - Con un livello ${hungerLevel}/10, i tuoi recettori della grelina sono in stato di iperattivazione cronica. A ${age} anni e ${weight}kg (BMI: ${bmiRounded} - ${bmiCategory}), questo squilibrio ormonale rende impossibile qualsiasi dieta tradizionale. Il cervello è convinto che stai morendo di fame anche dopo i pasti. ZEMPBIO™ Complex 400mg spegne chimicamente questo falso allarme entro 20 minuti dalla prima assunzione. Sei un candidato URGENTE per il protocollo intensivo.`;
   }
 
   return { text, bmi: bmiRounded, bmiCategory };
@@ -291,7 +291,7 @@ const App: React.FC = () => {
     { name: "Claudio F.", age: "39 anni", text: "Spegnere la fame nervosa serale era il mio problema. ZEMPBIO™ ha risolto tutto. -11kg in 3 mesi.", photo: "/images/zempbio/UOMO/uomo536429.jpg" },
     { name: "Rosanna G.", age: "30 anni", text: "Le mie amiche mi chiedono cosa ho fatto al viso. Sembro ringiovanita perché ho perso peso in modo sano.", photo: "/images/zempbio/donna/donna3245.jpg" },
     { name: "Vincenzo L.", age: "55 anni", text: "Mangio porzioni normali e sono soddisfatto. La mia pressione è migliorata. Consigliatissimo per chi ha superato i 50.", photo: "/images/zempbio/UOMO/uomo58297.jpg" },
-    { name: "Adele P.", age: "35 anni", text: "Non ci credevo, ma la formula concentrata fa la differenza. Ho provato altre pillole e non facevano nulla. Questo funziona.", photo: "/images/zempbio/donna/donna4578.jpg" },
+    { name: "Adele P.", age: "35 anni", text: "Non ci credevo, ma i 400mg fanno la differenza. Ho provato pillole da 100mg e non facevano nulla. Questo funziona.", photo: "/images/zempbio/donna/donna4578.jpg" },
     { name: "Marco V.", age: "38 anni", text: "Soddisfatto al 100%. Il pacco è arrivato anonimo e ho pagato in contanti. -6kg nelle prime due settimane.", photo: "/images/zempbio/UOMO/uomo235489.jpg" },
     { name: "Silvana M.", age: "33 anni", text: "Avevo sempre fame di dolci. Ora il mio cervello non li chiede più. Incredibile come agisce sulla mente.", photo: "/images/zempbio/donna/donna5479y.jpg" },
     { name: "Giorgio B.", age: "34 anni", text: "La scienza dietro ZEMPBIO™ è solida. Si sente che non è robetta da supermercato. Autorità e Risultati.", photo: "/images/zempbio/UOMO/uomo235897.jpg" }
@@ -314,7 +314,7 @@ const App: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 text-center lg:text-left">
               <div className="bg-blue-600/40 text-blue-200 border border-blue-500/50 inline-block px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase mb-8 tracking-wide">
-                Protocollo ZEMPBIO™ Complex Avanzato
+                Protocollo ZEMPBIO™ Complex 400mg
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight uppercase">
                 Smetti di essere <br/> <span className="text-blue-400 underline decoration-blue-400/50">Schiavo</span> della Fame
@@ -425,7 +425,7 @@ const App: React.FC = () => {
 
             {/* Comparison Rows */}
             {[
-              { label: "Formula", zempbio: "Complex Avanzato", competitor: "Base" },
+              { label: "Concentrazione", zempbio: "400mg", competitor: "100-150mg" },
               { label: "Tempo Effetto", zempbio: "18 min", competitor: "2-3 ore" },
               { label: "Costo al Giorno", zempbio: "€0,84", competitor: "€2.50+" },
               { label: "Blocca Fame Nervosa", zempbio: "check", competitor: "x" },
@@ -596,7 +596,7 @@ const App: React.FC = () => {
                   </div>
 
                   <div className="space-y-3 md:space-y-4 mb-6 md:mb-10 text-xs md:text-base font-bold uppercase">
-                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> 120 Compresse Complex Avanzato</div>
+                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> 120 Compresse Complex 400mg</div>
                      <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> Spedizione Express 24h Gratuita</div>
                      <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> Pagamento sicuro al corriere</div>
                   </div>
@@ -691,7 +691,7 @@ const App: React.FC = () => {
 
           <div className="space-y-6">
             {[
-              { q: "ZEMPBIO™ è uguale alle iniezioni chimiche?", a: "No, ZEMPBIO™ è l'alternativa naturale 'bio-hackerata'. Mentre i farmaci usano molecole sintetiche con gravi effetti collaterali, noi usiamo il Complex Avanzato che imita la stessa bio-chimica in modo sicuro." },
+              { q: "ZEMPBIO™ è uguale alle iniezioni chimiche?", a: "No, ZEMPBIO™ è l'alternativa naturale 'bio-hackerata'. Mentre i farmaci usano molecole sintetiche con gravi effetti collaterali, noi usiamo il Complex 400mg che imita la stessa bio-chimica in modo sicuro." },
               { q: "Funziona davvero se ho superato i 50 anni?", a: "SÌ. Anzi, ZEMPBIO™ è progettato specificamente per corpi con metabolismo basale rallentato. È l'unico che agisce sulla resistenza alla Leptina tipica dell'età adulta." },
               { q: "Quando vedrò i primi risultati?", a: "La riduzione della fame è immediata (primi 20 minuti). I primi cambiamenti visivi allo specchio e sulla bilancia avvengono solitamente tra il 5° e il 7° giorno di trattamento costante." },
               { q: "Cosa succede se non funziona su di me?", a: "Ti offriamo una Garanzia 'Soddisfatti o Rimborsati' di 60 giorni. Se non perdi peso o non senti sparire la fame, ti restituiamo ogni centesimo. Non vogliamo i tuoi soldi se non otteniamo risultati." },
