@@ -117,6 +117,78 @@ const MetabolicAnalyzer = ({ onResult }: { onResult: (res: string) => void }) =>
   );
 };
 
+// --- Sales Popup Component ---
+const salesData = [
+  { name: "Maria G.", city: "Frosinone" },
+  { name: "Giuseppe T.", city: "Avellino" },
+  { name: "Anna R.", city: "Viterbo" },
+  { name: "Franco M.", city: "Terni" },
+  { name: "Lucia P.", city: "Isernia" },
+  { name: "Roberto C.", city: "Rieti" },
+  { name: "Teresa B.", city: "Matera" },
+  { name: "Giovanni L.", city: "Caltanissetta" },
+  { name: "Carmela S.", city: "Enna" },
+  { name: "Antonio D.", city: "Campobasso" },
+  { name: "Rosa F.", city: "Benevento" },
+  { name: "Salvatore N.", city: "Agrigento" },
+  { name: "Concetta V.", city: "Nuoro" },
+  { name: "Michele A.", city: "Oristano" },
+  { name: "Giuseppina E.", city: "Crotone" },
+  { name: "Pasquale I.", city: "Vibo Valentia" },
+  { name: "Filomena O.", city: "Lodi" },
+  { name: "Domenico U.", city: "Rovigo" },
+  { name: "Assunta Z.", city: "Biella" },
+  { name: "Vincenzo H.", city: "Verbania" },
+  { name: "Antonietta K.", city: "Sondrio" },
+  { name: "Raffaele J.", city: "Gorizia" },
+  { name: "Addolorata W.", city: "Belluno" },
+  { name: "Carmine Q.", city: "Ascoli Piceno" },
+  { name: "Immacolata Y.", city: "Fermo" },
+  { name: "Nicola X.", city: "Macerata" },
+];
+
+const SalesPopup = () => {
+  const [visible, setVisible] = useState(false);
+  const [currentSale, setCurrentSale] = useState(salesData[0]);
+
+  useEffect(() => {
+    const showPopup = () => {
+      const randomIndex = Math.floor(Math.random() * salesData.length);
+      setCurrentSale(salesData[randomIndex]);
+      setVisible(true);
+      setTimeout(() => setVisible(false), 4000);
+    };
+
+    const intervals = [10000, 14000, 20000];
+    let currentInterval = 0;
+
+    const scheduleNext = () => {
+      setTimeout(() => {
+        showPopup();
+        currentInterval = (currentInterval + 1) % intervals.length;
+        scheduleNext();
+      }, intervals[currentInterval]);
+    };
+
+    setTimeout(showPopup, 5000);
+    scheduleNext();
+  }, []);
+
+  return (
+    <div className={`fixed bottom-24 md:bottom-8 left-4 z-50 transition-all duration-500 ${visible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
+      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 flex items-center gap-3 max-w-[300px]">
+        <div className="bg-emerald-100 p-2 rounded-full">
+          <CheckCircle2 className="text-emerald-600" size={20} />
+        </div>
+        <div>
+          <p className="text-xs font-black text-slate-900">{currentSale.name} da {currentSale.city}</p>
+          <p className="text-[10px] text-slate-500">ha appena ordinato ZEMPBIO™</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Main Page Component ---
 
 const App: React.FC = () => {
@@ -151,6 +223,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
       <Navbar />
+      <SalesPopup />
 
       {/* Scarcity / Urgency Top Bar */}
       <div className="bg-red-700 text-white text-[10px] md:text-xs font-black py-2.5 text-center uppercase tracking-tighter mt-14 sticky top-14 z-40 shadow-xl flex items-center justify-center gap-2">
@@ -159,10 +232,10 @@ const App: React.FC = () => {
       </div>
 
       {/* Hero Section */}
-      <header className="px-4 pt-12 pb-24 gradient-bg text-white relative">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none overflow-hidden">
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-400 rounded-full blur-[100px]"></div>
-          <div className="absolute top-1/2 -right-24 w-96 h-96 bg-emerald-400 rounded-full blur-[100px]"></div>
+      <header className="px-4 pt-12 pb-24 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white relative">
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none overflow-hidden">
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500 rounded-full blur-[100px]"></div>
+          <div className="absolute top-1/2 -right-24 w-96 h-96 bg-emerald-500 rounded-full blur-[100px]"></div>
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
@@ -355,53 +428,53 @@ const App: React.FC = () => {
       </section>
 
       {/* Main Offer & Order Form */}
-      <section id="order" className="py-24 px-4 bg-slate-900 text-white relative">
+      <section id="order" className="py-16 md:py-24 px-4 bg-slate-900 text-white relative overflow-hidden">
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-20">
-             <h2 className="text-4xl md:text-7xl font-black italic uppercase mb-4 tracking-tighter">Scegli il Tuo Pacchetto</h2>
-             <p className="text-slate-400 text-xl font-bold uppercase tracking-widest italic">Attiva il tuo protocollo 1000mg oggi stesso</p>
+          <div className="text-center mb-12 md:mb-20">
+             <h2 className="text-3xl md:text-7xl font-black italic uppercase mb-4 tracking-tighter">Scegli il Tuo Pacchetto</h2>
+             <p className="text-slate-400 text-sm md:text-xl font-bold uppercase tracking-widest italic">Attiva il tuo protocollo 1000mg oggi stesso</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
             {/* The Specific Offer: 2x49.99 */}
-            <div className="space-y-6">
-               <div className="bg-blue-600 p-8 md:p-12 rounded-[3rem] border-4 border-blue-400 shadow-3xl relative overflow-hidden group">
+            <div className="space-y-4 md:space-y-6">
+               <div className="bg-blue-600 p-5 md:p-12 rounded-[2rem] md:rounded-[3rem] border-4 border-blue-400 shadow-3xl relative overflow-hidden group">
                   <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-[80px]"></div>
-                  <div className="flex justify-between items-start mb-8">
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6 md:mb-8">
                      <div>
-                        <h3 className="text-4xl font-black italic uppercase leading-none">Protocollo <br/> Bipacco 2x</h3>
-                        <p className="text-xs font-black text-blue-100 uppercase mt-2 italic tracking-widest">Trattamento di 60 Giorni (120 Compresse)</p>
+                        <h3 className="text-2xl md:text-4xl font-black italic uppercase leading-none">Protocollo Bipacco 2x</h3>
+                        <p className="text-[10px] md:text-xs font-black text-blue-100 uppercase mt-2 italic tracking-widest">Trattamento di 60 Giorni (120 Compresse)</p>
                      </div>
-                     <div className="bg-white text-blue-600 px-5 py-2 rounded-2xl font-black text-[10px] uppercase italic animate-pulse shadow-lg">
+                     <div className="bg-white text-blue-600 px-4 py-1.5 md:px-5 md:py-2 rounded-xl md:rounded-2xl font-black text-[9px] md:text-[10px] uppercase italic animate-pulse shadow-lg whitespace-nowrap">
                         Best Seller
                      </div>
                   </div>
-                  
-                  <div className="flex items-end gap-3 mb-10">
-                     <div className="text-7xl font-black leading-none italic tracking-tighter">€49,99</div>
-                     <div className="text-2xl font-bold text-blue-200 line-through mb-1">€99,98</div>
-                     <div className="text-sm font-black text-emerald-300 uppercase mb-2 italic">/ cad.</div>
+
+                  <div className="flex flex-wrap items-end gap-2 md:gap-3 mb-6 md:mb-10">
+                     <div className="text-5xl md:text-7xl font-black leading-none italic tracking-tighter">€49,99</div>
+                     <div className="text-lg md:text-2xl font-bold text-blue-200 line-through mb-1">€99,98</div>
+                     <div className="text-xs md:text-sm font-black text-emerald-300 uppercase mb-2 italic">/ cad.</div>
                   </div>
 
-                  <div className="space-y-4 mb-10 text-sm md:text-base font-black italic uppercase">
-                     <div className="flex items-center gap-3"><CheckCircle2 className="text-emerald-300" size={22}/> 120 Compresse Complex 1000mg</div>
-                     <div className="flex items-center gap-3"><CheckCircle2 className="text-emerald-300" size={22}/> Spedizione Express 24h Gratuita</div>
-                     <div className="flex items-center gap-3"><CheckCircle2 className="text-emerald-300" size={22}/> Pagamento sicuro al corriere</div>
+                  <div className="space-y-3 md:space-y-4 mb-6 md:mb-10 text-xs md:text-base font-black italic uppercase">
+                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> 120 Compresse Complex 1000mg</div>
+                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> Spedizione Express 24h Gratuita</div>
+                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> Pagamento sicuro al corriere</div>
                   </div>
 
-                  <div className="bg-black/20 p-5 rounded-3xl border border-white/10 text-center">
-                     <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-200">Totale Ordine: €99,98 (Nessun costo nascosto)</p>
+                  <div className="bg-black/20 p-4 md:p-5 rounded-2xl md:rounded-3xl border border-white/10 text-center">
+                     <p className="text-[10px] md:text-xs font-black uppercase tracking-wider md:tracking-[0.2em] text-blue-200">Totale Ordine: €99,98 (Nessun costo nascosto)</p>
                   </div>
                </div>
 
-               <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-slate-800 p-8 rounded-[2rem] border border-slate-700 text-center group hover:border-blue-500 transition-all">
-                     <Truck size={32} className="mx-auto text-blue-400 mb-3 group-hover:scale-110 transition-transform" />
-                     <p className="text-[10px] font-black uppercase tracking-widest">Consegna 0€</p>
+               <div className="grid grid-cols-2 gap-3 md:gap-6">
+                  <div className="bg-slate-800 p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-slate-700 text-center group hover:border-blue-500 transition-all">
+                     <Truck size={28} className="mx-auto text-blue-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform" />
+                     <p className="text-[9px] md:text-[10px] font-black uppercase tracking-wider md:tracking-widest">Consegna 0€</p>
                   </div>
-                  <div className="bg-slate-800 p-8 rounded-[2rem] border border-slate-700 text-center group hover:border-emerald-500 transition-all">
-                     <Award size={32} className="mx-auto text-emerald-400 mb-3 group-hover:scale-110 transition-transform" />
-                     <p className="text-[10px] font-black uppercase tracking-widest">Garanzia 60gg</p>
+                  <div className="bg-slate-800 p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-slate-700 text-center group hover:border-emerald-500 transition-all">
+                     <Award size={28} className="mx-auto text-emerald-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform" />
+                     <p className="text-[9px] md:text-[10px] font-black uppercase tracking-wider md:tracking-widest">Garanzia 60gg</p>
                   </div>
                </div>
             </div>
