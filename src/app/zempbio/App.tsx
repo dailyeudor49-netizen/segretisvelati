@@ -113,12 +113,30 @@ const MetabolicAnalyzer = ({ onResult }: { onResult: (res: string) => void }) =>
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 md:p-10 border border-blue-200 text-gray-900 relative">
+    <div className="bg-white rounded-xl shadow-lg p-6 md:p-10 border-2 border-blue-300 text-gray-900 relative ring-4 ring-blue-100 ring-opacity-50">
+      {/* Badge GRATUITO */}
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase shadow-md flex items-center gap-1 animate-pulse">
+        <Zap size={12} /> Test Gratuito
+      </div>
+
+      {/* Icona microscope */}
       <div className="absolute -top-4 -right-4 bg-blue-600 text-white p-3 rounded-lg shadow-lg hidden md:block">
         <Microscope size={24} />
       </div>
-      <h3 className="text-2xl font-bold mb-2 uppercase text-center">Analizzatore Bio-Metabolico AI</h3>
-      <p className="text-[10px] text-gray-500 text-center mb-8 font-bold uppercase tracking-wide">Scansione BMI + Resistenza Leptina v5.0</p>
+
+      {/* Hook emotivo */}
+      <div className="text-center mb-4 mt-2">
+        <p className="text-red-600 font-bold text-sm md:text-base">⚠️ Scopri in 30 secondi perché le diete non funzionano su di te</p>
+      </div>
+
+      <h3 className="text-xl md:text-2xl font-bold mb-2 uppercase text-center">Analizzatore Bio-Metabolico AI</h3>
+      <p className="text-[10px] text-gray-500 text-center mb-2 font-bold uppercase tracking-wide">Scansione BMI + Resistenza Leptina v5.0</p>
+
+      {/* Counter sociale */}
+      <div className="flex items-center justify-center gap-2 mb-6 text-gray-600">
+        <Users size={14} />
+        <p className="text-[11px] font-medium"><span className="font-bold text-blue-600">2.847</span> persone hanno fatto il test oggi</p>
+      </div>
 
       {!localResult ? (
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -141,9 +159,13 @@ const MetabolicAnalyzer = ({ onResult }: { onResult: (res: string) => void }) =>
             <input type="range" min="1" max="10" className="w-full accent-blue-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" value={formData.hunger} onChange={(e) => setFormData({...formData, hunger: e.target.value})} />
             <div className="flex justify-between text-[10px] font-bold text-gray-500"><span>CONTROLLATA</span><span>INFERNALE</span></div>
           </div>
-          <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-5 rounded-lg font-bold text-lg uppercase shadow-md hover:bg-blue-700 hover:shadow-lg transition-all flex items-center justify-center gap-3">
-            {loading ? <RefreshCw className="animate-spin" /> : <>Avvia Diagnosi AI <ArrowRight size={20}/></>}
+          <button type="submit" disabled={loading} className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-5 rounded-lg font-bold text-lg uppercase shadow-lg hover:from-blue-700 hover:to-blue-800 hover:shadow-xl transition-all flex items-center justify-center gap-3 relative overflow-hidden group">
+            <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></span>
+            {loading ? <RefreshCw className="animate-spin" /> : <>🔬 Scopri il Tuo Blocco Metabolico <ArrowRight size={20}/></>}
           </button>
+          <p className="text-center text-[10px] text-gray-400 mt-3 flex items-center justify-center gap-1">
+            <Lock size={10} /> Analisi riservata • Nessun dato salvato
+          </p>
         </form>
       ) : (
         <div>
