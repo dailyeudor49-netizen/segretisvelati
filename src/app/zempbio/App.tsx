@@ -427,21 +427,27 @@ const App: React.FC = () => {
                  name: "Maria Concetta R.",
                  age: "64 anni",
                  text: "Ho provato di tutto, ma la fame nervosa la sera era più forte di me. Dopo 3 giorni di ZEMPBIO™ ho sentito come se qualcuno avesse spento un interruttore. Ho perso 12kg in due mesi e i miei dolori alle ginocchia sono spariti. Lo consiglio a tutte le mie amiche!",
+                 photoBefore: "/images/zempbio/DONNA PRIMA.jpeg",
+                 photoAfter: "/images/zempbio/DONNA DOPO.jpeg",
                },
                {
                  name: "Roberto T.",
                  age: "58 anni",
                  text: "Il mio medico mi aveva avvertito: o dimagrisco o iniziano i problemi seri. Avevo paura delle punture di cui parlano tutti, costano troppo. ZEMPBIO™ costa un decimo e funziona alla grande. La pancia è sparita e ho ripreso a fare le passeggiate in montagna.",
+                 photoBefore: "/images/zempbio/UOMO PRIMA.jpeg",
+                 photoAfter: "/images/zempbio/UOMO DOPO.jpeg",
                }
              ].map((review, idx) => (
                <div key={idx} className="bg-slate-50 p-8 md:p-12 rounded-[3rem] border-2 border-slate-100 shadow-xl flex flex-col md:flex-row gap-12 items-center text-left">
                  <div className="w-full md:w-1/3 shrink-0">
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       <div className="aspect-[3/4] bg-slate-200 rounded-3xl overflow-hidden border-2 border-white shadow-md relative">
-                         <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-slate-400 uppercase italic">Foto Prima</div>
+                         <img src={review.photoBefore} alt={`${review.name} Prima`} className="w-full h-full object-cover" />
+                         <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[9px] font-bold uppercase px-2 py-1 rounded">Prima</div>
                       </div>
                       <div className="aspect-[3/4] bg-slate-200 rounded-3xl overflow-hidden border-4 border-emerald-400 shadow-md relative">
-                         <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-slate-400 uppercase italic">Foto Dopo</div>
+                         <img src={review.photoAfter} alt={`${review.name} Dopo`} className="w-full h-full object-cover" />
+                         <div className="absolute bottom-2 left-2 bg-emerald-500 text-white text-[9px] font-bold uppercase px-2 py-1 rounded">Dopo</div>
                       </div>
                     </div>
                     <div>
