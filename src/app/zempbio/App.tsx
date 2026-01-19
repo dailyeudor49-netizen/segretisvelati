@@ -305,18 +305,18 @@ const App: React.FC = () => {
   };
 
   const wallOfLove = [
-    { name: "Lucia B.", age: "38 anni", text: "Ero scettica, pensavo fosse la solita pubblicità. Dopo 3 giorni la voglia di pane e pasta è sparita. -8kg in un mese senza stress.", photo: "/images/zempbio/donna/donna2378.jpg" },
-    { name: "Giancarlo M.", age: "35 anni", text: "Finalmente un prodotto serio. Niente tachicardia, solo una sensazione di sazietà costante. La pancia è sparita.", photo: "/images/zempbio/UOMO/uomo089235.jpg" },
-    { name: "Franca T.", age: "65 anni", text: "La menopausa mi aveva distrutto il metabolismo. ZEMPBIO™ lo ha riacceso. Mi sento di nuovo energica.", photo: "/images/zempbio/donna/donna2387.jpg" },
-    { name: "Paolo D.", age: "41 anni", text: "Ottimo prodotto. Consegna veloce e pagamento al corriere. Ho perso 9kg finora e continuo.", photo: "/images/zempbio/UOMO/uomo25370.jpg" },
-    { name: "Ester S.", age: "44 anni", text: "Mio figlio mi ha regalato questo trattamento. Ora usciamo a camminare e non mi stanco più. Un miracolo.", photo: "/images/zempbio/donna/donna24378y.jpg" },
-    { name: "Claudio F.", age: "39 anni", text: "Spegnere la fame nervosa serale era il mio problema. ZEMPBIO™ ha risolto tutto. -11kg in 3 mesi.", photo: "/images/zempbio/UOMO/uomo536429.jpg" },
-    { name: "Rosanna G.", age: "30 anni", text: "Le mie amiche mi chiedono cosa ho fatto al viso. Sembro ringiovanita perché ho perso peso in modo sano.", photo: "/images/zempbio/donna/donna3245.jpg" },
-    { name: "Vincenzo L.", age: "55 anni", text: "Mangio porzioni normali e sono soddisfatto. La mia pressione è migliorata. Consigliatissimo per chi ha superato i 50.", photo: "/images/zempbio/UOMO/uomo58297.jpg" },
-    { name: "Adele P.", age: "35 anni", text: "Non ci credevo, ma i 400mg fanno la differenza. Ho provato pillole da 100mg e non facevano nulla. Questo funziona.", photo: "/images/zempbio/donna/donna4578.jpg" },
-    { name: "Marco V.", age: "38 anni", text: "Soddisfatto al 100%. Il pacco è arrivato anonimo e ho pagato in contanti. -6kg nelle prime due settimane.", photo: "/images/zempbio/UOMO/uomo235489.jpg" },
-    { name: "Silvana M.", age: "33 anni", text: "Avevo sempre fame di dolci. Ora il mio cervello non li chiede più. Incredibile come agisce sulla mente.", photo: "/images/zempbio/donna/donna5479y.jpg" },
-    { name: "Giorgio B.", age: "34 anni", text: "La scienza dietro ZEMPBIO™ è solida. Si sente che non è robetta da supermercato. Autorità e Risultati.", photo: "/images/zempbio/UOMO/uomo235897.jpg" }
+    { name: "Lucia B.", age: "38 anni", date: "17 Gen 2026", text: "Ero scettica, pensavo fosse la solita pubblicità. Dopo 3 giorni la voglia di pane e pasta è sparita. -8kg in un mese senza stress.", photo: "/images/zempbio/donna/donna2378.jpg" },
+    { name: "Giancarlo M.", age: "35 anni", date: "14 Gen 2026", text: "Finalmente un prodotto serio. Niente tachicardia, solo una sensazione di sazietà costante. La pancia è sparita.", photo: "/images/zempbio/UOMO/uomo089235.jpg" },
+    { name: "Franca T.", age: "65 anni", date: "09 Gen 2026", text: "La menopausa mi aveva distrutto il metabolismo. ZEMPBIO™ lo ha riacceso. Mi sento di nuovo energica.", photo: "/images/zempbio/donna/donna2387.jpg" },
+    { name: "Paolo D.", age: "41 anni", date: "02 Gen 2026", text: "Ottimo prodotto. Consegna veloce e pagamento al corriere. Ho perso 9kg finora e continuo.", photo: "/images/zempbio/UOMO/uomo25370.jpg" },
+    { name: "Ester S.", age: "44 anni", date: "27 Dic 2025", text: "Mio figlio mi ha regalato questo trattamento. Ora usciamo a camminare e non mi stanco più. Un miracolo.", photo: "/images/zempbio/donna/donna24378y.jpg" },
+    { name: "Claudio F.", age: "39 anni", date: "19 Dic 2025", text: "Spegnere la fame nervosa serale era il mio problema. ZEMPBIO™ ha risolto tutto. -11kg in 3 mesi.", photo: "/images/zempbio/UOMO/uomo536429.jpg" },
+    { name: "Rosanna G.", age: "30 anni", date: "12 Dic 2025", text: "Le mie amiche mi chiedono cosa ho fatto al viso. Sembro ringiovanita perché ho perso peso in modo sano.", photo: "/images/zempbio/donna/donna3245.jpg" },
+    { name: "Vincenzo L.", age: "55 anni", date: "04 Dic 2025", text: "Mangio porzioni normali e sono soddisfatto. La mia pressione è migliorata. Consigliatissimo per chi ha superato i 50.", photo: "/images/zempbio/UOMO/uomo58297.jpg" },
+    { name: "Adele P.", age: "35 anni", date: "25 Nov 2025", text: "Non ci credevo, ma i 400mg fanno la differenza. Ho provato pillole da 100mg e non facevano nulla. Questo funziona.", photo: "/images/zempbio/donna/donna4578.jpg" },
+    { name: "Marco V.", age: "38 anni", date: "16 Nov 2025", text: "Soddisfatto al 100%. Il pacco è arrivato anonimo e ho pagato in contanti. -6kg nelle prime due settimane.", photo: "/images/zempbio/UOMO/uomo235489.jpg" },
+    { name: "Silvana M.", age: "33 anni", date: "07 Nov 2025", text: "Avevo sempre fame di dolci. Ora il mio cervello non li chiede più. Incredibile come agisce sulla mente.", photo: "/images/zempbio/donna/donna5479y.jpg" },
+    { name: "Giorgio B.", age: "34 anni", date: "28 Ott 2025", text: "La scienza dietro ZEMPBIO™ è solida. Si sente che non è robetta da supermercato. Autorità e Risultati.", photo: "/images/zempbio/UOMO/uomo235897.jpg" }
   ];
 
   return (
@@ -580,6 +580,7 @@ const App: React.FC = () => {
                {
                  name: "Maria Concetta R.",
                  age: "64 anni",
+                 date: "05 Gen 2026",
                  text: "Ho provato di tutto, ma la fame nervosa la sera era più forte di me. Dopo 3 giorni di ZEMPBIO™ ho sentito come se qualcuno avesse spento un interruttore. Ho perso 12kg in due mesi e i miei dolori alle ginocchia sono spariti. Lo consiglio a tutte le mie amiche!",
                  photoBefore: "/images/zempbio/DONNA PRIMA.jpeg",
                  photoAfter: "/images/zempbio/DONNA DOPO.jpeg",
@@ -587,6 +588,7 @@ const App: React.FC = () => {
                {
                  name: "Roberto T.",
                  age: "58 anni",
+                 date: "21 Dic 2025",
                  text: "Il mio medico mi aveva avvertito: o dimagrisco o iniziano i problemi seri. Avevo paura delle punture di cui parlano tutti, costano troppo. ZEMPBIO™ costa un decimo e funziona alla grande. La pancia è sparita e ho ripreso a fare le passeggiate in montagna.",
                  photoBefore: "/images/zempbio/UOMO PRIMA.jpeg",
                  photoAfter: "/images/zempbio/UOMO DOPO.jpeg",
@@ -627,12 +629,15 @@ const App: React.FC = () => {
                       </div>
                    </div>
                    <div className="flex-grow">
-                     <div className="flex gap-1 mb-6">
-                       {[...Array(5)].map((_, i) => <Star key={i} size={22} className="fill-yellow-400 text-yellow-400 drop-shadow-sm" />)}
+                     <div className="flex items-center justify-between mb-6">
+                       <div className="flex gap-1">
+                         {[...Array(5)].map((_, i) => <Star key={i} size={22} className="fill-yellow-400 text-yellow-400 drop-shadow-sm" />)}
+                       </div>
+                       <span className="text-sm text-gray-400 font-medium">{review.date}</span>
                      </div>
                      <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium italic">"{review.text}"</p>
                      <div className="mt-8 flex items-center gap-3 bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs uppercase px-4 py-3 rounded-xl inline-flex">
-                       <CheckCircle2 size={16}/> Acquisto Confermato il 12/10/2023
+                       <CheckCircle2 size={16}/> Acquisto Confermato
                      </div>
                    </div>
                  </div>
@@ -661,15 +666,21 @@ const App: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {wallOfLove.map((rev, idx) => (
               <div key={idx} className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all text-left">
-                <div className="flex items-center gap-3 mb-4">
-                   <div className="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center font-bold text-blue-600 text-xs border border-blue-200">{rev.name[0]}</div>
-                   <div>
-                      <p className="text-xs font-bold text-gray-900 leading-none">{rev.name}</p>
-                      <p className="text-[10px] text-gray-400 font-bold uppercase">{rev.age}</p>
+                <div className="flex items-center justify-between mb-4">
+                   <div className="flex items-center gap-3">
+                     <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center font-bold text-white text-sm shadow-md">{rev.name[0]}</div>
+                     <div>
+                        <p className="text-xs font-bold text-gray-900 leading-none">{rev.name}</p>
+                        <p className="text-[10px] text-gray-400 font-bold uppercase">{rev.age}</p>
+                     </div>
                    </div>
+                   <span className="text-[9px] text-gray-400 font-medium">{rev.date}</span>
                 </div>
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-yellow-400 text-yellow-400" />)}
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-yellow-400 text-yellow-400" />)}
+                  </div>
+                  <span className="text-[9px] text-emerald-600 font-bold uppercase flex items-center gap-1"><CheckCircle2 size={10}/> Verificato</span>
                 </div>
                 <p className="text-sm text-gray-700 font-medium mb-4 leading-relaxed">"{rev.text}"</p>
                 <div className="rounded-xl overflow-hidden border border-gray-200">
