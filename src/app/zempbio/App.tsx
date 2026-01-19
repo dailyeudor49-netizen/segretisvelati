@@ -350,8 +350,8 @@ const App: React.FC = () => {
             <div className="relative flex items-center justify-center">
               {/* Due barattoli sovrapposti */}
               <div className="relative">
-                <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle 1" className="rounded-xl shadow-lg border border-gray-200 relative z-10 max-w-[180px] md:max-w-[220px] -rotate-6" />
-                <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle 2" className="rounded-xl shadow-xl border border-gray-200 absolute top-4 left-16 md:left-20 z-20 max-w-[180px] md:max-w-[220px] rotate-6" />
+                <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Bottle 1" className="rounded-xl shadow-lg border border-gray-200 relative z-10 max-w-[180px] md:max-w-[220px] -rotate-6" />
+                <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Bottle 2" className="rounded-xl shadow-xl border border-gray-200 absolute top-4 left-16 md:left-20 z-20 max-w-[180px] md:max-w-[220px] rotate-6" />
                 {/* Badge x2 */}
                 <div className="absolute -top-4 -right-4 md:-right-8 bg-red-600 text-white w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center z-30 shadow-lg border-2 border-red-700">
                   <span className="text-2xl md:text-3xl font-bold">x2</span>
@@ -565,8 +565,8 @@ const App: React.FC = () => {
           {/* Mobile-first 2x Product Display */}
           <div className="flex items-center justify-center gap-4 mb-10 md:mb-16 bg-slate-700 py-6 px-4 rounded-xl border border-slate-600">
             <div className="flex items-center">
-              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -rotate-6 rounded-lg shadow-lg" />
-              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -ml-4 rotate-6 rounded-lg shadow-lg" />
+              <img src="/images/zempbio/400mg.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -rotate-6 rounded-lg shadow-lg" />
+              <img src="/images/zempbio/400mg.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -ml-4 rotate-6 rounded-lg shadow-lg" />
             </div>
             <div className="text-center">
               <div className="bg-emerald-600 text-white px-3 py-1 rounded-lg font-bold text-sm md:text-base mb-2 inline-block border border-emerald-700">1+1 GRATIS</div>
