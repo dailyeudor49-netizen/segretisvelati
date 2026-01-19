@@ -341,11 +341,20 @@ const App: React.FC = () => {
       <section className="py-24 px-4 bg-white relative overflow-hidden">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative group">
-              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle" className="rounded-[3rem] shadow-2xl relative z-10 max-w-[280px] md:max-w-[350px] mx-auto" />
-              <div className="absolute -bottom-10 -right-10 bg-blue-600 text-white p-8 rounded-[2rem] shadow-2xl z-20 hidden md:block border-4 border-white max-w-[220px]">
-                 <p className="text-4xl font-black italic leading-none mb-2">1000<span className="text-xs uppercase ml-1">mg</span></p>
-                 <p className="text-[10px] font-black uppercase leading-none tracking-tighter opacity-80">Dosaggio Medico per Compressa</p>
+            <div className="relative group flex items-center justify-center">
+              {/* Due barattoli sovrapposti */}
+              <div className="relative">
+                <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle 1" className="rounded-[2rem] shadow-xl relative z-10 max-w-[180px] md:max-w-[220px] -rotate-6" />
+                <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle 2" className="rounded-[2rem] shadow-2xl absolute top-4 left-16 md:left-20 z-20 max-w-[180px] md:max-w-[220px] rotate-6" />
+                {/* Badge x2 */}
+                <div className="absolute -top-4 -right-4 md:-right-8 bg-red-600 text-white w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center z-30 shadow-xl border-4 border-white">
+                  <span className="text-2xl md:text-3xl font-black">x2</span>
+                </div>
+              </div>
+              {/* Prezzo e info */}
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-30 border-4 border-white text-center whitespace-nowrap">
+                 <p className="text-3xl md:text-4xl font-black italic leading-none">€49,99</p>
+                 <p className="text-[10px] font-black uppercase tracking-wider opacity-80 mt-1">2 Confezioni | 120 Compresse</p>
               </div>
             </div>
             <div className="space-y-8">
