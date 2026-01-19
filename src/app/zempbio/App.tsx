@@ -391,45 +391,123 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="py-24 px-4 bg-slate-800 text-white border-y border-slate-700">
-        <div className="container mx-auto max-w-4xl">
-           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 uppercase leading-none">
-             ZEMPBIO™ <span className="text-blue-400 underline decoration-blue-400/30">VS</span> PRODOTTI COMUNI
-           </h2>
-           <div className="bg-slate-700 rounded-xl shadow-xl overflow-hidden border border-slate-600">
-             <table className="w-full text-left border-collapse">
-               <thead>
-                 <tr className="bg-slate-900">
-                   <th className="p-6 text-[10px] uppercase tracking-wide opacity-50">Caratteristica Tecniche</th>
-                   <th className="p-6 text-sm uppercase bg-blue-600 text-center font-bold">ZEMPBIO™</th>
-                   <th className="p-6 text-[10px] uppercase text-center opacity-30">Pillole Farmacia</th>
-                 </tr>
-               </thead>
-               <tbody className="text-sm md:text-base">
-                 <tr className="border-b border-slate-600">
-                   <td className="p-6 font-bold">Concentrazione Complex</td>
-                   <td className="p-6 text-blue-300 font-bold text-center">1000mg Reali</td>
-                   <td className="p-6 text-gray-400 text-center">150mg-250mg</td>
-                 </tr>
-                 <tr className="border-b border-slate-600">
-                   <td className="p-6 font-bold">Effetto 'Sazi senza fame'</td>
-                   <td className="p-6 text-center"><CheckCircle2 className="text-emerald-400 mx-auto" size={24} /></td>
-                   <td className="p-6 text-center"><XCircle className="text-red-400 mx-auto" size={24} /></td>
-                 </tr>
-                 <tr className="border-b border-slate-600">
-                   <td className="p-6 font-bold">Costo giornaliero medio</td>
-                   <td className="p-6 text-blue-300 font-bold text-center">€0,84</td>
-                   <td className="p-4 text-gray-400 text-center">€2.50+</td>
-                 </tr>
-                 <tr>
-                   <td className="p-6 font-bold">Sicurezza per over 50</td>
-                   <td className="p-6 text-emerald-400 font-bold text-center uppercase text-xs">Testata e Garantita</td>
-                   <td className="p-4 text-gray-400 text-center">Dubbia</td>
-                 </tr>
-               </tbody>
-             </table>
-           </div>
+      {/* Comparison Section - Modern */}
+      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-20 left-10 text-[200px] font-bold text-white">VS</div>
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <p className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-3">Confronto Onesto</p>
+            <h2 className="text-3xl md:text-5xl font-bold uppercase leading-tight">
+              Perché ZEMPBIO™ <span className="text-emerald-400">vince</span> sempre?
+            </h2>
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">Ecco cosa ci distingue dalle pillole che trovi in farmacia o nei supermercati</p>
+          </div>
+
+          {/* Comparison Cards */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
+
+            {/* ZEMPBIO Card - Winner */}
+            <div className="relative">
+              <div className="absolute -top-3 left-4 bg-emerald-500 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase flex items-center gap-1 shadow-lg z-10">
+                <Award size={12} /> Scelta Vincente
+              </div>
+              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 md:p-8 border-2 border-blue-400 shadow-2xl shadow-blue-500/20 h-full">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-blue-400/30">
+                  <div className="bg-white text-blue-600 p-2 rounded-lg font-bold text-sm">ZB</div>
+                  <h3 className="text-2xl md:text-3xl font-bold">ZEMPBIO™</h3>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    { label: "Concentrazione", value: "1000mg", highlight: "4x più potente", icon: <Zap size={18} /> },
+                    { label: "Tempo effetto", value: "18 minuti", highlight: "Ultra rapido", icon: <Timer size={18} /> },
+                    { label: "Costo giornaliero", value: "€0,84", highlight: "Più economico", icon: <TrendingDown size={18} /> },
+                    { label: "Effetti collaterali", value: "Zero", highlight: "100% naturale", icon: <ShieldCheck size={18} /> },
+                    { label: "Garanzia", value: "60 giorni", highlight: "Soddisfatti o rimborsati", icon: <Award size={18} /> },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+                      <div className="flex items-center gap-3">
+                        <div className="text-blue-200">{item.icon}</div>
+                        <div>
+                          <p className="text-blue-100 text-xs uppercase tracking-wide">{item.label}</p>
+                          <p className="text-white font-bold text-lg">{item.value}</p>
+                        </div>
+                      </div>
+                      <div className="bg-emerald-500 text-white text-[9px] font-bold uppercase px-2 py-1 rounded-lg">
+                        {item.highlight}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-blue-400/30 flex items-center justify-center gap-2 text-emerald-300">
+                  <CheckCircle2 size={20} />
+                  <p className="font-bold uppercase text-sm">La Scelta Intelligente</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Competitors Card - Loser */}
+            <div className="relative">
+              <div className="absolute -top-3 left-4 bg-red-500/80 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase flex items-center gap-1 shadow-lg z-10">
+                <AlertTriangle size={12} /> Da Evitare
+              </div>
+              <div className="bg-slate-700/50 rounded-2xl p-6 md:p-8 border border-slate-600 h-full opacity-80">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-600">
+                  <div className="bg-slate-600 text-slate-400 p-2 rounded-lg font-bold text-sm">?</div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-slate-400">Pillole Comuni</h3>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    { label: "Concentrazione", value: "150-250mg", problem: "Insufficiente", icon: <Zap size={18} /> },
+                    { label: "Tempo effetto", value: "2-3 ore", problem: "Troppo lento", icon: <Timer size={18} /> },
+                    { label: "Costo giornaliero", value: "€2.50+", problem: "Costoso", icon: <TrendingDown size={18} /> },
+                    { label: "Effetti collaterali", value: "Possibili", problem: "Rischio", icon: <ShieldCheck size={18} /> },
+                    { label: "Garanzia", value: "Nessuna", problem: "Zero tutela", icon: <Award size={18} /> },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between bg-slate-800/50 rounded-xl p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="text-slate-500">{item.icon}</div>
+                        <div>
+                          <p className="text-slate-500 text-xs uppercase tracking-wide">{item.label}</p>
+                          <p className="text-slate-400 font-bold text-lg">{item.value}</p>
+                        </div>
+                      </div>
+                      <div className="bg-red-500/20 text-red-400 text-[9px] font-bold uppercase px-2 py-1 rounded-lg border border-red-500/30">
+                        {item.problem}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-slate-600 flex items-center justify-center gap-2 text-red-400">
+                  <XCircle size={20} />
+                  <p className="font-bold uppercase text-sm">Soldi Sprecati</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { number: "4x", label: "Più Concentrato" },
+              { number: "3x", label: "Più Economico" },
+              { number: "98%", label: "Clienti Soddisfatti" },
+              { number: "0", label: "Effetti Collaterali" },
+            ].map((stat, i) => (
+              <div key={i} className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 md:p-6 text-center hover:border-blue-500 transition-all">
+                <p className="text-3xl md:text-4xl font-bold text-blue-400">{stat.number}</p>
+                <p className="text-[10px] md:text-xs text-gray-400 uppercase font-bold mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
