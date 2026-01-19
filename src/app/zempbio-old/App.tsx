@@ -498,9 +498,24 @@ const App: React.FC = () => {
       {/* Main Offer & Order Form */}
       <section id="order" className="py-16 md:py-24 px-4 bg-gray-800 text-white relative overflow-hidden">
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-12 md:mb-20">
+          <div className="text-center mb-8 md:mb-12">
              <h2 className="text-3xl md:text-5xl font-bold uppercase mb-4">Scegli il Tuo Pacchetto</h2>
              <p className="text-gray-400 text-sm md:text-lg font-bold uppercase tracking-wide">Attiva il tuo protocollo 1000mg oggi stesso</p>
+          </div>
+
+          {/* Mobile-first 2x Product Display */}
+          <div className="flex items-center justify-center gap-4 mb-10 md:mb-16 bg-gray-700 py-6 px-4 border-2 border-gray-600">
+            <div className="flex items-center">
+              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -rotate-6 border-2 border-gray-500" />
+              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -ml-4 rotate-6 border-2 border-gray-500" />
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="bg-red-600 text-white px-3 py-2 font-bold text-xl md:text-2xl border-2 border-red-800">x2</div>
+              <div>
+                <p className="text-2xl md:text-4xl font-bold text-white leading-none">€49,99</p>
+                <p className="text-[9px] md:text-xs text-gray-300 font-bold uppercase">a confezione</p>
+              </div>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
