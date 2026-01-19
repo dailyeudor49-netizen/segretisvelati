@@ -272,18 +272,18 @@ const App: React.FC = () => {
   };
 
   const wallOfLove = [
-    { name: "Lucia B.", age: "59 anni", text: "Ero scettica, pensavo fosse la solita pubblicità. Dopo 3 giorni la voglia di pane e pasta è sparita. -8kg in un mese senza stress." },
-    { name: "Giancarlo M.", age: "62 anni", text: "Finalmente un prodotto serio. Niente tachicardia, solo una sensazione di sazietà costante. La pancia è sparita." },
-    { name: "Franca T.", age: "54 anni", text: "La menopausa mi aveva distrutto il metabolismo. ZEMPBIO™ lo ha riacceso. Mi sento di nuovo energica." },
-    { name: "Paolo D.", age: "51 anni", text: "Ottimo prodotto. Consegna veloce e pagamento al corriere. Ho perso 9kg finora e continuo." },
-    { name: "Ester S.", age: "67 anni", text: "Mio figlio mi ha regalato questo trattamento. Ora usciamo a camminare e non mi stanco più. Un miracolo." },
-    { name: "Claudio F.", age: "49 anni", text: "Spegnere la fame nervosa serale era il mio problema. ZEMPBIO™ ha risolto tutto. -11kg in 3 mesi." },
-    { name: "Rosanna G.", age: "61 anni", text: "Le mie amiche mi chiedono cosa ho fatto al viso. Sembro ringiovanita perché ho perso peso in modo sano." },
-    { name: "Vincenzo L.", age: "56 anni", text: "Mangio porzioni normali e sono soddisfatto. La mia pressione è migliorata. Consigliatissimo per chi ha superato i 50." },
-    { name: "Adele P.", age: "60 anni", text: "Non ci credevo, ma i 1000mg fanno la differenza. Ho provato pillole da 200mg e non facevano nulla. Questo funziona." },
-    { name: "Marco V.", age: "55 anni", text: "Soddisfatto al 100%. Il pacco è arrivato anonimo e ho pagato in contanti. -6kg nelle prime due settimane." },
-    { name: "Silvana M.", age: "63 anni", text: "Avevo sempre fame di dolci. Ora il mio cervello non li chiede più. Incredibile come agisce sulla mente." },
-    { name: "Giorgio B.", age: "58 anni", text: "La scienza dietro ZEMPBIO™ è solida. Si sente che non è robetta da supermercato. Autorità e Risultati." }
+    { name: "Lucia B.", age: "59 anni", text: "Ero scettica, pensavo fosse la solita pubblicità. Dopo 3 giorni la voglia di pane e pasta è sparita. -8kg in un mese senza stress.", photo: "/images/zempbio/donna/donna2378.jpg" },
+    { name: "Giancarlo M.", age: "62 anni", text: "Finalmente un prodotto serio. Niente tachicardia, solo una sensazione di sazietà costante. La pancia è sparita.", photo: "/images/zempbio/uomo/uomo089235.jpg" },
+    { name: "Franca T.", age: "54 anni", text: "La menopausa mi aveva distrutto il metabolismo. ZEMPBIO™ lo ha riacceso. Mi sento di nuovo energica.", photo: "/images/zempbio/donna/donna2387.jpg" },
+    { name: "Paolo D.", age: "51 anni", text: "Ottimo prodotto. Consegna veloce e pagamento al corriere. Ho perso 9kg finora e continuo.", photo: "/images/zempbio/uomo/uomo25370.jpg" },
+    { name: "Ester S.", age: "67 anni", text: "Mio figlio mi ha regalato questo trattamento. Ora usciamo a camminare e non mi stanco più. Un miracolo.", photo: "/images/zempbio/donna/donna24378y.jpg" },
+    { name: "Claudio F.", age: "49 anni", text: "Spegnere la fame nervosa serale era il mio problema. ZEMPBIO™ ha risolto tutto. -11kg in 3 mesi.", photo: "/images/zempbio/uomo/uomo536429.jpg" },
+    { name: "Rosanna G.", age: "61 anni", text: "Le mie amiche mi chiedono cosa ho fatto al viso. Sembro ringiovanita perché ho perso peso in modo sano.", photo: "/images/zempbio/donna/donna3245.jpg" },
+    { name: "Vincenzo L.", age: "56 anni", text: "Mangio porzioni normali e sono soddisfatto. La mia pressione è migliorata. Consigliatissimo per chi ha superato i 50.", photo: "/images/zempbio/uomo/uomo58297.jpg" },
+    { name: "Adele P.", age: "60 anni", text: "Non ci credevo, ma i 1000mg fanno la differenza. Ho provato pillole da 200mg e non facevano nulla. Questo funziona.", photo: "/images/zempbio/donna/donna4578.jpg" },
+    { name: "Marco V.", age: "55 anni", text: "Soddisfatto al 100%. Il pacco è arrivato anonimo e ho pagato in contanti. -6kg nelle prime due settimane.", photo: "/images/zempbio/uomo/uomo089235.jpg" },
+    { name: "Silvana M.", age: "63 anni", text: "Avevo sempre fame di dolci. Ora il mio cervello non li chiede più. Incredibile come agisce sulla mente.", photo: "/images/zempbio/donna/donna5479y.jpg" },
+    { name: "Giorgio B.", age: "58 anni", text: "La scienza dietro ZEMPBIO™ è solida. Si sente che non è robetta da supermercato. Autorità e Risultati.", photo: "/images/zempbio/uomo/uomo25370.jpg" }
   ];
 
   return (
@@ -342,7 +342,7 @@ const App: React.FC = () => {
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative group">
-              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle" className="rounded-[3rem] shadow-2xl relative z-10" />
+              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle" className="rounded-[3rem] shadow-2xl relative z-10 max-w-[280px] md:max-w-[350px] mx-auto" />
               <div className="absolute -bottom-10 -right-10 bg-blue-600 text-white p-8 rounded-[2rem] shadow-2xl z-20 hidden md:block border-4 border-white max-w-[220px]">
                  <p className="text-4xl font-black italic leading-none mb-2">1000<span className="text-xs uppercase ml-1">mg</span></p>
                  <p className="text-[10px] font-black uppercase leading-none tracking-tighter opacity-80">Dosaggio Medico per Compressa</p>
@@ -403,7 +403,7 @@ const App: React.FC = () => {
                  </tr>
                  <tr className="border-b border-slate-700/50">
                    <td className="p-6 font-bold italic">Costo giornaliero medio</td>
-                   <td className="p-6 text-blue-400 font-black text-center italic">€1,66</td>
+                   <td className="p-6 text-blue-400 font-black text-center italic">€0,84</td>
                    <td className="p-4 text-slate-500 text-center">€2.50+</td>
                  </tr>
                  <tr>
@@ -481,7 +481,7 @@ const App: React.FC = () => {
                 </div>
                 <p className="text-sm text-slate-700 italic font-medium mb-6 leading-relaxed">"{rev.text}"</p>
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                   <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center font-black text-blue-600 text-xs">{rev.name[0]}</div>
+                   <img src={rev.photo} alt={rev.name} className="w-10 h-10 rounded-full object-cover border-2 border-slate-200" />
                    <div>
                       <p className="text-xs font-black text-slate-900 leading-none">{rev.name}</p>
                       <p className="text-[10px] text-slate-400 font-bold uppercase">{rev.age}</p>
