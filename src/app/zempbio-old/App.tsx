@@ -336,9 +336,10 @@ const App: React.FC = () => {
                 </div>
               </div>
               {/* Prezzo e info */}
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-4 z-30 border-4 border-blue-800 text-center whitespace-nowrap">
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-4 z-30 border-4 border-emerald-800 text-center whitespace-nowrap">
+                 <p className="text-[10px] font-bold uppercase tracking-wide opacity-80">1+1 GRATIS</p>
                  <p className="text-3xl md:text-4xl font-bold leading-none">€49,99</p>
-                 <p className="text-[10px] font-bold uppercase tracking-wide opacity-80 mt-1">2 Confezioni | 120 Compresse</p>
+                 <p className="text-[10px] font-bold uppercase tracking-wide opacity-80 mt-1">TOTALE | 120 Compresse</p>
               </div>
             </div>
             <div className="space-y-8">
@@ -510,10 +511,10 @@ const App: React.FC = () => {
               <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -ml-4 rotate-6 border-2 border-gray-500" />
             </div>
             <div className="flex items-center gap-3">
-              <div className="bg-red-600 text-white px-3 py-2 font-bold text-xl md:text-2xl border-2 border-red-800">x2</div>
+              <div className="bg-emerald-600 text-white px-3 py-2 font-bold text-lg md:text-xl border-2 border-emerald-800 text-center leading-tight">1+1<br/>GRATIS</div>
               <div>
                 <p className="text-2xl md:text-4xl font-bold text-white leading-none">€49,99</p>
-                <p className="text-[9px] md:text-xs text-gray-300 font-bold uppercase">a confezione</p>
+                <p className="text-[9px] md:text-xs text-emerald-400 font-bold uppercase">TOTALE | 120 Compresse</p>
               </div>
             </div>
           </div>
@@ -535,7 +536,7 @@ const App: React.FC = () => {
                   <div className="flex flex-wrap items-end gap-2 md:gap-3 mb-6 md:mb-10">
                      <div className="text-5xl md:text-6xl font-bold leading-none">€49,99</div>
                      <div className="text-lg md:text-xl font-bold text-blue-200 line-through mb-1">€99,98</div>
-                     <div className="text-xs md:text-sm font-bold text-emerald-300 uppercase mb-2">/ cad.</div>
+                     <div className="text-xs md:text-sm font-bold text-emerald-300 uppercase mb-2">TOTALE | 1+1 GRATIS</div>
                   </div>
 
                   <div className="space-y-3 md:space-y-4 mb-6 md:mb-10 text-xs md:text-base font-bold uppercase">
@@ -678,8 +679,8 @@ const App: React.FC = () => {
       {/* Sticky Mobile CTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t-2 border-gray-300 z-50 flex items-center justify-between gap-4">
          <div>
-            <p className="text-[10px] font-bold text-gray-400 uppercase leading-none mb-1">Promo 2 Boccette</p>
-            <p className="text-2xl font-bold text-blue-600 leading-none">€49,99<span className="text-[10px] text-gray-500 uppercase ml-1">/cad</span></p>
+            <p className="text-[10px] font-bold text-emerald-600 uppercase leading-none mb-1">1+1 GRATIS</p>
+            <p className="text-2xl font-bold text-blue-600 leading-none">€49,99<span className="text-[10px] text-gray-500 uppercase ml-1">TOTALE</span></p>
          </div>
          <a href="#order" className="bg-blue-600 text-white px-8 py-4 font-bold text-sm uppercase border-2 border-blue-800 flex-grow text-center">
            Ordina Ora

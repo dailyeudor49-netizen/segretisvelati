@@ -352,9 +352,10 @@ const App: React.FC = () => {
                 </div>
               </div>
               {/* Prezzo e info */}
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-30 border-4 border-white text-center whitespace-nowrap">
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-6 py-4 rounded-2xl shadow-2xl z-30 border-4 border-white text-center whitespace-nowrap">
+                 <p className="text-[10px] font-black uppercase tracking-wider mb-1 text-emerald-100">1+1 GRATIS</p>
                  <p className="text-3xl md:text-4xl font-black italic leading-none">€49,99</p>
-                 <p className="text-[10px] font-black uppercase tracking-wider opacity-80 mt-1">2 Confezioni | 120 Compresse</p>
+                 <p className="text-[10px] font-black uppercase tracking-wider opacity-80 mt-1">TOTALE | 120 Compresse</p>
               </div>
             </div>
             <div className="space-y-8">
@@ -520,17 +521,15 @@ const App: React.FC = () => {
           </div>
 
           {/* Mobile-first 2x Product Display */}
-          <div className="flex items-center justify-center gap-4 mb-10 md:mb-16 bg-gradient-to-r from-blue-600/20 via-blue-500/30 to-blue-600/20 py-6 px-4 rounded-2xl border border-blue-500/30">
+          <div className="flex items-center justify-center gap-4 mb-10 md:mb-16 bg-gradient-to-r from-emerald-600/20 via-emerald-500/30 to-emerald-600/20 py-6 px-4 rounded-2xl border border-emerald-500/30">
             <div className="flex items-center">
               <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -rotate-6 drop-shadow-lg" />
               <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -ml-4 rotate-6 drop-shadow-lg" />
             </div>
-            <div className="flex items-center gap-3">
-              <div className="bg-red-500 text-white px-3 py-2 rounded-xl font-black text-xl md:text-2xl">x2</div>
-              <div>
-                <p className="text-2xl md:text-4xl font-black text-white leading-none">€49,99</p>
-                <p className="text-[9px] md:text-xs text-blue-300 font-bold uppercase">a confezione</p>
-              </div>
+            <div className="text-center">
+              <div className="bg-emerald-500 text-white px-3 py-1 rounded-lg font-black text-sm md:text-base mb-2 inline-block">1+1 GRATIS</div>
+              <p className="text-3xl md:text-4xl font-black text-white leading-none">€49,99</p>
+              <p className="text-[9px] md:text-xs text-emerald-300 font-bold uppercase mt-1">TOTALE per 2 confezioni</p>
             </div>
           </div>
 
