@@ -476,16 +476,19 @@ const App: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {wallOfLove.map((rev, idx) => (
               <div key={idx} className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all text-left">
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-yellow-400 text-yellow-400" />)}
-                </div>
-                <p className="text-sm text-slate-700 italic font-medium mb-6 leading-relaxed">"{rev.text}"</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                   <img src={rev.photo} alt={rev.name} className="w-10 h-10 rounded-full object-cover border-2 border-slate-200" />
+                <div className="flex items-center gap-3 mb-4">
+                   <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center font-black text-blue-600 text-xs">{rev.name[0]}</div>
                    <div>
                       <p className="text-xs font-black text-slate-900 leading-none">{rev.name}</p>
                       <p className="text-[10px] text-slate-400 font-bold uppercase">{rev.age}</p>
                    </div>
+                </div>
+                <div className="flex gap-0.5 mb-3">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-yellow-400 text-yellow-400" />)}
+                </div>
+                <p className="text-sm text-slate-700 italic font-medium mb-4 leading-relaxed">"{rev.text}"</p>
+                <div className="rounded-2xl overflow-hidden border border-slate-100">
+                  <img src={rev.photo} alt={`Trasformazione ${rev.name}`} className="w-full h-auto object-cover" />
                 </div>
               </div>
             ))}
