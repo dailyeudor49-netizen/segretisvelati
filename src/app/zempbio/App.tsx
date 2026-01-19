@@ -25,17 +25,57 @@ import {
 } from 'lucide-react';
 
 // --- Metabolic Analysis (Internal) ---
-const getMetabolicAnalysis = (age: string, weight: string, hungerLevel: string): string => {
+const getMetabolicAnalysis = (age: string, weight: string, height: string, hungerLevel: string): { text: string; bmi: number; bmiCategory: string } => {
   const hungerNum = parseInt(hungerLevel);
   const ageNum = parseInt(age);
+  const weightNum = parseFloat(weight);
+  const heightM = parseFloat(height) / 100; // converti cm in metri
 
-  if (hungerNum >= 7) {
-    return `Analisi completata: A ${age} anni con un peso di ${weight}kg e un livello di fame nervosa ${hungerLevel}/10, il tuo profilo indica una severa resistenza alla leptina. I recettori ipotalamici della sazietà risultano desensibilizzati, causando segnali di fame persistenti anche dopo i pasti. Si raccomanda l'intervento immediato con ZEMPBIO™ Complex 1000mg per resettare i segnali neuro-chimici e sbloccare il metabolismo basale. Sei un candidato ideale per il protocollo intensivo.`;
-  } else if (ageNum >= 50) {
-    return `Analisi completata: Il tuo profilo a ${age} anni mostra i classici segni del rallentamento metabolico post-50. Con ${weight}kg attuali, la modulazione della grelina risulta alterata. La forza di volontà non può vincere contro la biochimica. ZEMPBIO™ Complex 1000mg agisce direttamente sull'interruttore ormonale della fame, bypassando il problema alla radice. Sei un candidato ideale per il trattamento.`;
+  // Calcolo BMI
+  const bmi = weightNum / (heightM * heightM);
+  const bmiRounded = Math.round(bmi * 10) / 10;
+
+  // Categoria BMI
+  let bmiCategory = "";
+  if (bmi < 18.5) {
+    bmiCategory = "Sottopeso";
+  } else if (bmi < 25) {
+    bmiCategory = "Normopeso";
+  } else if (bmi < 30) {
+    bmiCategory = "Sovrappeso";
   } else {
-    return `Analisi completata: Con ${weight}kg e un livello di fame ${hungerLevel}/10, il tuo profilo bio-metabolico indica una resistenza alla leptina in fase iniziale. I peptidi della sazietà non comunicano correttamente con il cervello. ZEMPBIO™ Complex 1000mg può intervenire prima che la situazione peggiori, resettando i segnali neuro-chimici della fame. Sei un candidato ideale per il protocollo preventivo.`;
+    bmiCategory = "Obesità";
   }
+
+  let text = "";
+
+  // Normopeso - protocollo mantenimento
+  if (bmi >= 18.5 && bmi < 25) {
+    if (hungerNum >= 6) {
+      text = `Analisi completata: Con un BMI di ${bmiRounded} (${bmiCategory}) sei già in una fascia di peso salutare. Tuttavia, il tuo livello di fame nervosa ${hungerLevel}/10 indica che i segnali di sazietà non sono ottimali. Senza intervento, il rischio di accumulo adiposo aumenta con l'età. ZEMPBIO™ Complex 1000mg nel PROTOCOLLO MANTENIMENTO aiuta a stabilizzare i recettori della leptina e prevenire futuri squilibri metabolici. Sei un candidato ideale per il protocollo preventivo.`;
+    } else {
+      text = `Analisi completata: Ottimo! Con un BMI di ${bmiRounded} (${bmiCategory}) e un livello di fame controllato (${hungerLevel}/10), il tuo profilo metabolico è nella norma. Per MANTENERE questi risultati nel tempo e prevenire il naturale rallentamento metabolico legato all'età, ZEMPBIO™ Complex 1000mg nel PROTOCOLLO MANTENIMENTO supporta l'equilibrio ormonale della sazietà. Ideale per chi vuole restare in forma senza sforzo.`;
+    }
+  }
+  // Sovrappeso
+  else if (bmi >= 25 && bmi < 30) {
+    text = `Analisi completata: A ${age} anni con un BMI di ${bmiRounded} (${bmiCategory}), il tuo profilo indica accumulo di grasso viscerale che sta bloccando i segnali della leptina. Con ${weight}kg e fame nervosa a ${hungerLevel}/10, i recettori ipotalamici risultano desensibilizzati. ZEMPBIO™ Complex 1000mg agisce sul reset dei peptidi della sazietà, permettendo al corpo di riconoscere quando è davvero sazio. Sei un candidato ideale per il protocollo standard.`;
+  }
+  // Obesità
+  else if (bmi >= 30) {
+    text = `Analisi completata: ATTENZIONE - Con un BMI di ${bmiRounded} (${bmiCategory}) a ${age} anni, il tuo metabolismo è in stato di emergenza. Il grasso viscerale ha completamente disattivato l'interruttore della sazietà. A ${weight}kg, la resistenza alla leptina è severa e la forza di volontà NON può vincere contro questa biochimica alterata. Si raccomanda l'intervento IMMEDIATO con ZEMPBIO™ Complex 1000mg nel PROTOCOLLO INTENSIVO per resettare i segnali neuro-chimici. Sei un candidato prioritario.`;
+  }
+  // Sottopeso (caso raro)
+  else {
+    text = `Analisi completata: Con un BMI di ${bmiRounded} (${bmiCategory}), il tuo peso è sotto la norma. ZEMPBIO™ è formulato per chi desidera controllare la fame e perdere peso. Ti consigliamo di consultare un nutrizionista per un piano personalizzato di aumento massa.`;
+  }
+
+  // Override per fame alta indipendentemente dal BMI (tranne sottopeso)
+  if (hungerNum >= 8 && bmi >= 18.5) {
+    text = `Analisi completata: ALLARME FAME NERVOSA - Con un livello ${hungerLevel}/10, i tuoi recettori della grelina sono in stato di iperattivazione cronica. A ${age} anni e ${weight}kg (BMI: ${bmiRounded} - ${bmiCategory}), questo squilibrio ormonale rende impossibile qualsiasi dieta tradizionale. Il cervello è convinto che stai morendo di fame anche dopo i pasti. ZEMPBIO™ Complex 1000mg spegne chimicamente questo falso allarme entro 20 minuti dalla prima assunzione. Sei un candidato URGENTE per il protocollo intensivo.`;
+  }
+
+  return { text, bmi: bmiRounded, bmiCategory };
 };
 
 // --- Sub-Components ---
@@ -58,18 +98,28 @@ const Navbar = () => (
 );
 
 const MetabolicAnalyzer = ({ onResult }: { onResult: (res: string) => void }) => {
-  const [formData, setFormData] = useState({ age: '', weight: '', hunger: '5' });
+  const [formData, setFormData] = useState({ age: '', weight: '', height: '', hunger: '5' });
   const [loading, setLoading] = useState(false);
-  const [localResult, setLocalResult] = useState<string | null>(null);
+  const [localResult, setLocalResult] = useState<{ text: string; bmi: number; bmiCategory: string } | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
-      const result = getMetabolicAnalysis(formData.age, formData.weight, formData.hunger);
+      const result = getMetabolicAnalysis(formData.age, formData.weight, formData.height, formData.hunger);
       setLocalResult(result);
       setLoading(false);
     }, 1500);
+  };
+
+  const getBmiColor = (category: string) => {
+    switch(category) {
+      case "Sottopeso": return "text-yellow-600 bg-yellow-50 border-yellow-200";
+      case "Normopeso": return "text-emerald-600 bg-emerald-50 border-emerald-200";
+      case "Sovrappeso": return "text-orange-600 bg-orange-50 border-orange-200";
+      case "Obesità": return "text-red-600 bg-red-50 border-red-200";
+      default: return "text-slate-600 bg-slate-50 border-slate-200";
+    }
   };
 
   return (
@@ -78,18 +128,22 @@ const MetabolicAnalyzer = ({ onResult }: { onResult: (res: string) => void }) =>
         <Microscope size={24} />
       </div>
       <h3 className="text-2xl font-black mb-2 uppercase italic text-center leading-none">Analizzatore Bio-Metabolico AI</h3>
-      <p className="text-[10px] text-slate-400 text-center mb-8 font-black uppercase tracking-widest leading-none">Scansione resistenza alla Leptina v4.2</p>
-      
+      <p className="text-[10px] text-slate-400 text-center mb-8 font-black uppercase tracking-widest leading-none">Scansione BMI + Resistenza Leptina v5.0</p>
+
       {!localResult ? (
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-3">
             <div className="space-y-1">
-              <label className="text-[10px] font-black text-slate-500 uppercase ml-2 italic">Tua Età</label>
-              <input type="number" placeholder="Anni" required className="w-full border-2 border-slate-100 p-4 rounded-2xl bg-slate-50 text-lg font-bold outline-none focus:border-blue-500 transition-all" value={formData.age} onChange={(e) => setFormData({...formData, age: e.target.value})} />
+              <label className="text-[10px] font-black text-slate-500 uppercase ml-2 italic">Età</label>
+              <input type="number" placeholder="Anni" required className="w-full border-2 border-slate-100 p-3 md:p-4 rounded-2xl bg-slate-50 text-lg font-bold outline-none focus:border-blue-500 transition-all" value={formData.age} onChange={(e) => setFormData({...formData, age: e.target.value})} />
             </div>
             <div className="space-y-1">
-              <label className="text-[10px] font-black text-slate-500 uppercase ml-2 italic">Peso (Kg)</label>
-              <input type="number" placeholder="Kg" required className="w-full border-2 border-slate-100 p-4 rounded-2xl bg-slate-50 text-lg font-bold outline-none focus:border-blue-500 transition-all" value={formData.weight} onChange={(e) => setFormData({...formData, weight: e.target.value})} />
+              <label className="text-[10px] font-black text-slate-500 uppercase ml-2 italic">Altezza</label>
+              <input type="number" placeholder="cm" required className="w-full border-2 border-slate-100 p-3 md:p-4 rounded-2xl bg-slate-50 text-lg font-bold outline-none focus:border-blue-500 transition-all" value={formData.height} onChange={(e) => setFormData({...formData, height: e.target.value})} />
+            </div>
+            <div className="space-y-1">
+              <label className="text-[10px] font-black text-slate-500 uppercase ml-2 italic">Peso</label>
+              <input type="number" placeholder="Kg" required className="w-full border-2 border-slate-100 p-3 md:p-4 rounded-2xl bg-slate-50 text-lg font-bold outline-none focus:border-blue-500 transition-all" value={formData.weight} onChange={(e) => setFormData({...formData, weight: e.target.value})} />
             </div>
           </div>
           <div className="space-y-2">
@@ -103,9 +157,21 @@ const MetabolicAnalyzer = ({ onResult }: { onResult: (res: string) => void }) =>
         </form>
       ) : (
         <div className="animate-in fade-in zoom-in duration-500">
+          {/* BMI Display */}
+          <div className={`flex items-center justify-between p-4 rounded-2xl border-2 mb-4 ${getBmiColor(localResult.bmiCategory)}`}>
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-widest opacity-70">Il tuo BMI</p>
+              <p className="text-3xl font-black leading-none">{localResult.bmi}</p>
+            </div>
+            <div className="text-right">
+              <p className="text-[10px] font-black uppercase tracking-widest opacity-70">Categoria</p>
+              <p className="text-lg font-black uppercase italic">{localResult.bmiCategory}</p>
+            </div>
+          </div>
+
           <div className="bg-blue-50 border-l-[6px] border-blue-600 p-6 rounded-r-2xl mb-6">
             <p className="text-slate-800 text-sm md:text-base italic leading-relaxed font-medium">
-              {localResult}
+              {localResult.text}
             </p>
           </div>
           <a href="#order" className="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black block text-center uppercase shadow-xl shadow-emerald-200 text-lg cta-pulse active:scale-95">
