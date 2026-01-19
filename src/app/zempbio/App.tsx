@@ -1,6 +1,28 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+
+// Custom CSS for animations
+const customStyles = `
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+`;
 import {
   ShieldCheck,
   Zap,
@@ -299,6 +321,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
+      <style dangerouslySetInnerHTML={{ __html: customStyles }} />
       <Navbar />
       <SalesPopup />
 
@@ -309,12 +332,29 @@ const App: React.FC = () => {
       </div>
 
       {/* Hero Section */}
-      <header className="px-4 pt-12 pb-24 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 text-white relative">
+      <header className="px-4 pt-12 pb-24 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 text-white relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          {/* Gradient orbs */}
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+
+          {/* Grid pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+
+          {/* Radial gradient overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(15,23,42,0.8)_70%)]"></div>
+        </div>
+
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 text-center lg:text-left">
-              <div className="bg-blue-600/40 text-blue-200 border border-blue-500/50 inline-block px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase mb-8 tracking-wide">
-                Protocollo ZEMPBIO™ Complex 400mg
+              <div className="relative inline-block mb-8">
+                <div className="absolute inset-0 bg-blue-500 rounded-xl blur-lg opacity-30"></div>
+                <div className="relative bg-blue-600/40 text-blue-200 border border-blue-500/50 px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wide flex items-center gap-2">
+                  <Zap size={12} className="animate-pulse" /> Protocollo ZEMPBIO™ Complex 400mg
+                </div>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight uppercase">
                 Smetti di essere <br/> <span className="text-blue-400 underline decoration-blue-400/50">Schiavo</span> della Fame
@@ -344,24 +384,67 @@ const App: React.FC = () => {
       </header>
 
       {/* The Mechanism Section */}
-      <section className="py-24 px-4 bg-white relative overflow-hidden">
-        <div className="container mx-auto max-w-5xl">
+      <section className="py-24 px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-100/20 to-emerald-100/20 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto max-w-5xl relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative flex items-center justify-center">
-              {/* Due barattoli sovrapposti */}
-              <div className="relative">
-                <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Bottle 1" className="rounded-xl shadow-lg border border-gray-200 relative z-10 max-w-[180px] md:max-w-[220px] -rotate-6" />
-                <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Bottle 2" className="rounded-xl shadow-xl border border-gray-200 absolute top-4 left-16 md:left-20 z-20 max-w-[180px] md:max-w-[220px] rotate-6" />
-                {/* Badge x2 */}
-                <div className="absolute -top-4 -right-4 md:-right-8 bg-red-600 text-white w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center z-30 shadow-lg border-2 border-red-700">
-                  <span className="text-2xl md:text-3xl font-bold">x2</span>
+            {/* Enhanced Product Mockup Display */}
+            <div className="relative flex items-center justify-center py-8">
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-gradient-to-r from-blue-500/20 via-emerald-500/20 to-blue-500/20 blur-2xl animate-pulse"></div>
+              </div>
+
+              {/* Rotating gradient border */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[260px] h-[260px] md:w-[340px] md:h-[340px] rounded-full border-2 border-dashed border-blue-300/50 animate-[spin_20s_linear_infinite]"></div>
+              </div>
+
+              {/* Floating badges */}
+              <div className="absolute top-0 right-4 md:right-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-2 rounded-xl shadow-lg animate-bounce text-[10px] font-bold uppercase z-20">
+                <Zap size={12} className="inline mr-1" /> Complex 400mg
+              </div>
+              <div className="absolute bottom-20 left-0 md:left-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-3 py-2 rounded-xl shadow-lg animate-[bounce_2s_ease-in-out_infinite_0.5s] text-[10px] font-bold uppercase z-20">
+                <ShieldCheck size={12} className="inline mr-1" /> Made in EU
+              </div>
+              <div className="absolute top-1/4 left-0 md:-left-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-2 rounded-xl shadow-lg animate-[bounce_2s_ease-in-out_infinite_1s] text-[10px] font-bold uppercase z-20">
+                <Star size={12} className="inline mr-1" /> #1 in Italia
+              </div>
+
+              {/* Main product container */}
+              <div className="relative z-10">
+                {/* Glass card background */}
+                <div className="absolute -inset-6 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-2xl"></div>
+
+                {/* Product image with effects */}
+                <div className="relative p-4">
+                  <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent rounded-2xl"></div>
+                  <img
+                    src="/images/zempbio/400mg.png"
+                    alt="ZEMPBIO Complex 400mg"
+                    className="relative rounded-2xl max-w-[200px] md:max-w-[280px] drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               </div>
-              {/* Prezzo e info */}
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-4 rounded-xl shadow-xl z-30 border-2 border-emerald-700 text-center whitespace-nowrap">
-                 <p className="text-[10px] font-bold uppercase tracking-wide mb-1 text-emerald-100">1+1 GRATIS</p>
-                 <p className="text-3xl md:text-4xl font-bold leading-none">€49,99</p>
-                 <p className="text-[10px] font-bold uppercase tracking-wide opacity-80 mt-1">TOTALE | 120 Compresse</p>
+
+              {/* Price badge - floating below */}
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-30">
+                <div className="relative">
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 bg-emerald-500 rounded-2xl blur-xl opacity-50"></div>
+                  {/* Price card */}
+                  <div className="relative bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 text-white px-8 py-5 rounded-2xl shadow-2xl border border-emerald-400/50 text-center whitespace-nowrap overflow-hidden">
+                    {/* Shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest mb-1 text-emerald-100">Offerta Lancio</p>
+                    <p className="text-4xl md:text-5xl font-bold leading-none">€39,99</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wide opacity-80 mt-1">60 Compresse Complex</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="space-y-8">
@@ -373,15 +456,21 @@ const App: React.FC = () => {
               </p>
               <div className="space-y-4">
                  {[
-                   { title: "Spegnimento Grelina", desc: "Blocca chimicamente lo stimolo della fame nervosa entro 20 minuti.", icon: <Zap className="text-blue-600" /> },
-                   { title: "Reset Leptina", desc: "Rende le cellule ricettive ai segnali di stop-cibo naturali.", icon: <RefreshCw className="text-emerald-600" /> },
-                   { title: "Autofagia Lipidica", desc: "Forza il corpo a bruciare grasso vecchio come fonte di energia.", icon: <TrendingDown className="text-red-600" /> }
+                   { title: "Spegnimento Grelina", desc: "Blocca chimicamente lo stimolo della fame nervosa entro 20 minuti.", icon: <Zap size={20} />, color: "blue" },
+                   { title: "Reset Leptina", desc: "Rende le cellule ricettive ai segnali di stop-cibo naturali.", icon: <RefreshCw size={20} />, color: "emerald" },
+                   { title: "Autofagia Lipidica", desc: "Forza il corpo a bruciare grasso vecchio come fonte di energia.", icon: <TrendingDown size={20} />, color: "red" }
                  ].map((item, i) => (
-                   <div key={i} className="flex gap-4 p-5 rounded-xl bg-gray-50 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all">
-                      <div className="shrink-0">{item.icon}</div>
-                      <div>
-                        <p className="font-bold text-gray-900 uppercase text-sm">{item.title}</p>
-                        <p className="text-xs text-gray-500 font-medium">{item.desc}</p>
+                   <div key={i} className="group relative">
+                      {/* Hover glow */}
+                      <div className={`absolute inset-0 bg-gradient-to-r ${item.color === 'blue' ? 'from-blue-500/20 to-blue-600/20' : item.color === 'emerald' ? 'from-emerald-500/20 to-emerald-600/20' : 'from-red-500/20 to-red-600/20'} rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+                      <div className="relative flex gap-4 p-5 rounded-xl bg-white border border-gray-200 hover:border-transparent hover:shadow-xl transition-all group-hover:scale-[1.02]">
+                         <div className={`shrink-0 p-3 rounded-xl ${item.color === 'blue' ? 'bg-blue-100 text-blue-600' : item.color === 'emerald' ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-600'}`}>
+                           {item.icon}
+                         </div>
+                         <div>
+                           <p className="font-bold text-gray-900 uppercase text-sm mb-1">{item.title}</p>
+                           <p className="text-xs text-gray-500 font-medium leading-relaxed">{item.desc}</p>
+                         </div>
                       </div>
                    </div>
                  ))}
@@ -392,11 +481,17 @@ const App: React.FC = () => {
       </section>
 
       {/* Comparison Table - 2 Columns */}
-      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
-        <div className="container mx-auto max-w-3xl">
+      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-600/5 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto max-w-3xl relative z-10">
           {/* Header */}
           <div className="text-center mb-10 md:mb-14">
-            <p className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-3">Confronto Onesto</p>
+            <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 text-blue-400 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest mb-4">
+              <Microscope size={14} /> Confronto Onesto
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold uppercase leading-tight">
               ZEMPBIO™ <span className="text-gray-500">vs</span> Prodotti Comuni
             </h2>
@@ -470,9 +565,16 @@ const App: React.FC = () => {
       </section>
 
       {/* Main Narrative Reviews (Before/After) */}
-      <section id="reviews" className="py-24 px-4 bg-white">
-        <div className="container mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-16 uppercase">Storie di Trasformazione Reale</h2>
+      <section id="reviews" className="py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-20 right-10 w-64 h-64 bg-emerald-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto max-w-5xl text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide mb-4">
+            <Star size={14} className="fill-emerald-600" /> Risultati Verificati
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-16 uppercase bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Storie di Trasformazione Reale</h2>
           <div className="space-y-16">
              {[
                {
@@ -490,30 +592,48 @@ const App: React.FC = () => {
                  photoAfter: "/images/zempbio/UOMO DOPO.jpeg",
                }
              ].map((review, idx) => (
-               <div key={idx} className="bg-gray-50 p-8 md:p-12 rounded-2xl border border-gray-200 shadow-lg flex flex-col md:flex-row gap-12 items-center text-left">
-                 <div className="w-full md:w-1/3 shrink-0">
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border border-gray-300 shadow-sm relative">
-                         <img src={review.photoBefore} alt={`${review.name} Prima`} className="w-full h-full object-cover" />
-                         <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[9px] font-bold uppercase px-2 py-1 rounded">Prima</div>
+               <div key={idx} className="group relative">
+                 {/* Card glow on hover */}
+                 <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 via-blue-500/20 to-emerald-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                 <div className="relative bg-white p-8 md:p-12 rounded-2xl border border-gray-200 shadow-xl flex flex-col md:flex-row gap-12 items-center text-left hover:shadow-2xl transition-all">
+                   <div className="w-full md:w-1/3 shrink-0">
+                      {/* Before/After with enhanced styling */}
+                      <div className="grid grid-cols-2 gap-3 mb-6">
+                        <div className="relative group/before">
+                          <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg relative">
+                             <img src={review.photoBefore} alt={`${review.name} Prima`} className="w-full h-full object-cover group-hover/before:scale-105 transition-transform duration-500" />
+                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                             <div className="absolute bottom-2 left-2 bg-red-500 text-white text-[9px] font-bold uppercase px-3 py-1.5 rounded-lg shadow-lg">Prima</div>
+                          </div>
+                        </div>
+                        <div className="relative group/after">
+                          <div className="absolute -inset-1 bg-emerald-500 rounded-xl blur-md opacity-50"></div>
+                          <div className="relative aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-2 border-emerald-500 shadow-lg">
+                             <img src={review.photoAfter} alt={`${review.name} Dopo`} className="w-full h-full object-cover group-hover/after:scale-105 transition-transform duration-500" />
+                             <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/50 to-transparent"></div>
+                             <div className="absolute bottom-2 left-2 bg-emerald-500 text-white text-[9px] font-bold uppercase px-3 py-1.5 rounded-lg shadow-lg flex items-center gap-1">
+                               <CheckCircle2 size={10} /> Dopo
+                             </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-2 border-emerald-500 shadow-sm relative">
-                         <img src={review.photoAfter} alt={`${review.name} Dopo`} className="w-full h-full object-cover" />
-                         <div className="absolute bottom-2 left-2 bg-emerald-500 text-white text-[9px] font-bold uppercase px-2 py-1 rounded">Dopo</div>
+                      <div>
+                        <p className="font-bold text-2xl text-gray-900 leading-none">{review.name}</p>
+                        <p className="text-xs text-blue-600 font-bold uppercase tracking-wide mt-1 flex items-center gap-2">
+                          <span className="bg-blue-100 px-2 py-0.5 rounded">{review.age}</span>
+                          <span className="text-emerald-600">Cliente Verificato</span>
+                        </p>
                       </div>
-                    </div>
-                    <div>
-                      <p className="font-bold text-2xl text-gray-900 leading-none">{review.name}</p>
-                      <p className="text-xs text-blue-600 font-bold uppercase tracking-wide mt-1">{review.age} - Cliente Verificato</p>
-                    </div>
-                 </div>
-                 <div className="flex-grow">
-                   <div className="flex gap-1 mb-6">
-                     {[...Array(5)].map((_, i) => <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />)}
                    </div>
-                   <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium">"{review.text}"</p>
-                   <div className="mt-8 flex items-center gap-3 text-emerald-600 font-bold text-xs uppercase">
-                     <CheckCircle2 size={18}/> Acquisto Confermato il 12/10/2023
+                   <div className="flex-grow">
+                     <div className="flex gap-1 mb-6">
+                       {[...Array(5)].map((_, i) => <Star key={i} size={22} className="fill-yellow-400 text-yellow-400 drop-shadow-sm" />)}
+                     </div>
+                     <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium italic">"{review.text}"</p>
+                     <div className="mt-8 flex items-center gap-3 bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs uppercase px-4 py-3 rounded-xl inline-flex">
+                       <CheckCircle2 size={16}/> Acquisto Confermato il 12/10/2023
+                     </div>
                    </div>
                  </div>
                </div>
@@ -523,12 +643,19 @@ const App: React.FC = () => {
       </section>
 
       {/* Wall of Love - Massive Grid */}
-      <section className="py-24 px-4 bg-gray-100 border-y border-gray-200">
-        <div className="container mx-auto max-w-6xl text-center">
+      <section className="py-24 px-4 bg-gradient-to-b from-gray-100 via-gray-50 to-gray-100 border-y border-gray-200 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto max-w-6xl text-center relative z-10">
           <div className="flex justify-center mb-6">
-             <div className="bg-blue-600 text-white p-4 rounded-xl shadow-lg"><Heart size={32} /></div>
+             <div className="relative">
+               <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-50 animate-pulse"></div>
+               <div className="relative bg-gradient-to-br from-blue-600 to-blue-700 text-white p-5 rounded-2xl shadow-xl"><Heart size={36} className="animate-pulse" /></div>
+             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase">Oltre 14.200 Clienti Soddisfatti</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Oltre 14.200 Clienti Soddisfatti</h2>
           <p className="text-gray-500 font-bold uppercase text-xs tracking-wide mb-16">Siamo i leader nel settore Bio-Hacking Over 40</p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -555,65 +682,159 @@ const App: React.FC = () => {
       </section>
 
       {/* Main Offer & Order Form */}
-      <section id="order" className="py-16 md:py-24 px-4 bg-slate-800 text-white relative overflow-hidden">
+      <section id="order" className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/5 to-emerald-500/5 rounded-full blur-3xl"></div>
+
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-8 md:mb-12">
-             <h2 className="text-3xl md:text-5xl font-bold uppercase mb-4">Scegli il Tuo Pacchetto</h2>
+             <h2 className="text-3xl md:text-5xl font-bold uppercase mb-4">Ordina Ora</h2>
              <p className="text-gray-400 text-sm md:text-lg font-bold uppercase tracking-wide">Attiva il tuo protocollo Complex oggi stesso</p>
           </div>
 
-          {/* Mobile-first 2x Product Display */}
-          <div className="flex items-center justify-center gap-4 mb-10 md:mb-16 bg-slate-700 py-6 px-4 rounded-xl border border-slate-600">
-            <div className="flex items-center">
-              <img src="/images/zempbio/400mg.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -rotate-6 rounded-lg shadow-lg" />
-              <img src="/images/zempbio/400mg.png" alt="ZEMPBIO" className="w-16 h-auto md:w-24 -ml-4 rotate-6 rounded-lg shadow-lg" />
-            </div>
-            <div className="text-center">
-              <div className="bg-emerald-600 text-white px-3 py-1 rounded-lg font-bold text-sm md:text-base mb-2 inline-block border border-emerald-700">1+1 GRATIS</div>
-              <p className="text-3xl md:text-4xl font-bold text-white leading-none">€49,99</p>
-              <p className="text-[9px] md:text-xs text-emerald-300 font-bold uppercase mt-1">TOTALE per 2 confezioni</p>
+          {/* Enhanced Product Display */}
+          <div className="relative mb-10 md:mb-16">
+            {/* Glowing background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-slate-700/50 to-emerald-600/20 rounded-2xl blur-xl"></div>
+
+            <div className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 py-8 md:py-10 px-6 bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-slate-600/50 shadow-2xl">
+              {/* Product image with effects */}
+              <div className="relative">
+                {/* Glow behind product */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl blur-2xl opacity-30 scale-110"></div>
+
+                {/* Rotating ring */}
+                <div className="absolute -inset-4 border-2 border-dashed border-blue-400/30 rounded-full animate-[spin_15s_linear_infinite]"></div>
+
+                {/* Product container */}
+                <div className="relative bg-gradient-to-br from-white/10 to-white/5 p-4 rounded-2xl border border-white/20 backdrop-blur-sm">
+                  <img
+                    src="/images/zempbio/400mg.png"
+                    alt="ZEMPBIO"
+                    className="w-24 h-auto md:w-36 rounded-xl drop-shadow-2xl hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Floating mini badges */}
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-1 rounded-lg text-[8px] font-bold shadow-lg animate-bounce">
+                  <Star size={10} className="inline" /> TOP
+                </div>
+              </div>
+
+              {/* Info section */}
+              <div className="text-center md:text-left">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-4 py-2 rounded-xl font-bold text-sm mb-4 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                  <Zap size={14} /> Offerta Lancio -50%
+                </div>
+
+                {/* Price */}
+                <div className="flex items-end gap-3 justify-center md:justify-start mb-2">
+                  <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">€39,99</span>
+                  <span className="text-lg text-gray-500 line-through mb-1">€79,99</span>
+                </div>
+
+                {/* Details */}
+                <p className="text-emerald-400 font-bold text-sm uppercase tracking-wide">60 Compresse Complex 400mg</p>
+
+                {/* Trust badges */}
+                <div className="flex items-center gap-4 mt-4 justify-center md:justify-start">
+                  <div className="flex items-center gap-1 text-[10px] text-gray-400 font-bold uppercase">
+                    <Truck size={12} className="text-blue-400" /> Gratis
+                  </div>
+                  <div className="flex items-center gap-1 text-[10px] text-gray-400 font-bold uppercase">
+                    <ShieldCheck size={12} className="text-emerald-400" /> Garantito
+                  </div>
+                  <div className="flex items-center gap-1 text-[10px] text-gray-400 font-bold uppercase">
+                    <Award size={12} className="text-amber-400" /> Certificato
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
-            {/* The Specific Offer: 2x49.99 */}
+            {/* The Specific Offer - Enhanced */}
             <div className="space-y-4 md:space-y-6">
-               <div className="bg-blue-600 p-5 md:p-12 rounded-2xl border-2 border-blue-500 shadow-xl relative overflow-hidden">
-                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6 md:mb-8">
-                     <div>
-                        <h3 className="text-2xl md:text-3xl font-bold uppercase leading-none">Protocollo Bipacco 2x</h3>
-                        <p className="text-[10px] md:text-xs font-bold text-blue-100 uppercase mt-2 tracking-wide">Trattamento di 60 Giorni (120 Compresse)</p>
+               {/* Main offer card with glow */}
+               <div className="relative">
+                  {/* Outer glow */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-emerald-500 to-blue-600 rounded-3xl blur-lg opacity-50 animate-glow"></div>
+
+                  <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-5 md:p-12 rounded-2xl border border-blue-400/30 shadow-2xl overflow-hidden">
+                     {/* Animated background pattern */}
+                     <div className="absolute inset-0 opacity-10">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_50%)]"></div>
+                        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:60px_60px]"></div>
                      </div>
-                     <div className="bg-white text-blue-600 px-4 py-1.5 md:px-5 md:py-2 rounded-lg font-bold text-[9px] md:text-[10px] uppercase animate-pulse shadow-md whitespace-nowrap">
-                        Best Seller
+
+                     {/* Shine effect */}
+                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite]"></div>
+
+                     <div className="relative z-10">
+                        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6 md:mb-8">
+                           <div>
+                              <h3 className="text-2xl md:text-3xl font-bold uppercase leading-none bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Protocollo ZEMPBIO</h3>
+                              <p className="text-[10px] md:text-xs font-bold text-blue-200 uppercase mt-2 tracking-wide">Trattamento di 30 Giorni (60 Compresse)</p>
+                           </div>
+                           <div className="relative">
+                              <div className="absolute inset-0 bg-white rounded-xl blur-md opacity-50"></div>
+                              <div className="relative bg-gradient-to-r from-white to-gray-100 text-blue-600 px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-[9px] md:text-[10px] uppercase shadow-lg whitespace-nowrap flex items-center gap-1">
+                                 <Zap size={12} /> Offerta Lancio
+                              </div>
+                           </div>
+                        </div>
+
+                        <div className="flex flex-wrap items-end gap-2 md:gap-3 mb-6 md:mb-10">
+                           <div className="text-5xl md:text-7xl font-bold leading-none bg-gradient-to-b from-white to-blue-100 bg-clip-text text-transparent drop-shadow-lg">€39,99</div>
+                           <div className="text-lg md:text-xl font-bold text-blue-300/60 line-through mb-1">€79,99</div>
+                           <div className="bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 px-3 py-1 rounded-lg text-xs md:text-sm font-bold uppercase mb-2">-50%</div>
+                        </div>
+
+                        <div className="space-y-3 md:space-y-4 mb-6 md:mb-10 text-xs md:text-base font-bold uppercase">
+                           <div className="flex items-center gap-2 md:gap-3 bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                              <div className="bg-emerald-500/20 p-1.5 rounded-lg"><CheckCircle2 className="text-emerald-300" size={16}/></div>
+                              60 Compresse Complex 400mg
+                           </div>
+                           <div className="flex items-center gap-2 md:gap-3 bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                              <div className="bg-emerald-500/20 p-1.5 rounded-lg"><Truck className="text-emerald-300" size={16}/></div>
+                              Spedizione Express 24h Gratuita
+                           </div>
+                           <div className="flex items-center gap-2 md:gap-3 bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                              <div className="bg-emerald-500/20 p-1.5 rounded-lg"><ShieldCheck className="text-emerald-300" size={16}/></div>
+                              Pagamento sicuro al corriere
+                           </div>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-emerald-600/20 to-blue-600/20 p-4 md:p-5 rounded-xl border border-emerald-400/30 text-center backdrop-blur-sm">
+                           <p className="text-sm md:text-base font-bold uppercase tracking-wide text-white">Totale: <span className="text-emerald-300">€39,99</span> <span className="text-blue-200 text-xs">(Nessun costo nascosto)</span></p>
+                        </div>
                      </div>
-                  </div>
-
-                  <div className="flex flex-wrap items-end gap-2 md:gap-3 mb-6 md:mb-10">
-                     <div className="text-5xl md:text-6xl font-bold leading-none">€49,99</div>
-                     <div className="text-lg md:text-xl font-bold text-blue-200 line-through mb-1">€99,98</div>
-                     <div className="text-xs md:text-sm font-bold text-emerald-300 uppercase mb-2">TOTALE | 1+1 GRATIS</div>
-                  </div>
-
-                  <div className="space-y-3 md:space-y-4 mb-6 md:mb-10 text-xs md:text-base font-bold uppercase">
-                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> 120 Compresse Complex 400mg</div>
-                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> Spedizione Express 24h Gratuita</div>
-                     <div className="flex items-center gap-2 md:gap-3"><CheckCircle2 className="text-emerald-300 shrink-0" size={18}/> Pagamento sicuro al corriere</div>
-                  </div>
-
-                  <div className="bg-black/20 p-4 md:p-5 rounded-xl border border-white/10 text-center">
-                     <p className="text-[10px] md:text-xs font-bold uppercase tracking-wide text-blue-200">Totale Ordine: €49,99 (Nessun costo nascosto)</p>
                   </div>
                </div>
 
+               {/* Trust badges with hover effects */}
                <div className="grid grid-cols-2 gap-3 md:gap-6">
-                  <div className="bg-slate-700 p-5 md:p-8 rounded-xl border border-slate-600 text-center hover:border-blue-500 transition-all">
-                     <Truck size={28} className="mx-auto text-blue-400 mb-2 md:mb-3" />
-                     <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wide">Consegna 0€</p>
+                  <div className="group relative">
+                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                     <div className="relative bg-slate-700/80 backdrop-blur-sm p-5 md:p-8 rounded-xl border border-slate-600 text-center hover:border-blue-400 transition-all hover:scale-105">
+                        <div className="bg-blue-500/20 p-3 rounded-xl inline-block mb-2 md:mb-3">
+                           <Truck size={28} className="text-blue-400" />
+                        </div>
+                        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wide">Consegna 0€</p>
+                     </div>
                   </div>
-                  <div className="bg-slate-700 p-5 md:p-8 rounded-xl border border-slate-600 text-center hover:border-emerald-500 transition-all">
-                     <Award size={28} className="mx-auto text-emerald-400 mb-2 md:mb-3" />
-                     <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wide">Garanzia 60gg</p>
+                  <div className="group relative">
+                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                     <div className="relative bg-slate-700/80 backdrop-blur-sm p-5 md:p-8 rounded-xl border border-slate-600 text-center hover:border-emerald-400 transition-all hover:scale-105">
+                        <div className="bg-emerald-500/20 p-3 rounded-xl inline-block mb-2 md:mb-3">
+                           <Award size={28} className="text-emerald-400" />
+                        </div>
+                        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wide">Garanzia 60gg</p>
+                     </div>
                   </div>
                </div>
             </div>
@@ -735,8 +956,8 @@ const App: React.FC = () => {
       {/* Sticky Mobile CTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-sm border-t border-gray-200 z-50 flex items-center justify-between gap-4 shadow-lg">
          <div>
-            <p className="text-[10px] font-bold text-emerald-600 uppercase leading-none mb-1">1+1 GRATIS</p>
-            <p className="text-2xl font-bold text-blue-600 leading-none">€49,99<span className="text-[10px] text-gray-500 uppercase ml-1">TOTALE</span></p>
+            <p className="text-[10px] font-bold text-emerald-600 uppercase leading-none mb-1">Offerta Lancio</p>
+            <p className="text-2xl font-bold text-blue-600 leading-none">€39,99<span className="text-[10px] text-gray-500 uppercase ml-1">60 CPR</span></p>
          </div>
          <a href="#order" className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-sm uppercase shadow-lg flex-grow text-center">
            Ordina Ora
