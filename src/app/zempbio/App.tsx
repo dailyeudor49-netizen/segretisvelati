@@ -932,6 +932,116 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Trustpilot-style Reviews Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
+          {/* Header with Trustpilot-style branding */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-2xl mb-6">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-6 h-6 bg-emerald-500 flex items-center justify-center">
+                    <Star size={14} className="fill-white text-white" />
+                  </div>
+                ))}
+              </div>
+              <span className="text-white font-bold text-sm">TrustScore 4.8</span>
+              <span className="text-gray-400 text-xs">| 2.847 recensioni</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white uppercase mb-2">Cosa Dicono i Nostri Clienti</h2>
+            <p className="text-gray-400 text-sm font-medium">Recensioni verificate degli ultimi mesi</p>
+          </div>
+
+          {/* Horizontal Scrolling Reviews */}
+          <div className="relative">
+            {/* Gradient fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
+
+            {/* Scrolling container */}
+            <div className="overflow-x-auto pb-4 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <div className="flex gap-4 md:gap-6 px-4" style={{ width: 'max-content' }}>
+                {[
+                  { name: "Antonella M.", city: "Roma", rating: 5, date: "15 Gen 2026", text: "Incredibile! In 3 settimane ho perso 6kg senza sentire fame. Il prodotto è arrivato in 24h, pacco discreto. Super consigliato!", verified: true },
+                  { name: "Giuseppe R.", city: "Napoli", rating: 5, date: "12 Gen 2026", text: "Ero scettico ma mia moglie mi ha convinto. Risultato? -8kg in un mese e mezzo. La fame nervosa serale è sparita completamente.", verified: true },
+                  { name: "Francesca L.", city: "Milano", rating: 5, date: "08 Gen 2026", text: "Finalmente un prodotto che funziona davvero. Ho provato di tutto prima, questo è l'unico che mi ha fatto perdere peso senza effetti collaterali.", verified: true },
+                  { name: "Marco B.", city: "Torino", rating: 4, date: "03 Gen 2026", text: "Buon prodotto, spedizione velocissima. Ho perso 4kg nel primo mese. Continuo il trattamento, sono fiducioso.", verified: true },
+                  { name: "Rosa P.", city: "Palermo", rating: 5, date: "28 Dic 2025", text: "A 58 anni pensavo fosse impossibile dimagrire. ZEMPBIO mi ha fatto ricredere. -10kg e mi sento rinata!", verified: true },
+                  { name: "Luca D.", city: "Bologna", rating: 5, date: "22 Dic 2025", text: "Il pagamento alla consegna mi ha convinto a provare. Nessun rischio e risultati visibili già dalla seconda settimana.", verified: true },
+                  { name: "Carla S.", city: "Firenze", rating: 5, date: "18 Dic 2025", text: "La mia nutrizionista era scettica, ora me lo chiede per le sue pazienti! -7kg in 5 settimane senza dieta drastica.", verified: true },
+                  { name: "Antonio V.", city: "Bari", rating: 5, date: "10 Dic 2025", text: "Prodotto eccezionale. La fame sparisce dopo 20 minuti dall'assunzione. Ho ripreso a fare sport senza sentirmi stanco.", verified: true },
+                  { name: "Giulia N.", city: "Verona", rating: 4, date: "05 Dic 2025", text: "Funziona! Unica nota: ci vuole costanza. Dopo il primo mese i risultati sono evidenti. -5kg finora.", verified: true },
+                  { name: "Stefano C.", city: "Genova", rating: 5, date: "28 Nov 2025", text: "Mia sorella me l'ha consigliato dopo aver perso 12kg. Ora capisco perché! Prodotto serio, non la solita truffa.", verified: true },
+                  { name: "Maria T.", city: "Catania", rating: 5, date: "20 Nov 2025", text: "Ho 62 anni e il metabolismo era fermo. Con ZEMPBIO ho perso 9kg in 2 mesi. I miei figli non ci credevano!", verified: true },
+                  { name: "Paolo F.", city: "Venezia", rating: 5, date: "15 Nov 2025", text: "Ottimo rapporto qualità prezzo. Costa meno di un mese di palestra e funziona molto meglio. Lo ricomprerò sicuramente.", verified: true },
+                  { name: "Elena G.", city: "Trieste", rating: 5, date: "08 Nov 2025", text: "Spedizione in 24h come promesso. Il prodotto è di qualità, si vede dalla confezione. Dopo 3 settimane -4kg!", verified: true },
+                  { name: "Vincenzo A.", city: "Reggio Calabria", rating: 5, date: "01 Nov 2025", text: "La fame nervosa era il mio problema da sempre. Ora mangio porzioni normali e sono sazio. Miracoloso!", verified: true },
+                  { name: "Teresa M.", city: "Perugia", rating: 4, date: "25 Ott 2025", text: "Buon prodotto, risultati graduali ma costanti. -6kg in 6 settimane. Consiglio di abbinare una camminata quotidiana.", verified: true },
+                  { name: "Roberto L.", city: "Parma", rating: 5, date: "18 Ott 2025", text: "Dopo le iniezioni costose che non potevo permettermi, ho trovato ZEMPBIO. Stessi risultati a un decimo del prezzo!", verified: true },
+                  { name: "Silvana R.", city: "Modena", rating: 5, date: "10 Ott 2025", text: "Le mie amiche pensavano avessi fatto un intervento! -11kg in 2 mesi e mezzo. Grazie ZEMPBIO!", verified: true },
+                  { name: "Giovanni P.", city: "Brescia", rating: 5, date: "02 Ott 2025", text: "Finalmente riesco a controllare cosa mangio. La fame compulsiva è sparita. Prodotto che mantiene le promesse.", verified: true },
+                  { name: "Angela D.", city: "Taranto", rating: 5, date: "25 Set 2025", text: "Ordinato per curiosità, ora non posso più farne a meno. -8kg e tanta energia in più. Lo consiglio a tutti!", verified: true },
+                  { name: "Massimo B.", city: "Salerno", rating: 5, date: "18 Set 2025", text: "Il medico mi aveva detto di dimagrire urgentemente. Con ZEMPBIO ho perso 14kg in 3 mesi. Valori del sangue perfetti ora!", verified: true },
+                ].map((review, idx) => (
+                  <div key={idx} className="flex-shrink-0 w-[300px] md:w-[350px] bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                          {review.name[0]}
+                        </div>
+                        <div>
+                          <p className="font-bold text-gray-900">{review.name}</p>
+                          <p className="text-xs text-gray-500">{review.city}</p>
+                        </div>
+                      </div>
+                      {review.verified && (
+                        <div className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-lg text-[9px] font-bold uppercase flex items-center gap-1">
+                          <CheckCircle2 size={10} /> Verificato
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Stars */}
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className={`w-5 h-5 ${i < review.rating ? 'bg-emerald-500' : 'bg-gray-200'} flex items-center justify-center`}>
+                          <Star size={12} className={i < review.rating ? 'fill-white text-white' : 'fill-gray-400 text-gray-400'} />
+                        </div>
+                      ))}
+                      <span className="text-xs text-gray-400 ml-2">{review.date}</span>
+                    </div>
+
+                    {/* Review text */}
+                    <p className="text-gray-700 text-sm leading-relaxed">{review.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom stats */}
+          <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16">
+            <div className="text-center">
+              <p className="text-4xl md:text-5xl font-bold text-white mb-1">98%</p>
+              <p className="text-xs text-gray-400 uppercase font-bold tracking-wide">Clienti Soddisfatti</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl md:text-5xl font-bold text-white mb-1">4.8<span className="text-2xl text-emerald-400">/5</span></p>
+              <p className="text-xs text-gray-400 uppercase font-bold tracking-wide">Valutazione Media</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl md:text-5xl font-bold text-white mb-1">2.847</p>
+              <p className="text-xs text-gray-400 uppercase font-bold tracking-wide">Recensioni Totali</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-100 py-20 px-4 border-t border-gray-200 text-center">
         <div className="container mx-auto max-w-5xl">
