@@ -276,7 +276,7 @@ const App: React.FC = () => {
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative group">
-              <img src="https://images.unsplash.com/photo-1550572017-ed200f545dec?auto=format&fit=crop&q=80&w=800" alt="ZEMPBIO Bottle" className="rounded-[3rem] shadow-2xl relative z-10" />
+              <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Bottle" className="rounded-[3rem] shadow-2xl relative z-10" />
               <div className="absolute -bottom-10 -right-10 bg-blue-600 text-white p-8 rounded-[2rem] shadow-2xl z-20 hidden md:block border-4 border-white max-w-[220px]">
                  <p className="text-4xl font-black italic leading-none mb-2">1000<span className="text-xs uppercase ml-1">mg</span></p>
                  <p className="text-[10px] font-black uppercase leading-none tracking-tighter opacity-80">Dosaggio Medico per Compressa</p>
@@ -337,7 +337,7 @@ const App: React.FC = () => {
                  </tr>
                  <tr className="border-b border-slate-700/50">
                    <td className="p-6 font-bold italic">Costo giornaliero medio</td>
-                   <td className="p-6 text-blue-400 font-black text-center italic">€1.60</td>
+                   <td className="p-6 text-blue-400 font-black text-center italic">€1,66</td>
                    <td className="p-4 text-slate-500 text-center">€2.50+</td>
                  </tr>
                  <tr>
