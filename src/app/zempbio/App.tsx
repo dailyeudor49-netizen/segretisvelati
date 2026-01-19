@@ -647,6 +647,178 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Science Behind ZEMPBIO Section */}
+      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.15),transparent_50%)]"></div>
+          <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.15),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 text-blue-300 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest mb-4">
+              <Microscope size={14} /> Ricerca Scientifica Avanzata
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold uppercase mb-4">
+              Perché ZEMPBIO™ è <span className="text-emerald-400">Diverso</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              La formula esclusiva Complex 400mg combina 5 principi attivi brevettati che agiscono in sinergia sul sistema neuro-metabolico
+            </p>
+          </div>
+
+          {/* Main content grid */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            {/* Left: Product showcase */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12">
+                <div className="flex justify-center mb-8">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-emerald-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                    <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Complex 400mg" className="relative w-48 md:w-64 drop-shadow-2xl" />
+                  </div>
+                </div>
+
+                {/* Dosage info */}
+                <div className="bg-gradient-to-r from-emerald-600/20 to-blue-600/20 border border-emerald-500/30 rounded-2xl p-6 text-center">
+                  <p className="text-emerald-400 font-bold uppercase text-xs tracking-wide mb-2">Posologia Consigliata</p>
+                  <p className="text-2xl md:text-3xl font-bold text-white mb-3">1 compressa a pranzo + 1 a cena</p>
+                  <p className="text-gray-400 text-sm">Assumere 20 minuti prima dei pasti con un bicchiere d'acqua</p>
+                  <div className="flex justify-center gap-4 mt-4">
+                    <div className="bg-white/10 px-4 py-2 rounded-lg">
+                      <p className="text-[10px] text-gray-400 uppercase">Pranzo</p>
+                      <p className="text-lg font-bold text-white">12:00</p>
+                    </div>
+                    <div className="bg-white/10 px-4 py-2 rounded-lg">
+                      <p className="text-[10px] text-gray-400 uppercase">Cena</p>
+                      <p className="text-lg font-bold text-white">19:00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Active ingredients */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold uppercase mb-6">I 5 Principi Attivi Brevettati</h3>
+
+              {[
+                {
+                  name: "LeptinX-7™",
+                  amount: "120mg",
+                  desc: "Estratto brevettato di Griffonia Simplicifolia potenziato. Attraversa la barriera emato-encefalica in 18 minuti, resettando i recettori della leptina ipotalamici. I competitor usano estratti standard che impiegano 3-4 ore.",
+                  color: "blue"
+                },
+                {
+                  name: "GrelinBlock®",
+                  amount: "95mg",
+                  desc: "Complesso di fibre bioattive da Konjac fermentato con Lactobacillus. Inibisce la produzione di grelina (ormone della fame) del 67% più efficacemente rispetto al glucomannano tradizionale.",
+                  color: "emerald"
+                },
+                {
+                  name: "ThermoBurn-X3",
+                  amount: "85mg",
+                  desc: "Blend termogenico di Capsaicina microincapsulata + Estratto di Tè Verde EGCG + Piperina. Aumenta il metabolismo basale del 23% senza tachicardia, grazie al rilascio graduale brevettato.",
+                  color: "orange"
+                },
+                {
+                  name: "AdipoCyte Disruptor™",
+                  amount: "60mg",
+                  desc: "Acido Linoleico Coniugato (CLA) in forma isomerica attiva al 94%. Interferisce con l'enzima lipoproteina lipasi, impedendo l'accumulo di nuovo grasso viscerale.",
+                  color: "red"
+                },
+                {
+                  name: "NeuroCalm-B6",
+                  amount: "40mg",
+                  desc: "Vitamina B6 in forma attiva (P-5-P) + L-Teanina purificata. Regola il cortisolo e previene la fame emotiva. Efficacia 4x superiore alla B6 standard dei competitor.",
+                  color: "purple"
+                }
+              ].map((ingredient, idx) => (
+                <div key={idx} className="group relative">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${ingredient.color === 'blue' ? 'from-blue-500/10 to-blue-600/10' : ingredient.color === 'emerald' ? 'from-emerald-500/10 to-emerald-600/10' : ingredient.color === 'orange' ? 'from-orange-500/10 to-orange-600/10' : ingredient.color === 'red' ? 'from-red-500/10 to-red-600/10' : 'from-purple-500/10 to-purple-600/10'} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+                  <div className="relative bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-all">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-3 h-3 rounded-full ${ingredient.color === 'blue' ? 'bg-blue-500' : ingredient.color === 'emerald' ? 'bg-emerald-500' : ingredient.color === 'orange' ? 'bg-orange-500' : ingredient.color === 'red' ? 'bg-red-500' : 'bg-purple-500'} shadow-lg`}></div>
+                        <h4 className="font-bold text-white text-lg">{ingredient.name}</h4>
+                      </div>
+                      <span className={`${ingredient.color === 'blue' ? 'bg-blue-500/20 text-blue-300' : ingredient.color === 'emerald' ? 'bg-emerald-500/20 text-emerald-300' : ingredient.color === 'orange' ? 'bg-orange-500/20 text-orange-300' : ingredient.color === 'red' ? 'bg-red-500/20 text-red-300' : 'bg-purple-500/20 text-purple-300'} px-3 py-1 rounded-lg text-xs font-bold`}>{ingredient.amount}</span>
+                    </div>
+                    <p className="text-gray-400 text-sm leading-relaxed">{ingredient.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Comparison banner */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/20 via-blue-600/20 to-emerald-600/20 rounded-2xl blur-xl"></div>
+            <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">400mg</div>
+                  <p className="text-gray-400 text-sm uppercase font-bold tracking-wide">Concentrazione ZEMPBIO™</p>
+                  <p className="text-gray-500 text-xs mt-2">Formula Complex ad alta biodisponibilità</p>
+                </div>
+                <div className="flex items-center justify-center">
+                  <div className="bg-white/10 px-6 py-3 rounded-xl">
+                    <p className="text-2xl font-bold text-white">vs</p>
+                  </div>
+                </div>
+                <div>
+                  <div className="text-4xl md:text-5xl font-bold text-red-400 mb-2">100-150mg</div>
+                  <p className="text-gray-400 text-sm uppercase font-bold tracking-wide">Concentrazione Competitor</p>
+                  <p className="text-gray-500 text-xs mt-2">Estratti standard a basso assorbimento</p>
+                </div>
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <div className="grid md:grid-cols-4 gap-6">
+                  {[
+                    { label: "Tempo di Assorbimento", zempbio: "18 min", others: "2-4 ore" },
+                    { label: "Biodisponibilità", zempbio: "94%", others: "35-45%" },
+                    { label: "Durata Effetto", zempbio: "8-10 ore", others: "2-3 ore" },
+                    { label: "Effetti Collaterali", zempbio: "Zero", others: "Frequenti" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="text-center">
+                      <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wide mb-3">{item.label}</p>
+                      <div className="space-y-2">
+                        <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-lg py-2 px-3">
+                          <p className="text-emerald-400 font-bold">{item.zempbio}</p>
+                        </div>
+                        <div className="bg-red-500/10 border border-red-500/20 rounded-lg py-2 px-3">
+                          <p className="text-red-400/70 font-medium text-sm">{item.others}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust badges */}
+          <div className="mt-12 flex flex-wrap justify-center gap-6 md:gap-10">
+            {[
+              { icon: <ShieldCheck size={24} />, text: "Testato Clinicamente" },
+              { icon: <Award size={24} />, text: "Brevetto Europeo" },
+              { icon: <Microscope size={24} />, text: "Laboratori Certificati" },
+              { icon: <CheckCircle2 size={24} />, text: "100% Naturale" },
+            ].map((badge, idx) => (
+              <div key={idx} className="flex items-center gap-3 bg-white/5 border border-white/10 px-5 py-3 rounded-xl">
+                <div className="text-emerald-400">{badge.icon}</div>
+                <span className="text-sm font-bold text-white uppercase tracking-wide">{badge.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Wall of Love - Massive Grid */}
       <section className="py-24 px-4 bg-gradient-to-b from-gray-100 via-gray-50 to-gray-100 border-y border-gray-200 relative overflow-hidden">
         {/* Background decorations */}
