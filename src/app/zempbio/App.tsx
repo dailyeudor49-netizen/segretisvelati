@@ -670,88 +670,170 @@ const App: React.FC = () => {
             </p>
           </div>
 
-          {/* Main content grid */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-            {/* Left: Product showcase */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12">
-                <div className="flex justify-center mb-8">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-emerald-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                    <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Complex 400mg" className="relative w-48 md:w-64 drop-shadow-2xl" />
+          {/* Product showcase - Centered at top */}
+          <div className="flex flex-col items-center mb-16">
+            <div className="relative mb-8">
+              {/* Animated rings */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] border border-blue-500/20 rounded-full animate-[spin_30s_linear_infinite]"></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[250px] h-[250px] md:w-[350px] md:h-[350px] border border-emerald-500/20 rounded-full animate-[spin_25s_linear_infinite_reverse]"></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] bg-gradient-to-r from-blue-500/10 to-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+              </div>
+
+              {/* Product image */}
+              <div className="relative z-10 p-8">
+                <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Complex 400mg" className="w-40 md:w-56 drop-shadow-2xl hover:scale-105 transition-transform duration-500" />
+              </div>
+
+              {/* Floating badges around product */}
+              <div className="absolute top-4 right-0 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-2 rounded-xl text-[10px] font-bold shadow-lg animate-bounce">
+                400mg Complex
+              </div>
+              <div className="absolute bottom-4 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-3 py-2 rounded-xl text-[10px] font-bold shadow-lg animate-[bounce_1s_ease-in-out_infinite_0.3s]">
+                5 Principi Attivi
+              </div>
+            </div>
+
+            {/* Dosage info - Compact */}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center max-w-lg">
+              <p className="text-emerald-400 font-bold uppercase text-xs tracking-wide mb-2">Posologia Consigliata</p>
+              <p className="text-xl md:text-2xl font-bold text-white mb-2">1 compressa a pranzo + 1 a cena</p>
+              <p className="text-gray-400 text-sm mb-4">20 minuti prima dei pasti</p>
+              <div className="flex justify-center gap-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-blue-400 text-lg">🌞</span>
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] text-gray-500 uppercase">Pranzo</p>
+                    <p className="text-sm font-bold text-white">12:00</p>
                   </div>
                 </div>
-
-                {/* Dosage info */}
-                <div className="bg-gradient-to-r from-emerald-600/20 to-blue-600/20 border border-emerald-500/30 rounded-2xl p-6 text-center">
-                  <p className="text-emerald-400 font-bold uppercase text-xs tracking-wide mb-2">Posologia Consigliata</p>
-                  <p className="text-2xl md:text-3xl font-bold text-white mb-3">1 compressa a pranzo + 1 a cena</p>
-                  <p className="text-gray-400 text-sm">Assumere 20 minuti prima dei pasti con un bicchiere d'acqua</p>
-                  <div className="flex justify-center gap-4 mt-4">
-                    <div className="bg-white/10 px-4 py-2 rounded-lg">
-                      <p className="text-[10px] text-gray-400 uppercase">Pranzo</p>
-                      <p className="text-lg font-bold text-white">12:00</p>
-                    </div>
-                    <div className="bg-white/10 px-4 py-2 rounded-lg">
-                      <p className="text-[10px] text-gray-400 uppercase">Cena</p>
-                      <p className="text-lg font-bold text-white">19:00</p>
-                    </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-purple-400 text-lg">🌙</span>
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] text-gray-500 uppercase">Cena</p>
+                    <p className="text-sm font-bold text-white">19:00</p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Right: Active ingredients */}
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold uppercase mb-6">I 5 Principi Attivi Brevettati</h3>
+          {/* Active Ingredients - Horizontal Carousel */}
+          <div className="mb-16">
+            <h3 className="text-2xl md:text-3xl font-bold uppercase mb-8 text-center">I 5 Principi Attivi Brevettati</h3>
 
-              {[
-                {
-                  name: "LeptinX-7™",
-                  amount: "120mg",
-                  desc: "Estratto brevettato di Griffonia Simplicifolia potenziato. Attraversa la barriera emato-encefalica in 18 minuti, resettando i recettori della leptina ipotalamici. I competitor usano estratti standard che impiegano 3-4 ore.",
-                  color: "blue"
-                },
-                {
-                  name: "GrelinBlock®",
-                  amount: "95mg",
-                  desc: "Complesso di fibre bioattive da Konjac fermentato con Lactobacillus. Inibisce la produzione di grelina (ormone della fame) del 67% più efficacemente rispetto al glucomannano tradizionale.",
-                  color: "emerald"
-                },
-                {
-                  name: "ThermoBurn-X3",
-                  amount: "85mg",
-                  desc: "Blend termogenico di Capsaicina microincapsulata + Estratto di Tè Verde EGCG + Piperina. Aumenta il metabolismo basale del 23% senza tachicardia, grazie al rilascio graduale brevettato.",
-                  color: "orange"
-                },
-                {
-                  name: "AdipoCyte Disruptor™",
-                  amount: "60mg",
-                  desc: "Acido Linoleico Coniugato (CLA) in forma isomerica attiva al 94%. Interferisce con l'enzima lipoproteina lipasi, impedendo l'accumulo di nuovo grasso viscerale.",
-                  color: "red"
-                },
-                {
-                  name: "NeuroCalm-B6",
-                  amount: "40mg",
-                  desc: "Vitamina B6 in forma attiva (P-5-P) + L-Teanina purificata. Regola il cortisolo e previene la fame emotiva. Efficacia 4x superiore alla B6 standard dei competitor.",
-                  color: "purple"
-                }
-              ].map((ingredient, idx) => (
-                <div key={idx} className="group relative">
-                  <div className={`absolute inset-0 bg-gradient-to-r ${ingredient.color === 'blue' ? 'from-blue-500/10 to-blue-600/10' : ingredient.color === 'emerald' ? 'from-emerald-500/10 to-emerald-600/10' : ingredient.color === 'orange' ? 'from-orange-500/10 to-orange-600/10' : ingredient.color === 'red' ? 'from-red-500/10 to-red-600/10' : 'from-purple-500/10 to-purple-600/10'} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-                  <div className="relative bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-all">
-                    <div className="flex items-start justify-between mb-2">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-3 h-3 rounded-full ${ingredient.color === 'blue' ? 'bg-blue-500' : ingredient.color === 'emerald' ? 'bg-emerald-500' : ingredient.color === 'orange' ? 'bg-orange-500' : ingredient.color === 'red' ? 'bg-red-500' : 'bg-purple-500'} shadow-lg`}></div>
-                        <h4 className="font-bold text-white text-lg">{ingredient.name}</h4>
+            {/* Gradient fade edges */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
+
+              {/* Scrolling container */}
+              <div className="overflow-x-auto pb-6 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                <div className="flex gap-6 px-8" style={{ width: 'max-content' }}>
+                  {[
+                    {
+                      name: "LeptinX-7™",
+                      amount: "120mg",
+                      shortDesc: "Reset Recettori Leptina",
+                      desc: "Estratto brevettato di Griffonia Simplicifolia potenziato. Attraversa la barriera emato-encefalica in 18 minuti, resettando i recettori della leptina ipotalamici.",
+                      benefit: "Effetto in 18 min vs 3-4 ore",
+                      icon: "🧠",
+                      gradient: "from-blue-600 to-blue-800",
+                      glow: "blue"
+                    },
+                    {
+                      name: "GrelinBlock®",
+                      amount: "95mg",
+                      shortDesc: "Blocca Ormone Fame",
+                      desc: "Complesso di fibre bioattive da Konjac fermentato con Lactobacillus. Inibisce la produzione di grelina del 67% più efficacemente.",
+                      benefit: "+67% efficacia vs standard",
+                      icon: "🛡️",
+                      gradient: "from-emerald-600 to-emerald-800",
+                      glow: "emerald"
+                    },
+                    {
+                      name: "ThermoBurn-X3",
+                      amount: "85mg",
+                      shortDesc: "Accelera Metabolismo",
+                      desc: "Blend termogenico di Capsaicina microincapsulata + Tè Verde EGCG + Piperina. Rilascio graduale brevettato senza tachicardia.",
+                      benefit: "+23% metabolismo basale",
+                      icon: "🔥",
+                      gradient: "from-orange-500 to-red-600",
+                      glow: "orange"
+                    },
+                    {
+                      name: "AdipoCyte Disruptor™",
+                      amount: "60mg",
+                      shortDesc: "Blocca Accumulo Grasso",
+                      desc: "CLA in forma isomerica attiva al 94%. Interferisce con l'enzima lipoproteina lipasi, impedendo l'accumulo di grasso viscerale.",
+                      benefit: "94% forma attiva vs 40%",
+                      icon: "⚡",
+                      gradient: "from-red-600 to-pink-700",
+                      glow: "red"
+                    },
+                    {
+                      name: "NeuroCalm-B6",
+                      amount: "40mg",
+                      shortDesc: "Stop Fame Emotiva",
+                      desc: "Vitamina B6 in forma attiva (P-5-P) + L-Teanina purificata. Regola il cortisolo e previene la fame emotiva da stress.",
+                      benefit: "4x efficacia vs B6 standard",
+                      icon: "😌",
+                      gradient: "from-purple-600 to-indigo-800",
+                      glow: "purple"
+                    }
+                  ].map((ingredient, idx) => (
+                    <div key={idx} className="flex-shrink-0 w-[280px] md:w-[320px] group">
+                      {/* Card with glow effect */}
+                      <div className="relative h-full">
+                        <div className={`absolute -inset-1 bg-gradient-to-r ${ingredient.gradient} rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition-opacity`}></div>
+                        <div className={`relative h-full bg-gradient-to-br ${ingredient.gradient} rounded-2xl p-6 border border-white/20 shadow-2xl overflow-hidden group-hover:scale-[1.02] transition-transform`}>
+                          {/* Shine effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
+                          {/* Content */}
+                          <div className="relative z-10">
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-4">
+                              <div className="text-4xl">{ingredient.icon}</div>
+                              <div className="bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-xl">
+                                <p className="text-white font-bold text-lg">{ingredient.amount}</p>
+                              </div>
+                            </div>
+
+                            {/* Title */}
+                            <h4 className="text-xl font-bold text-white mb-1">{ingredient.name}</h4>
+                            <p className="text-white/70 text-sm font-medium mb-4">{ingredient.shortDesc}</p>
+
+                            {/* Description */}
+                            <p className="text-white/60 text-sm leading-relaxed mb-4">{ingredient.desc}</p>
+
+                            {/* Benefit badge */}
+                            <div className="bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/20">
+                              <p className="text-[10px] text-white/60 uppercase font-bold tracking-wide mb-1">Vantaggio ZEMPBIO™</p>
+                              <p className="text-white font-bold text-sm">{ingredient.benefit}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <span className={`${ingredient.color === 'blue' ? 'bg-blue-500/20 text-blue-300' : ingredient.color === 'emerald' ? 'bg-emerald-500/20 text-emerald-300' : ingredient.color === 'orange' ? 'bg-orange-500/20 text-orange-300' : ingredient.color === 'red' ? 'bg-red-500/20 text-red-300' : 'bg-purple-500/20 text-purple-300'} px-3 py-1 rounded-lg text-xs font-bold`}>{ingredient.amount}</span>
                     </div>
-                    <p className="text-gray-400 text-sm leading-relaxed">{ingredient.desc}</p>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Scroll indicator */}
+              <div className="flex justify-center mt-4 gap-2">
+                <div className="text-gray-500 text-xs uppercase tracking-wide flex items-center gap-2">
+                  <span>←</span> Scorri per vedere tutti <span>→</span>
+                </div>
+              </div>
             </div>
           </div>
 
