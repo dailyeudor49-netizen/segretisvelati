@@ -391,122 +391,80 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Comparison Section - Modern */}
-      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-5">
-          <div className="absolute top-20 left-10 text-[200px] font-bold text-white">VS</div>
-        </div>
-
-        <div className="container mx-auto max-w-6xl relative z-10">
+      {/* Comparison Table - 2 Columns */}
+      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+        <div className="container mx-auto max-w-3xl">
           {/* Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-10 md:mb-14">
             <p className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-3">Confronto Onesto</p>
             <h2 className="text-3xl md:text-5xl font-bold uppercase leading-tight">
-              Perché ZEMPBIO™ <span className="text-emerald-400">vince</span> sempre?
+              ZEMPBIO™ <span className="text-gray-500">vs</span> Prodotti Comuni
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">Ecco cosa ci distingue dalle pillole che trovi in farmacia o nei supermercati</p>
           </div>
 
-          {/* Comparison Cards */}
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
-
-            {/* ZEMPBIO Card - Winner */}
-            <div className="relative">
-              <div className="absolute -top-3 left-4 bg-emerald-500 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase flex items-center gap-1 shadow-lg z-10">
-                <Award size={12} /> Scelta Vincente
+          {/* Table */}
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-600">
+            {/* Header Row */}
+            <div className="grid grid-cols-[1fr,1fr,1fr] md:grid-cols-[1.5fr,1fr,1fr]">
+              <div className="bg-slate-900 p-4 md:p-5"></div>
+              {/* ZEMPBIO Header - Emphasized */}
+              <div className="bg-gradient-to-b from-blue-500 to-blue-600 p-4 md:p-5 text-center relative">
+                <div className="absolute -top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white px-3 py-1 rounded-full text-[8px] md:text-[9px] font-bold uppercase shadow-lg whitespace-nowrap">
+                  ⭐ Consigliato
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <div className="bg-white text-blue-600 px-2 py-1 rounded font-bold text-[10px] md:text-xs">ZB</div>
+                  <span className="text-sm md:text-lg font-bold">ZEMPBIO™</span>
+                </div>
               </div>
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 md:p-8 border-2 border-blue-400 shadow-2xl shadow-blue-500/20 h-full">
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-blue-400/30">
-                  <div className="bg-white text-blue-600 p-2 rounded-lg font-bold text-sm">ZB</div>
-                  <h3 className="text-2xl md:text-3xl font-bold">ZEMPBIO™</h3>
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    { label: "Concentrazione", value: "1000mg", highlight: "4x più potente", icon: <Zap size={18} /> },
-                    { label: "Tempo effetto", value: "18 minuti", highlight: "Ultra rapido", icon: <Timer size={18} /> },
-                    { label: "Costo giornaliero", value: "€0,84", highlight: "Più economico", icon: <TrendingDown size={18} /> },
-                    { label: "Effetti collaterali", value: "Zero", highlight: "100% naturale", icon: <ShieldCheck size={18} /> },
-                    { label: "Garanzia", value: "60 giorni", highlight: "Soddisfatti o rimborsati", icon: <Award size={18} /> },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between bg-white/10 rounded-xl p-4 backdrop-blur-sm">
-                      <div className="flex items-center gap-3">
-                        <div className="text-blue-200">{item.icon}</div>
-                        <div>
-                          <p className="text-blue-100 text-xs uppercase tracking-wide">{item.label}</p>
-                          <p className="text-white font-bold text-lg">{item.value}</p>
-                        </div>
-                      </div>
-                      <div className="bg-emerald-500 text-white text-[9px] font-bold uppercase px-2 py-1 rounded-lg">
-                        {item.highlight}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-blue-400/30 flex items-center justify-center gap-2 text-emerald-300">
-                  <CheckCircle2 size={20} />
-                  <p className="font-bold uppercase text-sm">La Scelta Intelligente</p>
-                </div>
+              {/* Competitors Header */}
+              <div className="bg-slate-700 p-4 md:p-5 text-center">
+                <span className="text-sm md:text-lg font-bold text-gray-400">Altri</span>
               </div>
             </div>
 
-            {/* Competitors Card - Loser */}
-            <div className="relative">
-              <div className="absolute -top-3 left-4 bg-red-500/80 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase flex items-center gap-1 shadow-lg z-10">
-                <AlertTriangle size={12} /> Da Evitare
-              </div>
-              <div className="bg-slate-700/50 rounded-2xl p-6 md:p-8 border border-slate-600 h-full opacity-80">
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-600">
-                  <div className="bg-slate-600 text-slate-400 p-2 rounded-lg font-bold text-sm">?</div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-slate-400">Pillole Comuni</h3>
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    { label: "Concentrazione", value: "150-250mg", problem: "Insufficiente", icon: <Zap size={18} /> },
-                    { label: "Tempo effetto", value: "2-3 ore", problem: "Troppo lento", icon: <Timer size={18} /> },
-                    { label: "Costo giornaliero", value: "€2.50+", problem: "Costoso", icon: <TrendingDown size={18} /> },
-                    { label: "Effetti collaterali", value: "Possibili", problem: "Rischio", icon: <ShieldCheck size={18} /> },
-                    { label: "Garanzia", value: "Nessuna", problem: "Zero tutela", icon: <Award size={18} /> },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between bg-slate-800/50 rounded-xl p-4">
-                      <div className="flex items-center gap-3">
-                        <div className="text-slate-500">{item.icon}</div>
-                        <div>
-                          <p className="text-slate-500 text-xs uppercase tracking-wide">{item.label}</p>
-                          <p className="text-slate-400 font-bold text-lg">{item.value}</p>
-                        </div>
-                      </div>
-                      <div className="bg-red-500/20 text-red-400 text-[9px] font-bold uppercase px-2 py-1 rounded-lg border border-red-500/30">
-                        {item.problem}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-slate-600 flex items-center justify-center gap-2 text-red-400">
-                  <XCircle size={20} />
-                  <p className="font-bold uppercase text-sm">Soldi Sprecati</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {/* Comparison Rows */}
             {[
-              { number: "4x", label: "Più Concentrato" },
-              { number: "3x", label: "Più Economico" },
-              { number: "98%", label: "Clienti Soddisfatti" },
-              { number: "0", label: "Effetti Collaterali" },
-            ].map((stat, i) => (
-              <div key={i} className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 md:p-6 text-center hover:border-blue-500 transition-all">
-                <p className="text-3xl md:text-4xl font-bold text-blue-400">{stat.number}</p>
-                <p className="text-[10px] md:text-xs text-gray-400 uppercase font-bold mt-1">{stat.label}</p>
+              { label: "Concentrazione", zempbio: "1000mg", competitor: "150-250mg" },
+              { label: "Tempo Effetto", zempbio: "18 min", competitor: "2-3 ore" },
+              { label: "Costo al Giorno", zempbio: "€0,84", competitor: "€2.50+" },
+              { label: "Blocca Fame Nervosa", zempbio: "check", competitor: "x" },
+              { label: "Effetti Collaterali", zempbio: "Zero", competitor: "Possibili" },
+              { label: "Garanzia", zempbio: "60 giorni", competitor: "Nessuna" },
+              { label: "Pago alla Consegna", zempbio: "check", competitor: "x" },
+              { label: "Spedizione Gratis", zempbio: "check", competitor: "x" },
+            ].map((row, i) => (
+              <div key={i} className={`grid grid-cols-[1fr,1fr,1fr] md:grid-cols-[1.5fr,1fr,1fr] border-t border-slate-700 ${i % 2 === 0 ? 'bg-slate-800/30' : 'bg-slate-800/50'}`}>
+                {/* Label */}
+                <div className="p-3 md:p-4 flex items-center">
+                  <span className="text-xs md:text-sm text-gray-300 font-medium">{row.label}</span>
+                </div>
+                {/* ZEMPBIO Value - Emphasized */}
+                <div className="p-3 md:p-4 bg-blue-600/20 border-x border-blue-500/30 flex items-center justify-center">
+                  {row.zempbio === "check" ? (
+                    <CheckCircle2 className="text-emerald-400" size={24} />
+                  ) : (
+                    <span className="text-white font-bold text-sm md:text-lg">{row.zempbio}</span>
+                  )}
+                </div>
+                {/* Competitor Value */}
+                <div className="p-3 md:p-4 flex items-center justify-center">
+                  {row.competitor === "x" ? (
+                    <XCircle className="text-red-400/60" size={24} />
+                  ) : (
+                    <span className="text-gray-500 text-sm">{row.competitor}</span>
+                  )}
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="mt-10 text-center">
+            <p className="text-gray-400 text-sm mb-4">La scelta è ovvia. Unisciti ai <span className="text-white font-bold">14.200+</span> clienti soddisfatti.</p>
+            <a href="#order" className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-bold uppercase shadow-lg transition-all">
+              Ordina ZEMPBIO™ Ora <ArrowRight size={18} />
+            </a>
           </div>
         </div>
       </section>
