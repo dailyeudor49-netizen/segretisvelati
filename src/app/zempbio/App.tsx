@@ -331,57 +331,94 @@ const App: React.FC = () => {
         ATTENZIONE: Offerta Esclusiva valida per i prossimi {formatTime(timeLeft)}. Solo 14 confezioni residue.
       </div>
 
-      {/* Hero Section */}
-      <header className="px-4 pt-12 pb-24 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 text-white relative overflow-hidden">
-        {/* Animated background elements */}
+      {/* Hero Section - Product Focused */}
+      <header className="px-4 pt-8 pb-16 md:pt-12 md:pb-24 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden min-h-[85vh] md:min-h-[70vh] flex items-center">
+        {/* Background effects */}
         <div className="absolute inset-0">
-          {/* Gradient orbs */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-
-          {/* Grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-
-          {/* Radial gradient overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(15,23,42,0.8)_70%)]"></div>
+          {/* Central glow behind product */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-blue-600/30 rounded-full blur-[100px]"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-emerald-500/20 rounded-full blur-[80px]"></div>
+          {/* Bottom fade to content */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent"></div>
         </div>
 
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <div className="relative inline-block mb-8">
-                <div className="absolute inset-0 bg-blue-500 rounded-xl blur-lg opacity-30"></div>
-                <div className="relative bg-blue-600/40 text-blue-200 border border-blue-500/50 px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wide flex items-center gap-2">
-                  <Zap size={12} className="animate-pulse" /> Protocollo ZEMPBIO™ Complex 400mg
-                </div>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight uppercase">
-                Smetti di essere <br/> <span className="text-blue-400 underline decoration-blue-400/50">Schiavo</span> della Fame
-              </h1>
-              <p className="text-lg md:text-xl text-gray-300 mb-10 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Non è colpa tua se le diete hanno fallito. È colpa del tuo "interruttore biologico" rotto. ZEMPBIO™ resetta i tuoi segnali di sazietà in 18 minuti.
-              </p>
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <div className="flex flex-col items-center text-center">
+            {/* Top badge */}
+            <div className="mb-4 md:mb-6">
+              <span className="bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest">
+                🔬 Integratore Clinicamente Testato
+              </span>
+            </div>
 
-              <div className="flex flex-wrap justify-center lg:justify-start gap-6 opacity-70">
-                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wide">
-                   <ShieldCheck size={18} className="text-emerald-400" /> Made in Europe
-                 </div>
-                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wide">
-                   <Award size={18} className="text-blue-400" /> Certificato GMP
-                 </div>
-                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wide">
-                   <TrendingDown size={18} className="text-red-400" /> -12kg Media Clienti
-                 </div>
+            {/* Main headline */}
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 leading-tight uppercase tracking-tight">
+              Spegni la Fame.<br/>
+              <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">Brucia il Grasso.</span>
+            </h1>
+
+            <p className="text-gray-400 text-sm md:text-lg max-w-2xl mb-6 md:mb-8 font-medium">
+              L'integratore italiano a base di Complex 400mg che resetta i tuoi segnali di sazietà in soli 18 minuti.
+            </p>
+
+            {/* Product with fade effect */}
+            <div className="relative mb-6 md:mb-10">
+              {/* Radial fade/glow */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900 z-10 pointer-events-none"></div>
+              <div className="absolute -inset-10 bg-gradient-to-r from-slate-900 via-transparent to-slate-900 z-10 pointer-events-none"></div>
+
+              {/* Product image */}
+              <div className="relative">
+                <img
+                  src="/images/zempbio/400mg.png"
+                  alt="ZEMPBIO Complex 400mg"
+                  className="w-44 md:w-64 lg:w-72 mx-auto drop-shadow-[0_0_60px_rgba(59,130,246,0.5)] hover:scale-105 transition-transform duration-500"
+                />
               </div>
             </div>
 
-            <div className="lg:w-1/2 w-full max-w-xl">
-              <MetabolicAnalyzer onResult={() => {}} />
+            {/* Price section */}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-6 mb-6 md:mb-8 w-full max-w-sm">
+              <p className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-widest mb-2">Offerta Lancio Limitata</p>
+              <div className="flex items-center justify-center gap-3 mb-2">
+                <span className="text-4xl md:text-5xl font-bold text-white">€39,99</span>
+                <span className="text-lg text-gray-500 line-through">€79,99</span>
+                <span className="bg-red-500 text-white px-2 py-1 rounded-lg text-xs font-bold">-50%</span>
+              </div>
+              <p className="text-gray-400 text-xs md:text-sm">60 compresse • Trattamento completo 30 giorni</p>
+            </div>
+
+            {/* CTA Button */}
+            <a href="#order" className="w-full max-w-sm bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white py-4 md:py-5 rounded-xl font-bold text-base md:text-lg uppercase shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all flex items-center justify-center gap-2 mb-4">
+              Ordina Ora - Spedizione Gratis <ArrowRight size={20} />
+            </a>
+
+            {/* Trust badges */}
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-[9px] md:text-[10px] text-gray-400 font-bold uppercase tracking-wide">
+              <span className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-emerald-400" /> Notificato Min. Salute</span>
+              <span className="flex items-center gap-1.5"><Truck size={14} className="text-blue-400" /> Consegna 24/48h</span>
+              <span className="flex items-center gap-1.5"><Award size={14} className="text-amber-400" /> Made in EU</span>
             </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+          <ChevronDown size={24} className="text-gray-500" />
+        </div>
       </header>
+
+      {/* Metabolic Analyzer Section */}
+      <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-gray-100 relative">
+        <div className="container mx-auto max-w-2xl relative z-10">
+          <div className="text-center mb-8 text-white">
+            <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-2">🎯 Test Gratuito in 30 Secondi</p>
+            <h2 className="text-2xl md:text-3xl font-bold uppercase mb-2">Scopri il Tuo Blocco Metabolico</h2>
+            <p className="text-gray-400 text-sm">Perché le diete non funzionano su di te? Fai il test e scoprilo subito.</p>
+          </div>
+          <MetabolicAnalyzer onResult={() => {}} />
+        </div>
+      </section>
 
       {/* The Mechanism Section */}
       <section className="py-24 px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
@@ -392,58 +429,40 @@ const App: React.FC = () => {
 
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Enhanced Product Mockup Display */}
-            <div className="relative flex items-center justify-center py-8">
-              {/* Outer glow ring */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-gradient-to-r from-blue-500/20 via-emerald-500/20 to-blue-500/20 blur-2xl animate-pulse"></div>
-              </div>
+            {/* Professional Product Display */}
+            <div className="relative flex flex-col items-center justify-center">
+              {/* Clean product card */}
+              <div className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl p-6 md:p-10 border border-slate-200 shadow-lg">
+                {/* Certification badge */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-700 text-white px-4 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-wide flex items-center gap-1.5">
+                  <ShieldCheck size={12} /> Notificato Min. Salute
+                </div>
 
-              {/* Rotating gradient border */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[260px] h-[260px] md:w-[340px] md:h-[340px] rounded-full border-2 border-dashed border-blue-300/50 animate-[spin_20s_linear_infinite]"></div>
-              </div>
+                {/* Product image */}
+                <img
+                  src="/images/zempbio/400mg.png"
+                  alt="ZEMPBIO Complex 400mg"
+                  className="w-40 md:w-56 mx-auto drop-shadow-lg"
+                />
 
-              {/* Floating badges */}
-              <div className="absolute top-0 right-4 md:right-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-2 rounded-xl shadow-lg animate-bounce text-[10px] font-bold uppercase z-20">
-                <Zap size={12} className="inline mr-1" /> Complex 400mg
-              </div>
-              <div className="absolute bottom-20 left-0 md:left-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-3 py-2 rounded-xl shadow-lg animate-[bounce_2s_ease-in-out_infinite_0.5s] text-[10px] font-bold uppercase z-20">
-                <ShieldCheck size={12} className="inline mr-1" /> Made in EU
-              </div>
-              <div className="absolute top-1/4 left-0 md:-left-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-2 rounded-xl shadow-lg animate-[bounce_2s_ease-in-out_infinite_1s] text-[10px] font-bold uppercase z-20">
-                <Star size={12} className="inline mr-1" /> #1 in Italia
-              </div>
-
-              {/* Main product container */}
-              <div className="relative z-10">
-                {/* Glass card background */}
-                <div className="absolute -inset-6 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-2xl"></div>
-
-                {/* Product image with effects */}
-                <div className="relative p-4">
-                  <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent rounded-2xl"></div>
-                  <img
-                    src="/images/zempbio/400mg.png"
-                    alt="ZEMPBIO Complex 400mg"
-                    className="relative rounded-2xl max-w-[200px] md:max-w-[280px] drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-                  />
+                {/* Product info */}
+                <div className="mt-6 text-center">
+                  <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Integratore Alimentare</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mt-1">ZEMPBIO™ Complex</h3>
+                  <p className="text-slate-600 text-sm font-semibold">400mg per compressa</p>
                 </div>
               </div>
 
-              {/* Price badge - floating below */}
-              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-30">
-                <div className="relative">
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 bg-emerald-500 rounded-2xl blur-xl opacity-50"></div>
-                  {/* Price card */}
-                  <div className="relative bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 text-white px-8 py-5 rounded-2xl shadow-2xl border border-emerald-400/50 text-center whitespace-nowrap overflow-hidden">
-                    {/* Shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest mb-1 text-emerald-100">Offerta Lancio</p>
-                    <p className="text-4xl md:text-5xl font-bold leading-none">€39,99</p>
-                    <p className="text-[10px] font-bold uppercase tracking-wide opacity-80 mt-1">60 Compresse Complex</p>
-                  </div>
+              {/* Price section - clean and professional */}
+              <div className="mt-6 bg-white rounded-xl p-5 md:p-6 border border-slate-200 shadow-md w-full max-w-xs text-center">
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <span className="text-3xl md:text-4xl font-bold text-slate-800">€39,99</span>
+                  <span className="text-base text-slate-400 line-through">€79,99</span>
+                </div>
+                <p className="text-slate-600 text-sm font-medium">60 compresse • Trattamento 30 giorni</p>
+                <div className="flex items-center justify-center gap-4 mt-4 text-[10px] text-slate-500 font-bold uppercase">
+                  <span className="flex items-center gap-1"><Truck size={12} className="text-blue-600" /> Spedizione gratuita</span>
+                  <span className="flex items-center gap-1"><Award size={12} className="text-emerald-600" /> Made in EU</span>
                 </div>
               </div>
             </div>
@@ -709,86 +728,111 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Composition Table */}
+          {/* COMPOSITION SECTION - POWERFUL VISUAL */}
           <div className="mb-14">
-            <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Composizione per dose giornaliera (2 compresse)</h3>
-            <div className="overflow-hidden rounded-xl border border-slate-200">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-slate-700 text-white">
-                    <th className="text-left py-4 px-5 font-semibold text-sm">Principio Attivo</th>
-                    <th className="text-center py-4 px-5 font-semibold text-sm">Quantità</th>
-                    <th className="text-left py-4 px-5 font-semibold text-sm hidden md:table-cell">Funzione</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {[
-                    { name: "Griffonia simplicifolia e.s. (LeptinX-7™)", amount: "240mg", function: "Supporto del tono dell'umore e controllo dell'appetito" },
-                    { name: "Glucomannano da Konjac (GrelinBlock®)", amount: "190mg", function: "Riduzione del senso di fame nel contesto di dieta ipocalorica*" },
-                    { name: "Estratto di Tè Verde titolato EGCG", amount: "170mg", function: "Azione antiossidante e termogenica" },
-                    { name: "Acido Linoleico Coniugato (CLA)", amount: "120mg", function: "Metabolismo dei lipidi" },
-                    { name: "Vitamina B6 (Piridossina P-5-P)", amount: "80mg", function: "Normale metabolismo energetico" },
-                  ].map((item, idx) => (
-                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-                      <td className="py-4 px-5">
-                        <span className="font-medium text-slate-800 text-sm">{item.name}</span>
-                      </td>
-                      <td className="py-4 px-5 text-center">
-                        <span className="font-bold text-slate-700 text-sm">{item.amount}</span>
-                      </td>
-                      <td className="py-4 px-5 hidden md:table-cell">
-                        <span className="text-slate-600 text-sm">{item.function}</span>
-                      </td>
-                    </tr>
-                  ))}
-                  <tr className="bg-slate-100">
-                    <td className="py-4 px-5">
-                      <span className="font-bold text-slate-800">TOTALE COMPLEX</span>
-                    </td>
-                    <td className="py-4 px-5 text-center">
-                      <span className="font-bold text-blue-700 text-lg">800mg</span>
-                    </td>
-                    <td className="py-4 px-5 hidden md:table-cell">
-                      <span className="text-slate-600 text-sm italic">(400mg per compressa)</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-red-100 border border-red-200 text-red-700 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide mb-4">
+                <Zap size={14} /> Formula Brevettata
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-800">Composizione per Dose Giornaliera</h3>
+              <p className="text-slate-500 text-sm mt-2">2 compresse = 800mg di principi attivi concentrati</p>
             </div>
-            <p className="text-xs text-slate-500 mt-3">*Il glucomannano contribuisce alla perdita di peso nel contesto di una dieta ipocalorica - claim autorizzato EFSA.</p>
-          </div>
 
-          {/* Comparison Table - Clean */}
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Confronto con prodotti standard</h3>
-            <div className="overflow-hidden rounded-xl border border-slate-200">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-slate-100">
-                    <th className="text-left py-4 px-5 font-semibold text-slate-700 text-sm">Caratteristica</th>
-                    <th className="text-center py-4 px-5 font-semibold text-sm bg-blue-600 text-white">ZEMPBIO™</th>
-                    <th className="text-center py-4 px-5 font-semibold text-slate-500 text-sm">Altri prodotti</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {[
-                    { label: "Concentrazione principi attivi", zempbio: "400mg/cpr", others: "100-150mg/cpr" },
-                    { label: "Biodisponibilità estratti", zempbio: "94%", others: "35-45%" },
-                    { label: "Tempo di assorbimento", zempbio: "18-25 min", others: "2-4 ore" },
-                    { label: "Durata effetto saziante", zempbio: "8-10 ore", others: "2-3 ore" },
-                    { label: "Standardizzazione estratti", zempbio: "Certificata", others: "Variabile" },
-                  ].map((item, idx) => (
-                    <tr key={idx} className="bg-white">
-                      <td className="py-3 px-5 text-sm text-slate-600">{item.label}</td>
-                      <td className="py-3 px-5 text-center bg-blue-50">
-                        <span className="font-bold text-blue-700 text-sm">{item.zempbio}</span>
-                      </td>
-                      <td className="py-3 px-5 text-center text-slate-500 text-sm">{item.others}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {/* Powerful ingredient cards */}
+            <div className="space-y-4">
+              {[
+                {
+                  name: "LeptinX-7™",
+                  fullName: "Griffonia simplicifolia e.s.",
+                  amount: "240mg",
+                  color: "from-purple-600 to-purple-800",
+                  bgColor: "bg-purple-50",
+                  borderColor: "border-purple-200",
+                  effect: "SPEGNE L'INTERRUTTORE DELLA FAME",
+                  description: "Agisce direttamente sui recettori ipotalamici della sazietà. In 18 minuti il cervello smette di inviare segnali di fame anche dopo ore dal pasto. È come avere un pulsante OFF per l'appetito."
+                },
+                {
+                  name: "GrelinBlock®",
+                  fullName: "Glucomannano da Konjac",
+                  amount: "190mg",
+                  color: "from-emerald-600 to-emerald-800",
+                  bgColor: "bg-emerald-50",
+                  borderColor: "border-emerald-200",
+                  effect: "BLOCCA L'ORMONE DELLA FAME",
+                  description: "Neutralizza la grelina, l'ormone che ti fa svegliare di notte per aprire il frigo. Espandendosi nello stomaco crea un senso di pienezza IMPOSSIBILE da ignorare."
+                },
+                {
+                  name: "ThermoBurn-X3",
+                  fullName: "Estratto di Tè Verde titolato EGCG",
+                  amount: "170mg",
+                  color: "from-orange-500 to-red-600",
+                  bgColor: "bg-orange-50",
+                  borderColor: "border-orange-200",
+                  effect: "BRUCIA IL GRASSO ANCHE A RIPOSO",
+                  description: "Attiva la termogenesi forzata: il corpo brucia calorie per produrre calore anche mentre dormi. Il grasso viscerale viene letteralmente SCIOLTO per generare energia."
+                },
+                {
+                  name: "AdipoCyte Disruptor™",
+                  fullName: "Acido Linoleico Coniugato (CLA)",
+                  amount: "120mg",
+                  color: "from-blue-600 to-indigo-700",
+                  bgColor: "bg-blue-50",
+                  borderColor: "border-blue-200",
+                  effect: "DISTRUGGE LE CELLULE DI GRASSO",
+                  description: "Penetra nelle cellule adipose e ne interrompe il ciclo vitale. Il grasso accumulato in anni viene rilasciato nel sangue e convertito in energia utilizzabile."
+                },
+                {
+                  name: "NeuroCalm-B6",
+                  fullName: "Vitamina B6 (Piridossina P-5-P)",
+                  amount: "80mg",
+                  color: "from-cyan-500 to-teal-600",
+                  bgColor: "bg-cyan-50",
+                  borderColor: "border-cyan-200",
+                  effect: "ELIMINA LA FAME NERVOSA",
+                  description: "Stabilizza i neurotrasmettitori che causano la fame emotiva. Niente più abbuffate da stress, ansia o noia. Il cibo torna ad essere nutrimento, non compensazione psicologica."
+                },
+              ].map((ingredient, idx) => (
+                <div key={idx} className={`${ingredient.bgColor} ${ingredient.borderColor} border rounded-2xl p-5 md:p-6 hover:shadow-lg transition-all group`}>
+                  <div className="flex flex-col md:flex-row md:items-center gap-4">
+                    {/* Badge with amount */}
+                    <div className={`bg-gradient-to-br ${ingredient.color} text-white px-4 py-3 rounded-xl text-center shrink-0`}>
+                      <p className="text-2xl md:text-3xl font-bold leading-none">{ingredient.amount}</p>
+                      <p className="text-[9px] font-bold uppercase tracking-wide opacity-80 mt-1">per dose</p>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-grow">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <h4 className="text-lg md:text-xl font-bold text-slate-800">{ingredient.name}</h4>
+                        <span className="text-xs text-slate-500 font-medium">({ingredient.fullName})</span>
+                      </div>
+                      <p className={`text-sm font-bold uppercase tracking-wide mb-2 bg-gradient-to-r ${ingredient.color} bg-clip-text text-transparent`}>
+                        ⚡ {ingredient.effect}
+                      </p>
+                      <p className="text-slate-600 text-sm leading-relaxed">{ingredient.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
+
+            {/* Total box */}
+            <div className="mt-6 bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-6 text-white text-center">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                <div>
+                  <p className="text-slate-400 text-xs font-bold uppercase tracking-wide">Totale Principi Attivi</p>
+                  <p className="text-4xl md:text-5xl font-bold">800mg</p>
+                </div>
+                <div className="hidden md:block w-px h-16 bg-slate-600"></div>
+                <div className="text-left">
+                  <p className="text-emerald-400 font-bold text-sm uppercase">✓ 5x più concentrato della concorrenza</p>
+                  <p className="text-emerald-400 font-bold text-sm uppercase">✓ Biodisponibilità certificata al 94%</p>
+                  <p className="text-emerald-400 font-bold text-sm uppercase">✓ Zero filler, zero additivi inutili</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-500 mt-4 text-center">*Il glucomannano contribuisce alla perdita di peso nel contesto di una dieta ipocalorica - claim autorizzato EFSA.</p>
           </div>
 
           {/* Certifications */}
