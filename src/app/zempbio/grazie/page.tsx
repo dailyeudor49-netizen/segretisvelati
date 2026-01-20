@@ -1,10 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { CheckCircle2, Phone, Clock, Package, ShieldCheck } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 
-export default function GraziePage() {
+function GrazieContent() {
   const searchParams = useSearchParams();
   const nome = searchParams.get('nome') || 'Cliente';
 
@@ -168,5 +168,24 @@ export default function GraziePage() {
         </div>
       </main>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mx-auto mb-4"></div>
+        <p className="text-gray-600">Caricamento...</p>
+      </div>
+    </div>
+  );
+}
+
+export default function GraziePage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <GrazieContent />
+    </Suspense>
   );
 }
