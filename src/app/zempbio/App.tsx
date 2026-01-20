@@ -399,10 +399,274 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
-      <SalesPopup />
 
-      {/* Urgency Bar - Fixed on Top - SUPER ALERT */}
-      <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden">
+      {/* ==================== DESKTOP VERSION - Clean & Facebook Compliant ==================== */}
+      <div className="hidden md:block">
+        {/* Clean Header */}
+        <header className="bg-white border-b border-gray-100 py-4 px-6">
+          <div className="container mx-auto max-w-6xl flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="bg-emerald-600 text-white p-1.5 rounded-lg font-bold text-sm">ZB</div>
+              <span className="font-bold text-xl text-gray-900">ZEMPBIO<span className="text-emerald-600">™</span></span>
+            </div>
+            <div className="flex items-center gap-6 text-sm text-gray-600">
+              <span className="flex items-center gap-2"><ShieldCheck size={16} className="text-emerald-600" /> Notificato al Ministero della Salute</span>
+              <span className="flex items-center gap-2"><Truck size={16} className="text-blue-600" /> Spedizione Gratuita</span>
+            </div>
+          </div>
+        </header>
+
+        {/* Hero Section - Clean & Professional */}
+        <section className="py-16 px-6 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Content */}
+              <div>
+                <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                  <ShieldCheck size={16} /> Integratore Alimentare Naturale
+                </div>
+                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                  Supporta il Tuo<br/>
+                  <span className="text-emerald-600">Benessere Metabolico</span>
+                </h1>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  ZEMPBIO™ Complex 400mg è un integratore alimentare formulato con ingredienti naturali
+                  per supportare il normale metabolismo e contribuire al senso di sazietà.
+                </p>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-emerald-600 mt-1 shrink-0" size={20} />
+                    <span className="text-gray-700">Formulazione a base di estratti vegetali</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-emerald-600 mt-1 shrink-0" size={20} />
+                    <span className="text-gray-700">Contribuisce al normale metabolismo energetico</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-emerald-600 mt-1 shrink-0" size={20} />
+                    <span className="text-gray-700">Prodotto in stabilimenti certificati EU GMP</span>
+                  </li>
+                </ul>
+                <a href="#ordina" className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors">
+                  Scopri di Più <ArrowRight size={20} />
+                </a>
+              </div>
+              {/* Product Image */}
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-blue-100 rounded-3xl blur-2xl opacity-50"></div>
+                  <img
+                    src="/images/zempbio/Mockup.png"
+                    alt="ZEMPBIO Complex 400mg - Integratore Alimentare"
+                    className="relative w-80 lg:w-96 drop-shadow-xl"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Product Info Section */}
+        <section className="py-16 px-6 bg-white">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Informazioni sul Prodotto</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                ZEMPBIO™ Complex 400mg è stato sviluppato per supportare chi desidera un aiuto naturale
+                nel proprio percorso di benessere.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <BoxIcon className="text-emerald-600" size={28} />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Contenuto</h3>
+                <p className="text-gray-600 text-sm">30 compresse per confezione. Dose giornaliera consigliata: 2 compresse.</p>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <ShieldCheck className="text-blue-600" size={28} />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Qualità Certificata</h3>
+                <p className="text-gray-600 text-sm">Prodotto in stabilimenti con certificazione GMP nell'Unione Europea.</p>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Heart className="text-amber-600" size={28} />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Ingredienti Naturali</h3>
+                <p className="text-gray-600 text-sm">Formula a base di estratti vegetali accuratamente selezionati.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Ingredients Section */}
+        <section className="py-16 px-6 bg-gray-50">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Composizione e Ingredienti</h2>
+                <p className="text-gray-600 mb-6">
+                  La nostra formula Complex 400mg combina ingredienti di origine naturale,
+                  selezionati per la loro qualità e purezza.
+                </p>
+                <div className="space-y-4">
+                  <div className="bg-white rounded-xl p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-1">Estratto di Griffonia</h4>
+                    <p className="text-sm text-gray-600">Contribuisce al normale tono dell'umore</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-1">Cromo</h4>
+                    <p className="text-sm text-gray-600">Contribuisce al mantenimento di livelli normali di glucosio nel sangue</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-1">Vitamina B6</h4>
+                    <p className="text-sm text-gray-600">Contribuisce al normale metabolismo energetico</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <img
+                  src="/images/zempbio/Mockup.png"
+                  alt="ZEMPBIO Ingredienti"
+                  className="w-64 drop-shadow-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Order Section - Desktop */}
+        <section id="ordina" className="py-16 px-6 bg-white">
+          <div className="container mx-auto max-w-4xl">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Ordina ZEMPBIO™</h2>
+              <p className="text-gray-600">Compila il modulo per richiedere il prodotto. Pagamento alla consegna.</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Product Summary */}
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                <div className="flex gap-4 mb-6">
+                  <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-24 h-24 object-contain" />
+                  <div>
+                    <h3 className="font-bold text-gray-900">ZEMPBIO™ Complex 400mg</h3>
+                    <p className="text-sm text-gray-500">30 compresse - Integratore Alimentare</p>
+                    <div className="mt-2">
+                      <span className="text-2xl font-bold text-emerald-600">€39,99</span>
+                      <span className="text-sm text-gray-400 line-through ml-2">€79,99</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Truck size={16} className="text-blue-600" />
+                    <span>Spedizione gratuita in 24-48h</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <ShieldCheck size={16} className="text-emerald-600" />
+                    <span>Pagamento alla consegna</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <Award size={16} className="text-amber-600" />
+                    <span>Garanzia soddisfatti o rimborsati 60 giorni</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Order Form */}
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                <h3 className="font-bold text-gray-900 mb-4">Dati per la Spedizione</h3>
+                <form className="space-y-4" onSubmit={handleOrderSubmit}>
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-1 block">Nome e Cognome</label>
+                    <input
+                      type="text"
+                      placeholder="Es. Mario Rossi"
+                      className="w-full border border-gray-300 p-3 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
+                      required
+                      value={orderForm.nome}
+                      onChange={(e) => setOrderForm({...orderForm, nome: e.target.value})}
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-1 block">Telefono</label>
+                    <input
+                      type="tel"
+                      placeholder="Es. 333 1234567"
+                      className="w-full border border-gray-300 p-3 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
+                      required
+                      value={orderForm.telefono}
+                      onChange={(e) => setOrderForm({...orderForm, telefono: e.target.value.replace(/\D/g, '')})}
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-1 block">Indirizzo di Spedizione</label>
+                    <input
+                      type="text"
+                      placeholder="Via, Civico, CAP, Città"
+                      className="w-full border border-gray-300 p-3 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
+                      required
+                      value={orderForm.indirizzo}
+                      onChange={(e) => setOrderForm({...orderForm, indirizzo: e.target.value})}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !isFormValid}
+                    className={`w-full py-4 rounded-xl font-semibold text-lg transition-colors ${
+                      isFormValid
+                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                        : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                    }`}
+                  >
+                    {isSubmitting ? 'Invio in corso...' : 'Conferma Ordine'}
+                  </button>
+                  <p className="text-xs text-gray-500 text-center">
+                    Riceverai una chiamata per confermare l'ordine
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Disclaimer Section */}
+        <section className="py-8 px-6 bg-gray-100">
+          <div className="container mx-auto max-w-4xl">
+            <div className="text-xs text-gray-500 space-y-2">
+              <p><strong>Avvertenze:</strong> Gli integratori alimentari non vanno intesi come sostituti di una dieta variata ed equilibrata e di uno stile di vita sano. Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini al di sotto dei 3 anni.</p>
+              <p><strong>Controindicazioni:</strong> Consultare il medico in caso di gravidanza, allattamento, assunzione di farmaci o patologie pregresse. Non utilizzare in caso di ipersensibilità a uno o più componenti.</p>
+              <p><strong>Nota:</strong> I risultati possono variare da persona a persona e dipendono da molteplici fattori individuali.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer - Desktop */}
+        <footer className="bg-gray-900 text-gray-400 py-12 px-6">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex items-center gap-2">
+                <div className="bg-emerald-600 text-white p-1.5 rounded-lg font-bold text-sm">ZB</div>
+                <span className="font-bold text-xl text-white">ZEMPBIO<span className="text-emerald-500">™</span></span>
+              </div>
+              <div className="text-sm text-center md:text-right">
+                <p>BioHacker Labs Ltd - P.IVA 08927361221</p>
+                <p className="mt-1">© 2024 Tutti i diritti riservati</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      {/* ==================== MOBILE VERSION - Current Aggressive Marketing ==================== */}
+      <div className="md:hidden">
+        <SalesPopup />
+
+        {/* Urgency Bar - Fixed on Top - SUPER ALERT */}
+        <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden">
         {/* Animated background */}
         <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-red-500 to-orange-500 animate-[gradient_2s_ease_infinite] bg-[length:200%_100%]"></div>
 
@@ -1415,6 +1679,7 @@ const App: React.FC = () => {
             </div>
          </div>
       </div>
+      </div>{/* End Mobile Version */}
     </div>
   );
 };
