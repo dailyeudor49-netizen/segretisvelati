@@ -430,7 +430,7 @@ const App: React.FC = () => {
             {/* Product image */}
             <div className="mb-6 md:mb-8">
               <img
-                src="/images/zempbio/mockup.png"
+                src="/images/zempbio/Mockup.png"
                 alt="ZEMPBIO Complex 400mg"
                 className="w-48 md:w-64 lg:w-72 mx-auto drop-shadow-xl"
               />
@@ -690,7 +690,7 @@ const App: React.FC = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-slate-100 rounded-2xl"></div>
                 <div className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl p-8 border border-slate-200">
-                  <img src="/images/zempbio/mockup.png" alt="ZEMPBIO Complex 400mg" className="w-48 md:w-56 mx-auto drop-shadow-lg" />
+                  <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO Complex 400mg" className="w-48 md:w-56 mx-auto drop-shadow-lg" />
                 </div>
               </div>
             </div>
@@ -935,7 +935,7 @@ const App: React.FC = () => {
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-2xl blur-lg opacity-50 animate-pulse"></div>
                     <img
-                      src="/images/zempbio/mockup.png"
+                      src="/images/zempbio/Mockup.png"
                       alt="ZEMPBIO Complex"
                       className="relative w-24 h-24 object-contain rounded-2xl bg-white/90 p-2"
                     />
@@ -1018,7 +1018,7 @@ const App: React.FC = () => {
                <div className="p-4 md:p-5 border-b border-gray-200">
                   <div className="flex gap-3 md:gap-4">
                      <img
-                        src="/images/zempbio/mockup.png"
+                        src="/images/zempbio/Mockup.png"
                         alt="ZEMPBIO Complex"
                         className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-2"
                      />
