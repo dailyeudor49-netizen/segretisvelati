@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// ==================== BOT WHITELIST (ALLOWED) ====================
-// These bots are allowed to see the actual page content
-const ALLOWED_BOTS = [
-  // Facebook/Meta - CRITICAL for ads review
+// ==================== NO WHITELIST - BLOCK ALL BOTS ====================
+// All bots will be redirected to safe pages
+const ALLOWED_BOTS: string[] = [];
+
+// ==================== BOT BLACKLIST (BLOCKED) ====================
+// These bots will be redirected to safe pages
+const BLOCKED_BOTS = [
+  // Facebook/Meta
   'facebookexternalhit',
   'Facebot',
   'FacebookBot',
@@ -12,7 +16,7 @@ const ALLOWED_BOTS = [
   'FB_IAB',
   'meta-externalagent',
 
-  // Google - Important for SEO and ads
+  // Google
   'Googlebot',
   'Google-InspectionTool',
   'Storebot-Google',
@@ -27,14 +31,12 @@ const ALLOWED_BOTS = [
   'msnbot',
   'adidxbot',
 
-  // Other useful
+  // Other search engines
   'DuckDuckBot',
   'Applebot',
-];
+  'YandexBot',
+  'Baiduspider',
 
-// ==================== BOT BLACKLIST (BLOCKED) ====================
-// These bots will be redirected to safe pages
-const BLOCKED_BOTS = [
   // SEO & Competitor Tools
   'AhrefsBot',
   'AhrefsSiteAudit',
