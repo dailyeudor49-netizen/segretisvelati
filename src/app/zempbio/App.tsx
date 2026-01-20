@@ -93,17 +93,17 @@ const getMetabolicAnalysis = (age: string, weight: string, height: string, hunge
 // --- Sub-Components ---
 
 const Navbar = () => (
-  <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm py-3 px-4 flex justify-between items-center">
+  <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] py-3 px-4 flex justify-between items-center">
     <div className="flex items-center gap-1">
       <div className="bg-blue-700 text-white p-1 rounded-md font-bold text-lg">ZB</div>
       <span className="font-bold text-xl text-gray-900 uppercase">ZEMPBIO<span className="text-blue-600">™</span></span>
     </div>
     <div className="flex items-center gap-3">
-      <div className="hidden md:flex items-center gap-2 text-[10px] font-bold text-emerald-600 uppercase">
-        <CheckCircle2 size={14}/> Disponibilità: Alta Richiesta
+      <div className="hidden md:flex items-center gap-2 text-[10px] font-bold text-red-600 uppercase animate-pulse">
+        <AlertTriangle size={14}/> Ultimi pezzi disponibili
       </div>
-      <a href="#order" className="bg-emerald-600 text-white px-5 py-2.5 rounded-lg text-xs font-bold shadow-md hover:bg-emerald-700 transition-all uppercase flex items-center gap-2">
-        Ordina Ora
+      <a href="#order" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-5 py-2.5 rounded-lg text-xs font-bold shadow-md hover:from-emerald-500 hover:to-emerald-400 transition-all uppercase flex items-center gap-2">
+        Ordina Ora <ArrowRight size={14} />
       </a>
     </div>
   </nav>
@@ -294,13 +294,26 @@ const App: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(895);
   const [orderForm, setOrderForm] = useState({
     nome: '',
-    cognome: '',
     telefono: '',
-    indirizzo: '',
-    citta: '',
-    cap: ''
+    indirizzo: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Italian phone number validation
+  const isValidItalianPhone = (phone: string): boolean => {
+    const cleaned = phone.replace(/\D/g, '');
+    // Italian mobile: starts with 3, 10 digits total
+    // Italian landline: starts with 0, 9-11 digits
+    if (cleaned.startsWith('3') && cleaned.length === 10) return true;
+    if (cleaned.startsWith('0') && cleaned.length >= 9 && cleaned.length <= 11) return true;
+    // With country code +39
+    if (cleaned.startsWith('39') && cleaned.length >= 11 && cleaned.length <= 13) return true;
+    return false;
+  };
+
+  const isFormValid = orderForm.nome.trim().length >= 3 &&
+                      isValidItalianPhone(orderForm.telefono) &&
+                      orderForm.indirizzo.trim().length >= 5;
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(prev => (prev > 0 ? prev - 1 : 0)), 1000);
@@ -309,10 +322,8 @@ const App: React.FC = () => {
 
   const handleOrderSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isFormValid) return;
     setIsSubmitting(true);
-
-    const fullName = `${orderForm.nome} ${orderForm.cognome}`;
-    const fullAddress = `${orderForm.indirizzo}, ${orderForm.cap} ${orderForm.citta}`;
 
     try {
       // Build form data for API
@@ -320,9 +331,9 @@ const App: React.FC = () => {
       formData.append('source_id', '9b16759a6289');
       formData.append('aff_sub1', '');
       formData.append('aff_sub2', '');
-      formData.append('name', fullName);
+      formData.append('name', orderForm.nome);
       formData.append('phone', orderForm.telefono);
-      formData.append('address', fullAddress);
+      formData.append('address', orderForm.indirizzo);
 
       // Send to Worldfilia API
       await fetch('https://network.worldfilia.net/manager/inventory/buy/ntm_zempbio_1x39.json?api_key=xgM6LBE0CA4EwJ4NTNhPBQ', {
@@ -367,54 +378,56 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
-      <Navbar />
       <SalesPopup />
 
-      {/* Scarcity / Urgency Top Bar */}
-      <div className="bg-red-700 text-white text-[10px] md:text-xs font-bold py-2.5 text-center uppercase tracking-wide mt-14 sticky top-14 z-40 border-b border-red-800 flex items-center justify-center gap-2">
-        <Timer size={14} className="animate-pulse" />
-        ATTENZIONE: Offerta Esclusiva valida per i prossimi {formatTime(timeLeft)}. Solo 14 confezioni residue.
+      {/* Urgency Bar - Fixed on Top */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white text-[10px] md:text-xs font-bold py-3 text-center uppercase tracking-wide shadow-lg">
+        <div className="flex items-center justify-center gap-2 animate-pulse">
+          <AlertTriangle size={16} />
+          <span>🔥 OFFERTA FLASH: -{formatTime(timeLeft)} • Solo 14 pezzi rimasti al 50% DI SCONTO!</span>
+          <AlertTriangle size={16} />
+        </div>
       </div>
 
-      {/* Hero Section - Product Focused */}
-      <header className="px-4 pt-8 pb-16 md:pt-12 md:pb-24 bg-slate-900 text-white relative overflow-hidden min-h-[85vh] md:min-h-[70vh] flex items-center">
+      {/* Hero Section - Light & Visible */}
+      <header className="px-4 pt-20 pb-12 md:pt-24 md:pb-16 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden">
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="flex flex-col items-center text-center">
             {/* Top badge */}
             <div className="mb-4 md:mb-6">
-              <span className="bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest">
+              <span className="bg-blue-100 border border-blue-300 text-blue-700 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest">
                 🔬 Integratore Clinicamente Testato
               </span>
             </div>
 
             {/* Main headline */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 leading-tight uppercase tracking-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 leading-tight uppercase tracking-tight text-gray-900">
               Spegni la Fame.<br/>
-              <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">Brucia il Grasso.</span>
+              <span className="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent">Brucia il Grasso.</span>
             </h1>
 
-            <p className="text-gray-400 text-sm md:text-lg max-w-2xl mb-6 md:mb-8 font-medium">
+            <p className="text-gray-600 text-sm md:text-lg max-w-2xl mb-6 md:mb-8 font-medium">
               L'integratore italiano a base di Complex 400mg che resetta i tuoi segnali di sazietà in soli 18 minuti.
             </p>
 
-            {/* Product image - clean, no effects */}
-            <div className="mb-6 md:mb-10">
+            {/* Product image */}
+            <div className="mb-6 md:mb-8">
               <img
-                src="/images/zempbio/400mg.png"
+                src="/images/zempbio/mockup.png"
                 alt="ZEMPBIO Complex 400mg"
-                className="w-44 md:w-64 lg:w-72 mx-auto"
+                className="w-48 md:w-64 lg:w-72 mx-auto drop-shadow-xl"
               />
             </div>
 
             {/* Price section */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-6 mb-6 md:mb-8 w-full max-w-sm">
-              <p className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-widest mb-2">Offerta Lancio Limitata</p>
+            <div className="bg-white rounded-2xl p-5 md:p-6 mb-6 md:mb-8 w-full max-w-sm shadow-xl border border-gray-200">
+              <p className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest mb-2">Offerta Lancio Limitata</p>
               <div className="flex items-center justify-center gap-3 mb-2">
-                <span className="text-4xl md:text-5xl font-bold text-white">€39,99</span>
-                <span className="text-lg text-gray-500 line-through">€79,99</span>
-                <span className="bg-red-500 text-white px-2 py-1 rounded-lg text-xs font-bold">-50%</span>
+                <span className="text-4xl md:text-5xl font-bold text-gray-900">€39,99</span>
+                <span className="text-lg text-gray-400 line-through">€79,99</span>
+                <span className="bg-red-500 text-white px-2 py-1 rounded-lg text-xs font-bold animate-pulse">-50%</span>
               </div>
-              <p className="text-gray-400 text-xs md:text-sm">30 compresse • Trattamento completo 30 giorni</p>
+              <p className="text-gray-500 text-xs md:text-sm">30 compresse • Abbastanza per vedere i primi risultati</p>
             </div>
 
             {/* CTA Button */}
@@ -423,15 +436,17 @@ const App: React.FC = () => {
             </a>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-[9px] md:text-[10px] text-gray-400 font-bold uppercase tracking-wide">
-              <span className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-emerald-400" /> Notificato Min. Salute</span>
-              <span className="flex items-center gap-1.5"><Truck size={14} className="text-blue-400" /> Consegna 24/48h</span>
-              <span className="flex items-center gap-1.5"><Award size={14} className="text-amber-400" /> Made in EU</span>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-wide">
+              <span className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-emerald-500" /> Notificato Min. Salute</span>
+              <span className="flex items-center gap-1.5"><Truck size={14} className="text-blue-500" /> Consegna 24/48h</span>
+              <span className="flex items-center gap-1.5"><Award size={14} className="text-amber-500" /> Made in EU</span>
             </div>
           </div>
         </div>
-
       </header>
+
+      {/* Bottom Sticky Navbar */}
+      <Navbar />
 
       {/* Metabolic Analyzer Section */}
       <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-gray-100 relative">
@@ -442,6 +457,76 @@ const App: React.FC = () => {
             <p className="text-gray-400 text-sm">Perché le diete non funzionano su di te? Fai il test e scoprilo subito.</p>
           </div>
           <MetabolicAnalyzer onResult={() => {}} />
+        </div>
+      </section>
+
+      {/* Main Narrative Reviews (Before/After) - MOVED HERE */}
+      <section id="reviews" className="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-100 via-white to-gray-50 relative overflow-hidden">
+        <div className="container mx-auto max-w-5xl text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide mb-4">
+            <Star size={14} className="fill-emerald-600" /> Risultati Verificati
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 uppercase bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Storie di Trasformazione Reale</h2>
+          <div className="space-y-12">
+             {[
+               {
+                 name: "Maria Concetta R.",
+                 age: "64 anni",
+                 date: "05 Gen 2026",
+                 text: "Ho provato di tutto, ma la fame nervosa la sera era più forte di me. Dopo 3 giorni di ZEMPBIO™ ho sentito come se qualcuno avesse spento un interruttore. Ho perso 12kg in due mesi e i miei dolori alle ginocchia sono spariti. Lo consiglio a tutte le mie amiche!",
+                 photoBefore: "/images/zempbio/DONNA PRIMA.jpeg",
+                 photoAfter: "/images/zempbio/DONNA DOPO.jpeg",
+               },
+               {
+                 name: "Roberto T.",
+                 age: "58 anni",
+                 date: "21 Dic 2025",
+                 text: "Il mio medico mi aveva avvertito: o dimagrisco o iniziano i problemi seri. Avevo paura delle punture di cui parlano tutti, costano troppo. ZEMPBIO™ costa un decimo e funziona alla grande. La pancia è sparita e ho ripreso a fare le passeggiate in montagna.",
+                 photoBefore: "/images/zempbio/UOMO PRIMA.jpeg",
+                 photoAfter: "/images/zempbio/UOMO DOPO.jpeg",
+               }
+             ].map((review, idx) => (
+               <div key={idx} className="bg-white p-6 md:p-10 rounded-2xl border border-gray-200 shadow-lg flex flex-col md:flex-row gap-8 items-center text-left">
+                 <div className="w-full md:w-1/3 shrink-0">
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <div className="relative">
+                        <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg relative">
+                           <img src={review.photoBefore} alt={`${review.name} Prima`} className="w-full h-full object-cover" />
+                           <div className="absolute bottom-2 left-2 bg-red-500 text-white text-[9px] font-bold uppercase px-3 py-1.5 rounded-lg shadow-lg">Prima</div>
+                        </div>
+                      </div>
+                      <div className="relative">
+                        <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-2 border-emerald-500 shadow-lg">
+                           <img src={review.photoAfter} alt={`${review.name} Dopo`} className="w-full h-full object-cover" />
+                           <div className="absolute bottom-2 left-2 bg-emerald-500 text-white text-[9px] font-bold uppercase px-3 py-1.5 rounded-lg shadow-lg flex items-center gap-1">
+                             <CheckCircle2 size={10} /> Dopo
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-bold text-xl text-gray-900 leading-none">{review.name}</p>
+                      <p className="text-xs text-blue-600 font-bold uppercase tracking-wide mt-1 flex items-center gap-2">
+                        <span className="bg-blue-100 px-2 py-0.5 rounded">{review.age}</span>
+                        <span className="text-emerald-600">Cliente Verificato</span>
+                      </p>
+                    </div>
+                 </div>
+                 <div className="flex-grow">
+                   <div className="flex items-center justify-between mb-4">
+                     <div className="flex gap-1">
+                       {[...Array(5)].map((_, i) => <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />)}
+                     </div>
+                     <span className="text-sm text-gray-400 font-medium">{review.date}</span>
+                   </div>
+                   <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium italic">"{review.text}"</p>
+                   <div className="mt-6 flex items-center gap-3 bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs uppercase px-4 py-3 rounded-xl inline-flex">
+                     <CheckCircle2 size={16}/> Acquisto Confermato
+                   </div>
+                 </div>
+               </div>
+             ))}
+          </div>
         </div>
       </section>
 
@@ -567,89 +652,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Main Narrative Reviews (Before/After) */}
-      <section id="reviews" className="py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
-        {/* Background decorations */}
-        <div className="absolute top-20 right-10 w-64 h-64 bg-emerald-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
-
-        <div className="container mx-auto max-w-5xl text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide mb-4">
-            <Star size={14} className="fill-emerald-600" /> Risultati Verificati
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-16 uppercase bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Storie di Trasformazione Reale</h2>
-          <div className="space-y-16">
-             {[
-               {
-                 name: "Maria Concetta R.",
-                 age: "64 anni",
-                 date: "05 Gen 2026",
-                 text: "Ho provato di tutto, ma la fame nervosa la sera era più forte di me. Dopo 3 giorni di ZEMPBIO™ ho sentito come se qualcuno avesse spento un interruttore. Ho perso 12kg in due mesi e i miei dolori alle ginocchia sono spariti. Lo consiglio a tutte le mie amiche!",
-                 photoBefore: "/images/zempbio/DONNA PRIMA.jpeg",
-                 photoAfter: "/images/zempbio/DONNA DOPO.jpeg",
-               },
-               {
-                 name: "Roberto T.",
-                 age: "58 anni",
-                 date: "21 Dic 2025",
-                 text: "Il mio medico mi aveva avvertito: o dimagrisco o iniziano i problemi seri. Avevo paura delle punture di cui parlano tutti, costano troppo. ZEMPBIO™ costa un decimo e funziona alla grande. La pancia è sparita e ho ripreso a fare le passeggiate in montagna.",
-                 photoBefore: "/images/zempbio/UOMO PRIMA.jpeg",
-                 photoAfter: "/images/zempbio/UOMO DOPO.jpeg",
-               }
-             ].map((review, idx) => (
-               <div key={idx} className="group relative">
-                 {/* Card glow on hover */}
-                 <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 via-blue-500/20 to-emerald-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-                 <div className="relative bg-white p-8 md:p-12 rounded-2xl border border-gray-200 shadow-xl flex flex-col md:flex-row gap-12 items-center text-left hover:shadow-2xl transition-all">
-                   <div className="w-full md:w-1/3 shrink-0">
-                      {/* Before/After with enhanced styling */}
-                      <div className="grid grid-cols-2 gap-3 mb-6">
-                        <div className="relative group/before">
-                          <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg relative">
-                             <img src={review.photoBefore} alt={`${review.name} Prima`} className="w-full h-full object-cover group-hover/before:scale-105 transition-transform duration-500" />
-                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                             <div className="absolute bottom-2 left-2 bg-red-500 text-white text-[9px] font-bold uppercase px-3 py-1.5 rounded-lg shadow-lg">Prima</div>
-                          </div>
-                        </div>
-                        <div className="relative group/after">
-                          <div className="absolute -inset-1 bg-emerald-500 rounded-xl blur-md opacity-50"></div>
-                          <div className="relative aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-2 border-emerald-500 shadow-lg">
-                             <img src={review.photoAfter} alt={`${review.name} Dopo`} className="w-full h-full object-cover group-hover/after:scale-105 transition-transform duration-500" />
-                             <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/50 to-transparent"></div>
-                             <div className="absolute bottom-2 left-2 bg-emerald-500 text-white text-[9px] font-bold uppercase px-3 py-1.5 rounded-lg shadow-lg flex items-center gap-1">
-                               <CheckCircle2 size={10} /> Dopo
-                             </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-bold text-2xl text-gray-900 leading-none">{review.name}</p>
-                        <p className="text-xs text-blue-600 font-bold uppercase tracking-wide mt-1 flex items-center gap-2">
-                          <span className="bg-blue-100 px-2 py-0.5 rounded">{review.age}</span>
-                          <span className="text-emerald-600">Cliente Verificato</span>
-                        </p>
-                      </div>
-                   </div>
-                   <div className="flex-grow">
-                     <div className="flex items-center justify-between mb-6">
-                       <div className="flex gap-1">
-                         {[...Array(5)].map((_, i) => <Star key={i} size={22} className="fill-yellow-400 text-yellow-400 drop-shadow-sm" />)}
-                       </div>
-                       <span className="text-sm text-gray-400 font-medium">{review.date}</span>
-                     </div>
-                     <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium italic">"{review.text}"</p>
-                     <div className="mt-8 flex items-center gap-3 bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs uppercase px-4 py-3 rounded-xl inline-flex">
-                       <CheckCircle2 size={16}/> Acquisto Confermato
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             ))}
-          </div>
-        </div>
-      </section>
-
       {/* Science Behind ZEMPBIO Section - Clean Professional Design */}
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="container mx-auto max-w-5xl">
@@ -671,7 +673,7 @@ const App: React.FC = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-slate-100 rounded-2xl"></div>
                 <div className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl p-8 border border-slate-200">
-                  <img src="/images/zempbio/400mg.png" alt="ZEMPBIO Complex 400mg" className="w-48 md:w-56 mx-auto drop-shadow-lg" />
+                  <img src="/images/zempbio/mockup.png" alt="ZEMPBIO Complex 400mg" className="w-48 md:w-56 mx-auto drop-shadow-lg" />
                 </div>
               </div>
             </div>
@@ -693,7 +695,7 @@ const App: React.FC = () => {
                   </div>
                   <div className="flex justify-between py-2 border-b border-slate-200">
                     <span className="text-slate-600">Durata trattamento</span>
-                    <span className="font-semibold text-slate-800">30 giorni</span>
+                    <span className="font-semibold text-slate-800">15 giorni <span className="text-emerald-600 text-xs">(primi risultati)</span></span>
                   </div>
                   <div className="flex justify-between py-2">
                     <span className="text-slate-600">Prodotto in</span>
@@ -723,13 +725,9 @@ const App: React.FC = () => {
             </div>
 
             {/* Horizontal scrolling carousel */}
-            <div className="relative">
-              {/* Gradient fade edges to indicate more content */}
-              <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-
+            <div className="relative overflow-hidden">
               {/* Scroll container */}
-              <div className="overflow-x-auto pb-4 -mx-4 px-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <div className="overflow-x-auto pb-4 px-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 <div className="flex gap-4" style={{ width: 'max-content' }}>
                   {[
                     {
@@ -917,7 +915,7 @@ const App: React.FC = () => {
                 {/* Product container */}
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 p-4 rounded-2xl border border-white/20 backdrop-blur-sm">
                   <img
-                    src="/images/zempbio/400mg.png"
+                    src="/images/zempbio/mockup.png"
                     alt="ZEMPBIO"
                     className="w-24 h-auto md:w-36 rounded-xl drop-shadow-2xl hover:scale-110 transition-transform duration-500"
                   />
@@ -963,120 +961,96 @@ const App: React.FC = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
-            {/* The Specific Offer - Enhanced */}
-            <div className="space-y-4 md:space-y-6">
-               {/* Main offer card with glow */}
-               <div className="relative">
-                  {/* Outer glow */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-emerald-500 to-blue-600 rounded-3xl blur-lg opacity-50 animate-glow"></div>
+            {/* Order Summary - Amazon Style */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+               {/* Header */}
+               <div className="bg-gray-100 border-b border-gray-200 px-4 md:px-5 py-3 md:py-4">
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 uppercase">Riepilogo Ordine</h3>
+               </div>
 
-                  <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-5 md:p-12 rounded-2xl border border-blue-400/30 shadow-2xl overflow-hidden">
-                     {/* Animated background pattern */}
-                     <div className="absolute inset-0 opacity-10">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_50%)]"></div>
-                        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:60px_60px]"></div>
-                     </div>
-
-                     {/* Shine effect */}
-                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite]"></div>
-
-                     <div className="relative z-10">
-                        {/* URGENCY BANNER */}
-                        <div className="bg-red-500/20 border border-red-400/50 rounded-xl p-3 mb-6 text-center animate-pulse">
-                           <p className="text-red-300 text-xs md:text-sm font-bold uppercase flex items-center justify-center gap-2">
-                              <AlertTriangle size={16} /> ATTENZIONE: Solo 14 confezioni rimaste a questo prezzo!
-                           </p>
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-4 md:mb-6">
-                           <div>
-                              <h3 className="text-2xl md:text-3xl font-bold uppercase leading-none bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Protocollo ZEMPBIO</h3>
-                              <p className="text-[10px] md:text-xs font-bold text-blue-200 uppercase mt-2 tracking-wide">Trattamento Completo 30 Giorni</p>
-                           </div>
-                           <div className="relative">
-                              <div className="absolute inset-0 bg-red-500 rounded-xl blur-md opacity-50 animate-pulse"></div>
-                              <div className="relative bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-[9px] md:text-[10px] uppercase shadow-lg whitespace-nowrap flex items-center gap-1">
-                                 <Timer size={12} /> Scade Tra Poco
-                              </div>
-                           </div>
-                        </div>
-
-                        <div className="flex flex-wrap items-end gap-2 md:gap-3 mb-6 md:mb-8">
-                           <div className="text-5xl md:text-7xl font-bold leading-none bg-gradient-to-b from-white to-blue-100 bg-clip-text text-transparent drop-shadow-lg">€39,99</div>
-                           <div className="text-lg md:text-xl font-bold text-blue-300/60 line-through mb-1">€79,99</div>
-                           <div className="bg-red-500 text-white px-3 py-1 rounded-lg text-xs md:text-sm font-bold uppercase mb-2 animate-pulse">-50% OGGI</div>
-                        </div>
-
-                        <div className="space-y-3 mb-6 md:mb-8">
-                           <div className="flex items-center gap-3 bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 p-4 rounded-xl border border-emerald-400/30">
-                              <div className="bg-emerald-500 p-2 rounded-lg shadow-lg"><CheckCircle2 className="text-white" size={20}/></div>
-                              <div>
-                                 <p className="font-bold text-white text-sm md:text-base uppercase">30 Compresse Complex 400mg</p>
-                                 <p className="text-emerald-300 text-[10px] md:text-xs">Formula brevettata ad alta concentrazione</p>
-                              </div>
-                           </div>
-                           <div className="flex items-center gap-3 bg-gradient-to-r from-blue-500/20 to-blue-600/10 p-4 rounded-xl border border-blue-400/30">
-                              <div className="bg-blue-500 p-2 rounded-lg shadow-lg"><Truck className="text-white" size={20}/></div>
-                              <div>
-                                 <p className="font-bold text-white text-sm md:text-base uppercase">Spedizione Express GRATIS</p>
-                                 <p className="text-blue-300 text-[10px] md:text-xs">Consegna in 24/48h direttamente a casa tua</p>
-                              </div>
-                           </div>
-                           <div className="flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-amber-600/10 p-4 rounded-xl border border-amber-400/30">
-                              <div className="bg-amber-500 p-2 rounded-lg shadow-lg"><ShieldCheck className="text-white" size={20}/></div>
-                              <div>
-                                 <p className="font-bold text-white text-sm md:text-base uppercase">Pagamento alla Consegna</p>
-                                 <p className="text-amber-300 text-[10px] md:text-xs">Paghi SOLO quando hai il prodotto in mano</p>
-                              </div>
-                           </div>
-                        </div>
-
-                        <div className="bg-gradient-to-r from-emerald-600/30 to-blue-600/30 p-4 md:p-5 rounded-xl border border-emerald-400/50 text-center">
-                           <p className="text-lg md:text-xl font-bold uppercase tracking-wide text-white">Totale Oggi: <span className="text-emerald-300 text-2xl md:text-3xl">€39,99</span></p>
-                           <p className="text-emerald-200 text-xs mt-1">Risparmia €40 - Nessun costo nascosto</p>
+               {/* Product Info */}
+               <div className="p-4 md:p-5 border-b border-gray-200">
+                  <div className="flex gap-3 md:gap-4">
+                     <img
+                        src="/images/zempbio/mockup.png"
+                        alt="ZEMPBIO Complex"
+                        className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-1 md:p-2"
+                     />
+                     <div className="flex-1">
+                        <p className="font-bold text-gray-900 text-sm md:text-base">ZEMPBIO™ Complex 400mg</p>
+                        <p className="text-gray-500 text-xs mt-1">30 Compresse • Trattamento 15 Giorni</p>
+                        <div className="flex items-center gap-2 mt-2">
+                           <span className="text-emerald-600 text-xs font-bold">✓ Disponibile</span>
                         </div>
                      </div>
                   </div>
                </div>
 
-               {/* Trust badges with hover effects */}
-               <div className="grid grid-cols-2 gap-3 md:gap-6">
-                  <div className="group relative">
-                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
-                     <div className="relative bg-slate-700/80 backdrop-blur-sm p-5 md:p-8 rounded-xl border border-slate-600 text-center hover:border-blue-400 transition-all hover:scale-105">
-                        <div className="bg-blue-500/20 p-3 rounded-xl inline-block mb-2 md:mb-3">
-                           <Truck size={28} className="text-blue-400" />
-                        </div>
-                        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wide">Consegna 0€</p>
+               {/* Price Breakdown */}
+               <div className="p-4 md:p-5 space-y-2 md:space-y-3 border-b border-gray-200 text-xs md:text-sm">
+                  <div className="flex justify-between">
+                     <span className="text-gray-600">Prezzo di listino:</span>
+                     <span className="text-gray-400 line-through">€79,99</span>
+                  </div>
+                  <div className="flex justify-between">
+                     <span className="text-gray-600">Sconto (50%):</span>
+                     <span className="text-red-600 font-semibold">-€40,00</span>
+                  </div>
+                  <div className="flex justify-between">
+                     <span className="text-gray-600">Spedizione:</span>
+                     <span className="text-emerald-600 font-semibold">GRATIS</span>
+                  </div>
+               </div>
+
+               {/* Total */}
+               <div className="p-4 md:p-5 bg-amber-50 border-b border-amber-200">
+                  <div className="flex justify-between items-center">
+                     <span className="text-base md:text-lg font-bold text-gray-900">Totale Ordine:</span>
+                     <span className="text-2xl md:text-3xl font-bold text-red-600">€39,99</span>
+                  </div>
+                  <p className="text-emerald-700 text-xs mt-2 font-medium">Risparmi €40,00 con questa offerta!</p>
+               </div>
+
+               {/* Delivery Info */}
+               <div className="p-4 md:p-5 space-y-2 md:space-y-3">
+                  <div className="flex items-center gap-3">
+                     <Truck size={18} className="text-blue-600" />
+                     <div>
+                        <p className="text-gray-900 text-sm font-semibold">Consegna in 24/48h</p>
+                        <p className="text-gray-500 text-xs">Spedizione express gratuita</p>
                      </div>
                   </div>
-                  <div className="group relative">
-                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
-                     <div className="relative bg-slate-700/80 backdrop-blur-sm p-5 md:p-8 rounded-xl border border-slate-600 text-center hover:border-emerald-400 transition-all hover:scale-105">
-                        <div className="bg-emerald-500/20 p-3 rounded-xl inline-block mb-2 md:mb-3">
-                           <Award size={28} className="text-emerald-400" />
-                        </div>
-                        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wide">Garanzia 60gg</p>
+                  <div className="flex items-center gap-3">
+                     <ShieldCheck size={18} className="text-emerald-600" />
+                     <div>
+                        <p className="text-gray-900 text-sm font-semibold">Pagamento alla Consegna</p>
+                        <p className="text-gray-500 text-xs">Paghi solo quando ricevi il pacco</p>
                      </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                     <Award size={18} className="text-amber-600" />
+                     <div>
+                        <p className="text-gray-900 text-sm font-semibold">Garanzia 60 Giorni</p>
+                        <p className="text-gray-500 text-xs">Soddisfatto o rimborsato</p>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Stock Alert */}
+               <div className="px-4 md:px-5 pb-4 md:pb-5">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-center gap-2">
+                     <AlertTriangle size={16} className="text-red-500 shrink-0" />
+                     <p className="text-red-700 text-xs font-medium">Solo 14 pezzi rimasti a questo prezzo!</p>
                   </div>
                </div>
             </div>
 
             {/* Direct Order Form */}
-            <div className="bg-white text-gray-900 p-8 md:p-12 rounded-2xl shadow-xl relative">
-              {/* Required form notice */}
-              <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-4 mb-6 text-center">
-                <div className="flex items-center justify-center gap-2 text-amber-700 mb-2">
-                  <AlertTriangle size={20} />
-                  <p className="font-bold text-sm md:text-base uppercase">Compilazione Obbligatoria</p>
-                </div>
-                <p className="text-amber-600 text-xs md:text-sm">Per ricevere ZEMPBIO™ a casa tua è necessario compilare tutti i campi del modulo sottostante. Un nostro operatore ti contatterà per confermare l'ordine.</p>
-              </div>
-
-              <div className="flex items-center gap-4 mb-8 border-b border-gray-200 pb-6">
-                 <div className="bg-blue-600 text-white p-4 rounded-xl shadow-md"><Phone size={28}/></div>
+            <div className="bg-white text-gray-900 p-5 md:p-12 rounded-2xl shadow-xl relative">
+              <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6 border-b border-gray-200 pb-5 md:pb-6">
+                 <div className="bg-blue-600 text-white p-3 md:p-4 rounded-xl shadow-md"><Phone size={24} className="md:w-7 md:h-7"/></div>
                  <div>
-                    <h3 className="text-2xl md:text-3xl font-bold uppercase leading-none">Modulo Ordine Rapido</h3>
+                    <h3 className="text-xl md:text-3xl font-bold uppercase leading-none">Modulo Ordine Rapido</h3>
                     <p className="text-[10px] font-bold text-gray-400 uppercase mt-1 tracking-wide">Compila per ricevere il prodotto</p>
                  </div>
               </div>
@@ -1087,84 +1061,67 @@ const App: React.FC = () => {
                   <div className="bg-red-500 text-white p-2 rounded-lg shrink-0"><Phone size={18} /></div>
                   <div>
                     <p className="font-bold text-red-700 text-sm uppercase mb-1">Importante: Rispondi al Telefono!</p>
-                    <p className="text-red-600 text-xs">Un nostro consulente ti chiamerà per confermare l'ordine e suggerirti la corretta somministrazione. <strong>Se non rispondi, la spedizione NON partirà</strong> perché il pagamento avviene in contrassegno alla consegna.</p>
+                    <p className="text-red-600 text-xs">Un nostro consulente ti chiamerà per confermare l'ordine e la corretta somministrazione. <strong>Se non rispondi, la spedizione NON partirà</strong> (pagamento in contrassegno).</p>
                   </div>
                 </div>
               </div>
 
               <form className="space-y-6" onSubmit={handleOrderSubmit}>
-                <div className="grid grid-cols-2 gap-5">
-                  <div className="space-y-1">
-                     <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Nome</label>
-                     <input
-                       type="text"
-                       placeholder="Maria"
-                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
-                       required
-                       value={orderForm.nome}
-                       onChange={(e) => setOrderForm({...orderForm, nome: e.target.value})}
-                     />
-                  </div>
-                  <div className="space-y-1">
-                     <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Cognome</label>
-                     <input
-                       type="text"
-                       placeholder="Rossi"
-                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
-                       required
-                       value={orderForm.cognome}
-                       onChange={(e) => setOrderForm({...orderForm, cognome: e.target.value})}
-                     />
-                  </div>
-                </div>
-
                 <div className="space-y-1">
-                   <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Telefono Cellulare</label>
+                   <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Nome e Cognome</label>
                    <input
-                     type="tel"
-                     placeholder="333 1234567"
+                     type="text"
+                     placeholder="Es. Maria Rossi"
                      className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
                      required
-                     value={orderForm.telefono}
-                     onChange={(e) => setOrderForm({...orderForm, telefono: e.target.value})}
+                     value={orderForm.nome}
+                     onChange={(e) => setOrderForm({...orderForm, nome: e.target.value})}
                    />
                 </div>
 
                 <div className="space-y-1">
-                   <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Indirizzo Completo e Civico</label>
+                   <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Telefono Cellulare</label>
+                   <div className="relative">
+                     <input
+                       type="tel"
+                       inputMode="numeric"
+                       placeholder="3331234567"
+                       maxLength={13}
+                       className={`w-full border p-4 rounded-lg bg-gray-50 font-bold outline-none transition-all ${
+                         orderForm.telefono.length > 0
+                           ? isValidItalianPhone(orderForm.telefono)
+                             ? 'border-emerald-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100'
+                             : 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100'
+                           : 'border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100'
+                       }`}
+                       required
+                       value={orderForm.telefono}
+                       onChange={(e) => {
+                         const numericOnly = e.target.value.replace(/\D/g, '');
+                         setOrderForm({...orderForm, telefono: numericOnly});
+                       }}
+                     />
+                     {orderForm.telefono.length > 0 && !isValidItalianPhone(orderForm.telefono) && (
+                       <p className="text-[10px] text-red-500 mt-1 ml-1">Inserisci un numero italiano valido (10 cifre, es. 3331234567)</p>
+                     )}
+                     {orderForm.telefono.length > 0 && isValidItalianPhone(orderForm.telefono) && (
+                       <div className="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-500">
+                         <CheckCircle2 size={20} />
+                       </div>
+                     )}
+                   </div>
+                </div>
+
+                <div className="space-y-1">
+                   <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Indirizzo Completo (Via, Civico, CAP, Città)</label>
                    <input
                      type="text"
-                     placeholder="Es. Via Roma 10"
+                     placeholder="Es. Via Roma 10, 20100 Milano"
                      className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
                      required
                      value={orderForm.indirizzo}
                      onChange={(e) => setOrderForm({...orderForm, indirizzo: e.target.value})}
                    />
-                </div>
-
-                <div className="grid grid-cols-2 gap-5">
-                  <div className="space-y-1">
-                     <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Città</label>
-                     <input
-                       type="text"
-                       placeholder="Milano"
-                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
-                       required
-                       value={orderForm.citta}
-                       onChange={(e) => setOrderForm({...orderForm, citta: e.target.value})}
-                     />
-                  </div>
-                  <div className="space-y-1">
-                     <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">CAP</label>
-                     <input
-                       type="text"
-                       placeholder="20100"
-                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
-                       required
-                       value={orderForm.cap}
-                       onChange={(e) => setOrderForm({...orderForm, cap: e.target.value})}
-                     />
-                  </div>
                 </div>
 
                 <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-200 flex items-center gap-4">
@@ -1174,12 +1131,20 @@ const App: React.FC = () => {
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white py-6 rounded-xl font-bold text-xl md:text-2xl uppercase shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-4"
+                  disabled={isSubmitting || !isFormValid}
+                  className={`w-full py-6 rounded-xl font-bold text-xl md:text-2xl uppercase shadow-lg transition-all flex items-center justify-center gap-4 ${
+                    isFormValid
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-xl cursor-pointer'
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  } ${isSubmitting ? 'bg-blue-400' : ''}`}
                 >
                   {isSubmitting ? (
                     <>
                       <RefreshCw size={24} className="animate-spin" /> INVIO IN CORSO...
+                    </>
+                  ) : !isFormValid ? (
+                    <>
+                      <Lock size={20} /> COMPLETA I CAMPI RICHIESTI
                     </>
                   ) : (
                     <>
