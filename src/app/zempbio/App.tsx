@@ -397,17 +397,49 @@ const App: React.FC = () => {
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
       <SalesPopup />
 
-      {/* Urgency Bar - Fixed on Top */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white text-[10px] md:text-xs font-bold py-3 text-center uppercase tracking-wide shadow-lg">
-        <div className="flex items-center justify-center gap-2 animate-pulse">
-          <AlertTriangle size={16} />
-          <span>🔥 OFFERTA FLASH: -{formatTime(timeLeft)} • Solo 14 pezzi rimasti al 50% DI SCONTO!</span>
-          <AlertTriangle size={16} />
+      {/* Urgency Bar - Fixed on Top - SUPER ALERT */}
+      <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-red-500 to-orange-500 animate-[gradient_2s_ease_infinite] bg-[length:200%_100%]"></div>
+
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+
+        {/* Content */}
+        <div className="relative py-3 md:py-4">
+          <div className="flex items-center justify-center gap-2 md:gap-4 px-4">
+            {/* Flashing icon */}
+            <div className="relative">
+              <AlertTriangle size={20} className="text-yellow-300 animate-[ping_1s_ease-in-out_infinite]" />
+              <AlertTriangle size={20} className="text-yellow-300 absolute inset-0" />
+            </div>
+
+            {/* Main text */}
+            <div className="flex flex-col md:flex-row items-center gap-1 md:gap-3">
+              <span className="bg-yellow-400 text-red-700 px-3 py-1 rounded-md text-xs md:text-sm font-black animate-pulse shadow-lg">
+                OFFERTA FLASH
+              </span>
+              <span className="text-white text-sm md:text-base font-black tracking-wide flex items-center gap-2">
+                <span className="bg-white/20 px-2 py-0.5 rounded font-mono text-yellow-300">{formatTime(timeLeft)}</span>
+                <span className="hidden md:inline">•</span>
+                <span className="text-[11px] md:text-sm">Solo <span className="text-yellow-300 font-black">14 PEZZI</span> al 50% DI SCONTO!</span>
+              </span>
+            </div>
+
+            {/* Flashing icon */}
+            <div className="relative hidden md:block">
+              <AlertTriangle size={20} className="text-yellow-300 animate-[ping_1s_ease-in-out_infinite]" />
+              <AlertTriangle size={20} className="text-yellow-300 absolute inset-0" />
+            </div>
+          </div>
         </div>
+
+        {/* Bottom border glow */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 shadow-[0_0_20px_rgba(251,191,36,0.8)]"></div>
       </div>
 
       {/* Hero Section - Light & Visible */}
-      <header className="px-4 pt-20 pb-12 md:pt-24 md:pb-16 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden">
+      <header className="px-4 pt-24 pb-12 md:pt-28 md:pb-16 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden">
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="flex flex-col items-center text-center">
             {/* Top badge */}
