@@ -1,12 +1,26 @@
 "use client";
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { CheckCircle2, Phone, Clock, Package, ShieldCheck } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 
 function GrazieContent() {
   const searchParams = useSearchParams();
   const nome = searchParams.get('nome') || 'Cliente';
+
+  useEffect(() => {
+    // Facebook Pixel - Purchase Event
+    if (typeof window !== 'undefined' && (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq) {
+      (window as typeof window & { fbq: (...args: unknown[]) => void }).fbq('track', 'Purchase', {
+        value: 39.99,
+        currency: 'EUR',
+        content_name: 'ZEMPBIO Complex 400mg',
+        content_type: 'product',
+        content_ids: ['zempbio'],
+        num_items: 1
+      })
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white">
