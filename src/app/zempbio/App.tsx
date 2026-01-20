@@ -427,24 +427,72 @@ const App: React.FC = () => {
               L'integratore italiano a base di Complex 400mg che resetta i tuoi segnali di sazietà in soli 18 minuti.
             </p>
 
-            {/* Product image */}
-            <div className="mb-6 md:mb-8">
-              <img
-                src="/images/zempbio/Mockup.png"
-                alt="ZEMPBIO Complex 400mg"
-                className="w-48 md:w-64 lg:w-72 mx-auto drop-shadow-xl"
-              />
-            </div>
-
-            {/* Price section */}
-            <div className="bg-white rounded-2xl p-5 md:p-6 mb-6 md:mb-8 w-full max-w-sm shadow-xl border border-gray-200">
-              <p className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest mb-2">Offerta Lancio Limitata</p>
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <span className="text-4xl md:text-5xl font-bold text-gray-900">€39,99</span>
-                <span className="text-lg text-gray-400 line-through">€79,99</span>
-                <span className="bg-red-500 text-white px-2 py-1 rounded-lg text-xs font-bold animate-pulse">-50%</span>
+            {/* Product + Price HERO Section */}
+            <div className="relative w-full max-w-md mx-auto mb-8 md:mb-10">
+              {/* Animated background glow */}
+              <div className="absolute inset-0 -m-8">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-blue-500/30 via-emerald-500/30 to-blue-500/30 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-emerald-400/20 to-blue-400/20 rounded-full blur-2xl animate-[spin_8s_linear_infinite]"></div>
               </div>
-              <p className="text-gray-500 text-xs md:text-sm">30 compresse • Abbastanza per vedere i primi risultati</p>
+
+              {/* Product Card with Glass Effect */}
+              <div className="relative bg-gradient-to-b from-white/90 to-white/70 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white/50 shadow-2xl shadow-blue-500/10">
+                {/* Shine effect */}
+                <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                  <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-white/40 to-transparent rotate-12 transform-gpu"></div>
+                </div>
+
+                {/* Badge ribbon */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+                  <div className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-wider shadow-lg shadow-red-500/30 animate-bounce">
+                    🔥 -50% Solo Oggi
+                  </div>
+                </div>
+
+                {/* Product Image with glow */}
+                <div className="relative pt-4 pb-6 flex justify-center">
+                  <div className="relative">
+                    {/* Inner glow behind product */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-emerald-400/30 to-blue-400/30 blur-2xl scale-110 rounded-full"></div>
+                    <img
+                      src="/images/zempbio/Mockup.png"
+                      alt="ZEMPBIO Complex 400mg"
+                      className="relative w-44 md:w-56 lg:w-64 mx-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-[float_3s_ease-in-out_infinite]"
+                    />
+                  </div>
+                </div>
+
+                {/* Divider with gradient */}
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-5"></div>
+
+                {/* Price Section */}
+                <div className="text-center relative z-10">
+                  <p className="text-[10px] md:text-xs text-emerald-600 font-bold uppercase tracking-[0.2em] mb-3">Offerta Lancio Esclusiva</p>
+
+                  <div className="flex items-center justify-center gap-4 mb-3">
+                    <div className="relative">
+                      <span className="text-5xl md:text-6xl font-black text-gray-900 tracking-tight">€39<span className="text-3xl md:text-4xl">,99</span></span>
+                      <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"></div>
+                    </div>
+                    <div className="flex flex-col items-start">
+                      <span className="text-lg text-gray-400 line-through decoration-red-500 decoration-2">€79,99</span>
+                      <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-2 py-0.5 rounded text-[10px] font-bold">RISPARMI €40</span>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-500 text-xs md:text-sm font-medium">30 compresse • Trattamento 15 giorni</p>
+
+                  {/* Stock indicator */}
+                  <div className="mt-4 flex items-center justify-center gap-2">
+                    <div className="flex -space-x-1">
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                      <div className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                    </div>
+                    <span className="text-[10px] md:text-xs text-red-600 font-bold uppercase">Solo 14 pezzi disponibili</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* CTA Button */}
