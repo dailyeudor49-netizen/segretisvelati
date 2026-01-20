@@ -1019,11 +1019,20 @@ const App: React.FC = () => {
 
             {/* Direct Order Form */}
             <div className="bg-white text-gray-900 p-8 md:p-12 rounded-2xl shadow-xl relative">
-              <div className="flex items-center gap-4 mb-10 border-b border-gray-200 pb-8">
+              {/* Required form notice */}
+              <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-4 mb-6 text-center">
+                <div className="flex items-center justify-center gap-2 text-amber-700 mb-2">
+                  <AlertTriangle size={20} />
+                  <p className="font-bold text-sm md:text-base uppercase">Compilazione Obbligatoria</p>
+                </div>
+                <p className="text-amber-600 text-xs md:text-sm">Per ricevere ZEMPBIO™ a casa tua è necessario compilare tutti i campi del modulo sottostante. Un nostro operatore ti contatterà per confermare l'ordine.</p>
+              </div>
+
+              <div className="flex items-center gap-4 mb-8 border-b border-gray-200 pb-6">
                  <div className="bg-blue-600 text-white p-4 rounded-xl shadow-md"><Phone size={28}/></div>
                  <div>
                     <h3 className="text-2xl md:text-3xl font-bold uppercase leading-none">Modulo Ordine Rapido</h3>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase mt-1 tracking-wide">Inserisci i dati per la spedizione</p>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase mt-1 tracking-wide">Compila per ricevere il prodotto</p>
                  </div>
               </div>
 
