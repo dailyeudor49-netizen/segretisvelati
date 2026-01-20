@@ -1093,6 +1093,25 @@ const App: React.FC = () => {
 
             {/* Direct Order Form */}
             <div className="bg-white text-gray-900 p-5 md:p-12 rounded-2xl shadow-xl relative">
+              {/* Mobile Product Summary */}
+              <div className="md:hidden mb-5 pb-5 border-b border-gray-200">
+                <div className="flex gap-4 items-center">
+                  <img
+                    src="/images/zempbio/mockup.png"
+                    alt="ZEMPBIO Complex"
+                    className="w-20 h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-2"
+                  />
+                  <div className="flex-1">
+                    <p className="font-bold text-gray-900 text-base">ZEMPBIO™ Complex 400mg</p>
+                    <p className="text-gray-500 text-xs mt-1">30 Compresse • Trattamento 15 Giorni</p>
+                    <div className="flex items-baseline gap-2 mt-2">
+                      <span className="text-xl font-bold text-red-600">€39,99</span>
+                      <span className="text-sm text-gray-400 line-through">€79,99</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6 border-b border-gray-200 pb-5 md:pb-6">
                  <div className="bg-blue-600 text-white p-3 md:p-4 rounded-xl shadow-md"><Phone size={24} className="md:w-7 md:h-7"/></div>
                  <div>
