@@ -16,6 +16,23 @@ const customStyles = `
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
   }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
@@ -886,98 +903,127 @@ const App: React.FC = () => {
       </section>
 
       {/* Main Offer & Order Form */}
-      <section id="order" className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/5 to-emerald-500/5 rounded-full blur-3xl"></div>
+      <section id="order" className="py-12 md:py-24 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+        {/* Animated Background effects */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-10 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-emerald-600/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-gradient-to-r from-blue-500/10 to-emerald-500/10 rounded-full blur-3xl animate-[spin_20s_linear_infinite]"></div>
+        </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-8 md:mb-12">
-             <h2 className="text-3xl md:text-5xl font-bold uppercase mb-4">Ordina Ora</h2>
-             <p className="text-gray-400 text-sm md:text-lg font-bold uppercase tracking-wide">Attiva il tuo protocollo Complex oggi stesso</p>
-          </div>
+          {/* Mobile Hero Impact Section */}
+          <div className="md:hidden mb-8">
+            {/* Impactful headline with fade */}
+            <div className="text-center space-y-4 animate-[fadeIn_0.8s_ease-out]">
+              <div className="inline-block">
+                <span className="text-xs font-bold text-emerald-400 uppercase tracking-[0.3em] animate-pulse">Offerta Esclusiva</span>
+              </div>
+              <h2 className="text-4xl font-black uppercase leading-none">
+                <span className="block text-white animate-[fadeInUp_0.6s_ease-out]">Il Tuo</span>
+                <span className="block bg-gradient-to-r from-emerald-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]">Nuovo Corpo</span>
+                <span className="block text-white animate-[fadeInUp_0.6s_ease-out_0.2s_both]">Ti Aspetta</span>
+              </h2>
+            </div>
 
-          {/* Enhanced Product Display */}
-          <div className="relative mb-10 md:mb-16">
-            {/* Glowing background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-slate-700/50 to-emerald-600/20 rounded-2xl blur-xl"></div>
-
-            <div className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 py-8 md:py-10 px-6 bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-slate-600/50 shadow-2xl">
-              {/* Product image with effects */}
-              <div className="relative">
-                {/* Glow behind product */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl blur-2xl opacity-30 scale-110"></div>
-
-                {/* Rotating ring */}
-                <div className="absolute -inset-4 border-2 border-dashed border-blue-400/30 rounded-full animate-[spin_15s_linear_infinite]"></div>
-
-                {/* Product container */}
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 p-4 rounded-2xl border border-white/20 backdrop-blur-sm">
-                  <img
-                    src="/images/zempbio/mockup.png"
-                    alt="ZEMPBIO"
-                    className="w-24 h-auto md:w-36 rounded-xl drop-shadow-2xl hover:scale-110 transition-transform duration-500"
-                  />
+            {/* Floating Product Card */}
+            <div className="relative mt-8 animate-[fadeInUp_0.8s_ease-out_0.3s_both]">
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-blue-500/30 rounded-3xl blur-xl"></div>
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/20">
+                <div className="flex items-center gap-4">
+                  {/* Product Image with glow */}
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-2xl blur-lg opacity-50 animate-pulse"></div>
+                    <img
+                      src="/images/zempbio/mockup.png"
+                      alt="ZEMPBIO Complex"
+                      className="relative w-24 h-24 object-contain rounded-2xl bg-white/90 p-2"
+                    />
+                  </div>
+                  {/* Info */}
+                  <div className="flex-1">
+                    <p className="font-black text-white text-lg leading-tight">ZEMPBIO™</p>
+                    <p className="text-emerald-400 text-xs font-bold mt-1">Complex 400mg</p>
+                    <div className="flex items-baseline gap-2 mt-3">
+                      <span className="text-3xl font-black text-white">€39,99</span>
+                      <span className="text-sm text-gray-400 line-through">€79,99</span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Floating mini badges */}
-                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-1 rounded-lg text-[8px] font-bold shadow-lg animate-bounce">
-                  <Star size={10} className="inline" /> TOP
+                {/* Savings Banner */}
+                <div className="mt-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl p-3 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                  <p className="text-white font-black text-sm uppercase relative z-10">
+                    🔥 Risparmi €40 Oggi! 🔥
+                  </p>
                 </div>
               </div>
+            </div>
 
-              {/* Info section */}
-              <div className="text-center md:text-left">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-4 py-2 rounded-xl font-bold text-sm mb-4 shadow-lg relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
-                  <Zap size={14} /> Offerta Lancio -50%
+            {/* Trust Badges - Horizontal scroll on mobile */}
+            <div className="flex gap-3 mt-6 overflow-x-auto pb-2 -mx-4 px-4 animate-[fadeInUp_0.8s_ease-out_0.5s_both]">
+              <div className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10 flex items-center gap-2">
+                <Truck size={18} className="text-blue-400" />
+                <div>
+                  <p className="text-white text-xs font-bold">24/48h</p>
+                  <p className="text-gray-400 text-[10px]">Gratis</p>
                 </div>
-
-                {/* Price */}
-                <div className="flex items-end gap-3 justify-center md:justify-start mb-2">
-                  <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">€39,99</span>
-                  <span className="text-lg text-gray-500 line-through mb-1">€79,99</span>
+              </div>
+              <div className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10 flex items-center gap-2">
+                <ShieldCheck size={18} className="text-emerald-400" />
+                <div>
+                  <p className="text-white text-xs font-bold">Contrassegno</p>
+                  <p className="text-gray-400 text-[10px]">Paghi alla consegna</p>
                 </div>
+              </div>
+              <div className="flex-shrink-0 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10 flex items-center gap-2">
+                <Award size={18} className="text-amber-400" />
+                <div>
+                  <p className="text-white text-xs font-bold">60 Giorni</p>
+                  <p className="text-gray-400 text-[10px]">Garanzia</p>
+                </div>
+              </div>
+            </div>
 
-                {/* Details */}
-                <p className="text-emerald-400 font-bold text-sm uppercase tracking-wide">30 Compresse Complex 400mg</p>
-
-                {/* Trust badges */}
-                <div className="flex items-center gap-4 mt-4 justify-center md:justify-start">
-                  <div className="flex items-center gap-1 text-[10px] text-gray-400 font-bold uppercase">
-                    <Truck size={12} className="text-blue-400" /> Gratis
-                  </div>
-                  <div className="flex items-center gap-1 text-[10px] text-gray-400 font-bold uppercase">
-                    <ShieldCheck size={12} className="text-emerald-400" /> Garantito
-                  </div>
-                  <div className="flex items-center gap-1 text-[10px] text-gray-400 font-bold uppercase">
-                    <Award size={12} className="text-amber-400" /> Certificato
-                  </div>
+            {/* Urgency Alert */}
+            <div className="mt-6 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
+              <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm border border-red-500/30 rounded-xl p-4 flex items-center gap-3">
+                <div className="bg-red-500 rounded-full p-2 animate-pulse">
+                  <AlertTriangle size={16} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm">Solo 14 pezzi rimasti!</p>
+                  <p className="text-red-300 text-xs">A questo prezzo speciale</p>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Desktop Header */}
+          <div className="hidden md:block text-center mb-12">
+             <h2 className="text-5xl font-bold uppercase mb-4">Ordina Ora</h2>
+             <p className="text-gray-400 text-lg font-bold uppercase tracking-wide">Attiva il tuo protocollo Complex oggi stesso</p>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
-            {/* Order Summary - Amazon Style */}
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+            {/* Order Summary - Desktop only, Amazon Style */}
+            <div className="hidden md:block bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
                {/* Header */}
-               <div className="bg-gray-100 border-b border-gray-200 px-4 md:px-5 py-3 md:py-4">
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 uppercase">Riepilogo Ordine</h3>
+               <div className="bg-gray-100 border-b border-gray-200 px-5 py-4">
+                  <h3 className="text-lg font-bold text-gray-900 uppercase">Riepilogo Ordine</h3>
                </div>
 
                {/* Product Info */}
-               <div className="p-4 md:p-5 border-b border-gray-200">
-                  <div className="flex gap-3 md:gap-4">
+               <div className="p-5 border-b border-gray-200">
+                  <div className="flex gap-4">
                      <img
                         src="/images/zempbio/mockup.png"
                         alt="ZEMPBIO Complex"
-                        className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-1 md:p-2"
+                        className="w-20 h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-2"
                      />
                      <div className="flex-1">
-                        <p className="font-bold text-gray-900 text-sm md:text-base">ZEMPBIO™ Complex 400mg</p>
+                        <p className="font-bold text-gray-900 text-base">ZEMPBIO™ Complex 400mg</p>
                         <p className="text-gray-500 text-xs mt-1">30 Compresse • Trattamento 15 Giorni</p>
                         <div className="flex items-center gap-2 mt-2">
                            <span className="text-emerald-600 text-xs font-bold">✓ Disponibile</span>
@@ -987,7 +1033,7 @@ const App: React.FC = () => {
                </div>
 
                {/* Price Breakdown */}
-               <div className="p-4 md:p-5 space-y-2 md:space-y-3 border-b border-gray-200 text-xs md:text-sm">
+               <div className="p-5 space-y-3 border-b border-gray-200 text-sm">
                   <div className="flex justify-between">
                      <span className="text-gray-600">Prezzo di listino:</span>
                      <span className="text-gray-400 line-through">€79,99</span>
@@ -1003,16 +1049,16 @@ const App: React.FC = () => {
                </div>
 
                {/* Total */}
-               <div className="p-4 md:p-5 bg-amber-50 border-b border-amber-200">
+               <div className="p-5 bg-amber-50 border-b border-amber-200">
                   <div className="flex justify-between items-center">
-                     <span className="text-base md:text-lg font-bold text-gray-900">Totale Ordine:</span>
-                     <span className="text-2xl md:text-3xl font-bold text-red-600">€39,99</span>
+                     <span className="text-lg font-bold text-gray-900">Totale Ordine:</span>
+                     <span className="text-3xl font-bold text-red-600">€39,99</span>
                   </div>
                   <p className="text-emerald-700 text-xs mt-2 font-medium">Risparmi €40,00 con questa offerta!</p>
                </div>
 
                {/* Delivery Info */}
-               <div className="p-4 md:p-5 space-y-2 md:space-y-3">
+               <div className="p-5 space-y-3">
                   <div className="flex items-center gap-3">
                      <Truck size={18} className="text-blue-600" />
                      <div>
@@ -1037,7 +1083,7 @@ const App: React.FC = () => {
                </div>
 
                {/* Stock Alert */}
-               <div className="px-4 md:px-5 pb-4 md:pb-5">
+               <div className="px-5 pb-5">
                   <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-center gap-2">
                      <AlertTriangle size={16} className="text-red-500 shrink-0" />
                      <p className="text-red-700 text-xs font-medium">Solo 14 pezzi rimasti a questo prezzo!</p>
