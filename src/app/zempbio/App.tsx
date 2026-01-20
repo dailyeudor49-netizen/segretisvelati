@@ -332,16 +332,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Hero Section - Product Focused */}
-      <header className="px-4 pt-8 pb-16 md:pt-12 md:pb-24 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden min-h-[85vh] md:min-h-[70vh] flex items-center">
-        {/* Background effects */}
-        <div className="absolute inset-0">
-          {/* Central glow behind product */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-blue-600/30 rounded-full blur-[100px]"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-emerald-500/20 rounded-full blur-[80px]"></div>
-          {/* Bottom fade to content */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent"></div>
-        </div>
-
+      <header className="px-4 pt-8 pb-16 md:pt-12 md:pb-24 bg-slate-900 text-white relative overflow-hidden min-h-[85vh] md:min-h-[70vh] flex items-center">
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="flex flex-col items-center text-center">
             {/* Top badge */}
@@ -361,20 +352,13 @@ const App: React.FC = () => {
               L'integratore italiano a base di Complex 400mg che resetta i tuoi segnali di sazietà in soli 18 minuti.
             </p>
 
-            {/* Product with fade effect */}
-            <div className="relative mb-6 md:mb-10">
-              {/* Radial fade/glow */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900 z-10 pointer-events-none"></div>
-              <div className="absolute -inset-10 bg-gradient-to-r from-slate-900 via-transparent to-slate-900 z-10 pointer-events-none"></div>
-
-              {/* Product image */}
-              <div className="relative">
-                <img
-                  src="/images/zempbio/400mg.png"
-                  alt="ZEMPBIO Complex 400mg"
-                  className="w-44 md:w-64 lg:w-72 mx-auto drop-shadow-[0_0_60px_rgba(59,130,246,0.5)] hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+            {/* Product image - clean, no effects */}
+            <div className="mb-6 md:mb-10">
+              <img
+                src="/images/zempbio/400mg.png"
+                alt="ZEMPBIO Complex 400mg"
+                className="w-44 md:w-64 lg:w-72 mx-auto"
+              />
             </div>
 
             {/* Price section */}
@@ -385,7 +369,7 @@ const App: React.FC = () => {
                 <span className="text-lg text-gray-500 line-through">€79,99</span>
                 <span className="bg-red-500 text-white px-2 py-1 rounded-lg text-xs font-bold">-50%</span>
               </div>
-              <p className="text-gray-400 text-xs md:text-sm">60 compresse • Trattamento completo 30 giorni</p>
+              <p className="text-gray-400 text-xs md:text-sm">30 compresse • Trattamento completo 30 giorni</p>
             </div>
 
             {/* CTA Button */}
@@ -402,10 +386,6 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-          <ChevronDown size={24} className="text-gray-500" />
-        </div>
       </header>
 
       {/* Metabolic Analyzer Section */}
@@ -420,80 +400,39 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* The Mechanism Section */}
-      <section className="py-24 px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-100/20 to-emerald-100/20 rounded-full blur-3xl"></div>
+      {/* The Mechanism Section - Text Only */}
+      <section className="py-16 md:py-24 px-4 bg-white">
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 uppercase leading-tight mb-4">
+              Perché la Forza di Volontà <span className="text-red-600">non basta più?</span>
+            </h2>
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+              Dopo i 40 anni, il segnale della <strong>Leptina</strong> (l'ormone della sazietà) viene bloccato dal grasso viscerale. Il tuo cervello pensa che tu stia morendo di fame anche se hai appena mangiato.
+            </p>
+          </div>
 
-        <div className="container mx-auto max-w-5xl relative z-10">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Professional Product Display */}
-            <div className="relative flex flex-col items-center justify-center">
-              {/* Clean product card */}
-              <div className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl p-6 md:p-10 border border-slate-200 shadow-lg">
-                {/* Certification badge */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-700 text-white px-4 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-wide flex items-center gap-1.5">
-                  <ShieldCheck size={12} /> Notificato Min. Salute
+          {/* ZEMPBIO Benefits */}
+          <div className="bg-gradient-to-br from-emerald-50 to-blue-50 rounded-2xl p-6 md:p-10 border border-emerald-200">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 uppercase mb-6 text-center">
+              Grazie a ZEMPBIO™ potrai:
+            </h3>
+            <div className="space-y-4">
+              {[
+                { title: "Spegnere la Fame Nervosa", desc: "Il Complex 400mg blocca chimicamente lo stimolo della grelina entro 20 minuti. Addio voglie incontrollate.", icon: <Zap size={24} />, color: "blue" },
+                { title: "Resettare il Segnale di Sazietà", desc: "Le tue cellule torneranno ricettive ai segnali naturali di stop-cibo. Mangerai meno senza sforzo.", icon: <RefreshCw size={24} />, color: "emerald" },
+                { title: "Bruciare il Grasso Accumulato", desc: "Attiva l'autofagia lipidica: il corpo usa il grasso vecchio come energia invece di immagazzinarne di nuovo.", icon: <TrendingDown size={24} />, color: "red" }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 p-5 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all">
+                  <div className={`shrink-0 p-3 rounded-xl ${item.color === 'blue' ? 'bg-blue-100 text-blue-600' : item.color === 'emerald' ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-600'}`}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-900 uppercase text-base mb-1">{item.title}</p>
+                    <p className="text-sm text-gray-600 font-medium leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
-
-                {/* Product image */}
-                <img
-                  src="/images/zempbio/400mg.png"
-                  alt="ZEMPBIO Complex 400mg"
-                  className="w-40 md:w-56 mx-auto drop-shadow-lg"
-                />
-
-                {/* Product info */}
-                <div className="mt-6 text-center">
-                  <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Integratore Alimentare</p>
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mt-1">ZEMPBIO™ Complex</h3>
-                  <p className="text-slate-600 text-sm font-semibold">400mg per compressa</p>
-                </div>
-              </div>
-
-              {/* Price section - clean and professional */}
-              <div className="mt-6 bg-white rounded-xl p-5 md:p-6 border border-slate-200 shadow-md w-full max-w-xs text-center">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <span className="text-3xl md:text-4xl font-bold text-slate-800">€39,99</span>
-                  <span className="text-base text-slate-400 line-through">€79,99</span>
-                </div>
-                <p className="text-slate-600 text-sm font-medium">60 compresse • Trattamento 30 giorni</p>
-                <div className="flex items-center justify-center gap-4 mt-4 text-[10px] text-slate-500 font-bold uppercase">
-                  <span className="flex items-center gap-1"><Truck size={12} className="text-blue-600" /> Spedizione gratuita</span>
-                  <span className="flex items-center gap-1"><Award size={12} className="text-emerald-600" /> Made in EU</span>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 uppercase leading-tight">
-                Perché la Forza di Volontà <span className="text-red-600">non basta più?</span>
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed font-medium">
-                Dopo i 40 anni, il segnale della <strong>Leptina</strong> (l'ormone della sazietà) viene bloccato dal grasso viscerale. Il tuo cervello pensa che tu stia morendo di fame anche se hai appena mangiato.
-              </p>
-              <div className="space-y-4">
-                 {[
-                   { title: "Spegnimento Grelina", desc: "Blocca chimicamente lo stimolo della fame nervosa entro 20 minuti.", icon: <Zap size={20} />, color: "blue" },
-                   { title: "Reset Leptina", desc: "Rende le cellule ricettive ai segnali di stop-cibo naturali.", icon: <RefreshCw size={20} />, color: "emerald" },
-                   { title: "Autofagia Lipidica", desc: "Forza il corpo a bruciare grasso vecchio come fonte di energia.", icon: <TrendingDown size={20} />, color: "red" }
-                 ].map((item, i) => (
-                   <div key={i} className="group relative">
-                      {/* Hover glow */}
-                      <div className={`absolute inset-0 bg-gradient-to-r ${item.color === 'blue' ? 'from-blue-500/20 to-blue-600/20' : item.color === 'emerald' ? 'from-emerald-500/20 to-emerald-600/20' : 'from-red-500/20 to-red-600/20'} rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-                      <div className="relative flex gap-4 p-5 rounded-xl bg-white border border-gray-200 hover:border-transparent hover:shadow-xl transition-all group-hover:scale-[1.02]">
-                         <div className={`shrink-0 p-3 rounded-xl ${item.color === 'blue' ? 'bg-blue-100 text-blue-600' : item.color === 'emerald' ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-600'}`}>
-                           {item.icon}
-                         </div>
-                         <div>
-                           <p className="font-bold text-gray-900 uppercase text-sm mb-1">{item.title}</p>
-                           <p className="text-xs text-gray-500 font-medium leading-relaxed">{item.desc}</p>
-                         </div>
-                      </div>
-                   </div>
-                 ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -517,23 +456,23 @@ const App: React.FC = () => {
           </div>
 
           {/* Table */}
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-600">
+          <div className="rounded-2xl overflow-visible shadow-2xl border border-slate-600 mt-8">
             {/* Header Row */}
             <div className="grid grid-cols-[1fr,1fr,1fr] md:grid-cols-[1.5fr,1fr,1fr]">
-              <div className="bg-slate-900 p-4 md:p-5"></div>
+              <div className="bg-slate-900 p-4 md:p-5 rounded-tl-2xl"></div>
               {/* ZEMPBIO Header - Emphasized */}
-              <div className="bg-gradient-to-b from-blue-500 to-blue-600 p-4 md:p-5 text-center relative">
-                <div className="absolute -top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white px-3 py-1 rounded-full text-[8px] md:text-[9px] font-bold uppercase shadow-lg whitespace-nowrap">
-                  ⭐ Consigliato
+              <div className="bg-gradient-to-b from-emerald-500 to-blue-600 p-4 md:p-6 text-center relative">
+                {/* CONSIGLIATO Badge - Now above the table */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-yellow-400 text-yellow-900 px-5 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase shadow-xl whitespace-nowrap flex items-center gap-1.5 border-2 border-yellow-300">
+                  <Star size={14} className="fill-yellow-900" /> CONSIGLIATO
                 </div>
-                <div className="flex flex-col items-center gap-1">
-                  <div className="bg-white text-blue-600 px-2 py-1 rounded font-bold text-[10px] md:text-xs">ZB</div>
-                  <span className="text-sm md:text-lg font-bold">ZEMPBIO™</span>
+                <div className="flex flex-col items-center gap-1 mt-2">
+                  <div className="bg-white text-blue-600 px-3 py-1.5 rounded-lg font-bold text-xs md:text-sm shadow">ZEMPBIO™</div>
                 </div>
               </div>
               {/* Competitors Header */}
-              <div className="bg-slate-700 p-4 md:p-5 text-center">
-                <span className="text-sm md:text-lg font-bold text-gray-400">Altri</span>
+              <div className="bg-slate-700 p-4 md:p-5 text-center rounded-tr-2xl">
+                <span className="text-sm md:text-lg font-bold text-gray-400">Altri Prodotti</span>
               </div>
             </div>
 
@@ -541,7 +480,7 @@ const App: React.FC = () => {
             {[
               { label: "Concentrazione", zempbio: "400mg", competitor: "100-150mg" },
               { label: "Tempo Effetto", zempbio: "18 min", competitor: "2-3 ore" },
-              { label: "Costo al Giorno", zempbio: "€0,84", competitor: "€2.50+" },
+              { label: "Costo al Giorno", zempbio: "€1,33", competitor: "€2.50+" },
               { label: "Blocca Fame Nervosa", zempbio: "check", competitor: "x" },
               { label: "Effetti Collaterali", zempbio: "Zero", competitor: "Possibili" },
               { label: "Garanzia", zempbio: "60 giorni", competitor: "Nessuna" },
@@ -701,7 +640,7 @@ const App: React.FC = () => {
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between py-2 border-b border-slate-200">
                     <span className="text-slate-600">Formato</span>
-                    <span className="font-semibold text-slate-800">60 compresse</span>
+                    <span className="font-semibold text-slate-800">30 compresse</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-slate-200">
                     <span className="text-slate-600">Dosaggio per compressa</span>
@@ -728,92 +667,99 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* COMPOSITION SECTION - POWERFUL VISUAL */}
+          {/* COMPOSITION SECTION - HORIZONTAL CAROUSEL */}
           <div className="mb-14">
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 bg-red-100 border border-red-200 text-red-700 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide mb-4">
                 <Zap size={14} /> Formula Brevettata
               </div>
               <h3 className="text-2xl md:text-3xl font-bold text-slate-800">Composizione per Dose Giornaliera</h3>
-              <p className="text-slate-500 text-sm mt-2">2 compresse = 800mg di principi attivi concentrati</p>
+              <p className="text-slate-500 text-sm mt-2">Scorri per vedere tutti i principi attivi →</p>
             </div>
 
-            {/* Powerful ingredient cards */}
-            <div className="space-y-4">
-              {[
-                {
-                  name: "LeptinX-7™",
-                  fullName: "Griffonia simplicifolia e.s.",
-                  amount: "240mg",
-                  color: "from-purple-600 to-purple-800",
-                  bgColor: "bg-purple-50",
-                  borderColor: "border-purple-200",
-                  effect: "SPEGNE L'INTERRUTTORE DELLA FAME",
-                  description: "Agisce direttamente sui recettori ipotalamici della sazietà. In 18 minuti il cervello smette di inviare segnali di fame anche dopo ore dal pasto. È come avere un pulsante OFF per l'appetito."
-                },
-                {
-                  name: "GrelinBlock®",
-                  fullName: "Glucomannano da Konjac",
-                  amount: "190mg",
-                  color: "from-emerald-600 to-emerald-800",
-                  bgColor: "bg-emerald-50",
-                  borderColor: "border-emerald-200",
-                  effect: "BLOCCA L'ORMONE DELLA FAME",
-                  description: "Neutralizza la grelina, l'ormone che ti fa svegliare di notte per aprire il frigo. Espandendosi nello stomaco crea un senso di pienezza IMPOSSIBILE da ignorare."
-                },
-                {
-                  name: "ThermoBurn-X3",
-                  fullName: "Estratto di Tè Verde titolato EGCG",
-                  amount: "170mg",
-                  color: "from-orange-500 to-red-600",
-                  bgColor: "bg-orange-50",
-                  borderColor: "border-orange-200",
-                  effect: "BRUCIA IL GRASSO ANCHE A RIPOSO",
-                  description: "Attiva la termogenesi forzata: il corpo brucia calorie per produrre calore anche mentre dormi. Il grasso viscerale viene letteralmente SCIOLTO per generare energia."
-                },
-                {
-                  name: "AdipoCyte Disruptor™",
-                  fullName: "Acido Linoleico Coniugato (CLA)",
-                  amount: "120mg",
-                  color: "from-blue-600 to-indigo-700",
-                  bgColor: "bg-blue-50",
-                  borderColor: "border-blue-200",
-                  effect: "DISTRUGGE LE CELLULE DI GRASSO",
-                  description: "Penetra nelle cellule adipose e ne interrompe il ciclo vitale. Il grasso accumulato in anni viene rilasciato nel sangue e convertito in energia utilizzabile."
-                },
-                {
-                  name: "NeuroCalm-B6",
-                  fullName: "Vitamina B6 (Piridossina P-5-P)",
-                  amount: "80mg",
-                  color: "from-cyan-500 to-teal-600",
-                  bgColor: "bg-cyan-50",
-                  borderColor: "border-cyan-200",
-                  effect: "ELIMINA LA FAME NERVOSA",
-                  description: "Stabilizza i neurotrasmettitori che causano la fame emotiva. Niente più abbuffate da stress, ansia o noia. Il cibo torna ad essere nutrimento, non compensazione psicologica."
-                },
-              ].map((ingredient, idx) => (
-                <div key={idx} className={`${ingredient.bgColor} ${ingredient.borderColor} border rounded-2xl p-5 md:p-6 hover:shadow-lg transition-all group`}>
-                  <div className="flex flex-col md:flex-row md:items-center gap-4">
-                    {/* Badge with amount */}
-                    <div className={`bg-gradient-to-br ${ingredient.color} text-white px-4 py-3 rounded-xl text-center shrink-0`}>
-                      <p className="text-2xl md:text-3xl font-bold leading-none">{ingredient.amount}</p>
-                      <p className="text-[9px] font-bold uppercase tracking-wide opacity-80 mt-1">per dose</p>
-                    </div>
+            {/* Horizontal scrolling carousel */}
+            <div className="relative">
+              {/* Gradient fade edges to indicate more content */}
+              <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-                    {/* Content */}
-                    <div className="flex-grow">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h4 className="text-lg md:text-xl font-bold text-slate-800">{ingredient.name}</h4>
-                        <span className="text-xs text-slate-500 font-medium">({ingredient.fullName})</span>
+              {/* Scroll container */}
+              <div className="overflow-x-auto pb-4 -mx-4 px-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                <div className="flex gap-4" style={{ width: 'max-content' }}>
+                  {[
+                    {
+                      name: "LeptinX-7™",
+                      fullName: "Griffonia simplicifolia",
+                      amount: "240mg",
+                      color: "from-purple-600 to-purple-800",
+                      bgColor: "bg-gradient-to-br from-purple-100 to-purple-50",
+                      effect: "SPEGNE L'INTERRUTTORE DELLA FAME",
+                      description: "Agisce sui recettori ipotalamici. In 18 minuti il cervello smette di inviare segnali di fame."
+                    },
+                    {
+                      name: "GrelinBlock®",
+                      fullName: "Glucomannano da Konjac",
+                      amount: "190mg",
+                      color: "from-emerald-600 to-emerald-800",
+                      bgColor: "bg-gradient-to-br from-emerald-100 to-emerald-50",
+                      effect: "BLOCCA L'ORMONE DELLA FAME",
+                      description: "Neutralizza la grelina creando un senso di pienezza IMPOSSIBILE da ignorare."
+                    },
+                    {
+                      name: "ThermoBurn-X3",
+                      fullName: "Tè Verde titolato EGCG",
+                      amount: "170mg",
+                      color: "from-orange-500 to-red-600",
+                      bgColor: "bg-gradient-to-br from-orange-100 to-orange-50",
+                      effect: "BRUCIA GRASSO A RIPOSO",
+                      description: "Attiva la termogenesi: il corpo brucia calorie anche mentre dormi."
+                    },
+                    {
+                      name: "AdipoCyte Disruptor™",
+                      fullName: "Acido Linoleico CLA",
+                      amount: "120mg",
+                      color: "from-blue-600 to-indigo-700",
+                      bgColor: "bg-gradient-to-br from-blue-100 to-blue-50",
+                      effect: "DISTRUGGE CELLULE GRASSO",
+                      description: "Penetra nelle cellule adipose e le converte in energia utilizzabile."
+                    },
+                    {
+                      name: "NeuroCalm-B6",
+                      fullName: "Vitamina B6 P-5-P",
+                      amount: "80mg",
+                      color: "from-cyan-500 to-teal-600",
+                      bgColor: "bg-gradient-to-br from-cyan-100 to-cyan-50",
+                      effect: "ELIMINA FAME NERVOSA",
+                      description: "Stabilizza i neurotrasmettitori. Niente più abbuffate da stress o ansia."
+                    },
+                  ].map((ingredient, idx) => (
+                    <div key={idx} className={`${ingredient.bgColor} rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all w-[280px] md:w-[320px] shrink-0 border border-white/50`}>
+                      {/* Amount badge */}
+                      <div className={`bg-gradient-to-br ${ingredient.color} text-white px-4 py-3 rounded-xl text-center mb-4`}>
+                        <p className="text-3xl md:text-4xl font-bold leading-none">{ingredient.amount}</p>
+                        <p className="text-[9px] font-bold uppercase tracking-wide opacity-80 mt-1">per dose</p>
                       </div>
-                      <p className={`text-sm font-bold uppercase tracking-wide mb-2 bg-gradient-to-r ${ingredient.color} bg-clip-text text-transparent`}>
+
+                      {/* Content */}
+                      <h4 className="text-lg font-bold text-slate-800 mb-1">{ingredient.name}</h4>
+                      <p className="text-xs text-slate-500 font-medium mb-3">({ingredient.fullName})</p>
+                      <p className={`text-xs font-bold uppercase tracking-wide mb-3 bg-gradient-to-r ${ingredient.color} bg-clip-text text-transparent`}>
                         ⚡ {ingredient.effect}
                       </p>
                       <p className="text-slate-600 text-sm leading-relaxed">{ingredient.description}</p>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Navigation hint */}
+              <div className="flex justify-center mt-4 gap-2">
+                <div className="flex items-center gap-1 text-slate-400 text-xs font-medium">
+                  <span>←</span>
+                  <span>Scorri per vedere tutti</span>
+                  <span>→</span>
+                </div>
+              </div>
             </div>
 
             {/* Total box */}
@@ -953,7 +899,7 @@ const App: React.FC = () => {
                 </div>
 
                 {/* Details */}
-                <p className="text-emerald-400 font-bold text-sm uppercase tracking-wide">60 Compresse Complex 400mg</p>
+                <p className="text-emerald-400 font-bold text-sm uppercase tracking-wide">30 Compresse Complex 400mg</p>
 
                 {/* Trust badges */}
                 <div className="flex items-center gap-4 mt-4 justify-center md:justify-start">
@@ -990,42 +936,59 @@ const App: React.FC = () => {
                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite]"></div>
 
                      <div className="relative z-10">
-                        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6 md:mb-8">
+                        {/* URGENCY BANNER */}
+                        <div className="bg-red-500/20 border border-red-400/50 rounded-xl p-3 mb-6 text-center animate-pulse">
+                           <p className="text-red-300 text-xs md:text-sm font-bold uppercase flex items-center justify-center gap-2">
+                              <AlertTriangle size={16} /> ATTENZIONE: Solo 14 confezioni rimaste a questo prezzo!
+                           </p>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-4 md:mb-6">
                            <div>
                               <h3 className="text-2xl md:text-3xl font-bold uppercase leading-none bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Protocollo ZEMPBIO</h3>
-                              <p className="text-[10px] md:text-xs font-bold text-blue-200 uppercase mt-2 tracking-wide">Trattamento di 30 Giorni (60 Compresse)</p>
+                              <p className="text-[10px] md:text-xs font-bold text-blue-200 uppercase mt-2 tracking-wide">Trattamento Completo 30 Giorni</p>
                            </div>
                            <div className="relative">
-                              <div className="absolute inset-0 bg-white rounded-xl blur-md opacity-50"></div>
-                              <div className="relative bg-gradient-to-r from-white to-gray-100 text-blue-600 px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-[9px] md:text-[10px] uppercase shadow-lg whitespace-nowrap flex items-center gap-1">
-                                 <Zap size={12} /> Offerta Lancio
+                              <div className="absolute inset-0 bg-red-500 rounded-xl blur-md opacity-50 animate-pulse"></div>
+                              <div className="relative bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-[9px] md:text-[10px] uppercase shadow-lg whitespace-nowrap flex items-center gap-1">
+                                 <Timer size={12} /> Scade Tra Poco
                               </div>
                            </div>
                         </div>
 
-                        <div className="flex flex-wrap items-end gap-2 md:gap-3 mb-6 md:mb-10">
+                        <div className="flex flex-wrap items-end gap-2 md:gap-3 mb-6 md:mb-8">
                            <div className="text-5xl md:text-7xl font-bold leading-none bg-gradient-to-b from-white to-blue-100 bg-clip-text text-transparent drop-shadow-lg">€39,99</div>
                            <div className="text-lg md:text-xl font-bold text-blue-300/60 line-through mb-1">€79,99</div>
-                           <div className="bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 px-3 py-1 rounded-lg text-xs md:text-sm font-bold uppercase mb-2">-50%</div>
+                           <div className="bg-red-500 text-white px-3 py-1 rounded-lg text-xs md:text-sm font-bold uppercase mb-2 animate-pulse">-50% OGGI</div>
                         </div>
 
-                        <div className="space-y-3 md:space-y-4 mb-6 md:mb-10 text-xs md:text-base font-bold uppercase">
-                           <div className="flex items-center gap-2 md:gap-3 bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
-                              <div className="bg-emerald-500/20 p-1.5 rounded-lg"><CheckCircle2 className="text-emerald-300" size={16}/></div>
-                              60 Compresse Complex 400mg
+                        <div className="space-y-3 mb-6 md:mb-8">
+                           <div className="flex items-center gap-3 bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 p-4 rounded-xl border border-emerald-400/30">
+                              <div className="bg-emerald-500 p-2 rounded-lg shadow-lg"><CheckCircle2 className="text-white" size={20}/></div>
+                              <div>
+                                 <p className="font-bold text-white text-sm md:text-base uppercase">30 Compresse Complex 400mg</p>
+                                 <p className="text-emerald-300 text-[10px] md:text-xs">Formula brevettata ad alta concentrazione</p>
+                              </div>
                            </div>
-                           <div className="flex items-center gap-2 md:gap-3 bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
-                              <div className="bg-emerald-500/20 p-1.5 rounded-lg"><Truck className="text-emerald-300" size={16}/></div>
-                              Spedizione Express 24h Gratuita
+                           <div className="flex items-center gap-3 bg-gradient-to-r from-blue-500/20 to-blue-600/10 p-4 rounded-xl border border-blue-400/30">
+                              <div className="bg-blue-500 p-2 rounded-lg shadow-lg"><Truck className="text-white" size={20}/></div>
+                              <div>
+                                 <p className="font-bold text-white text-sm md:text-base uppercase">Spedizione Express GRATIS</p>
+                                 <p className="text-blue-300 text-[10px] md:text-xs">Consegna in 24/48h direttamente a casa tua</p>
+                              </div>
                            </div>
-                           <div className="flex items-center gap-2 md:gap-3 bg-white/5 p-3 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
-                              <div className="bg-emerald-500/20 p-1.5 rounded-lg"><ShieldCheck className="text-emerald-300" size={16}/></div>
-                              Pagamento sicuro al corriere
+                           <div className="flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-amber-600/10 p-4 rounded-xl border border-amber-400/30">
+                              <div className="bg-amber-500 p-2 rounded-lg shadow-lg"><ShieldCheck className="text-white" size={20}/></div>
+                              <div>
+                                 <p className="font-bold text-white text-sm md:text-base uppercase">Pagamento alla Consegna</p>
+                                 <p className="text-amber-300 text-[10px] md:text-xs">Paghi SOLO quando hai il prodotto in mano</p>
+                              </div>
                            </div>
                         </div>
 
-                        <div className="bg-gradient-to-r from-emerald-600/20 to-blue-600/20 p-4 md:p-5 rounded-xl border border-emerald-400/30 text-center backdrop-blur-sm">
-                           <p className="text-sm md:text-base font-bold uppercase tracking-wide text-white">Totale: <span className="text-emerald-300">€39,99</span> <span className="text-blue-200 text-xs">(Nessun costo nascosto)</span></p>
+                        <div className="bg-gradient-to-r from-emerald-600/30 to-blue-600/30 p-4 md:p-5 rounded-xl border border-emerald-400/50 text-center">
+                           <p className="text-lg md:text-xl font-bold uppercase tracking-wide text-white">Totale Oggi: <span className="text-emerald-300 text-2xl md:text-3xl">€39,99</span></p>
+                           <p className="text-emerald-200 text-xs mt-1">Risparmia €40 - Nessun costo nascosto</p>
                         </div>
                      </div>
                   </div>
