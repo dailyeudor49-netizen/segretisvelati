@@ -1007,33 +1007,33 @@ const App: React.FC = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
-            {/* Order Summary - Desktop only, Amazon Style */}
-            <div className="hidden md:block bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+            {/* Order Summary - Amazon Style */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
                {/* Header */}
-               <div className="bg-gray-100 border-b border-gray-200 px-5 py-4">
-                  <h3 className="text-lg font-bold text-gray-900 uppercase">Riepilogo Ordine</h3>
+               <div className="bg-gray-100 border-b border-gray-200 px-4 md:px-5 py-3 md:py-4">
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 uppercase">Riepilogo Ordine</h3>
                </div>
 
                {/* Product Info */}
-               <div className="p-5 border-b border-gray-200">
-                  <div className="flex gap-4">
+               <div className="p-4 md:p-5 border-b border-gray-200">
+                  <div className="flex gap-3 md:gap-4">
                      <img
                         src="/images/zempbio/mockup.png"
                         alt="ZEMPBIO Complex"
-                        className="w-20 h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-2"
+                        className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-2"
                      />
                      <div className="flex-1">
-                        <p className="font-bold text-gray-900 text-base">ZEMPBIO™ Complex 400mg</p>
-                        <p className="text-gray-500 text-xs mt-1">30 Compresse • Trattamento 15 Giorni</p>
+                        <p className="font-bold text-gray-900 text-sm md:text-base">ZEMPBIO™ Complex 400mg</p>
+                        <p className="text-gray-500 text-[10px] md:text-xs mt-1">30 Compresse • Trattamento 15 Giorni</p>
                         <div className="flex items-center gap-2 mt-2">
-                           <span className="text-emerald-600 text-xs font-bold">✓ Disponibile</span>
+                           <span className="text-emerald-600 text-[10px] md:text-xs font-bold">✓ Disponibile</span>
                         </div>
                      </div>
                   </div>
                </div>
 
                {/* Price Breakdown */}
-               <div className="p-5 space-y-3 border-b border-gray-200 text-sm">
+               <div className="p-4 md:p-5 space-y-2 md:space-y-3 border-b border-gray-200 text-xs md:text-sm">
                   <div className="flex justify-between">
                      <span className="text-gray-600">Prezzo di listino:</span>
                      <span className="text-gray-400 line-through">€79,99</span>
@@ -1049,70 +1049,51 @@ const App: React.FC = () => {
                </div>
 
                {/* Total */}
-               <div className="p-5 bg-amber-50 border-b border-amber-200">
+               <div className="p-4 md:p-5 bg-amber-50 border-b border-amber-200">
                   <div className="flex justify-between items-center">
-                     <span className="text-lg font-bold text-gray-900">Totale Ordine:</span>
-                     <span className="text-3xl font-bold text-red-600">€39,99</span>
+                     <span className="text-base md:text-lg font-bold text-gray-900">Totale Ordine:</span>
+                     <span className="text-2xl md:text-3xl font-bold text-red-600">€39,99</span>
                   </div>
-                  <p className="text-emerald-700 text-xs mt-2 font-medium">Risparmi €40,00 con questa offerta!</p>
+                  <p className="text-emerald-700 text-[10px] md:text-xs mt-2 font-medium">Risparmi €40,00 con questa offerta!</p>
                </div>
 
                {/* Delivery Info */}
-               <div className="p-5 space-y-3">
-                  <div className="flex items-center gap-3">
-                     <Truck size={18} className="text-blue-600" />
+               <div className="p-4 md:p-5 space-y-2 md:space-y-3">
+                  <div className="flex items-center gap-2 md:gap-3">
+                     <Truck size={16} className="text-blue-600 md:w-[18px] md:h-[18px]" />
                      <div>
-                        <p className="text-gray-900 text-sm font-semibold">Consegna in 24/48h</p>
-                        <p className="text-gray-500 text-xs">Spedizione express gratuita</p>
+                        <p className="text-gray-900 text-xs md:text-sm font-semibold">Consegna in 24/48h</p>
+                        <p className="text-gray-500 text-[10px] md:text-xs">Spedizione express gratuita</p>
                      </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                     <ShieldCheck size={18} className="text-emerald-600" />
+                  <div className="flex items-center gap-2 md:gap-3">
+                     <ShieldCheck size={16} className="text-emerald-600 md:w-[18px] md:h-[18px]" />
                      <div>
-                        <p className="text-gray-900 text-sm font-semibold">Pagamento alla Consegna</p>
-                        <p className="text-gray-500 text-xs">Paghi solo quando ricevi il pacco</p>
+                        <p className="text-gray-900 text-xs md:text-sm font-semibold">Pagamento alla Consegna</p>
+                        <p className="text-gray-500 text-[10px] md:text-xs">Paghi solo quando ricevi il pacco</p>
                      </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                     <Award size={18} className="text-amber-600" />
+                  <div className="flex items-center gap-2 md:gap-3">
+                     <Award size={16} className="text-amber-600 md:w-[18px] md:h-[18px]" />
                      <div>
-                        <p className="text-gray-900 text-sm font-semibold">Garanzia 60 Giorni</p>
-                        <p className="text-gray-500 text-xs">Soddisfatto o rimborsato</p>
+                        <p className="text-gray-900 text-xs md:text-sm font-semibold">Garanzia 60 Giorni</p>
+                        <p className="text-gray-500 text-[10px] md:text-xs">Soddisfatto o rimborsato</p>
                      </div>
                   </div>
                </div>
 
                {/* Stock Alert */}
-               <div className="px-5 pb-5">
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-center gap-2">
-                     <AlertTriangle size={16} className="text-red-500 shrink-0" />
-                     <p className="text-red-700 text-xs font-medium">Solo 14 pezzi rimasti a questo prezzo!</p>
+               <div className="px-4 pb-4 md:px-5 md:pb-5">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-2 md:p-3 flex items-center gap-2">
+                     <AlertTriangle size={14} className="text-red-500 shrink-0 md:w-4 md:h-4" />
+                     <p className="text-red-700 text-[10px] md:text-xs font-medium">Solo 14 pezzi rimasti a questo prezzo!</p>
                   </div>
                </div>
             </div>
 
             {/* Direct Order Form */}
             <div className="bg-white text-gray-900 p-5 md:p-12 rounded-2xl shadow-xl relative">
-              {/* Mobile Product Summary */}
-              <div className="md:hidden mb-5 pb-5 border-b border-gray-200">
-                <div className="flex gap-4 items-center">
-                  <img
-                    src="/images/zempbio/mockup.png"
-                    alt="ZEMPBIO Complex"
-                    className="w-20 h-20 object-contain rounded-lg border border-gray-200 bg-gray-50 p-2"
-                  />
-                  <div className="flex-1">
-                    <p className="font-bold text-gray-900 text-base">ZEMPBIO™ Complex 400mg</p>
-                    <p className="text-gray-500 text-xs mt-1">30 Compresse • Trattamento 15 Giorni</p>
-                    <div className="flex items-baseline gap-2 mt-2">
-                      <span className="text-xl font-bold text-red-600">€39,99</span>
-                      <span className="text-sm text-gray-400 line-through">€79,99</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6 border-b border-gray-200 pb-5 md:pb-6">
+<div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6 border-b border-gray-200 pb-5 md:pb-6">
                  <div className="bg-blue-600 text-white p-3 md:p-4 rounded-xl shadow-md"><Phone size={24} className="md:w-7 md:h-7"/></div>
                  <div>
                     <h3 className="text-xl md:text-3xl font-bold uppercase leading-none">Modulo Ordine Rapido</h3>
