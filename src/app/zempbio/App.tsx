@@ -292,11 +292,56 @@ const SalesPopup = () => {
 
 const App: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(895);
+  const [orderForm, setOrderForm] = useState({
+    nome: '',
+    cognome: '',
+    telefono: '',
+    indirizzo: '',
+    citta: '',
+    cap: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(prev => (prev > 0 ? prev - 1 : 0)), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const handleOrderSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const fullName = `${orderForm.nome} ${orderForm.cognome}`;
+    const fullAddress = `${orderForm.indirizzo}, ${orderForm.cap} ${orderForm.citta}`;
+
+    try {
+      // Build form data for API
+      const formData = new URLSearchParams();
+      formData.append('source_id', '9b16759a6289');
+      formData.append('aff_sub1', '');
+      formData.append('aff_sub2', '');
+      formData.append('name', fullName);
+      formData.append('phone', orderForm.telefono);
+      formData.append('address', fullAddress);
+
+      // Send to Worldfilia API
+      await fetch('https://network.worldfilia.net/manager/inventory/buy/ntm_zempbio_1x39.json?api_key=xgM6LBE0CA4EwJ4NTNhPBQ', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString(),
+        mode: 'no-cors' // API might not have CORS enabled
+      });
+
+      // Redirect to thank you page with name
+      window.location.href = `/zempbio/grazie?nome=${encodeURIComponent(orderForm.nome)}`;
+    } catch (error) {
+      console.error('Error submitting order:', error);
+      // Still redirect even if there's an error (no-cors doesn't return response)
+      window.location.href = `/zempbio/grazie?nome=${encodeURIComponent(orderForm.nome)}`;
+    }
+  };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -1036,36 +1081,89 @@ const App: React.FC = () => {
                  </div>
               </div>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              {/* Phone warning banner */}
+              <div className="bg-red-50 border-2 border-red-300 rounded-xl p-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="bg-red-500 text-white p-2 rounded-lg shrink-0"><Phone size={18} /></div>
+                  <div>
+                    <p className="font-bold text-red-700 text-sm uppercase mb-1">Importante: Rispondi al Telefono!</p>
+                    <p className="text-red-600 text-xs">Un nostro consulente ti chiamerà per confermare l'ordine e suggerirti la corretta somministrazione. <strong>Se non rispondi, la spedizione NON partirà</strong> perché il pagamento avviene in contrassegno alla consegna.</p>
+                  </div>
+                </div>
+              </div>
+
+              <form className="space-y-6" onSubmit={handleOrderSubmit}>
                 <div className="grid grid-cols-2 gap-5">
                   <div className="space-y-1">
                      <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Nome</label>
-                     <input type="text" placeholder="Maria" className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" required />
+                     <input
+                       type="text"
+                       placeholder="Maria"
+                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
+                       required
+                       value={orderForm.nome}
+                       onChange={(e) => setOrderForm({...orderForm, nome: e.target.value})}
+                     />
                   </div>
                   <div className="space-y-1">
                      <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Cognome</label>
-                     <input type="text" placeholder="Rossi" className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" required />
+                     <input
+                       type="text"
+                       placeholder="Rossi"
+                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
+                       required
+                       value={orderForm.cognome}
+                       onChange={(e) => setOrderForm({...orderForm, cognome: e.target.value})}
+                     />
                   </div>
                 </div>
 
                 <div className="space-y-1">
                    <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Telefono Cellulare</label>
-                   <input type="tel" placeholder="333 1234567" className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" required />
+                   <input
+                     type="tel"
+                     placeholder="333 1234567"
+                     className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
+                     required
+                     value={orderForm.telefono}
+                     onChange={(e) => setOrderForm({...orderForm, telefono: e.target.value})}
+                   />
                 </div>
 
                 <div className="space-y-1">
                    <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Indirizzo Completo e Civico</label>
-                   <input type="text" placeholder="Es. Via Roma 10" className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" required />
+                   <input
+                     type="text"
+                     placeholder="Es. Via Roma 10"
+                     className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
+                     required
+                     value={orderForm.indirizzo}
+                     onChange={(e) => setOrderForm({...orderForm, indirizzo: e.target.value})}
+                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-5">
                   <div className="space-y-1">
                      <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">Città</label>
-                     <input type="text" placeholder="Milano" className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" required />
+                     <input
+                       type="text"
+                       placeholder="Milano"
+                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
+                       required
+                       value={orderForm.citta}
+                       onChange={(e) => setOrderForm({...orderForm, citta: e.target.value})}
+                     />
                   </div>
                   <div className="space-y-1">
                      <label className="text-[10px] font-bold text-gray-600 uppercase ml-1">CAP</label>
-                     <input type="text" placeholder="20100" className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" required />
+                     <input
+                       type="text"
+                       placeholder="20100"
+                       className="w-full border border-gray-300 p-4 rounded-lg bg-gray-50 font-bold outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"
+                       required
+                       value={orderForm.cap}
+                       onChange={(e) => setOrderForm({...orderForm, cap: e.target.value})}
+                     />
                   </div>
                 </div>
 
@@ -1074,8 +1172,20 @@ const App: React.FC = () => {
                    <p className="text-xs font-bold text-emerald-800 uppercase">Pagamento sicuro alla consegna (Contanti)</p>
                 </div>
 
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-xl font-bold text-xl md:text-2xl uppercase shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-4">
-                  CONFERMA ORDINE <ArrowRight size={24}/>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white py-6 rounded-xl font-bold text-xl md:text-2xl uppercase shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-4"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <RefreshCw size={24} className="animate-spin" /> INVIO IN CORSO...
+                    </>
+                  ) : (
+                    <>
+                      CONFERMA ORDINE <ArrowRight size={24}/>
+                    </>
+                  )}
                 </button>
 
                 <div className="flex items-center justify-center gap-2 text-gray-400">
