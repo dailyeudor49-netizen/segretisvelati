@@ -1,54 +1,41 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Lista completa di bot conosciuti
-const BOT_PATTERNS = [
-  // Social Media Crawlers
+// ==================== BOT WHITELIST (ALLOWED) ====================
+// These bots are allowed to see the actual page content
+const ALLOWED_BOTS = [
+  // Facebook/Meta - CRITICAL for ads review
   'facebookexternalhit',
   'Facebot',
   'FacebookBot',
   'fb_iab',
   'FB_IAB',
-  'FBAV',
-  'FBAN',
-  'Instagram',
-  'LinkedInBot',
-  'Twitterbot',
-  'Pinterest',
-  'Pinterestbot',
-  'TelegramBot',
-  'WhatsApp',
-  'Snapchat',
-  'Discordbot',
-  'Slackbot',
-  'vkShare',
-  'Viber',
+  'meta-externalagent',
 
-  // Search Engine Bots
+  // Google - Important for SEO and ads
   'Googlebot',
   'Google-InspectionTool',
   'Storebot-Google',
   'GoogleOther',
-  'Google-Extended',
   'AdsBot-Google',
   'Mediapartners-Google',
   'APIs-Google',
+
+  // Bing
   'bingbot',
   'BingPreview',
   'msnbot',
   'adidxbot',
-  'Baiduspider',
-  'YandexBot',
-  'YandexImages',
-  'YandexMobileBot',
-  'DuckDuckBot',
-  'DuckDuckGo-Favicons-Bot',
-  'Sogou',
-  'Exabot',
-  'ia_archiver',
-  'archive.org_bot',
 
-  // SEO & Analytics Tools
+  // Other useful
+  'DuckDuckBot',
+  'Applebot',
+];
+
+// ==================== BOT BLACKLIST (BLOCKED) ====================
+// These bots will be redirected to safe pages
+const BLOCKED_BOTS = [
+  // SEO & Competitor Tools
   'AhrefsBot',
   'AhrefsSiteAudit',
   'SemrushBot',
@@ -57,13 +44,19 @@ const BOT_PATTERNS = [
   'DotBot',
   'BLEXBot',
   'MegaIndex',
-  'SeznamBot',
   'seoscanners',
   'SEOkicks',
   'sistrix',
   'SISTRIX',
   'Screaming Frog',
   'screaming',
+  'Moz',
+  'rogerbot',
+  'MajesticSEO',
+  'majestic',
+  'spyfu',
+  'SpyFu',
+  'serpstat',
 
   // Security & Vulnerability Scanners
   'Nessus',
@@ -81,159 +74,38 @@ const BOT_PATTERNS = [
   'gobuster',
   'whatweb',
   'httpx',
+  'acunetix',
+  'netsparker',
+  'burpsuite',
 
-  // Generic Bots & Crawlers
-  'bot',
-  'Bot',
-  'BOT',
-  'crawler',
-  'Crawler',
-  'spider',
-  'Spider',
+  // Scrapers & Data Mining
   'scraper',
   'Scraper',
-  'curl',
-  'Curl',
+  'curl/',
+  'Curl/',
   'wget',
   'Wget',
   'python-requests',
   'Python-urllib',
   'python-urllib',
-  'Python',
   'Go-http-client',
-  'Java',
+  'Java/',
   'libwww',
   'httpunit',
   'nutch',
   'phpcrawl',
-  'msnbot',
-  'jyxobot',
-  'FAST-WebCrawler',
-  'FAST Enterprise Crawler',
-  'biglotron',
-  'teoma',
-  'convera',
-  'seekbot',
-  'gigablast',
-  'voilabot',
-  'ia_archiver',
-  'GingerCrawler',
-  'webmon',
   'httrack',
   'HTTrack',
-  'webcrawler',
-  'grub.org',
-  'UsineNouvelleCrawler',
-  'antibot',
-  'netresearchserver',
-  'speedy',
-  'fluffy',
-  'findlink',
-  'msrbot',
-  'panscient',
-  'yacybot',
-  'AISearchBot',
-  'ips-agent',
-  'tagoobot',
-  'MJ12bot',
-  'woriobot',
-  'yanga',
-  'buzzbot',
-  'mlbot',
-  'yandex',
-  'purebot',
-  'Linguee Bot',
-  'CyberPatrol',
-  'voilabot',
-  'baiduspider',
-  'citeseerxbot',
-  'spbot',
-  'twengabot',
-  'postrank',
-  'turnitinbot',
-  'scribdbot',
-  'page2rss',
-  'sitebot',
-  'linkdex',
-  'ezooms',
-  'dotbot',
-  'mail.ru_bot',
-  'discobot',
-  'heritrix',
-  'findthatfile',
-  'europarchive.org',
-  'NerdByNature.Bot',
-  'sistrix crawler',
-  'ahrefsbot',
-  'aboundex',
-  'domaincrawler',
-  'wbsearchbot',
-  'summify',
-  'ccbot',
-  'CCBot',
-  'edisterbot',
-  'seznambot',
-  'ec2linkfinder',
-  'gslfbot',
-  'aihitbot',
-  'intelium_bot',
-  'yeti',
-  'retrevopageanalyzer',
-  'lb-spider',
-  'sogou',
-  'lssbot',
-  'careerbot',
-  'wotbox',
-  'wocbot',
-  'ichiro',
-  'duckduckgo',
-  'lssrocketcrawler',
-  'drupact',
-  'webcompanycrawler',
-  'acoonbot',
-  'openindexspider',
-  'gnam gnam spider',
-  'web-hierarchyspider',
-  'backlinkcrawler',
-  'coccoc',
-  'integromedb',
-  'content crawler spider',
-  'toplistbot',
-  'seokicks-robot',
-  'it2media-domain-crawler',
-  'ip-web-crawler.com',
-  'siteexplorer.info',
-  'elisabot',
-  'proximic',
-  'changedetection',
-  'blexbot',
-  'arabot',
-  'WeSEE:Search',
-  'niki-bot',
-  'crystalsemanticsbot',
-  'rogerbot',
-  '360Spider',
-  'psbot',
-  'interfaxscanbot',
-  'lipperheyseoservice',
-  'cc metadata scaper',
-  'g00g1e.net',
-  'grapeshotcrawler',
-  'urlappendbot',
-  'brainobot',
-  'fr-crawler',
-  'binlar',
-  'simplecrawler',
-  'livelapbot',
-  'tweetmemebot',
-  'paperlibot',
-  'sogou web spider',
-  'megaindex.ru',
-  'ltx71',
-  'obot',
-  'PetalBot',
-  'Applebot',
-  'Bytespider',
+  'webcopy',
+  'WebCopy',
+  'webzip',
+  'WebZip',
+  'teleport',
+  'Teleport',
+  'sitesucker',
+  'SiteSucker',
+
+  // AI Crawlers (block for content protection)
   'GPTBot',
   'ChatGPT-User',
   'ClaudeBot',
@@ -242,6 +114,8 @@ const BOT_PATTERNS = [
   'cohere-ai',
   'PerplexityBot',
   'YouBot',
+  'CCBot',
+  'Bytespider',
 
   // Headless Browsers & Automation
   'HeadlessChrome',
@@ -252,69 +126,136 @@ const BOT_PATTERNS = [
   'Puppeteer',
   'playwright',
   'Playwright',
-  'CasperJS',
-  'SlimerJS',
-  'Nightmare',
-  'Electron',
-  'Zombie',
-
-  // Monitoring & Uptime
-  'UptimeRobot',
-  'Pingdom',
-  'Site24x7',
-  'StatusCake',
-  'NewRelicPinger',
-  'Datadog',
-  'Catchpoint',
-  'monitis',
-  'GTmetrix',
-  'PageSpeed',
-
-  // Preview Services
-  'Embedly',
-  'Quora Link Preview',
-  'Slack-ImgProxy',
-  'redditbot',
-  'Tumblr',
-  'vkShare',
-  'W3C_Validator',
-  'W3C-checklink',
-  'W3C-mobileOK',
 
   // Misc Suspicious
   'Apache-HttpClient',
-  'okhttp',
-  'axios',
+  'okhttp/',
   'node-fetch',
-  'undici',
-  'got',
-  'request',
-  'superagent',
-  'http.rb',
-  'Faraday',
-  'RestSharp',
+  'axios/',
+  'got/',
   'libcurl',
   'PycURL',
   'aiohttp',
-  'httpx',
   'Mechanize',
-  'WWW-Mechanize',
-  'LWP::Simple',
-  'URI::Fetch',
-  'Zend_Http_Client',
   'Guzzle',
-  'Typhoeus',
+
+  // Known bad IPs patterns (user agents)
+  'masscan',
+  'zgrab',
+  'censys',
+  'shodan',
 ];
 
-// Funzione per rilevare se è un bot
-function isBot(userAgent: string): boolean {
-  if (!userAgent || userAgent.length < 10) return true; // UA troppo corto = sospetto
+// ==================== SUSPICIOUS IP RANGES ====================
+// Known datacenter/VPN/proxy IP ranges often used for scraping
+const SUSPICIOUS_IP_PREFIXES = [
+  // Common VPS/Cloud providers used for scraping
+  '45.33.',    // Linode
+  '45.56.',    // Linode
+  '139.162.',  // Linode
+  '172.104.',  // Linode
+  '192.81.',   // Linode
+  '66.175.',   // Linode
+  '198.58.',   // Linode
+  '23.239.',   // Linode
+  '173.255.',  // Linode
+  '69.164.',   // Linode
+  '178.79.',   // Linode
+  '188.166.',  // DigitalOcean
+  '159.65.',   // DigitalOcean
+  '167.99.',   // DigitalOcean
+  '206.189.',  // DigitalOcean
+  '178.62.',   // DigitalOcean
+  '104.131.',  // DigitalOcean
+  '104.236.',  // DigitalOcean
+  '107.170.',  // DigitalOcean
+  '138.68.',   // DigitalOcean
+  '139.59.',   // DigitalOcean
+  '142.93.',   // DigitalOcean
+  '45.55.',    // DigitalOcean
+  '46.101.',   // DigitalOcean
+  '162.243.',  // DigitalOcean
+  '192.241.',  // DigitalOcean
+  '95.85.',    // DigitalOcean
+  '5.101.',    // Vultr
+  '45.32.',    // Vultr
+  '45.63.',    // Vultr
+  '45.76.',    // Vultr
+  '45.77.',    // Vultr
+  '66.42.',    // Vultr
+  '104.238.',  // Vultr
+  '108.61.',   // Vultr
+  '149.28.',   // Vultr
+  '155.138.',  // Vultr
+  '207.148.',  // Vultr
+  '209.250.',  // Vultr
+  '216.128.',  // Vultr
+  '185.92.',   // Hetzner
+  '213.239.',  // Hetzner
+  '144.76.',   // Hetzner
+  '148.251.',  // Hetzner
+  '176.9.',    // Hetzner
+  '5.9.',      // Hetzner
+  '78.46.',    // Hetzner
+  '78.47.',    // Hetzner
+  '85.10.',    // Hetzner
+  '88.198.',   // Hetzner
+  '88.99.',    // Hetzner
+  '94.130.',   // Hetzner
+  '95.216.',   // Hetzner
+  '116.202.',  // Hetzner
+  '116.203.',  // Hetzner
+  '135.181.',  // Hetzner
+  '157.90.',   // Hetzner
+  '168.119.',  // Hetzner
+  '195.201.',  // Hetzner
+];
+
+// ==================== FUNCTIONS ====================
+
+// Check if bot is in whitelist
+function isAllowedBot(userAgent: string): boolean {
+  const lowerUA = userAgent.toLowerCase();
+  for (const pattern of ALLOWED_BOTS) {
+    if (lowerUA.includes(pattern.toLowerCase())) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Check if bot is in blacklist
+function isBlockedBot(userAgent: string): boolean {
+  const lowerUA = userAgent.toLowerCase();
+  for (const pattern of BLOCKED_BOTS) {
+    if (lowerUA.includes(pattern.toLowerCase())) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Check for suspicious IP
+function isSuspiciousIP(ip: string): boolean {
+  if (!ip) return false;
+  for (const prefix of SUSPICIOUS_IP_PREFIXES) {
+    if (ip.startsWith(prefix)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Detect generic bot patterns
+function isGenericBot(userAgent: string): boolean {
+  if (!userAgent || userAgent.length < 20) return true; // Too short = suspicious
 
   const lowerUA = userAgent.toLowerCase();
 
-  // Controlla ogni pattern
-  for (const pattern of BOT_PATTERNS) {
-    if (lowerUA.includes(pattern.toLowerCase())) {
+  // Generic bot keywords (only if not whitelisted)
+  const genericPatterns = ['bot', 'crawler', 'spider', 'scraper', 'fetch', 'http'];
+  for (const pattern of genericPatterns) {
+    if (lowerUA.includes(pattern) && !isAllowedBot(userAgent)) {
       return true;
     }
   }
@@ -322,70 +263,106 @@ function isBot(userAgent: string): boolean {
   return false;
 }
 
-// Funzione per rilevare se è mobile
+// Check if is mobile device
 function isMobileDevice(userAgent: string): boolean {
   const mobileRegex = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i;
   return mobileRegex.test(userAgent);
 }
 
-// Funzione per rilevare se è tablet
+// Check if is tablet
 function isTabletDevice(userAgent: string): boolean {
   const tabletRegex = /iPad|Android(?!.*Mobile)|Tablet|tablet|PlayBook|Silk/i;
   return tabletRegex.test(userAgent);
 }
 
+// ==================== MIDDLEWARE ====================
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
+  const clientIP = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+                   request.headers.get('x-real-ip') ||
+                   '';
 
-  // PROTEZIONE BOT: Tutti i bot vanno su /menobalance (pagina pulita)
-  if (isBot(userAgent)) {
-    if (pathname !== '/menobalance') {
+  // ==================== ZEMPBIO PROTECTION ====================
+  if (pathname === '/zempbio') {
+    // Allow whitelisted bots (Facebook, Google, etc.)
+    if (isAllowedBot(userAgent)) {
+      return NextResponse.next();
+    }
+
+    // Block blacklisted bots → redirect to safe page
+    if (isBlockedBot(userAgent) || isGenericBot(userAgent) || isSuspiciousIP(clientIP)) {
       const url = request.nextUrl.clone();
-      url.pathname = '/menobalance';
+      url.pathname = '/zempbio-info';
+      return NextResponse.redirect(url);
+    }
+
+    // Real users pass through
+    return NextResponse.next();
+  }
+
+  // Prevent bots from accessing zempbio-info directly and going back to zempbio
+  if (pathname === '/zempbio-info') {
+    // If it's a real user (not a bot), redirect to main page
+    if (!isBlockedBot(userAgent) && !isGenericBot(userAgent) && !isSuspiciousIP(clientIP) && userAgent.length > 50) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/zempbio';
       return NextResponse.redirect(url);
     }
     return NextResponse.next();
   }
 
-  // UTENTI REALI: Logica mobile/desktop
-
-  // Applica alla pagina /menobalance
+  // ==================== MENOBALANCE PROTECTION ====================
   if (pathname === '/menobalance') {
+    // Allow whitelisted bots
+    if (isAllowedBot(userAgent)) {
+      return NextResponse.next();
+    }
+
+    // Block bad bots
+    if (isBlockedBot(userAgent) || isGenericBot(userAgent) || isSuspiciousIP(clientIP)) {
+      return NextResponse.next(); // Let them see the clean menobalance page
+    }
+
+    // Real users: Mobile → redirect to system
     const isMobile = isMobileDevice(userAgent);
     const isTablet = isTabletDevice(userAgent);
 
-    // Mobile (non tablet) → redirect a /menobalance-system
     if (isMobile && !isTablet) {
       const url = request.nextUrl.clone();
       url.pathname = '/menobalance-system';
       return NextResponse.redirect(url);
     }
 
-    // Desktop e Tablet → restano su /menobalance
     return NextResponse.next();
   }
 
-  // Applica alla pagina /menobalance-system
   if (pathname === '/menobalance-system') {
+    // Block bots from mobile page
+    if (isBlockedBot(userAgent) || isGenericBot(userAgent)) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/menobalance';
+      return NextResponse.redirect(url);
+    }
+
+    // Desktop/Tablet users → redirect to menobalance
     const isMobile = isMobileDevice(userAgent);
     const isTablet = isTabletDevice(userAgent);
 
-    // Desktop e Tablet → redirect a /menobalance
     if (!isMobile || isTablet) {
       const url = request.nextUrl.clone();
       url.pathname = '/menobalance';
       return NextResponse.redirect(url);
     }
 
-    // Mobile → resta su /menobalance-system
     return NextResponse.next();
   }
 
   return NextResponse.next();
 }
 
-// Configura su quali path applicare il middleware
+// Configure which paths to apply middleware
 export const config = {
-  matcher: ['/menobalance', '/menobalance-system'],
+  matcher: ['/menobalance', '/menobalance-system', '/zempbio', '/zempbio-info'],
 };
