@@ -1,12 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// ==================== NO WHITELIST - BLOCK ALL BOTS ====================
-// All bots will be redirected to safe pages
-const ALLOWED_BOTS: string[] = [];
-
 // ==================== BOT BLACKLIST (BLOCKED) ====================
-// These bots will be redirected to safe pages
 const BLOCKED_BOTS = [
   // Facebook/Meta
   'facebookexternalhit',
@@ -52,7 +47,7 @@ const BLOCKED_BOTS = [
   'SISTRIX',
   'Screaming Frog',
   'screaming',
-  'Moz',
+  'Moz/',
   'rogerbot',
   'MajesticSEO',
   'majestic',
@@ -81,8 +76,6 @@ const BLOCKED_BOTS = [
   'burpsuite',
 
   // Scrapers & Data Mining
-  'scraper',
-  'Scraper',
   'curl/',
   'Curl/',
   'wget',
@@ -107,7 +100,7 @@ const BLOCKED_BOTS = [
   'sitesucker',
   'SiteSucker',
 
-  // AI Crawlers (block for content protection)
+  // AI Crawlers
   'GPTBot',
   'ChatGPT-User',
   'ClaudeBot',
@@ -140,90 +133,51 @@ const BLOCKED_BOTS = [
   'aiohttp',
   'Mechanize',
   'Guzzle',
-
-  // Known bad IPs patterns (user agents)
-  'masscan',
-  'zgrab',
   'censys',
   'shodan',
 ];
 
-// ==================== SUSPICIOUS IP RANGES ====================
-// Known datacenter/VPN/proxy IP ranges often used for scraping
-const SUSPICIOUS_IP_PREFIXES = [
-  // Common VPS/Cloud providers used for scraping
-  '45.33.',    // Linode
-  '45.56.',    // Linode
-  '139.162.',  // Linode
-  '172.104.',  // Linode
-  '192.81.',   // Linode
-  '66.175.',   // Linode
-  '198.58.',   // Linode
-  '23.239.',   // Linode
-  '173.255.',  // Linode
-  '69.164.',   // Linode
-  '178.79.',   // Linode
-  '188.166.',  // DigitalOcean
-  '159.65.',   // DigitalOcean
-  '167.99.',   // DigitalOcean
-  '206.189.',  // DigitalOcean
-  '178.62.',   // DigitalOcean
-  '104.131.',  // DigitalOcean
-  '104.236.',  // DigitalOcean
-  '107.170.',  // DigitalOcean
-  '138.68.',   // DigitalOcean
-  '139.59.',   // DigitalOcean
-  '142.93.',   // DigitalOcean
-  '45.55.',    // DigitalOcean
-  '46.101.',   // DigitalOcean
-  '162.243.',  // DigitalOcean
-  '192.241.',  // DigitalOcean
-  '95.85.',    // DigitalOcean
-  '5.101.',    // Vultr
-  '45.32.',    // Vultr
-  '45.63.',    // Vultr
-  '45.76.',    // Vultr
-  '45.77.',    // Vultr
-  '66.42.',    // Vultr
-  '104.238.',  // Vultr
-  '108.61.',   // Vultr
-  '149.28.',   // Vultr
-  '155.138.',  // Vultr
-  '207.148.',  // Vultr
-  '209.250.',  // Vultr
-  '216.128.',  // Vultr
-  '185.92.',   // Hetzner
-  '213.239.',  // Hetzner
-  '144.76.',   // Hetzner
-  '148.251.',  // Hetzner
-  '176.9.',    // Hetzner
-  '5.9.',      // Hetzner
-  '78.46.',    // Hetzner
-  '78.47.',    // Hetzner
-  '85.10.',    // Hetzner
-  '88.198.',   // Hetzner
-  '88.99.',    // Hetzner
-  '94.130.',   // Hetzner
-  '95.216.',   // Hetzner
-  '116.202.',  // Hetzner
-  '116.203.',  // Hetzner
-  '135.181.',  // Hetzner
-  '157.90.',   // Hetzner
-  '168.119.',  // Hetzner
-  '195.201.',  // Hetzner
-];
-
 // ==================== FUNCTIONS ====================
 
-// Check if bot is in whitelist
-function isAllowedBot(userAgent: string): boolean {
+// Check if it's a REAL browser (mobile or desktop)
+function isRealBrowser(userAgent: string): boolean {
+  if (!userAgent || userAgent.length < 30) return false;
+
   const lowerUA = userAgent.toLowerCase();
-  for (const pattern of ALLOWED_BOTS) {
-    if (lowerUA.includes(pattern.toLowerCase())) {
-      return true;
-    }
-  }
-  return false;
+
+  // Must contain at least one of these browser signatures
+  const browserSignatures = [
+    'mozilla/',
+    'chrome/',
+    'safari/',
+    'firefox/',
+    'edge/',
+    'opera/',
+    'samsung',
+    'ucbrowser',
+    'crios',  // Chrome iOS
+    'fxios',  // Firefox iOS
+  ];
+
+  const hasBrowserSignature = browserSignatures.some(sig => lowerUA.includes(sig));
+
+  // Must NOT contain bot keywords
+  const botKeywords = ['bot', 'crawler', 'spider', 'scraper'];
+  const hasBotKeyword = botKeywords.some(kw => lowerUA.includes(kw));
+
+  return hasBrowserSignature && !hasBotKeyword;
+}
+
+// Check if it's a mobile device
+function isMobileDevice(userAgent: string): boolean {
+  const mobileRegex = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS|FxiOS/i;
+  return mobileRegex.test(userAgent);
+}
+
+// Check if it's a tablet
+function isTabletDevice(userAgent: string): boolean {
+  const tabletRegex = /iPad|Android(?!.*Mobile)|Tablet|tablet|PlayBook|Silk/i;
+  return tabletRegex.test(userAgent);
 }
 
 // Check if bot is in blacklist
@@ -237,77 +191,47 @@ function isBlockedBot(userAgent: string): boolean {
   return false;
 }
 
-// Check for suspicious IP
-function isSuspiciousIP(ip: string): boolean {
-  if (!ip) return false;
-  for (const prefix of SUSPICIOUS_IP_PREFIXES) {
-    if (ip.startsWith(prefix)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-// Detect generic bot patterns
-function isGenericBot(userAgent: string): boolean {
-  if (!userAgent || userAgent.length < 20) return true; // Too short = suspicious
-
-  const lowerUA = userAgent.toLowerCase();
-
-  // Generic bot keywords (only if not whitelisted)
-  const genericPatterns = ['bot', 'crawler', 'spider', 'scraper', 'fetch', 'http'];
-  for (const pattern of genericPatterns) {
-    if (lowerUA.includes(pattern) && !isAllowedBot(userAgent)) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-// Check if is mobile device
-function isMobileDevice(userAgent: string): boolean {
-  const mobileRegex = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i;
-  return mobileRegex.test(userAgent);
-}
-
-// Check if is tablet
-function isTabletDevice(userAgent: string): boolean {
-  const tabletRegex = /iPad|Android(?!.*Mobile)|Tablet|tablet|PlayBook|Silk/i;
-  return tabletRegex.test(userAgent);
-}
-
 // ==================== MIDDLEWARE ====================
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
-  const clientIP = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-                   request.headers.get('x-real-ip') ||
-                   '';
 
   // ==================== ZEMPBIO PROTECTION ====================
   if (pathname === '/zempbio') {
-    // Allow whitelisted bots (Facebook, Google, etc.)
-    if (isAllowedBot(userAgent)) {
+    // PRIORITY 1: Real mobile/tablet devices ALWAYS see /zempbio
+    if (isMobileDevice(userAgent) || isTabletDevice(userAgent)) {
+      if (isRealBrowser(userAgent)) {
+        return NextResponse.next();
+      }
+    }
+
+    // PRIORITY 2: Real desktop browsers see /zempbio
+    if (isRealBrowser(userAgent) && !isBlockedBot(userAgent)) {
       return NextResponse.next();
     }
 
-    // Block blacklisted bots → redirect to safe page
-    if (isBlockedBot(userAgent) || isGenericBot(userAgent) || isSuspiciousIP(clientIP)) {
+    // PRIORITY 3: Block known bots → redirect to safe page
+    if (isBlockedBot(userAgent)) {
       const url = request.nextUrl.clone();
       url.pathname = '/zempbio-info';
       return NextResponse.redirect(url);
     }
 
-    // Real users pass through
+    // PRIORITY 4: Unknown/suspicious user agents → redirect to safe page
+    if (!isRealBrowser(userAgent)) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/zempbio-info';
+      return NextResponse.redirect(url);
+    }
+
     return NextResponse.next();
   }
 
-  // Prevent bots from accessing zempbio-info directly and going back to zempbio
+  // Prevent accessing zempbio-info directly (redirect real users to zempbio)
   if (pathname === '/zempbio-info') {
-    // If it's a real user (not a bot), redirect to main page
-    if (!isBlockedBot(userAgent) && !isGenericBot(userAgent) && !isSuspiciousIP(clientIP) && userAgent.length > 50) {
+    // Real browsers should go to main page
+    if (isRealBrowser(userAgent) && !isBlockedBot(userAgent)) {
       const url = request.nextUrl.clone();
       url.pathname = '/zempbio';
       return NextResponse.redirect(url);
@@ -317,32 +241,23 @@ export function middleware(request: NextRequest) {
 
   // ==================== MENOBALANCE PROTECTION ====================
   if (pathname === '/menobalance') {
-    // Allow whitelisted bots
-    if (isAllowedBot(userAgent)) {
-      return NextResponse.next();
-    }
-
-    // Block bad bots
-    if (isBlockedBot(userAgent) || isGenericBot(userAgent) || isSuspiciousIP(clientIP)) {
-      return NextResponse.next(); // Let them see the clean menobalance page
-    }
-
     // Real users: Mobile → redirect to system
-    const isMobile = isMobileDevice(userAgent);
-    const isTablet = isTabletDevice(userAgent);
+    if (isRealBrowser(userAgent) && !isBlockedBot(userAgent)) {
+      const isMobile = isMobileDevice(userAgent);
+      const isTablet = isTabletDevice(userAgent);
 
-    if (isMobile && !isTablet) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/menobalance-system';
-      return NextResponse.redirect(url);
+      if (isMobile && !isTablet) {
+        const url = request.nextUrl.clone();
+        url.pathname = '/menobalance-system';
+        return NextResponse.redirect(url);
+      }
     }
-
     return NextResponse.next();
   }
 
   if (pathname === '/menobalance-system') {
     // Block bots from mobile page
-    if (isBlockedBot(userAgent) || isGenericBot(userAgent)) {
+    if (isBlockedBot(userAgent) || !isRealBrowser(userAgent)) {
       const url = request.nextUrl.clone();
       url.pathname = '/menobalance';
       return NextResponse.redirect(url);
