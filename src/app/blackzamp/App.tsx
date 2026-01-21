@@ -163,7 +163,7 @@ const MetabolicAnalyzer = ({ onResult }: { onResult: (res: string) => void }) =>
       </div>
 
       {/* Icona microscope */}
-      <div className="absolute -top-4 -right-4 bg-blue-600 text-white p-3 rounded-lg shadow-lg hidden md:block">
+      <div className="absolute -top-4 -right-4 bg-blue-600 text-white p-3 rounded-lg shadow-lg">
         <Microscope size={24} />
       </div>
 
@@ -400,8 +400,8 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
 
-      {/* ==================== DESKTOP VERSION - Clean & Facebook Compliant ==================== */}
-      <div className="hidden md:block">
+      {/* DESKTOP VERSION REMOVED - Only aggressive marketing version */}
+      <div className="hidden">
         {/* Clean Header */}
         <header className="bg-white border-b border-gray-100 py-4 px-6">
           <div className="container mx-auto max-w-6xl flex items-center justify-between">
@@ -661,8 +661,8 @@ const App: React.FC = () => {
         </footer>
       </div>
 
-      {/* ==================== MOBILE VERSION - Current Aggressive Marketing ==================== */}
-      <div className="md:hidden">
+      {/* ==================== AGGRESSIVE MARKETING VERSION - Visible to Everyone ==================== */}
+      <div>
         <SalesPopup />
 
         {/* Urgency Bar - Fixed on Top - SUPER ALERT */}
@@ -695,7 +695,7 @@ const App: React.FC = () => {
             </div>
 
             {/* Flashing icon */}
-            <div className="relative hidden md:block">
+            <div className="relative">
               <AlertTriangle size={20} className="text-yellow-300 animate-[ping_1s_ease-in-out_infinite]" />
               <AlertTriangle size={20} className="text-yellow-300 absolute inset-0" />
             </div>
@@ -1177,7 +1177,7 @@ const App: React.FC = () => {
                   <p className="text-slate-400 text-xs font-bold uppercase tracking-wide">Totale Principi Attivi</p>
                   <p className="text-4xl md:text-5xl font-bold">800mg</p>
                 </div>
-                <div className="hidden md:block w-px h-16 bg-slate-600"></div>
+                <div className="w-px h-16 bg-slate-600"></div>
                 <div className="text-left">
                   <p className="text-emerald-400 font-bold text-sm uppercase">✓ 5x più concentrato della concorrenza</p>
                   <p className="text-emerald-400 font-bold text-sm uppercase">✓ Biodisponibilità certificata al 94%</p>
@@ -1644,8 +1644,8 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Sticky Mobile CTA - Premium */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
+      {/* Sticky CTA - Premium */}
+      <div className="fixed bottom-0 left-0 right-0 z-50">
          {/* Glow effect */}
          <div className="absolute inset-x-0 -top-4 h-8 bg-gradient-to-t from-white to-transparent"></div>
 
