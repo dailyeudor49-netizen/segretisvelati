@@ -167,34 +167,40 @@ const ZempbioLanding = () => {
       </header>
 
       {/* PRODUCT SHOWCASE + BENEFITS */}
-      <section className="py-10 md:py-16 px-4 bg-gradient-to-b from-gray-100 to-white">
+      <section className="py-6 md:py-12 px-3 md:px-4 bg-gradient-to-b from-gray-100 to-white">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-10 items-center">
 
-            {/* Product Mockup con Prezzo */}
+            {/* Product Mockup con Prezzo integrato */}
             <div className="text-center">
               <div className="relative inline-block">
                 <img
                   src="/images/zempbio/Mockup.png"
                   alt="Zempbio Confezione"
-                  className="relative z-10 rounded-lg max-w-[220px] md:max-w-[280px] mx-auto"
+                  className="relative z-10 rounded-lg max-w-[180px] md:max-w-[250px] mx-auto"
                 />
+                {/* Badge OFFERTA LAMPO */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white font-black text-xs md:text-sm px-3 py-1 rounded-full z-20 whitespace-nowrap animate-pulse">
+                  OFFERTA LAMPO
+                </div>
                 {/* Badge Sconto */}
-                <div className="absolute -top-2 -right-2 bg-red-600 text-white font-black text-sm md:text-lg px-3 py-1.5 rounded-full z-20">
+                <div className="absolute -bottom-2 -right-2 bg-yellow-400 text-black font-black text-sm md:text-lg px-3 py-1.5 rounded-full z-20 shadow-lg">
                   -60%
+                </div>
+                {/* Prezzo sul mockup */}
+                <div className="absolute -bottom-2 -left-2 bg-emerald-600 text-white px-2 py-1 rounded-lg z-20 shadow-lg">
+                  <p className="text-[10px] line-through opacity-70">€99,99</p>
+                  <p className="text-lg md:text-xl font-black leading-none">€39,99</p>
                 </div>
               </div>
 
-              {/* Prezzo */}
-              <div className="mt-6 bg-white rounded-xl p-4 md:p-5 max-w-[280px] mx-auto">
-                <p className="text-red-500 text-base line-through">€99,99</p>
-                <p className="text-4xl md:text-5xl font-black text-emerald-600">€39,99</p>
-                <p className="text-xs md:text-sm text-gray-600 mt-1 font-medium">Spedizione GRATUITA</p>
+              {/* CTA compatto */}
+              <div className="mt-4">
                 <button
                   onClick={scrollToOrder}
-                  className="mt-3 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg transition"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-lg transition text-base"
                 >
-                  Ordina Ora
+                  Ordina Ora - Spedizione GRATIS
                 </button>
               </div>
             </div>
@@ -267,12 +273,12 @@ const ZempbioLanding = () => {
       </section>
 
       {/* INTRO NARRATIVE */}
-      <section className="py-10 md:py-14 px-4 bg-white">
-        <div className="max-w-3xl mx-auto text-base md:text-lg leading-relaxed text-gray-700 space-y-5">
+      <section className="py-8 md:py-14 px-4 bg-white">
+        <div className="max-w-3xl mx-auto text-lg md:text-xl leading-relaxed text-gray-700 space-y-5">
           <p>
-            <span className="font-bold text-gray-900 text-lg md:text-xl">Come fanno gli attori a passare da ruoli impegnativi a fisici scolpiti in poche settimane?</span> Non è solo dieta estrema. È <strong>Zempbio</strong>, la formula naturale che <strong>accelera il metabolismo</strong>, <strong>drena i liquidi</strong> e <strong>controlla la fame</strong>.
+            <span className="font-bold text-gray-900 text-xl md:text-2xl">Come fanno gli attori a passare da ruoli impegnativi a fisici scolpiti in poche settimane?</span> Non è solo dieta estrema. È <strong>Zempbio</strong>, la formula naturale che <strong>accelera il metabolismo</strong>, <strong>drena i liquidi</strong> e <strong>controlla la fame</strong>.
           </p>
-          <blockquote className="border-l-4 border-red-500 pl-4 italic text-gray-600 bg-gray-50 py-3 rounded-r-lg text-base md:text-lg">
+          <blockquote className="border-l-4 border-red-500 pl-4 italic text-gray-600 bg-gray-50 py-4 rounded-r-lg text-lg md:text-xl">
             &quot;Ho perso 18kg in 12 giorni tra due produzioni, mantenendo energia per le riprese.&quot; – Attore Hollywoodiano
           </blockquote>
           <p>
@@ -282,15 +288,15 @@ const ZempbioLanding = () => {
       </section>
 
       {/* DETAILED DESCRIPTION - LIGHT GRAY BG */}
-      <section className="py-10 md:py-14 px-4 bg-gray-50">
+      <section className="py-8 md:py-14 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
+          <div className="text-center mb-6">
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-serif">Zempbio: Il Prodotto Rivoluzionario</h2>
             <div className="w-16 h-1 bg-red-600 mx-auto rounded"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start mb-8">
-            <div className="space-y-3 text-gray-700 text-sm leading-relaxed">
+          <div className="grid md:grid-cols-2 gap-5 md:gap-8 items-start mb-6">
+            <div className="space-y-4 text-gray-700 text-base md:text-lg leading-relaxed">
               <p>
                 <strong>Zempbio</strong> è un integratore naturale progettato per <strong>risultati concreti</strong>. Agisce su più fronti: <strong>stimola il metabolismo</strong>, <strong>drena i liquidi</strong>, <strong>riduce la fame nervosa</strong>. I primi risultati arrivano <strong>già dopo pochi giorni</strong>.
               </p>
@@ -299,17 +305,17 @@ const ZempbioLanding = () => {
               </p>
             </div>
             <div className="bg-white p-4 md:p-5 rounded-lg">
-               <h4 className="font-bold text-base md:text-lg mb-2 text-gray-900">Il Segreto della Formula</h4>
-               <p className="text-xs md:text-sm text-gray-600 mb-3">Formulato in laboratori specializzati con estratti per massima biodisponibilità. Quattro principi attivi per un&apos;azione a 360 gradi.</p>
-               <div className="flex gap-2 items-center text-red-700 font-bold text-sm">
-                 <Award size={18}/> Formula Certificata
+               <h4 className="font-bold text-lg md:text-xl mb-2 text-gray-900">Il Segreto della Formula</h4>
+               <p className="text-base md:text-lg text-gray-600 mb-3">Formulato in laboratori specializzati con estratti per massima biodisponibilità. Quattro principi attivi per un&apos;azione a 360 gradi.</p>
+               <div className="flex gap-2 items-center text-red-700 font-bold text-base">
+                 <Award size={20}/> Formula Certificata
                </div>
             </div>
           </div>
 
           <div className="bg-red-50 p-5 md:p-6 rounded-lg">
-            <h3 className="text-lg md:text-xl font-bold text-red-700 mb-3">&quot;Il Metodo Hollywood&quot;</h3>
-            <p className="text-gray-800 text-sm leading-relaxed">
+            <h3 className="text-xl md:text-2xl font-bold text-red-700 mb-3">&quot;Il Metodo Hollywood&quot;</h3>
+            <p className="text-gray-800 text-base md:text-lg leading-relaxed">
               Zempbio è ispirato alle formule usate dagli <strong>attori professionisti</strong> per perdere peso velocemente. <strong>Brucia grasso</strong>, <strong>drena gonfiori</strong> e <strong>preserva energia</strong>: <strong>risultati impressionanti senza palestra obbligatoria o diete rigide</strong>.
             </p>
           </div>
@@ -809,14 +815,27 @@ const ZempbioLanding = () => {
         </div>
       </footer>
 
-      {/* Sticky Mobile CTA Button */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 shadow-lg z-50">
-        <button
-          onClick={scrollToOrder}
-          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-lg text-sm uppercase whitespace-nowrap"
-        >
-          Ordina Ora - Paga alla Consegna
-        </button>
+      {/* Sticky Mobile CTA Button with Mockup */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-3 py-2 shadow-lg z-50">
+        <div className="flex items-center gap-2">
+          {/* Mini Mockup */}
+          <div className="relative shrink-0">
+            <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-12 h-auto" />
+            <div className="absolute -top-1 -right-1 bg-red-600 text-white text-[8px] font-bold px-1 rounded">-60%</div>
+          </div>
+          {/* Price */}
+          <div className="shrink-0">
+            <p className="text-[10px] text-gray-400 line-through leading-none">€99,99</p>
+            <p className="text-lg font-black text-emerald-600 leading-none">€39,99</p>
+          </div>
+          {/* Button */}
+          <button
+            onClick={scrollToOrder}
+            className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-3 rounded-lg text-xs uppercase whitespace-nowrap"
+          >
+            Ordina Ora
+          </button>
+        </div>
       </div>
     </div>
   );
