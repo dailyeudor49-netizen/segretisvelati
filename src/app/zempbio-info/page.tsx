@@ -11,22 +11,8 @@ export default function ZempbioInfoPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Italian phone number validation
-  const isValidItalianPhone = (phone: string): boolean => {
-    const cleaned = phone.replace(/\D/g, '');
-    if (cleaned.startsWith('3') && cleaned.length === 10) return true;
-    if (cleaned.startsWith('0') && cleaned.length >= 9 && cleaned.length <= 11) return true;
-    if (cleaned.startsWith('39') && cleaned.length >= 11 && cleaned.length <= 13) return true;
-    return false;
-  };
-
-  const isFormValid = orderForm.nome.trim().length >= 3 &&
-                      isValidItalianPhone(orderForm.telefono) &&
-                      orderForm.indirizzo.trim().length >= 5;
-
   const handleOrderSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isFormValid) return;
     setIsSubmitting(true);
 
     try {
@@ -375,12 +361,8 @@ export default function ZempbioInfoPage() {
                 </div>
                 <button
                   type="submit"
-                  disabled={isSubmitting || !isFormValid}
-                  className={`w-full py-4 rounded-xl font-semibold text-lg transition-all ${
-                    isFormValid
-                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-600/20'
-                      : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                  }`}
+                  disabled={isSubmitting}
+                  className={`w-full py-4 rounded-xl font-semibold text-lg transition-all bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-600/20 ${isSubmitting ? 'opacity-70' : ''}`}
                 >
                   {isSubmitting ? 'Invio in corso...' : 'Conferma Ordine - €39,99'}
                 </button>
