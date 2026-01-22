@@ -789,7 +789,7 @@ const ZempbioLanding = () => {
       </section>
 
       {/* FOOTER - Kept from original zempbio */}
-      <footer className="bg-gray-100 py-20 pb-28 md:pb-20 px-4 border-t border-gray-200 text-center">
+      <footer className="bg-gray-100 py-20 pb-20 md:pb-20 px-4 border-t border-gray-200 text-center">
         <div className="container mx-auto max-w-5xl">
           <div className="flex items-center justify-center gap-1 mb-8">
             <div className="bg-blue-700 text-white p-1 rounded-md font-bold text-lg text-xs uppercase">ZB</div>
@@ -810,13 +810,12 @@ const ZempbioLanding = () => {
       </footer>
 
       {/* Sticky Mobile CTA Button */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-300 p-4 shadow-2xl z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 shadow-lg z-50">
         <button
           onClick={scrollToOrder}
-          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 px-6 rounded-xl flex items-center justify-center gap-2 text-lg uppercase"
+          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-lg text-sm uppercase whitespace-nowrap"
         >
-          <span>Acquista Ora</span>
-          <span className="text-yellow-300 font-bold">- Paga alla Consegna</span>
+          Ordina Ora - Paga alla Consegna
         </button>
       </div>
     </div>
