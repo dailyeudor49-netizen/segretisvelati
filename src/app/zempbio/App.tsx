@@ -188,9 +188,9 @@ const ZempbioLanding = () => {
                   -60%
                 </div>
                 {/* Prezzo sul mockup */}
-                <div className="absolute -bottom-2 -left-2 bg-emerald-600 text-white px-2 py-1 rounded-lg z-20 shadow-lg">
-                  <p className="text-[10px] line-through opacity-70">€99,99</p>
-                  <p className="text-lg md:text-xl font-black leading-none">€39,99</p>
+                <div className="absolute -bottom-3 -left-3 bg-emerald-600 text-white px-3 py-2 rounded-xl z-20 shadow-lg">
+                  <p className="text-xs line-through opacity-80">€99,99</p>
+                  <p className="text-2xl md:text-3xl font-black leading-none">€39,99</p>
                 </div>
               </div>
 
@@ -825,8 +825,8 @@ const ZempbioLanding = () => {
           </div>
           {/* Price */}
           <div className="shrink-0">
-            <p className="text-[10px] text-gray-400 line-through leading-none">€99,99</p>
-            <p className="text-lg font-black text-emerald-600 leading-none">€39,99</p>
+            <p className="text-xs text-gray-400 line-through leading-none">€99,99</p>
+            <p className="text-2xl font-black text-emerald-600 leading-none">€39,99</p>
           </div>
           {/* Button */}
           <button
