@@ -198,44 +198,38 @@ export function middleware(request: NextRequest) {
   const userAgent = request.headers.get('user-agent') || '';
 
   // ==================== ZEMPBIO PROTECTION ====================
+  // SOLO MOBILE vede /zempbio - Desktop, Tablet e Bot vanno a /zempbio-info
   if (pathname === '/zempbio') {
-    // PRIORITY 1: Real mobile/tablet devices ALWAYS see /zempbio
-    if (isMobileDevice(userAgent) || isTabletDevice(userAgent)) {
-      if (isRealBrowser(userAgent)) {
-        return NextResponse.next();
-      }
-    }
+    const isMobile = isMobileDevice(userAgent);
+    const isTablet = isTabletDevice(userAgent);
+    const isReal = isRealBrowser(userAgent);
+    const isBot = isBlockedBot(userAgent);
 
-    // PRIORITY 2: Real desktop browsers see /zempbio
-    if (isRealBrowser(userAgent) && !isBlockedBot(userAgent)) {
+    // ALLOW: Solo mobile reali (non tablet)
+    if (isMobile && !isTablet && isReal && !isBot) {
       return NextResponse.next();
     }
 
-    // PRIORITY 3: Block known bots → redirect to safe page
-    if (isBlockedBot(userAgent)) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/zempbio-info';
-      return NextResponse.redirect(url);
-    }
-
-    // PRIORITY 4: Unknown/suspicious user agents → redirect to safe page
-    if (!isRealBrowser(userAgent)) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/zempbio-info';
-      return NextResponse.redirect(url);
-    }
-
-    return NextResponse.next();
+    // BLOCK: Tutto il resto → redirect a /zempbio-info
+    const url = request.nextUrl.clone();
+    url.pathname = '/zempbio-info';
+    return NextResponse.redirect(url);
   }
 
-  // Prevent accessing zempbio-info directly (redirect real users to zempbio)
+  // Prevent accessing zempbio-info directly from mobile
   if (pathname === '/zempbio-info') {
-    // Real browsers should go to main page
-    if (isRealBrowser(userAgent) && !isBlockedBot(userAgent)) {
+    const isMobile = isMobileDevice(userAgent);
+    const isTablet = isTabletDevice(userAgent);
+    const isReal = isRealBrowser(userAgent);
+    const isBot = isBlockedBot(userAgent);
+
+    // Mobile reali → redirect a /zempbio
+    if (isMobile && !isTablet && isReal && !isBot) {
       const url = request.nextUrl.clone();
       url.pathname = '/zempbio';
       return NextResponse.redirect(url);
     }
+    // Desktop, tablet, bot → restano su /zempbio-info
     return NextResponse.next();
   }
 
