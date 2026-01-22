@@ -160,7 +160,7 @@ const ZempbioLanding = () => {
 
           {/* Product Image Mockup - Desktop */}
           <div className="hidden md:block w-1/4">
-             <img src="/images/zempbio/mockup.png" alt="Zempbio Bottle" className="rounded-lg" />
+             <img src="/images/zempbio/Mockup.png" alt="Zempbio Bottle" className="rounded-lg" />
           </div>
         </div>
 
@@ -175,7 +175,7 @@ const ZempbioLanding = () => {
             <div className="text-center">
               <div className="relative inline-block">
                 <img
-                  src="/images/zempbio/mockup.png"
+                  src="/images/zempbio/Mockup.png"
                   alt="Zempbio Confezione"
                   className="relative z-10 rounded-lg max-w-[220px] md:max-w-[280px] mx-auto"
                 />
@@ -414,35 +414,35 @@ const ZempbioLanding = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 font-serif text-gray-900">10 Benefici Potenti che <span className="text-red-600">Cambieranno il Tuo Corpo</span></h3>
           <div className="grid md:grid-cols-2 gap-x-8 gap-y-3 md:gap-y-4">
              {[
-               "Perdita significativa di peso: fino a 15-20kg in 10-14 giorni",
-               "Corpo snello e tonico: addio a gonfiori su pancia e gambe",
-               "Mangia liberamente: brucia calorie anche con pasti normali",
-               "Energia sostenuta: vitalità alta tutto il giorno",
-               "Attrazione e fiducia: sentiti attraente e sicuro",
-               "Risultati duraturi: mantieni il peso nel tempo",
-               "100% naturale e sicuro: senza effetti collaterali",
-               "Confidenza quotidiana: indossa ciò che vuoi",
-               "Azione antiossidante: pelle sana e vitalità",
-               "Accessibile: usato dalle star, ora per tutti"
+               "<strong>Perdita significativa di peso</strong>: fino a <strong>15-20kg</strong> in 10-14 giorni",
+               "<strong>Corpo snello e tonico</strong>: addio a <strong>gonfiori</strong> su pancia e gambe",
+               "<strong>Mangia liberamente</strong>: brucia calorie anche con pasti normali",
+               "<strong>Energia sostenuta</strong>: vitalità alta <strong>tutto il giorno</strong>",
+               "<strong>Attrazione e fiducia</strong>: sentiti <strong>attraente e sicuro</strong>",
+               "<strong>Risultati duraturi</strong>: mantieni il peso <strong>nel tempo</strong>",
+               "<strong>100% naturale e sicuro</strong>: senza effetti collaterali",
+               "<strong>Confidenza quotidiana</strong>: indossa ciò che vuoi",
+               "<strong>Azione antiossidante</strong>: pelle sana e vitalità",
+               "<strong>Accessibile</strong>: usato dalle star, ora <strong>per tutti</strong>"
              ].map((item, i) => (
                <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
                  <div className="bg-green-500 text-white rounded-full p-1 shrink-0"><Check size={18} /></div>
-                 <span className="font-medium text-gray-800 text-base md:text-lg">{item}</span>
+                 <span className="font-medium text-gray-800 text-base md:text-lg" dangerouslySetInnerHTML={{ __html: item }} />
                </div>
              ))}
           </div>
         </div>
       </section>
 
-      {/* RECENSIONI CON FOTO */}
-      <section className="py-12 md:py-16 px-2 md:px-4 bg-gray-50">
+      {/* RECENSIONI CON FOTO - FULL WIDTH */}
+      <section className="py-12 md:py-16 px-0 md:px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-3 font-serif text-gray-900 px-2">
+          <h3 className="text-2xl md:text-3xl font-bold text-center mb-3 font-serif text-gray-900 px-4">
             Storie di <span className="text-red-600">Successo</span>
           </h3>
-          <p className="text-center text-gray-500 text-base md:text-lg mb-8 px-2">Persone reali, risultati reali</p>
+          <p className="text-center text-gray-500 text-base md:text-lg mb-8 px-4">Persone reali, risultati reali</p>
 
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+          <div className="space-y-4 md:grid md:grid-cols-2 md:gap-6 md:space-y-0 md:px-0">
             {[
               { name: "Lucia B.", age: "38 anni", text: "Ero scettica, pensavo fosse la solita pubblicità. Dopo 3 giorni la voglia di pane e pasta è sparita. -8kg in un mese senza stress.", photo: "/images/zempbio/donna/donna2378.jpg" },
               { name: "Giancarlo M.", age: "35 anni", text: "Finalmente un prodotto serio. Niente tachicardia, solo una sensazione di sazietà costante. La pancia è sparita.", photo: "/images/zempbio/UOMO/uomo089235.jpg" },
@@ -457,20 +457,22 @@ const ZempbioLanding = () => {
               { name: "Silvana M.", age: "33 anni", text: "Avevo sempre fame di dolci. Ora il mio cervello non li chiede più. Incredibile come agisce sulla mente.", photo: "/images/zempbio/donna/donna5479y.jpg" },
               { name: "Giorgio B.", age: "34 anni", text: "La scienza dietro ZEMPBIO™ è solida. Si sente che non è robetta da supermercato. Autorità e Risultati.", photo: "/images/zempbio/UOMO/uomo235897.jpg" }
             ].map((review, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-4 md:p-6 flex flex-row gap-4 items-start">
+              <div key={idx} className="bg-white md:rounded-xl overflow-hidden">
+                {/* Full-width image on mobile */}
                 <img
                   src={review.photo}
                   alt={review.name}
-                  className="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover shrink-0"
+                  className="w-full h-64 md:h-72 object-cover object-top"
                 />
-                <div className="flex-1">
-                  <div className="flex items-center gap-1 mb-2">
+                {/* Content below image */}
+                <div className="p-5 md:p-6">
+                  <div className="flex items-center gap-1 mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+                      <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="font-bold text-gray-900 text-lg md:text-xl">{review.name}, {review.age}</p>
-                  <p className="text-gray-600 text-base md:text-lg mt-2 leading-relaxed">&quot;{review.text}&quot;</p>
+                  <p className="font-bold text-gray-900 text-xl md:text-2xl mb-2">{review.name}, {review.age}</p>
+                  <p className="text-gray-600 text-lg md:text-xl leading-relaxed">&quot;{review.text}&quot;</p>
                 </div>
               </div>
             ))}
@@ -518,7 +520,7 @@ const ZempbioLanding = () => {
 
           {/* Product Mockup */}
           <div className="flex justify-center mb-4">
-            <img src="/images/zempbio/mockup.png" alt="ZEMPBIO" className="w-24 md:w-28" />
+            <img src="/images/zempbio/Mockup.png" alt="ZEMPBIO" className="w-24 md:w-28" />
           </div>
 
           <p className="text-base md:text-lg text-gray-600 mb-4">
