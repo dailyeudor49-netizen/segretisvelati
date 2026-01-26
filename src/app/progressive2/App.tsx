@@ -130,17 +130,31 @@ export default function App() {
                   Vedi bene <strong>telefono</strong>, <strong>computer</strong> e <strong>TV</strong> senza cambiare occhiali. Un solo paio per tutto.
                 </p>
 
-                {/* Price & CTA */}
-                <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-8">
+                {/* Price Box */}
+                <div className="bg-slate-50 rounded-2xl p-6 mb-8 border border-slate-200 max-w-md mx-auto lg:mx-0">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <p className="text-slate-500 text-base mb-1">Prezzo di listino</p>
+                      <p className="text-3xl text-slate-400 line-through font-bold">79,90€</p>
+                    </div>
+                    <div className="bg-red-500 text-white font-bold rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg transform -rotate-12">
+                      <span className="text-xs">SCONTO</span>
+                      <span className="text-xl leading-none">-56%</span>
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-3 mb-4">
+                    <p className="text-5xl font-bold text-green-600">34,99€</p>
+                    <p className="text-slate-500 text-lg pb-1">per 2 paia</p>
+                  </div>
                   <button
                     onClick={scrollToOrder}
-                    className="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                    className="w-full bg-green-600 hover:bg-green-500 text-white text-xl font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
                   >
-                    Ordina 2 paia a 34,99€ <ChevronDown size={18} />
+                    Ordina Ora <ChevronDown size={20} />
                   </button>
-                  <div className="text-left text-sm font-medium text-slate-500 px-4">
-                     <p className="flex items-center gap-2 mb-1.5"><Check size={16} className="text-green-500"/> Pagamento alla consegna</p>
-                     <p className="flex items-center gap-2"><Check size={16} className="text-green-500"/> Spedizione Gratuita</p>
+                  <div className="flex justify-center gap-6 mt-4 text-sm font-medium text-slate-500">
+                     <p className="flex items-center gap-2"><Check size={16} className="text-green-500"/> Pagamento alla consegna</p>
+                     <p className="flex items-center gap-2"><Check size={16} className="text-green-500"/> Spedizione Gratis</p>
                   </div>
                 </div>
 
