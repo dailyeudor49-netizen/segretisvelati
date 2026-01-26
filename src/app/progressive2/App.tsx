@@ -435,10 +435,11 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-12">Domande Frequenti</h2>
             <div className="space-y-4">
               {[
-                { q: "Come scelgo la gradazione?", a: "Scegli la stessa diottria dei tuoi occhiali da lettura (da +1.00 a +4.00). Se non la conosci, inizia con +1.50 se hai 45-50 anni, +2.00 se hai 50-55 anni, +2.50 se hai oltre 55 anni." },
+                { q: "Come funziona l'ordine?", a: "Compili il form con i tuoi dati, poi un nostro consulente esperto ti chiama per capire insieme la gradazione giusta. Solo dopo la chiamata parte la spedizione." },
+                { q: "Devo rispondere al telefono?", a: "Sì, è fondamentale. Senza la chiamata di conferma non possiamo spedire gli occhiali con la gradazione corretta. Se non rispondi, riproviamo, ma la spedizione resta in attesa." },
                 { q: "Posso usarli anche per guidare?", a: "Sì, per tragitti brevi. La parte alta della lente è neutra, quindi non distorce. Per guida notturna prolungata meglio occhiali dedicati." },
                 { q: "E se non mi trovo bene?", a: "Hai 14 giorni per restituirli e ricevere il rimborso completo. Nessuna domanda, nessun rischio." },
-                { q: "Ricevo davvero 2 paia?", a: "Sì. Un paio nero e uno tartarugato, entrambi con la gradazione che scegli. Puoi tenerne uno a casa e uno in borsa." }
+                { q: "Ricevo davvero 2 paia?", a: "Sì. Un paio nero e uno tartarugato, entrambi con la gradazione che comunichi al consulente. Puoi tenerne uno a casa e uno in borsa." }
               ].map((faq, idx) => (
                 <div key={idx} className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
                   <button
@@ -520,10 +521,18 @@ export default function App() {
                     <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6 shadow-sm">
                       <Check size={48} />
                     </div>
-                    <h3 className="text-3xl font-bold text-slate-900 mb-4">Ordine Confermato!</h3>
-                    <p className="text-slate-500 max-w-sm mx-auto mb-8 text-lg">
-                      Grazie {formData.name}. Un ottico sta verificando il tuo ordine. Riceverai una chiamata di conferma a breve.
+                    <h3 className="text-3xl font-bold text-slate-900 mb-4">Ordine Ricevuto!</h3>
+                    <p className="text-slate-600 max-w-md mx-auto mb-4 text-lg">
+                      Grazie {formData.name}!
                     </p>
+                    <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-5 max-w-md mb-8">
+                      <p className="text-amber-800 font-bold text-lg mb-2 flex items-center justify-center gap-2">
+                        <Phone size={20} /> Rispondi alla nostra chiamata!
+                      </p>
+                      <p className="text-slate-600 text-base">
+                        Un consulente ti chiamerà a breve per confermare la gradazione. <strong>Senza questa chiamata la spedizione non parte.</strong>
+                      </p>
+                    </div>
                     <button onClick={() => window.location.reload()} className="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 px-8 rounded-full transition">Torna al negozio</button>
                   </div>
                 ) : (
@@ -536,34 +545,23 @@ export default function App() {
                       </div>
                     </div>
                     
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      {/* Diopter Selection (Featured) */}
-                      <div className="md:col-span-2 bg-optical-50 p-6 rounded-xl border border-optical-100">
-                         <label className="block text-base font-bold text-optical-900 mb-3 flex items-center gap-2">
-                           <Eye size={20}/> Seleziona la tua Gradazione
-                         </label>
-                         <div className="relative">
-                           <select
-                             name="diopter"
-                             required
-                             className="w-full p-4 pl-4 bg-white border border-optical-200 rounded-lg focus:ring-2 focus:ring-optical-500 outline-none transition text-xl font-medium appearance-none cursor-pointer hover:border-optical-400"
-                             onChange={handleInputChange}
-                             value={formData.diopter}
-                           >
-                             <option value="">Seleziona diottria lettura...</option>
-                             <option value="+1.00">+1.00 (Leggera)</option>
-                             <option value="+1.50">+1.50</option>
-                             <option value="+2.00">+2.00 (Media)</option>
-                             <option value="+2.50">+2.50</option>
-                             <option value="+3.00">+3.00 (Alta)</option>
-                             <option value="+3.50">+3.50</option>
-                             <option value="+4.00">+4.00</option>
-                           </select>
-                           <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-optical-400 pointer-events-none" size={24} />
-                         </div>
-                         <p className="text-sm text-optical-600 mt-3 ml-1">*Scegli la gradazione che usi normalmente per leggere il giornale.</p>
+                    {/* Avviso chiamata consulente */}
+                    <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-5 mb-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center shrink-0">
+                          <Phone size={24} className="text-amber-600" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-slate-900 text-lg mb-1">Un nostro consulente ti chiamerà</p>
+                          <p className="text-slate-600 text-base leading-relaxed">
+                            Dopo l'ordine riceverai una <strong>chiamata da un esperto</strong> per confermare la gradazione giusta per te.
+                            <span className="text-amber-700 font-semibold"> Rispondi al telefono, altrimenti la spedizione non parte.</span>
+                          </p>
+                        </div>
                       </div>
+                    </div>
 
+                    <div className="grid md:grid-cols-2 gap-6 mb-8">
                       <div className="md:col-span-2">
                         <label className="block text-base font-medium text-slate-700 mb-2">Nome e Cognome *</label>
                         <input type="text" name="name" required placeholder="Mario Rossi" onChange={handleInputChange} className="w-full p-4 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-optical-500 outline-none transition text-lg"/>
